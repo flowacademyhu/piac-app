@@ -1,2 +1,2 @@
-# piac-app-backend
-Team Lambda's backend repository for market application
+# piac-app
+Team Lambda's repository for market application
