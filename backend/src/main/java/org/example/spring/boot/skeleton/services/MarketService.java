@@ -7,6 +7,7 @@ import org.example.spring.boot.skeleton.repositories.MarketRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -27,4 +28,26 @@ public class MarketService {
         return marketRepository.findAll();
     }
 
+    public Market getMarketById(Long id) {
+        return marketRepository.findById(id).orElseThrow();
+    }
+
+    public void deleteAllMarkets() {
+        marketRepository.deleteAll();
+    }
+
+    public void deleteMarketById(Long id) {
+        marketRepository.deleteById(id);
+    }
+
+    public Market updateMarketById(Long id, MarketDTO marketDTO) {
+        Market market = getMarketById(id);
+        market.builder()
+                .date(marketDTO.getDate())
+                .place(marketDTO.getPlace())
+
+                .name(marketDTO.getName())
+                .build();
+        return marketRepository.save(market);
+    }
 }
