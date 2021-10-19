@@ -7,7 +7,7 @@ import org.example.spring.boot.skeleton.repositories.MarketRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 @AllArgsConstructor
@@ -27,6 +27,7 @@ public class MarketService {
     public List<Market> allMarkets(){
         return marketRepository.findAll();
     }
+
 
     public Market getMarketById(Long id) {
         return marketRepository.findById(id).orElseThrow();
@@ -50,4 +51,5 @@ public class MarketService {
                 .build();
         return marketRepository.save(market);
     }
+
 }
