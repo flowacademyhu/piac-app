@@ -1,14 +1,14 @@
 version: '2'
 services:
 
-  spring-boot-skeleton:
-    image: spring-boot-skeleton:latest
-    build: .
-    restart: always
-    ports:
-      - 8081:8081
-    links:
-      - mysql
+ # spring-boot-skeleton:
+  #  image: spring-boot-skeleton:latest
+   # build: .
+    #restart: always
+  #  ports:
+   #   - 8081:8081
+  #  links:
+   #   - mysql
 
   mysql:
     image: mysql
