@@ -3,10 +3,9 @@ package org.example.spring.boot.skeleton.controller;
 import org.example.spring.boot.skeleton.model.Test;
 import org.example.spring.boot.skeleton.repository.TestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -18,15 +17,15 @@ public class SomeController {
     @Autowired
     private TestRepository testRepository;
 
-    @GetMapping("/test")
-    public String test() {
-        return "test";
+
+    @PostMapping("/test")
+    public Test test(@RequestBody Test test) {
+        return test;
     }
 
     @GetMapping("/all")
     public List<Object> getAll() {
         var someList = new ArrayList<>();
-        testRepository.findAll().forEach(someList::add);
         return someList;
     }
 
@@ -34,8 +33,6 @@ public class SomeController {
     public void insert() {
         var test = new Test();
         test.setId(1L);
-        test.setName(UUID.randomUUID().toString());
-        testRepository.save(test);
     }
 
 }

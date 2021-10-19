@@ -8,5 +8,8 @@ RUN mvn -f /home/app/pom.xml clean package -DskipTests
 FROM openjdk
 COPY --from=build /home/app/target/*.jar /usr/local/lib/spring-boot-skeleton.jar
 
+ARG MYSQL_URL
+ENV MYSQL_URL=$MYSQL_URL
+
 EXPOSE 8081
 ENTRYPOINT ["java", "-jar", "/usr/local/lib/spring-boot-skeleton.jar"]
