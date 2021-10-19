@@ -1,5 +1,5 @@
 #docker build -t spring-boot-skeleton:latest . --no-cache
-#docker run -dp 8080:8080 spring-boot-skeleton
+#docker run -dp 8081:8081 spring-boot-skeleton
 FROM maven:openjdk AS build
 COPY ./src /home/app/src
 COPY ./pom.xml /home/app

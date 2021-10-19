@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -23,15 +24,18 @@ public class SomeController {
     }
 
     @GetMapping("/all")
-    public List<Test> getAll() {
-        return testRepository.findAll();
+    public List<Object> getAll() {
+        var someList = new ArrayList<>();
+        testRepository.findAll().forEach(someList::add);
+        return someList;
     }
 
     @GetMapping("/insert")
     public void insert() {
         var test = new Test();
+        test.setId(1L);
         test.setName(UUID.randomUUID().toString());
-        testRepository.insert(test);
+        testRepository.save(test);
     }
 
 }

@@ -1,13 +1,13 @@
 package org.example.spring.boot.skeleton.model;
 
-import org.springframework.data.mongodb.core.mapping.Document;
-
+import javax.persistence.Entity;
 import java.util.Objects;
 
-@Document
+@Entity
 public class Test {
 
     private String name;
+    private Long id;
 
     public Test() {
     }
@@ -38,5 +38,14 @@ public class Test {
         return "Test{" +
                 "name='" + name + '\'' +
                 '}';
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @javax.persistence.Id
+    public Long getId() {
+        return id;
     }
 }
