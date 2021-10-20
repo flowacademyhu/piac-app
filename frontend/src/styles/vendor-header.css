@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+body {
+  margin: 0;
+}
+
+.vendor-header {
+  background-color: #fffdfc;
+  display: flex;
+  position: sticky;
+  top: 0;
+  width: 100%;
+}
+
+.vendor-header-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.vendor-logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  max-width: 15vh;
+}
+
+.circle {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+  height: 13vh;
+  width: 13vh;
+  border: 1px solid #ccbeb8;
+}
+
+.vendor-name {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  margin: 0;
+}
+
+.vendor-description-short {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+}
+
+.vendor-payment {
+  display: flex;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  margin: 10px 0 0 0;
+}
+
+.payment-icon {
+  margin-right: 5px;
+}
+
+.payment-text {
+  margin-left: 5px;
+}
