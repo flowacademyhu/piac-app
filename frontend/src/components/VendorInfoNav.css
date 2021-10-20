@@ -1,0 +1,22 @@
+.Icons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: center;
+}
+
+.Info-Icon {
+  grid-column: 1;
+}
+
+.Vendor-Icon {
+  grid-column: 2;
+}
+
+.Image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
