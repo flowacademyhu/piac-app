@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-
 @RequestMapping("/v1/api/market")
-
 @AllArgsConstructor
 public class MarketController {
 
@@ -24,7 +22,7 @@ public class MarketController {
         return ResponseEntity.ok(marketService.addMarket(marketDTO));
     }
     @GetMapping
-    public List<Market> allMarkets(){
+    public List<MarketDTO> allMarkets(){
         return marketService.allMarkets();
     }
     @GetMapping("/{id}")
@@ -44,7 +42,7 @@ public class MarketController {
 
     @PutMapping("/{id}")
     public Market updateMarket(@PathVariable @RequestBody Long id, @RequestBody MarketDTO marketDTO){
-       return marketService.updateMarketById(id, marketDTO);
+         return marketService.updateMarketById(id, marketDTO);
     }
 
 
