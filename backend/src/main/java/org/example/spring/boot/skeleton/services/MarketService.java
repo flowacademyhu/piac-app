@@ -6,7 +6,9 @@ import org.example.spring.boot.skeleton.model.MarketDTO;
 import org.example.spring.boot.skeleton.repositories.MarketRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -24,8 +26,12 @@ public class MarketService {
         return marketRepository.save(market);
     }
 
+
     public List<Market> allMarkets(){
-        return marketRepository.findAll();
+        return marketRepository.findAll()
+                .stream()
+                .sorted(Comparator.comparing(Market::getDate))
+                .collect(Collectors.toList());
     }
 
 

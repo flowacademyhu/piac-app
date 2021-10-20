@@ -12,6 +12,7 @@ public class MarketDTO {
 
     @NotNull
     private String name;
+
     @NotNull
     private String place;
 
