@@ -1,0 +1,4 @@
+.card-list {
+  height: calc(100% - 230px);
+  overflow-y: auto;
+}

@@ -1,6 +1,7 @@
 import MarketCard from './MarketCard';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import '../styles/MarketCardList.css';
 
 const title = ['Bödön Piac', 'Böba piac'];
 const location = 'Szeged Plaza';
@@ -29,20 +30,24 @@ const MarketCardList = () => {
     getPosts();
   }, []);
 
-  return posts.map((post, index) => {
-    return (
-      <div key={index}>
-        <MarketCard
-          imageLogo={imageLogo[Math.round(Math.random())]}
-          title={post.name}
-          location={post.address.city}
-          date={post.address.zipcode}
-          lat={post.address.geo.lat}
-          vendorsAmount={vendorsAmount}
-        />
-      </div>
-    );
-  });
+  return (
+    <div className="card-list">
+      {posts.map((post, index) => {
+        return (
+          <div key={index}>
+            <MarketCard
+              imageLogo={imageLogo[Math.round(Math.random())]}
+              title={post.name}
+              location={post.address.city}
+              date={post.address.zipcode}
+              lat={post.address.geo.lat}
+              vendorsAmount={vendorsAmount}
+            />
+          </div>
+        );
+      })}
+    </div>
+  );
 };
 
 export default MarketCardList;

@@ -16,6 +16,9 @@
   width: 95%;
   margin: auto;
   min-width: 480px;
+  position: relative;
+  overflow-y: auto;
+  height: calc(100% - 230px);
 }
 
 .marketLogo {
