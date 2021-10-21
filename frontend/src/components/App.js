@@ -4,6 +4,7 @@ import Header from './Header.js';
 import VendorHeader from './HomeVendorHeader';
 import Footer from './Footer';
 import './Header.css';
+import MainPage from '../pages/MainPage';
 
 const App = () => {
   return (
@@ -11,16 +12,10 @@ const App = () => {
       <div className="container-fluid">
         <Router>
           <Switch>
-            <Route path="/market">
-              <Header />
+            <Route path="/">
+              <MainPage />
             </Route>
           </Switch>
-          <Switch>
-            <Route path="/vendor">
-              <VendorHeader />
-            </Route>
-          </Switch>
-          <Footer />
         </Router>
       </div>
     </div>
