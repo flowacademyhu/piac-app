@@ -12,7 +12,18 @@ import info_primary from './../icons/navigation/info_primary.svg';
 import market_mid from './../icons/navigation/market_mid.svg';
 import market_primary from './../icons/navigation/market_primary.svg';
 
-const VendorInfoNav = ({ products }) => {
+import VendorContacts from './VendorContacts';
+import VendorIntroduction from './VendorIntroduction';
+
+const VendorInfoNav = ({
+  products,
+  facebook,
+  instagram,
+  website,
+  email,
+  phone,
+  introduction
+}) => {
   const [status, changeStatus] = useState(true);
 
   return (
@@ -41,8 +52,26 @@ const VendorInfoNav = ({ products }) => {
         <Switch>
           <Route path="/profile">
             <Products products={products} />
+            <VendorContacts
+              facebook={facebook}
+              instagram={instagram}
+              website={website}
+              email={email}
+              phone={phone}
+              introduction={introduction}
+            />
+            <VendorIntroduction introduction={introduction} />
           </Route>
-          <Route path="/markets"></Route>
+          <Route path="/markets">
+            <div
+              style={{
+                textAlign: 'center',
+                paddingTop: '10px'
+              }}
+            >
+              <div>Hamarosan...</div>
+            </div>
+          </Route>
         </Switch>
       </Router>
     </div>
