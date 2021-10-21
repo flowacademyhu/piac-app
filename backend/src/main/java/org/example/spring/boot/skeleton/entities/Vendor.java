@@ -1,11 +1,13 @@
 package org.example.spring.boot.skeleton.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 
 import javax.persistence.*;
 
 import java.util.HashSet;
 import java.util.Set;
+
 
 @Entity
 @Builder
@@ -21,10 +23,10 @@ public class Vendor {
     @Transient
     private Set<String> products = new HashSet<>();
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinTable(name = "vendors_markets",
-            joinColumns = {@JoinColumn(name = "vendor_id")},
-            inverseJoinColumns = {@JoinColumn(name = "market_id")})
+            joinColumns = {@JoinColumn(name = "vendor_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "market_id", referencedColumnName = "id")})
     private Set<Market> markets = new HashSet<>();
 
     public Vendor(Long id, String name, String intro, Set<String> products, Set<Market> markets) {
@@ -70,6 +72,8 @@ public class Vendor {
         this.products = products;
     }
 
+    @JsonIgnore
+    @ManyToMany(mappedBy = "market")
     public Set<Market> getMarkets() {
         return markets;
     }

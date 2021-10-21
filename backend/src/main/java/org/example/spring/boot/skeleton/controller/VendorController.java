@@ -27,4 +27,10 @@ public class VendorController {
         return ResponseEntity.ok(marketService.allVendors());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Vendor> findVendorById(@PathVariable @RequestBody Long id){
+        return ResponseEntity.ok(marketService.findVendorById(id));
+    }
+    
+
 }
