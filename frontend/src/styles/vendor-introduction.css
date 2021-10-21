@@ -3,7 +3,8 @@
 
 .introduction {
   background-color: #f7f5f2;
-  padding: 15px;
+  padding: 0 15px;
+  padding-bottom: 80px;
 }
 
 .introduction h2 {
