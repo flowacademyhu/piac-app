@@ -21,7 +21,7 @@ const Footer = () => {
                 src={
                   location.pathname === '/' ? MarketLogoHighlight : MarketLogo
                 }
-                alt="Logo"
+                alt="Icon"
               />
               <div id="market-label">PIACOK</div>
             </Link>
@@ -34,7 +34,7 @@ const Footer = () => {
                     ? VendorLogoHighlight
                     : VendorLogo
                 }
-                alt="Logo"
+                alt="Icon"
               />
               <div id="vendor-label">ÁRUSOK</div>
             </Link>

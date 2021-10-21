@@ -25,10 +25,9 @@
   justify-content: center;
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     url('../headers/138056115-c7f98b7d-a803-4a02-bf1e-aaaa6382beb2.jpeg');
-  background-position-y: 70%;
+  background-position-y: 60%;
   background-size: cover;
-  background-color: black 60%;
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;

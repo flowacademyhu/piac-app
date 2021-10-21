@@ -1,10 +1,8 @@
 import '../styles/App.css';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Header from './Header.js';
-import VendorHeader from './HomeVendorHeader';
-import Footer from './Footer';
 import './Header.css';
 import MainPage from '../pages/MainPage';
+import VendorPage from '../pages/VendorPage';
 
 const App = () => {
   return (
@@ -12,8 +10,13 @@ const App = () => {
       <div className="container-fluid">
         <Router>
           <Switch>
-            <Route path="/">
+            <Route exact path="/">
               <MainPage />
+            </Route>
+          </Switch>
+          <Switch>
+            <Route exact path="/arusok">
+              <VendorPage />
             </Route>
           </Switch>
         </Router>
