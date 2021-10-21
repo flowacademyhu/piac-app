@@ -2,6 +2,9 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   text-align: center;
+  position: sticky;
+  top: 23vh;
+  background-color: #f7f5f2;
 }
 
 .Info-Icon {
