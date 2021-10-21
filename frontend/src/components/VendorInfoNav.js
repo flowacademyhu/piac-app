@@ -27,10 +27,10 @@ const VendorInfoNav = ({
   const [status, changeStatus] = useState(true);
 
   return (
-    <div className="Icons">
-      <Router>
+    <Router>
+      <div className="Icons">
         <div className="Info-Icon">
-          <NavLink activeClassName="active" to="/profile">
+          <NavLink activeClassName="active" to="/arusprofil">
             <div
               className={'Image ' + (status ? 'Active-Page' : null)}
               onClick={() => changeStatus(true)}
@@ -49,8 +49,10 @@ const VendorInfoNav = ({
             </div>
           </NavLink>
         </div>
-        <Switch>
-          <Route path="/profile">
+      </div>
+      <Switch>
+        <Route path="/arusprofil">
+          <div className="profile-components">
             <Products products={products} />
             <VendorContacts
               facebook={facebook}
@@ -61,20 +63,20 @@ const VendorInfoNav = ({
               introduction={introduction}
             />
             <VendorIntroduction introduction={introduction} />
-          </Route>
-          <Route path="/markets">
-            <div
-              style={{
-                textAlign: 'center',
-                paddingTop: '10px'
-              }}
-            >
-              <div>Hamarosan...</div>
-            </div>
-          </Route>
-        </Switch>
-      </Router>
-    </div>
+          </div>
+        </Route>
+        <Route path="/markets">
+          <div
+            style={{
+              textAlign: 'center',
+              paddingTop: '20px'
+            }}
+          >
+            <div>Hamarosan...</div>
+          </div>
+        </Route>
+      </Switch>
+    </Router>
   );
 };
 export default VendorInfoNav;
