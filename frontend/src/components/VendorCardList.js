@@ -10,9 +10,7 @@ const VendorCardList = () => {
   const [posts, setPosts] = useState([]);
 
   const getPosts = async () => {
-    const response = await axios.get(
-      'https://jsonplaceholder.typicode.com/posts'
-    );
+    const response = await axios.get('localhost:8081/v1/api/vendor');
 
     console.log(response);
 
@@ -33,8 +31,8 @@ const VendorCardList = () => {
         return (
           <VendorCard
             imageLogo={imageLogo}
-            vendor={title}
-            body={body}
+            vendor={post.name}
+            body={post.intro}
             key={index}
           />
         );
