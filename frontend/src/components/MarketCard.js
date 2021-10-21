@@ -14,8 +14,8 @@ const MarketCard = ({
   return (
     <>
       <div className="emptySpaceOnTop" />
-      <div className="card">
-        <img className="picture" src={imageLogo} alt="logo" />
+      <div className="marketCard">
+        <img className="marketLogo" src={imageLogo} alt="logo" />
         <div div className="marketName">
           {title}
         </div>
