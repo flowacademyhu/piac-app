@@ -1,0 +1,19 @@
+import '../style/VendorCard.css';
+
+const body = document.body;
+body.style.background = '#F7F5F2';
+
+const VendorCard = ({ vendor, body, imageLogo }) => {
+  return (
+    <>
+      <div className='emptySpaceOnTop' />
+      <div className='vendorCard'>
+        <img className='vendorLogo' src={imageLogo} alt='logo' />
+        <div className='vendorName'>{vendor}</div>
+        <div className='vendorDescription'>{body}</div>
+      </div>
+    </>
+  );
+};
+
+export default VendorCard;
