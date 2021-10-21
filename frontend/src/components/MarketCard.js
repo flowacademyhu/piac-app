@@ -1,4 +1,4 @@
-import './MarketCard.css';
+import '../styles/MarketCard.css';
 
 const body = document.body;
 body.style.background = '#F7F5F2';
