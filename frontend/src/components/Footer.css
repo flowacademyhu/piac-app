@@ -32,3 +32,7 @@
   border-top: solid;
   border-width: 0.5px;
 }
+
+.container-fluid {
+  padding: 0;
+}
