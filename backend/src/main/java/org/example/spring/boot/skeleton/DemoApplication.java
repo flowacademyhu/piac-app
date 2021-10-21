@@ -1,6 +1,7 @@
 package org.example.spring.boot.skeleton;
 
 import org.example.spring.boot.skeleton.controller.MarketController;
+import org.example.spring.boot.skeleton.entities.Vendor;
 import org.example.spring.boot.skeleton.model.MarketDTO;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -35,6 +36,7 @@ public class DemoApplication implements CommandLineRunner {
 		marketDTO2.setDate(LocalDateTime.of(2021,12,23,10,00,00));
 		marketDTO2.setPlace("Szeged Pláza");
 		marketController.addMarket(marketDTO2);
+
 
 	}
 

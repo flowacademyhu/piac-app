@@ -31,7 +31,6 @@ public class MarketService {
                 .map(this::marketToDTO)
                 .sorted(Comparator.comparing(MarketDTO::getDate))
                 .collect(Collectors.toList());
-
     }
 
     public Market getMarketById(Long id) {
@@ -56,19 +55,6 @@ public class MarketService {
         return marketRepository.save(market);
     }
 
- //----------------------------------------VENDOR----------------------------------------------
-
-    public VendorResponse addVendor(VendorDTO vendorDTO){
-        Market market = marketRepository.findById(vendorDTO.getMarketId()).orElse(null);
-        Vendor vendor = Vendor.builder().intro(vendorDTO.getIntro()).name(vendorDTO.getName()).build();
-
-        market.getVendors().add(vendor);
-        vendorRepository.save(vendor);
-        marketRepository.save(market);
-        VendorResponse vendorResponse = vendorToResponse(vendor);
-        return vendorResponse;
-    }
-
     public Market marketDTOToEntity(MarketDTO marketDTO){
         return Market.builder()
                 .date(marketDTO.getDate())
@@ -78,23 +64,33 @@ public class MarketService {
     }
 
     public MarketDTO marketToDTO(Market market){
-         MarketDTO marketDTO = new MarketDTO()
+        MarketDTO marketDTO = new MarketDTO()
                 .setVendors(market.getVendors())
                 .setDate(market.getDate())
                 .setName(market.getName())
                 .setPlace(market.getPlace())
                 .setNumberOfVendors(market.getVendors().size());
-
-        System.out.println("Getvendors:" + market);
         return marketDTO;
     }
+
+ //----------------------------------------VENDOR----------------------------------------------
+
+    public VendorResponse addVendor(VendorDTO vendorDTO){
+        Market market = marketRepository.findById(vendorDTO.getMarketId()).orElse(null);
+        Vendor vendor = Vendor.builder().intro(vendorDTO.getIntro()).name(vendorDTO.getName()).build();
+        market.getVendors().add(vendor);
+        vendorRepository.save(vendor);
+        marketRepository.save(market);
+        VendorResponse vendorResponse = vendorToResponse(vendor);
+        return vendorResponse;
+    }
+
 
     public VendorResponse vendorToResponse(Vendor vendor){
         return new VendorResponse()
                 .setIntro(vendor.getIntro())
                 .setName(vendor.getName().toUpperCase(Locale.ROOT));
     }
-
 
     public List<VendorResponse> allVendors() {
       return vendorRepository.findAll()
@@ -103,4 +99,10 @@ public class MarketService {
               .sorted(Comparator.comparing(VendorResponse::getName))
               .collect(Collectors.toList());
     }
+
+    public Vendor findVendorById(Long id){
+       return vendorRepository.findById(id).orElse(null);
+    }
+
+
 }
