@@ -1,7 +1,8 @@
 package org.example.spring.boot.skeleton.model;
 
 import javax.validation.constraints.NotNull;
-
+import java.util.HashSet;
+import java.util.Set;
 
 
 public class VendorDTO {
@@ -15,16 +16,22 @@ public class VendorDTO {
    @NotNull
     private Long marketId;
 
-  /*   private MarketDTO marketDTO;
+   private Set<String> products = new HashSet<>();
 
-    public MarketDTO getMarketDTO() {
-        return marketDTO;
+    public Set<String> getProducts() {
+        return products;
     }
 
-    public VendorDTO setMarketDTO(MarketDTO marketDTO) {
-        this.marketDTO = marketDTO;
+    public VendorDTO setProducts(Set<String> products) {
+        this.products = products;
         return this;
-    }  */
+    }
+
+    public VendorDTO(String name, String intro, Long marketId) {
+        this.name = name;
+        this.intro = intro;
+        this.marketId = marketId;
+    }
 
     public VendorDTO() {
     }

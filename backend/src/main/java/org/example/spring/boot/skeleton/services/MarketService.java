@@ -77,7 +77,7 @@ public class MarketService {
 
     public VendorResponse addVendor(VendorDTO vendorDTO){
         Market market = marketRepository.findById(vendorDTO.getMarketId()).orElse(null);
-        Vendor vendor = Vendor.builder().intro(vendorDTO.getIntro()).name(vendorDTO.getName()).build();
+        Vendor vendor = Vendor.builder().intro(vendorDTO.getIntro()).name(vendorDTO.getName()).products(vendorDTO.getProducts()).build();
         market.getVendors().add(vendor);
         vendorRepository.save(vendor);
         marketRepository.save(market);
@@ -89,7 +89,7 @@ public class MarketService {
     public VendorResponse vendorToResponse(Vendor vendor){
         return new VendorResponse()
                 .setIntro(vendor.getIntro())
-                .setName(vendor.getName().toUpperCase(Locale.ROOT));
+                .setName(vendor.getName());
     }
 
     public List<VendorResponse> allVendors() {
@@ -104,5 +104,17 @@ public class MarketService {
        return vendorRepository.findById(id).orElse(null);
     }
 
+    public Vendor updateVendor(Long id, VendorDTO vendorDTO){
+           Market market = marketRepository.findById(vendorDTO.getMarketId()).orElseThrow(null);
+           Vendor vendor = vendorRepository.findById(id).orElseThrow(null);
+           Set<Market> set = new HashSet();
+           set.add(market);
+           vendor.setMarkets(set);
+           vendor.setProducts(vendorDTO.getProducts());
+           vendor.setIntro(vendorDTO.getIntro());
+           vendor.setName(vendorDTO.getName());
+            vendor.setId(id);
+       return vendorRepository.save(vendor);
 
+    }
 }
