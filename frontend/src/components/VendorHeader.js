@@ -17,7 +17,7 @@ const VendorHeader = (props) => {
   };
 
   return (
-    <header className="vendor-header">
+    <header className="vendor-profile-header">
       <div className="vendor-logo-container">
         <div
           className="circle"
