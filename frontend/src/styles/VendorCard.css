@@ -4,7 +4,8 @@
 .vendorCard {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto, 1fr, auto;
+  grid-template-rows: 2.5rem 2.5rem;
+
   cursor: pointer;
   user-select: none;
   border-radius: 10px;
