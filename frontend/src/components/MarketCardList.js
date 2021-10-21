@@ -31,7 +31,7 @@ const MarketCardList = () => {
   }, []);
 
   return (
-    <div className="card-list">
+    <div className='card-list'>
       {posts.map((post, index) => {
         return (
           <MarketCard
