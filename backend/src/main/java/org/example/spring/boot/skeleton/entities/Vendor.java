@@ -1,11 +1,6 @@
 package org.example.spring.boot.skeleton.entities;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.example.spring.boot.skeleton.model.MarketDTO;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 
@@ -15,6 +10,23 @@ import java.util.Set;
 @Entity
 @Builder
 public class Vendor {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String name;
+    private String intro;
+
+    @Transient
+    private Set<String> products = new HashSet<>();
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(name = "vendors_markets",
+            joinColumns = {@JoinColumn(name = "vendor_id")},
+            inverseJoinColumns = {@JoinColumn(name = "market_id")})
+    private Set<Market> markets = new HashSet<>();
+
     public Vendor(Long id, String name, String intro, Set<String> products, Set<Market> markets) {
         this.id = id;
         this.name = name;
@@ -25,25 +37,6 @@ public class Vendor {
 
     public Vendor() {
     }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    private String name;
-    private String intro;
-
-
-    @Transient
-    private Set<String> products = new HashSet<>();
-
-
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinTable(name = "vendors_markets",
-       joinColumns = {@JoinColumn(name = "vendor_id")},
-       inverseJoinColumns = {@JoinColumn(name = "market_id")})
-    private Set<Market> markets = new HashSet<>();
-
 
     public Long getId() {
         return id;
@@ -83,5 +76,16 @@ public class Vendor {
 
     public void setMarkets(Set<Market> markets) {
         this.markets = markets;
+    }
+
+    @Override
+    public String toString() {
+        return "Vendor{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", intro='" + intro + '\'' +
+                ", products=" + products +
+                ", markets=" + markets +
+                '}';
     }
 }

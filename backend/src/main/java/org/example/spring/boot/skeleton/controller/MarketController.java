@@ -25,6 +25,7 @@ public class MarketController {
     public List<MarketDTO> allMarkets(){
         return marketService.allMarkets();
     }
+
     @GetMapping("/{id}")
     public ResponseEntity<?> getMarketById(@RequestBody @PathVariable Long id){
         return ResponseEntity.ok(marketService.getMarketById(id));

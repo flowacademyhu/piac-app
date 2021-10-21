@@ -1,10 +1,7 @@
 package org.example.spring.boot.skeleton.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import javax.validation.constraints.NotNull;
-import java.util.List;
+
 
 
 public class VendorDTO {
@@ -15,10 +12,10 @@ public class VendorDTO {
     @NotNull
     private String intro;
 
-    @NotNull
+   @NotNull
     private Long marketId;
 
-    private MarketDTO marketDTO;
+  /*   private MarketDTO marketDTO;
 
     public MarketDTO getMarketDTO() {
         return marketDTO;
@@ -27,7 +24,7 @@ public class VendorDTO {
     public VendorDTO setMarketDTO(MarketDTO marketDTO) {
         this.marketDTO = marketDTO;
         return this;
-    }
+    }  */
 
     public VendorDTO() {
     }
@@ -50,7 +47,7 @@ public class VendorDTO {
         return this;
     }
 
-    public Long getMarketId() {
+   public Long getMarketId() {
         return marketId;
     }
 
@@ -59,6 +56,14 @@ public class VendorDTO {
         return this;
     }
 
+    @Override
+    public String toString() {
+        return "VendorDTO{" +
+                "name='" + name + '\'' +
+                ", intro='" + intro + '\'' +
 
-   // private List<String> products;
+                '}';
+    }
+
+// private List<String> products;
 }

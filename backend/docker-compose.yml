@@ -1,23 +1,22 @@
 version: '2'
 services:
 
-  spring-boot-skeleton:
-    image: spring-boot-skeleton
-    build: .
-    restart: always
-    environment:
-      MYSQL_URL: jdbc:mysql://mysql:3306/skeleton
-    ports:
-      - 8081:8081
-    depends_on:
-      - mysql
+#  spring-boot-skeleton:
+  #    image: spring-boot-skeleton
+  #    build: .
+  #    restart: always
+  #   environment:
+  #    MYSQL_URL: jdbc:mysql://mysql_example:3306/skeleton
+  #  ports:
+  #    - 8081:8081
+  #  depends_on:
+  #    - mysql_example
 
 
-  mysql:
+  mysql_example:
     image: mysql
     command: --default-authentication-plugin=mysql_native_password
     restart: always
-    container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: example
       MYSQL_DATABASE: skeleton

@@ -1,12 +1,6 @@
 package org.example.spring.boot.skeleton.entities;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
-
-import lombok.NoArgsConstructor;
-
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -15,6 +9,18 @@ import java.util.*;
 @Entity
 @Builder
 public class Market {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String name;
+    private LocalDateTime date;
+    private String place;
+
+    @ManyToMany(mappedBy = "markets", fetch = FetchType.LAZY)
+    private Set<Vendor> vendors = new HashSet<>();
+
 
     public Market(Long id, String name, LocalDateTime date, String place, Set<Vendor> vendors) {
         this.id = id;
@@ -26,18 +32,6 @@ public class Market {
 
     public Market() {
     }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    private String name;
-    private LocalDateTime date;
-    private String place;
-
-
-    @ManyToMany(mappedBy = "markets", fetch = FetchType.LAZY)
-    private Set<Vendor> vendors = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -77,5 +71,16 @@ public class Market {
 
     public void setVendors(Set<Vendor> vendors) {
         this.vendors = vendors;
+    }
+
+    @Override
+    public String toString() {
+        return "Market{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", date=" + date +
+                ", place='" + place + '\'' +
+                ", vendors=" + vendors +
+                '}';
     }
 }

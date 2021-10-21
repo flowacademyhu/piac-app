@@ -1,19 +1,15 @@
 package org.example.spring.boot.skeleton.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.example.spring.boot.skeleton.entities.Vendor;
 
-
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.*;
 
 
 public class MarketDTO {
-
-    public MarketDTO() {
-    }
 
     @NotNull
     private String name;
@@ -25,6 +21,21 @@ public class MarketDTO {
     private LocalDateTime date;
 
     private int numberOfVendors;
+
+
+    private Set<Vendor> vendors;
+
+    public Set<Vendor> getVendors() {
+        return vendors;
+    }
+
+    public MarketDTO setVendors(Set<Vendor> vendors) {
+        this.vendors = vendors;
+        return this;
+    }
+
+    public MarketDTO() {
+    }
 
     public String getName() {
         return name;
