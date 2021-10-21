@@ -12,25 +12,22 @@ const MarketCard = ({
   lat
 }) => {
   return (
-    <>
-      <div className="emptySpaceOnTop" />
-      <div className="marketCard">
-        <img className="marketLogo" src={imageLogo} alt="logo" />
-        <div div className="marketName">
-          {title}
-        </div>
-        <div div className="marketLocationAndDate">
-          <div>{location}</div>
-          <div className="parallelDateAndHour">
-            <div>{date}</div>
-            <div className="startAndEndHours">{lat}</div>
-          </div>
-        </div>
-        <div div className="vendorNumber">
-          {vendorsAmount}
+    <div className="marketCard">
+      <img className="marketLogo" src={imageLogo} alt="logo" />
+      <div div className="marketName">
+        {title}
+      </div>
+      <div div className="marketLocationAndDate">
+        <div>{location}</div>
+        <div className="parallelDateAndHour">
+          <div>{date}</div>
+          <div className="startAndEndHours">{lat}</div>
         </div>
       </div>
-    </>
+      <div div className="vendorNumber">
+        {vendorsAmount}
+      </div>
+    </div>
   );
 };
 

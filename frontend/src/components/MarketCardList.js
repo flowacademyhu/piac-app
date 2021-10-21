@@ -34,16 +34,15 @@ const MarketCardList = () => {
     <div className="card-list">
       {posts.map((post, index) => {
         return (
-          <div key={index}>
-            <MarketCard
-              imageLogo={imageLogo[Math.round(Math.random())]}
-              title={post.name}
-              location={post.address.city}
-              date={post.address.zipcode}
-              lat={post.address.geo.lat}
-              vendorsAmount={vendorsAmount}
-            />
-          </div>
+          <MarketCard
+            imageLogo={imageLogo[Math.round(Math.random())]}
+            title={post.name}
+            location={post.address.city}
+            date={post.address.zipcode}
+            lat={post.address.geo.lat}
+            vendorsAmount={vendorsAmount}
+            key={index}
+          />
         );
       })}
     </div>
