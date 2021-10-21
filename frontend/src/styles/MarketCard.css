@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 
-.card {
+.marketCard {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto, 1fr, auto;
@@ -18,7 +18,7 @@
   min-width: 480px;
 }
 
-.picture {
+.marketLogo {
   height: 110px;
   border-radius: 80px;
   grid-column: 1;
