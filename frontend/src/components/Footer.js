@@ -27,10 +27,10 @@ const Footer = () => {
             </Link>
           </Col>
           <Col style={{ cursor: 'pointer' }}>
-            <Link className="footer-link" to="/vendor">
+            <Link className="footer-link" to="/arusok">
               <img
                 src={
-                  location.pathname === '/vendor'
+                  location.pathname === '/arusok'
                     ? VendorLogoHighlight
                     : VendorLogo
                 }
