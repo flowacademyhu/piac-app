@@ -1,16 +1,17 @@
 version: '2'
 services:
 
-#  spring-boot-skeleton:
-  #    image: spring-boot-skeleton
-  #    build: .
-  #    restart: always
-  #   environment:
-  #    MYSQL_URL: jdbc:mysql://mysql_example:3306/skeleton
-  #  ports:
-  #    - 8081:8081
-  #  depends_on:
-  #    - mysql_example
+  spring-boot-skeleton:
+    image: spring-boot-skeleton
+    build: .
+    restart: always
+    environment:
+      MYSQL_URL: jdbc:mysql://mysql_example:3306/skeleton
+    ports:
+      - 8081:8081
+    depends_on:
+      - mysql_example
+
 
 
   mysql_example:
