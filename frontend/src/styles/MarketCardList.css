@@ -1,0 +1,8 @@
+.card-list {
+  height: calc(100% - 230px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+  padding: 30px;
+}

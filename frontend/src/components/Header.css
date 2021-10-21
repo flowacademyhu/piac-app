@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap');
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url('../headers/138056131-49ffb16e-a25f-4d75-b085-fce749c95932.jpeg');
+
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: #f7f5f2;
+  font-family: 'Amatic SC', cursive;
+  font-size: 65px;
+  height: 150px;
+}
+
+.vendor-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url('../headers/138056115-c7f98b7d-a803-4a02-bf1e-aaaa6382beb2.jpeg');
+  background-position-y: 60%;
+  background-size: cover;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: #f7f5f2;
+  font-family: 'Amatic SC', cursive;
+  font-size: 65px;
+  height: 150px;
+}
