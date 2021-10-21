@@ -16,12 +16,10 @@ const Footer = () => {
       <Container className="container-fluid">
         <Row>
           <Col style={{ cursor: 'pointer' }}>
-            <Link className="footer-link" to="/market">
+            <Link className="footer-link" to="/">
               <img
                 src={
-                  location.pathname === '/market'
-                    ? MarketLogoHighlight
-                    : MarketLogo
+                  location.pathname === '/' ? MarketLogoHighlight : MarketLogo
                 }
                 alt="Logo"
               />
