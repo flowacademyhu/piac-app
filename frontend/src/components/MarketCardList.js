@@ -17,9 +17,7 @@ const MarketCardList = () => {
   const [posts, setPosts] = useState([]);
 
   const getPosts = async () => {
-    const response = await axios.get(
-      'https://jsonplaceholder.typicode.com/users'
-    );
+    const response = await axios.get('localhost:8081/v1/api/market');
 
     console.log(response);
 
@@ -31,16 +29,16 @@ const MarketCardList = () => {
   }, []);
 
   return (
-    <div className='card-list'>
+    <div className="card-list">
       {posts.map((post, index) => {
         return (
           <MarketCard
             imageLogo={imageLogo[Math.round(Math.random())]}
             title={post.name}
-            location={post.address.city}
-            date={post.address.zipcode}
-            lat={post.address.geo.lat}
-            vendorsAmount={vendorsAmount}
+            location={post.place}
+            date={post.date}
+            lat={post.date}
+            vendorsAmount={post.numberOfVendors}
             key={index}
           />
         );
