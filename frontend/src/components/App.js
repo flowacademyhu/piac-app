@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './Header.css';
 import MainPage from '../pages/MainPage';
 import VendorPage from '../pages/VendorPage';
+import VendorProfilePage from '../pages/VendorProfilePage';
 
 const App = () => {
   const [vendorId, setVendorId] = useState(null);
@@ -19,7 +20,12 @@ const App = () => {
           </Switch>
           <Switch>
             <Route exact path="/arusok">
-              <VendorPage vendorId={vendorId} />
+              <VendorPage />
+            </Route>
+          </Switch>
+          <Switch>
+            <Route exact path="/arusprofil">
+              <VendorProfilePage vendorId={vendorId} />
             </Route>
           </Switch>
         </Router>
