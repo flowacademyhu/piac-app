@@ -13,52 +13,36 @@ import market_mid from './../icons/navigation/market_mid.svg';
 import market_primary from './../icons/navigation/market_primary.svg';
 
 const VendorInfoNav = ({ products }) => {
-  const [info, changeInfo] = useState(true);
-  const [market, changeMarket] = useState(false);
-
-  const handleInfo = () => {
-    changeInfo(true);
-    changeMarket(false);
-  };
-
-  const handleMarket = () => {
-    changeMarket(true);
-    changeInfo(false);
-  };
+  const [status, changeStatus] = useState(true);
 
   return (
     <div className="Icons">
       <Router>
         <div className="Info-Icon">
-          <NavLink activeClassName="active" to="/info">
+          <NavLink activeClassName="active" to="/profile">
             <div
-              style={info ? { borderBottom: '2px solid #cc4400' } : null}
-              className="Image"
-              onClick={handleInfo}
+              className={'Image ' + (status ? 'Active-Page' : null)}
+              onClick={() => changeStatus(true)}
             >
-              <img src={info ? info_primary : info_mid} alt="info_mid" />
+              <img src={status ? info_primary : info_mid} alt="info" />
             </div>
           </NavLink>
         </div>
         <div className="Vendor-Icon">
-          <NavLink to="/market">
+          <NavLink to="/markets">
             <div
-              style={market ? { borderBottom: '2px solid #cc4400' } : null}
-              className="Image"
-              onClick={handleMarket}
+              className={'Image ' + (status ? null : 'Active-Page')}
+              onClick={() => changeStatus(false)}
             >
-              <img
-                src={market ? market_primary : market_mid}
-                alt="market_mid"
-              />
+              <img src={status ? market_mid : market_primary} alt="market" />
             </div>
           </NavLink>
         </div>
         <Switch>
-          <Route path="/info">
+          <Route path="/profile">
             <Products products={products} />
           </Route>
-          <Route path="/market"></Route>
+          <Route path="/markets"></Route>
         </Switch>
       </Router>
     </div>
