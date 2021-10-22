@@ -66,13 +66,7 @@ const VendorInfoNav = ({
           </div>
         </Route>
         <Route path="/markets">
-          <div
-            className="profile-components"
-            style={{
-              textAlign: 'center',
-              paddingTop: '20px'
-            }}
-          >
+          <div className="profile-components empty-page-message" style={{}}>
             <div>Hamarosan...</div>
           </div>
         </Route>
