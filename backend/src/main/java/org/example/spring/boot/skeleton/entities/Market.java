@@ -15,6 +15,8 @@ public class Market {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String profilePic;
+
     private String name;
     private LocalDateTime date;
     private String place;
@@ -23,8 +25,9 @@ public class Market {
     private Set<Vendor> vendors = new HashSet<>();
 
 
-    public Market(Long id, String name, LocalDateTime date, String place, Set<Vendor> vendors) {
+    public Market(Long id, String profilePic, String name, LocalDateTime date, String place, Set<Vendor> vendors) {
         this.id = id;
+        this.profilePic = profilePic;
         this.name = name;
         this.date = date;
         this.place = place;
@@ -40,6 +43,14 @@ public class Market {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getProfilePic() {
+        return profilePic;
+    }
+
+    public void setProfilePic(String profilePic) {
+        this.profilePic = profilePic;
     }
 
     public String getName() {

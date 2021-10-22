@@ -8,12 +8,12 @@ const MarketCard = ({
   location,
   date,
   vendorsAmount,
-  imageLogo,
+  profilePic,
   lat
 }) => {
   return (
     <div className="marketCard">
-      <img className="marketLogo" src={imageLogo} alt="logo" />
+      <img className="marketLogo" src={profilePic} alt="logo" />
       <div div className="marketName">
         {title}
       </div>

@@ -47,6 +47,7 @@ public class MarketService {
 
     public Market updateMarketById(Long id, MarketDTO marketDTO) {
         Market market = getMarketById(id).builder()
+                .profilePic(marketDTO.getProfilePic())
                 .date(marketDTO.getDate())
                 .place(marketDTO.getPlace())
                 .id(id)
@@ -57,6 +58,7 @@ public class MarketService {
 
     public Market marketDTOToEntity(MarketDTO marketDTO){
         return Market.builder()
+                .profilePic(marketDTO.getProfilePic())
                 .date(marketDTO.getDate())
                 .name(marketDTO.getName())
                 .place(marketDTO.getPlace())
@@ -65,6 +67,7 @@ public class MarketService {
 
     public MarketDTO marketToDTO(Market market){
         MarketDTO marketDTO = new MarketDTO()
+                .setProfilePic(market.getProfilePic())
                 .setVendors(market.getVendors())
                 .setDate(market.getDate())
                 .setName(market.getName())

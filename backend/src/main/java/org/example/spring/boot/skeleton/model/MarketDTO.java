@@ -1,15 +1,16 @@
 package org.example.spring.boot.skeleton.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.example.spring.boot.skeleton.entities.Vendor;
 
-import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.*;
 
 
 public class MarketDTO {
+
+    @NotNull
+    private String profilePic;
 
     @NotNull
     private String name;
@@ -35,6 +36,15 @@ public class MarketDTO {
     }
 
     public MarketDTO() {
+    }
+
+    public String getProfilePic() {
+        return profilePic;
+    }
+
+    public MarketDTO setProfilePic(String profilePic) {
+        this.profilePic = profilePic;
+        return this;
     }
 
     public String getName() {
