@@ -36,7 +36,7 @@ const VendorProfilePage = ({ vendorId }) => {
   }, [vendorId]);
 
   return (
-    <div>
+    <div style={{ overflow: 'auto' }}>
       <VendorHeader
         logo={vendor.logo}
         name={vendor.name}
