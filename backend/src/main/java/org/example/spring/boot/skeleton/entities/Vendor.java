@@ -20,7 +20,7 @@ public class Vendor {
     private String name;
     private String intro;
 
-    @Transient
+    @ElementCollection(targetClass = String.class)
     private Set<String> products = new HashSet<>();
 
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
