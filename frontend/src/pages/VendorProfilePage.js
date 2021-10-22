@@ -9,7 +9,7 @@ const VendorProfilePage = ({ vendorId }) => {
 
   // ***** Test data *****
   vendor.logo =
-    'https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg';
+    'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1280px-React-icon.svg.png';
   vendor.name = 'Vendor Name';
   vendor.description =
     'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab ad blanditiis facere porro dolores.';
