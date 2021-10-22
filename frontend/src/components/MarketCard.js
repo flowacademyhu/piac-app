@@ -4,9 +4,10 @@ const body = document.body;
 body.style.background = '#F7F5F2';
 
 const MarketCard = ({
-  title,
-  location,
-  date,
+  marketName,
+  marketLocation,
+  marketDateYearMonthDay,
+  marketDateHours,
   vendorsAmount,
   profilePic,
   lat
@@ -15,13 +16,13 @@ const MarketCard = ({
     <div className="marketCard">
       <img className="marketLogo" src={profilePic} alt="logo" />
       <div div className="marketName">
-        {title}
+        {marketName}
       </div>
       <div div className="marketLocationAndDate">
-        <div>{location}</div>
+        <div>{marketLocation}</div>
         <div className="parallelDateAndHour">
-          <div>{date}</div>
-          <div className="startAndEndHours">{lat}</div>
+          <div>{marketDateYearMonthDay}</div>
+          <div className="startAndEndHours">{marketDateHours}</div>
         </div>
       </div>
       <div div className="vendorNumber">
