@@ -66,7 +66,7 @@ const VendorInfoNav = ({
           </div>
         </Route>
         <Route path="/markets">
-          <div className="profile-components empty-page-message" style={{}}>
+          <div className="profile-components empty-page-message">
             <div>Hamarosan...</div>
           </div>
         </Route>
