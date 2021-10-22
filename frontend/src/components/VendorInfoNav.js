@@ -28,21 +28,21 @@ const VendorInfoNav = ({
 
   return (
     <Router>
-      <div className="Icons">
-        <div className="Info-Icon">
+      <div className="icons">
+        <div className="info-icon">
           <NavLink activeClassName="active" to="/arusprofil">
             <div
-              className={'Image ' + (status ? 'Active-Page' : null)}
+              className={'image ' + (status ? 'active-page' : null)}
               onClick={() => changeStatus(true)}
             >
               <img src={status ? info_primary : info_mid} alt="info" />
             </div>
           </NavLink>
         </div>
-        <div className="Vendor-Icon">
+        <div className="vendor-icon">
           <NavLink to="/markets">
             <div
-              className={'Image ' + (status ? null : 'Active-Page')}
+              className={'image ' + (status ? null : 'active-page')}
               onClick={() => changeStatus(false)}
             >
               <img src={status ? market_mid : market_primary} alt="market" />
