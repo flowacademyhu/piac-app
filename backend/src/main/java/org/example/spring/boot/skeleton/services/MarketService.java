@@ -60,6 +60,7 @@ public class MarketService {
         return Market.builder()
                 .profilePic(marketDTO.getProfilePic())
                 .date(marketDTO.getDate())
+                .startAndEndHour(marketDTO.getStartAndEndHour())
                 .name(marketDTO.getName())
                 .place(marketDTO.getPlace())
                 .build();
@@ -70,6 +71,7 @@ public class MarketService {
                 .setProfilePic(market.getProfilePic())
                 .setVendors(market.getVendors())
                 .setDate(market.getDate())
+                .setStartAndEndHour(market.getStartAndEndHour())
                 .setName(market.getName())
                 .setPlace(market.getPlace())
                 .setNumberOfVendors(market.getVendors().size());

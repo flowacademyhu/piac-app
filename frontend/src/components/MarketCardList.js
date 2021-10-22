@@ -17,7 +17,7 @@ const MarketCardList = () => {
   }, []);
 
   return (
-    <div className="card-list">
+    <div className='card-list'>
       {posts.map((post, index) => {
         return (
           <MarketCard
@@ -25,7 +25,7 @@ const MarketCardList = () => {
             marketName={post.name}
             marketLocation={post.place}
             marketDateYearMonthDay={post.date}
-            marketDateHours={post.date}
+            marketDateHours={post.startAndEndHour}
             vendorsAmount={post.numberOfVendors}
             key={index}
           />
