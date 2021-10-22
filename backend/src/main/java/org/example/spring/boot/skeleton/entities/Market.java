@@ -2,11 +2,7 @@ package org.example.spring.boot.skeleton.entities;
 
 import lombok.Builder;
 import javax.persistence.*;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.*;
-
-
 
 @Entity
 @Builder
@@ -95,6 +91,4 @@ public class Market {
     public void setVendors(Set<Vendor> vendors) {
         this.vendors = vendors;
     }
-
-
 }

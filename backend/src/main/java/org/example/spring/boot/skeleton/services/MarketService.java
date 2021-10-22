@@ -21,8 +21,9 @@ public class MarketService {
     private final MarketRepository marketRepository;
     private final VendorRepository vendorRepository;
 
-    public Market addMarket(MarketDTO marketDTO){
-        return marketRepository.save(marketDTOToEntity(marketDTO));
+    public MarketDTO addMarket(MarketDTO marketDTO){
+        marketRepository.save(marketDTOToEntity(marketDTO));
+        return marketDTO;
     }
 
     public List<MarketDTO> allMarkets(){
@@ -33,8 +34,8 @@ public class MarketService {
                 .collect(Collectors.toList());
     }
 
-    public Market getMarketById(Long id) {
-        return marketRepository.findById(id).orElseThrow();
+    public MarketDTO getMarketById(Long id) {
+        return marketToDTO(marketRepository.findById(id).orElseThrow());
     }
 
     public void deleteAllMarkets() {
@@ -45,15 +46,17 @@ public class MarketService {
         marketRepository.deleteById(id);
     }
 
-    public Market updateMarketById(Long id, MarketDTO marketDTO) {
-        Market market = getMarketById(id).builder()
+    public MarketDTO updateMarketById(Long id, MarketDTO marketDTO) {
+        Market market = marketRepository.findById(id).orElse(null).builder()
                 .profilePic(marketDTO.getProfilePic())
                 .date(marketDTO.getDate())
                 .place(marketDTO.getPlace())
                 .id(id)
                 .name(marketDTO.getName())
                 .build();
-        return marketRepository.save(market);
+      marketRepository.save(market);
+      return marketToDTO(market);
+
     }
 
     public Market marketDTOToEntity(MarketDTO marketDTO){
@@ -69,7 +72,7 @@ public class MarketService {
     public MarketDTO marketToDTO(Market market){
         MarketDTO marketDTO = new MarketDTO()
                 .setProfilePic(market.getProfilePic())
-                .setVendors(market.getVendors())
+                .setVendors(market.getVendors().stream().map( v -> vendorToResponse(v)).collect(Collectors.toSet()))
                 .setDate(market.getDate())
                 .setStartAndEndHour(market.getStartAndEndHour())
                 .setName(market.getName())
@@ -111,11 +114,11 @@ public class MarketService {
               .collect(Collectors.toList());
     }
 
-    public Vendor findVendorById(Long id){
-       return vendorRepository.findById(id).orElse(null);
+    public VendorResponse findVendorById(Long id){
+       return vendorToResponse(vendorRepository.findById(id).orElse(null));
     }
 
-    public Vendor updateVendor(Long id, VendorDTO vendorDTO){
+    public VendorResponse updateVendor(Long id, VendorDTO vendorDTO){
            Market market = marketRepository.findById(vendorDTO.getMarketId()).orElseThrow(null);
            Vendor vendor = vendorRepository.findById(id).orElseThrow(null);
            Set<Market> set = new HashSet();
@@ -125,7 +128,8 @@ public class MarketService {
            vendor.setIntro(vendorDTO.getIntro());
            vendor.setName(vendorDTO.getName());
            vendor.setId(id);
-       return vendorRepository.save(vendor);
+        vendorRepository.save(vendor);
+        return vendorToResponse(vendor);
 
     }
 }

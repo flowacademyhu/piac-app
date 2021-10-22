@@ -62,6 +62,4 @@ public class VendorDTO {
         this.marketId = marketId;
         return this;
     }
-
-// private List<String> products;
 }
