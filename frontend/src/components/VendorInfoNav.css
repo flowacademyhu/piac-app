@@ -28,3 +28,8 @@
 .Active-Page {
   border-bottom: 2px solid #cc4400;
 }
+
+.profile-components {
+  height: calc(100% - 295px);
+  overflow-y: auto;
+}

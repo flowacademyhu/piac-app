@@ -67,6 +67,7 @@ const VendorInfoNav = ({
         </Route>
         <Route path="/markets">
           <div
+            className="profile-components"
             style={{
               textAlign: 'center',
               paddingTop: '20px'
