@@ -10,7 +10,7 @@ const VendorCardList = () => {
   const [posts, setPosts] = useState([]);
 
   const getPosts = async () => {
-    const response = await axios.get('localhost:8081/v1/api/vendor');
+    const response = await axios.get('http://localhost:8081/v1/api/vendor');
 
     console.log(response);
 
@@ -26,7 +26,7 @@ const VendorCardList = () => {
     'Ha szereted a csípős és extra erős csilipaprikákat, akkor jó helyen jársz! Szószok, krémek, füstölt csilipaprikák!';
 
   return (
-    <div className='card-list'>
+    <div className="card-list">
       {posts.map((post, index) => {
         return (
           <VendorCard
