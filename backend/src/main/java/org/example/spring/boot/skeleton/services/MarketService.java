@@ -29,7 +29,7 @@ public class MarketService {
        return  marketRepository.findAll()
                 .stream()
                 .map(this::marketToDTO)
-                .sorted(Comparator.comparing(MarketDTO::getDate))
+                .sorted(Comparator.comparing(MarketDTO::getDate).reversed())
                 .collect(Collectors.toList());
     }
 
