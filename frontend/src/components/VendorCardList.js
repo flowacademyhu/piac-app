@@ -26,12 +26,12 @@ const VendorCardList = () => {
     'Ha szereted a csípős és extra erős csilipaprikákat, akkor jó helyen jársz! Szószok, krémek, füstölt csilipaprikák!';
 
   return (
-    <div className="card-list">
+    <div className='card-list'>
       {posts.map((post, index) => {
         return (
           <VendorCard
             imageLogo={imageLogo}
-            vendor={post.name}
+            vendorDesc={post.name}
             body={post.intro}
             key={index}
           />
