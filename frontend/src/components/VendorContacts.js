@@ -5,11 +5,9 @@ import phoneLogo from './icons/social/phone.svg';
 import webLogo from './icons/social/web.svg';
 import '../styles/VendorContacts.css';
 
-const VendorContacts = (props) => {
-  const { facebook, instagram, website, email, phone } = props;
-
+const VendorContacts = ({ facebook, instagram, website, email, phone }) => {
   const contacts = [
-    ({
+    {
       title: facebook,
       logo: facebookLogo
     },
@@ -28,7 +26,7 @@ const VendorContacts = (props) => {
     {
       title: phone,
       logo: phoneLogo
-    })
+    }
   ];
 
   return (
