@@ -2,6 +2,7 @@ package org.example.spring.boot.skeleton.entities;
 
 import lombok.Builder;
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -18,14 +19,14 @@ public class Market {
     private String profilePic;
 
     private String name;
-    private LocalDateTime date;
+    private LocalDate date;
     private String place;
 
     @ManyToMany(mappedBy = "markets", fetch = FetchType.LAZY)
     private Set<Vendor> vendors = new HashSet<>();
 
 
-    public Market(Long id, String profilePic, String name, LocalDateTime date, String place, Set<Vendor> vendors) {
+    public Market(Long id, String profilePic, String name, LocalDate date, String place, Set<Vendor> vendors) {
         this.id = id;
         this.profilePic = profilePic;
         this.name = name;
@@ -61,11 +62,11 @@ public class Market {
         this.name = name;
     }
 
-    public LocalDateTime getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -85,14 +86,5 @@ public class Market {
         this.vendors = vendors;
     }
 
-    @Override
-    public String toString() {
-        return "Market{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", date=" + date +
-                ", place='" + place + '\'' +
-                ", vendors=" + vendors +
-                '}';
-    }
+
 }

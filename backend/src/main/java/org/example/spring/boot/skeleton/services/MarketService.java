@@ -80,7 +80,14 @@ public class MarketService {
 
     public VendorResponse addVendor(VendorDTO vendorDTO){
         Market market = marketRepository.findById(vendorDTO.getMarketId()).orElse(null);
-        Vendor vendor = Vendor.builder().intro(vendorDTO.getIntro()).name(vendorDTO.getName()).markets(new HashSet<>()).products(vendorDTO.getProducts()).build();
+       Set<String> allProducts = new HashSet<>();
+        vendorDTO.getProducts().stream().map( p -> allProducts.add(p));
+        Vendor vendor = Vendor.builder()
+                .intro(vendorDTO.getIntro())
+                .name(vendorDTO.getName())
+                .markets(new HashSet<>())
+                .products(allProducts)
+                .build();
         vendor.getMarkets().add(market);
         vendorRepository.save(vendor);
         VendorResponse vendorResponse = vendorToResponse(vendor);

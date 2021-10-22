@@ -3,6 +3,7 @@ package org.example.spring.boot.skeleton.model;
 import org.example.spring.boot.skeleton.entities.Vendor;
 
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -19,7 +20,7 @@ public class MarketDTO {
     private String place;
 
     @NotNull
-    private LocalDateTime date;
+    private LocalDate date;
 
     private int numberOfVendors;
 
@@ -65,11 +66,11 @@ public class MarketDTO {
         return this;
     }
 
-    public LocalDateTime getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public MarketDTO setDate(LocalDateTime date) {
+    public MarketDTO setDate(LocalDate date) {
         this.date = date;
         return this;
     }

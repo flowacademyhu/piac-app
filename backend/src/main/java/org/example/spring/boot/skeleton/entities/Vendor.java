@@ -82,14 +82,4 @@ public class Vendor {
         this.markets = markets;
     }
 
-    @Override
-    public String toString() {
-        return "Vendor{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", intro='" + intro + '\'' +
-                ", products=" + products +
-                ", markets=" + markets +
-                '}';
-    }
 }
