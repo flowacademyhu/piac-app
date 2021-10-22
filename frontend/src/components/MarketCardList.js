@@ -9,8 +9,6 @@ const MarketCardList = () => {
   const getPosts = async () => {
     const response = await axios.get('http://localhost:8081/v1/api/market');
 
-    console.log(response);
-
     setPosts(response.data);
   };
 
