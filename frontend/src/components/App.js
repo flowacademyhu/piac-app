@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './Header.css';
 import MainPage from '../pages/MainPage';
 import VendorPage from '../pages/VendorPage';
+import VendorProfilePage from '../pages/VendorProfilePage';
 
 const App = () => {
   return (
@@ -17,6 +18,11 @@ const App = () => {
           <Switch>
             <Route exact path="/arusok">
               <VendorPage />
+            </Route>
+          </Switch>
+          <Switch>
+            <Route exact path="/arusprofil">
+              <VendorProfilePage />
             </Route>
           </Switch>
         </Router>
