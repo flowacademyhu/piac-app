@@ -63,14 +63,5 @@ public class VendorDTO {
         return this;
     }
 
-    @Override
-    public String toString() {
-        return "VendorDTO{" +
-                "name='" + name + '\'' +
-                ", intro='" + intro + '\'' +
-
-                '}';
-    }
-
 // private List<String> products;
 }
