@@ -18,9 +18,16 @@
   text-decoration: none;
 }
 
+#market-logo {
+  height: 30px;
+}
+
+#vendor-logo {
+  height: 30px;
+}
+
 .footer {
   text-decoration: none;
-  padding: 10px;
   background-color: #f7f5f2;
   position: relative;
   justify-content: center;
