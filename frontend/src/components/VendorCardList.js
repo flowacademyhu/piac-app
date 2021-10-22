@@ -10,7 +10,7 @@ const VendorCardList = () => {
   const [posts, setPosts] = useState([]);
 
   const getPosts = async () => {
-    const response = await axios.get('localhost:8081/v1/api/vendor');
+    const response = await axios.get('http://localhost:8081/v1/api/vendor');
 
     console.log(response);
 
@@ -31,7 +31,7 @@ const VendorCardList = () => {
         return (
           <VendorCard
             imageLogo={imageLogo}
-            vendor={post.name}
+            vendorDesc={post.name}
             body={post.intro}
             key={index}
           />
