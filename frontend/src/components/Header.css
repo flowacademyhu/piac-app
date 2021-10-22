@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: center;
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url('../headers/138056131-49ffb16e-a25f-4d75-b085-fce749c95932.jpeg');
+    url('../headers/market.jpeg');
 
   background-position: center;
   background-size: cover;
@@ -24,7 +24,7 @@
   align-items: center;
   justify-content: center;
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url('../headers/138056115-c7f98b7d-a803-4a02-bf1e-aaaa6382beb2.jpeg');
+    url('../headers/vendor.jpeg');
   background-position-y: 60%;
   background-size: cover;
   position: relative;
