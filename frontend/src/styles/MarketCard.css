@@ -55,10 +55,6 @@
   overflow-wrap: break-word;
 }
 
-.emptySpaceOnTop {
-  margin-top: 30px;
-}
-
 .parallelDateAndHour {
   display: flex;
   align-items: baseline;
