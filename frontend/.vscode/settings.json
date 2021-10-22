@@ -1,0 +1,19 @@
+{
+  // Format a file on save. A formatter must be available, the file must not be auto-saved, and editor must not be shutting down.
+  "editor.formatOnSave": true,
+  // Setting up Prettier
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  // Setting up sonarlint
+  "sonarlint.trace.server": "verbose",
+  "sonarlint.disableTelemetry": true,
+  "sonarlint.ls.javaHome": "/Library/Java/JavaVirtualMachines/jdk-11.0.10.jdk/Contents/Home"
+}
