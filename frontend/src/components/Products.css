@@ -2,17 +2,17 @@ body {
   margin: 0;
 }
 
-.Product {
+.product {
   background-color: #53b896;
   grid-column-start: 1;
   grid-column-end: 3;
 }
 
-.Product-Content {
+.product-content {
   padding: 15px;
 }
 
-.Product-Title {
+.product-title {
   font-family: 'Amatic SC';
   font-size: 32px;
   color: #fffdfc;
@@ -20,12 +20,12 @@ body {
   text-align: left;
 }
 
-.Product-List {
+.product-list {
   display: flex;
   flex-wrap: wrap;
 }
 
-.Product-Item {
+.product-item {
   text-align: center;
   font-family: 'Bebas Neue';
   font-size: 24px;

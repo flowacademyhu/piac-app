@@ -5,9 +5,9 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 const Products = ({ products }) => {
   return (
-    <div className="Product">
-      <Container className="Product-Content">
-        <div className="Product-Title">Termékek</div>
+    <div className="product">
+      <Container className="product-content">
+        <div className="product-title">Termékek</div>
         <Row>
           <Col>
             <ProductList products={products} />
