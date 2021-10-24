@@ -1,0 +1,35 @@
+.icons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  text-align: center;
+  position: sticky;
+  top: 170px;
+  background-color: #fffdfc;
+  height: 45px;
+}
+
+.info-icon {
+  grid-column: 1;
+}
+
+.vendor-icon {
+  grid-column: 2;
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 45px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+.active-page {
+  border-bottom: 2px solid #cc4400;
+}
+
+.profile-components {
+  height: calc(100% - 295px);
+  overflow-y: auto;
+}

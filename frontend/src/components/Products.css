@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+}
+
+.product {
+  background-color: #53b896;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.product-content {
+  padding: 15px;
+}
+
+.product-title {
+  font-family: 'Amatic SC';
+  font-size: 32px;
+  color: #fffdfc;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product-item {
+  text-align: center;
+  font-family: 'Bebas Neue';
+  font-size: 24px;
+  color: #53b896;
+  background-color: #fffdfc;
+  border-radius: 3px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 8px;
+  margin-bottom: 10px;
+}
