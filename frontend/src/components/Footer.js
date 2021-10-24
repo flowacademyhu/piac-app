@@ -23,7 +23,15 @@ const Footer = () => {
                 }
                 alt="Icon"
               />
-              <div id="market-label">PIACOK</div>
+              <div
+                id={
+                  location.pathname === '/'
+                    ? 'active-footer-label'
+                    : 'passive-footer-label'
+                }
+              >
+                PIACOK
+              </div>
             </Link>
           </Col>
           <Col style={{ cursor: 'pointer' }}>
@@ -36,7 +44,15 @@ const Footer = () => {
                 }
                 alt="Icon"
               />
-              <div id="vendor-label">ÁRUSOK</div>
+              <div
+                id={
+                  location.pathname === '/arusok'
+                    ? 'active-footer-label'
+                    : 'passive-footer-label'
+                }
+              >
+                ÁRUSOK
+              </div>
             </Link>
           </Col>
         </Row>

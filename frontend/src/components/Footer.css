@@ -1,17 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Bebas+Neue&display=swap');
 
-#market-label {
+#active-footer-label {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 20px;
+  color: #cc4400;
+  text-decoration: none;
+  outline-style: none;
+}
+
+#passive-footer-label {
   font-family: 'Bebas Neue', cursive;
   font-size: 20px;
   color: #705a4f;
   text-decoration: none;
   outline-style: none;
-}
-
-#vendor-label {
-  font-family: 'Bebas Neue', cursive;
-  font-size: 20px;
-  color: #705a4f;
 }
 
 .footer-link {
