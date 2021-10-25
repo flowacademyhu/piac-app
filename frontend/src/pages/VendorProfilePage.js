@@ -7,24 +7,6 @@ import VendorInfoNav from '../components/VendorInfoNav';
 const VendorProfilePage = ({ vendorId }) => {
   const [vendor, setVendor] = useState({});
 
-  // ***** Test data *****
-  vendor.logo =
-    'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1280px-React-icon.svg.png';
-  vendor.name = 'Vendor Name';
-  vendor.description =
-    'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab ad blanditiis facere porro dolores.';
-  vendor.cash = true;
-  vendor.cardPayment = true;
-  vendor.products = ['product1', 'product2'];
-  vendor.facebook = 'facebook.link';
-  vendor.instagram = 'instagram.link';
-  vendor.website = 'website.link';
-  vendor.email = 'mail.@example,com';
-  vendor.phone = '+36 1 555 5555';
-  vendor.intro =
-    'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio cum, voluptatem magnam, animi dolor sunt, iure veritatis quaerat repellat porro deleniti adipisci sequi. Explicabo iure impedit blanditiis delectus? Explicabo, accusantium eligendi. Earum minus corrupti maiores maxime, ipsum fugit perferendis neque optio odio voluptate blanditiis qui natus beatae debitis culpa accusantium quo quisquam saepe repudiandae voluptatum ducimus animi! Error distinctio placeat reiciendis ipsa eligendi ullam debitis quaerat voluptatem quibusdam. Iure pariatur assumenda nisi rem laborum quibusdam veritatis voluptate facere tenetur tempore possimus autem rerum exercitationem quae itaque et officiis non, ea reiciendis cumque fugiat sed nesciunt necessitatibus. Esse architecto iure atque consectetur minus ducimus, et dignissimos illum ipsa eum enim facilis dolor officia, corporis sit illo quis maxime debitis! Labore officia quibusdam eos dolorum aliquam est quisquam, similique facilis cum hic iusto';
-  // ***** Test data end *****
-
   useEffect(() => {
     const fetchVendor = async () => {
       const response = await axios.get(
