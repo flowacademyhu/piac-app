@@ -6,6 +6,8 @@ import java.util.*;
 
 public class MarketDTO {
 
+    private Long id;
+
     @NotNull
     private String profilePic;
 
@@ -92,5 +94,12 @@ public class MarketDTO {
         return this;
     }
 
+    public Long getId() {
+        return id;
+    }
 
+    public MarketDTO setId(Long id) {
+        this.id = id;
+        return this;
+    }
 }

@@ -1,5 +1,6 @@
 package org.example.spring.boot.skeleton.model;
 
+import javax.validation.constraints.Email;
 import java.util.HashSet;
 import java.util.Set;
 

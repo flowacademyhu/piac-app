@@ -72,11 +72,13 @@ public class MarketService {
     public MarketDTO marketToDTO(Market market){
         MarketDTO marketDTO = new MarketDTO()
                 .setProfilePic(market.getProfilePic())
+                .setId(market.getId())
                 .setVendors(market.getVendors().stream().map( v -> vendorToResponse(v)).collect(Collectors.toSet()))
                 .setDate(market.getDate())
                 .setStartAndEndHour(market.getStartAndEndHour())
                 .setName(market.getName())
                 .setPlace(market.getPlace())
+
                 .setNumberOfVendors(market.getVendors().size());
         return marketDTO;
     }
