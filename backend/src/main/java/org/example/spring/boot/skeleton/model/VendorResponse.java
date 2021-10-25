@@ -9,6 +9,12 @@ public class VendorResponse {
     private String intro;
     private Set<String> products = new HashSet<>();
 
+    private String email;
+    private String facebook;
+    private String instagram;
+    private String phone;
+    private String webSite;
+
     public VendorResponse(String name, String intro) {
         this.name = name;
         this.intro = intro;
@@ -41,6 +47,51 @@ public class VendorResponse {
 
     public VendorResponse setProducts(Set<String> products) {
         this.products = products;
+        return this;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public VendorResponse setEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public String getFacebook() {
+        return facebook;
+    }
+
+    public VendorResponse setFacebook(String facebook) {
+        this.facebook = facebook;
+        return this;
+    }
+
+    public String getInstagram() {
+        return instagram;
+    }
+
+    public VendorResponse setInstagram(String instagram) {
+        this.instagram = instagram;
+        return this;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public VendorResponse setPhone(String phone) {
+        this.phone = phone;
+        return this;
+    }
+
+    public String getWebSite() {
+        return webSite;
+    }
+
+    public VendorResponse setWebSite(String webSite) {
+        this.webSite = webSite;
         return this;
     }
 }

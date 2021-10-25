@@ -1,6 +1,7 @@
 package org.example.spring.boot.skeleton.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 
 import javax.persistence.*;
@@ -11,6 +12,7 @@ import java.util.Set;
 
 @Entity
 @Builder
+@AllArgsConstructor
 public class Vendor {
 
     @Id
@@ -19,6 +21,12 @@ public class Vendor {
 
     private String name;
     private String intro;
+
+    private String email;
+    private String facebook;
+    private String instagram;
+    private String phone;
+    private String webSite;
 
     @ElementCollection(targetClass = String.class)
     private Set<String> products = new HashSet<>();
@@ -29,13 +37,6 @@ public class Vendor {
             inverseJoinColumns = {@JoinColumn(name = "market_id", referencedColumnName = "id")})
     private Set<Market> markets = new HashSet<>();
 
-    public Vendor(Long id, String name, String intro, Set<String> products, Set<Market> markets) {
-        this.id = id;
-        this.name = name;
-        this.intro = intro;
-        this.products = products;
-        this.markets = markets;
-    }
 
     public Vendor() {
     }
@@ -82,4 +83,48 @@ public class Vendor {
         this.markets = markets;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public Vendor setEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public String getFacebook() {
+        return facebook;
+    }
+
+    public Vendor setFacebook(String facebook) {
+        this.facebook = facebook;
+        return this;
+    }
+
+    public String getInstagram() {
+        return instagram;
+    }
+
+    public Vendor setInstagram(String instagram) {
+        this.instagram = instagram;
+        return this;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public Vendor setPhone(String phone) {
+        this.phone = phone;
+        return this;
+    }
+
+    public String getWebSite() {
+        return webSite;
+    }
+
+    public Vendor setWebSite(String webSite) {
+        this.webSite = webSite;
+        return this;
+    }
 }

@@ -19,15 +19,15 @@ public class ErrorController {
     @ExceptionHandler({NoSuchElementException.class})
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public Map<String, ErrorModel> handleNoSuchelement(){
-        return Map.of(MessagesConstants.ERROR_MESSAGE_START, new ErrorModel("Sajnos nem találom a keresett piacot, kérlek, adj meg új paramétereket...",
-                "Tekintsd meg a teljes litát, hátha hamarabb megtalálod, amit keresel.. :)"));
+        return Map.of(MessagesConstants.ERROR_MESSAGE_START, new ErrorModel(MessagesConstants.NOT_FOUND_MARKET_MESSAGE,
+                MessagesConstants.VIEW_WHOLE_LIST_MESSAGE));
     }
 
     @ExceptionHandler({EmptyResultDataAccessException.class})
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public Map<String, ErrorModel> handleEmptyResult(){
-        return Map.of(MessagesConstants.ERROR_MESSAGE_START, new ErrorModel("A megjejlölt piac nem törölhető, mert találom, kérlek adj meg másik azonosítót...",
-                "Tekintsd meg a teljes litát, hátha hamarabb megtalálod, amit keresel.. :)"));
+        return Map.of(MessagesConstants.ERROR_MESSAGE_START, new ErrorModel(MessagesConstants.NOT_ABLE_TO_DELETE,
+                MessagesConstants.VIEW_WHOLE_LIST_MESSAGE));
     }
 
 

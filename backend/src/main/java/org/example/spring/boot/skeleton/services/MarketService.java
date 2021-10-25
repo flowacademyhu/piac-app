@@ -10,7 +10,6 @@ import org.example.spring.boot.skeleton.repositories.MarketRepository;
 import org.example.spring.boot.skeleton.repositories.VendorRepository;
 import org.springframework.stereotype.Service;
 
-
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -31,6 +30,7 @@ public class MarketService {
                 .stream()
                 .map(this::marketToDTO)
                 .sorted(Comparator.comparing(MarketDTO::getDate).reversed())
+                .peek( m -> m.setVendors(null))
                 .collect(Collectors.toList());
     }
 
@@ -91,6 +91,11 @@ public class MarketService {
                 .name(vendorDTO.getName())
                 .markets(new HashSet<>())
                 .products(allProducts)
+                .email(vendorDTO.getEmail())
+                .facebook(vendorDTO.getFacebook())
+                .instagram(vendorDTO.getInstagram())
+                .webSite(vendorDTO.getWebSite())
+                .phone(vendorDTO.getPhone())
                 .build();
         vendor.getMarkets().add(market);
         vendorRepository.save(vendor);
@@ -103,7 +108,12 @@ public class MarketService {
         return new VendorResponse()
                 .setIntro(vendor.getIntro())
                 .setName(vendor.getName())
-                .setProducts(vendor.getProducts());
+                .setProducts(vendor.getProducts())
+                .setEmail(vendor.getEmail())
+                .setFacebook(vendor.getFacebook())
+                .setInstagram(vendor.getInstagram())
+                .setPhone(vendor.getPhone())
+                .setWebSite(vendor.getWebSite());
     }
 
     public List<VendorResponse> allVendors() {
@@ -128,6 +138,12 @@ public class MarketService {
            vendor.setIntro(vendorDTO.getIntro());
            vendor.setName(vendorDTO.getName());
            vendor.setId(id);
+           vendor.setFacebook(vendorDTO.getFacebook());
+           vendor.setEmail(vendorDTO.getEmail());
+           vendor.setPhone(vendor.getPhone());
+           vendor.setInstagram(vendorDTO.getInstagram());
+           vendor.setWebSite(vendorDTO.getWebSite());
+
         vendorRepository.save(vendor);
         return vendorToResponse(vendor);
 
