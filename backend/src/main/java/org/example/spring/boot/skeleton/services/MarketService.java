@@ -69,7 +69,6 @@ public class MarketService {
         return Market.builder()
                 .profilePic(marketDTO.getProfilePic())
                 .date(marketDTO.getDate())
-                .startAndEndHour(marketDTO.getStartAndEndHour())
                 .name(marketDTO.getName())
                 .place(marketDTO.getPlace())
                 .build();
@@ -81,7 +80,6 @@ public class MarketService {
                 .setId(market.getId())
                 .setVendors(market.getVendors().stream().map( v -> vendorToResponse(v)).collect(Collectors.toSet()))
                 .setDate(market.getDate())
-                .setStartAndEndHour(market.getStartAndEndHour())
                 .setName(market.getName())
                 .setPlace(market.getPlace())
 

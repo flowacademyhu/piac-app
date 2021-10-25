@@ -15,20 +15,18 @@ public class Market {
     private String profilePic;
 
     private String name;
-    private String date;
-    private String startAndEndHour;
+    private Long date;
     private String place;
 
     @ManyToMany(mappedBy = "markets", fetch = FetchType.LAZY)
     private Set<Vendor> vendors = new HashSet<>();
 
 
-    public Market(Long id, String profilePic, String name, String date, String startAndEndHour, String place, Set<Vendor> vendors) {
+    public Market(Long id, String profilePic, String name, Long date, String place, Set<Vendor> vendors) {
         this.id = id;
         this.profilePic = profilePic;
         this.name = name;
         this.date = date;
-        this.startAndEndHour = startAndEndHour;
         this.place = place;
         this.vendors = vendors;
     }
@@ -60,19 +58,11 @@ public class Market {
         this.name = name;
     }
 
-    public String getStartAndEndHour() {
-        return startAndEndHour;
-    }
-
-    public void setStartAndEndHour(String startAndEndHour) {
-        this.startAndEndHour = startAndEndHour;
-    }
-
-    public String getDate() {
+    public Long getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Long date) {
         this.date = date;
     }
 
