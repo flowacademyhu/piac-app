@@ -24,9 +24,7 @@ const MarketCard = ({
           </div>
         </div>
       </div>
-      <div className="vendorNumber">
-        <div>{vendorsAmount} árus</div>
-      </div>
+      <div className="vendorNumber">{vendorsAmount} árus</div>
     </div>
   );
 };
