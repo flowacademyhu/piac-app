@@ -4,7 +4,7 @@ import cashIcon from '../img/cash.svg';
 import cardIcon from '../img/card.svg';
 
 const VendorHeader = (props) => {
-  const { logo, name, description, cash, cardPayment } = props;
+  const { logo, name, description, cardPayment } = props;
 
   const paymentText = (cardPayment) =>
     cardPayment ? 'Bankkártyával is fizethetsz' : 'Csak készpénzzel fizethetsz';
