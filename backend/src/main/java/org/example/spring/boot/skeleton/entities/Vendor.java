@@ -7,6 +7,7 @@ import lombok.Builder;
 import javax.persistence.*;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 
@@ -19,6 +20,7 @@ public class Vendor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true)
     private String name;
     private String intro;
     private boolean cardPayment;
@@ -37,6 +39,18 @@ public class Vendor {
             inverseJoinColumns = {@JoinColumn(name = "market_id", referencedColumnName = "id")})
     private Set<Market> markets = new HashSet<>();
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Vendor vendor = (Vendor) o;
+        return Objects.equals(id, vendor.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 
     public Vendor() {
     }

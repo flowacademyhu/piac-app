@@ -1,5 +1,6 @@
 package org.example.spring.boot.skeleton.model;
 
+import javax.persistence.Column;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -17,7 +18,7 @@ public class VendorDTO {
     private String intro;
     @NotNull
     private boolean cardPayment;
-   @NotNull
+    @NotNull
     private Long marketId;
 
    private Set<String> products = new HashSet<>();

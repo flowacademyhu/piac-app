@@ -128,7 +128,8 @@ public class MarketService {
     public SimpleVendorDTO vendorToSimpleDTO(Vendor vendor){
         return new SimpleVendorDTO()
                 .setIntro(vendor.getIntro())
-                .setName(vendor.getName());
+                .setName(vendor.getName())
+                .setId(vendor.getId());
     }
 
     public List<VendorResponse> allVendors() {

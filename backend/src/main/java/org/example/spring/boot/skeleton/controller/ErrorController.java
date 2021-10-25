@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
@@ -30,5 +31,10 @@ public class ErrorController {
                 MessagesConstants.VIEW_WHOLE_LIST_MESSAGE));
     }
 
-
+    @ExceptionHandler({SQLIntegrityConstraintViolationException.class})
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public Map<String, ErrorModel> handleIntegrityConstraint(){
+        return Map.of(MessagesConstants.ERROR_MESSAGE_START, new ErrorModel(MessagesConstants.VENDOR_NAME_EXISTS_MESSAGE,
+                MessagesConstants.CONTACT_ADMIN_MESSAGE));
+    }
 }
