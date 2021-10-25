@@ -3,18 +3,15 @@
 
 .vendorCard {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 2.5rem 2.5rem;
-
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 1fr 2fr;
   cursor: pointer;
   user-select: none;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 20px;
   background-color: white;
   width: 100%;
-  margin: auto;
   position: relative;
 }
 
@@ -23,7 +20,7 @@
   border-radius: 80px;
   grid-column: 1;
   grid-row-start: 1;
-  grid-row-end: 4;
+  grid-row-end: 3;
   border-style: solid;
   border-width: 1px;
   border-color: lightgrey;
@@ -38,6 +35,7 @@
   font-size: 20px;
   font-weight: bold;
   overflow-wrap: break-word;
+  padding-left: 20px;
 }
 
 .vendorDescription {
@@ -46,8 +44,5 @@
   font-family: 'Open Sans', sans-serif;
   font-size: 12px;
   overflow-wrap: break-word;
-}
-
-.emptySpaceOnTop {
-  margin-top: 30px;
+  padding-left: 20px;
 }

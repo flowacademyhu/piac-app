@@ -14,18 +14,18 @@ const MarketCard = ({
   return (
     <div className="marketCard">
       <img className="marketLogo" src={profilePic} alt="logo" />
-      <div div className="marketName">
-        {marketName}
-      </div>
-      <div div className="marketLocationAndDate">
-        <div>{marketLocation}</div>
-        <div className="parallelDateAndHour">
-          <div>{marketDateYearMonthDay}</div>
-          <div className="startAndEndHours">{' ' + marketDateHours}</div>
+      <div className="topMarketInfo">
+        <div className="marketName">{marketName}</div>
+        <div className="marketLocationAndDate">
+          <div>{marketLocation}</div>
+          <div className="parallelDateAndHour">
+            <div>{marketDateYearMonthDay}</div>
+            <div className="startAndEndHours">{' ' + marketDateHours}</div>
+          </div>
         </div>
       </div>
-      <div div className="vendorNumber">
-        {vendorsAmount} árus
+      <div className="vendorNumber">
+        <div>{vendorsAmount} árus</div>
       </div>
     </div>
   );
