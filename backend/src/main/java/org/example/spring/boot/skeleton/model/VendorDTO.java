@@ -15,7 +15,8 @@ public class VendorDTO {
     @NotNull
     @Size(max=1000)
     private String intro;
-
+    @NotNull
+    private boolean cardPayment;
    @NotNull
     private Long marketId;
 
@@ -37,9 +38,10 @@ public class VendorDTO {
         return this;
     }
 
-    public VendorDTO(String name, String intro, Long marketId) {
+    public VendorDTO(String name, String intro, boolean cardPayment, Long marketId) {
         this.name = name;
         this.intro = intro;
+        this.cardPayment = cardPayment;
         this.marketId = marketId;
     }
 
@@ -61,6 +63,15 @@ public class VendorDTO {
 
     public VendorDTO setIntro(String intro) {
         this.intro = intro;
+        return this;
+    }
+
+    public boolean getCardPayment() {
+        return cardPayment;
+    }
+
+    public VendorDTO setCardPayment(boolean cardPayment) {
+        this.cardPayment = cardPayment;
         return this;
     }
 

@@ -21,7 +21,7 @@ public class Vendor {
 
     private String name;
     private String intro;
-
+    private boolean cardPayment;
     private String email;
     private String facebook;
     private String instagram;
@@ -63,6 +63,14 @@ public class Vendor {
 
     public void setIntro(String intro) {
         this.intro = intro;
+    }
+
+    public boolean getCardPayment() {
+        return cardPayment;
+    }
+
+    public void setCardPayment(boolean cardPayment) {
+        this.cardPayment = cardPayment;
     }
 
     public Set<String> getProducts() {
