@@ -26,7 +26,7 @@ public class ErrorController {
     @ExceptionHandler({EmptyResultDataAccessException.class})
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public Map<String, ErrorModel> handleEmptyResult(){
-        return Map.of(MessagesConstants.ERROR_MESSAGE_START, new ErrorModel(MessagesConstants.NOT_ABLE_TO_DELETE,
+        return Map.of(MessagesConstants.ERROR_MESSAGE_START, new ErrorModel(MessagesConstants.NOT_ABLE_TO_DELETE_MESSAGE,
                 MessagesConstants.VIEW_WHOLE_LIST_MESSAGE));
     }
 

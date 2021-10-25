@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.example.spring.boot.skeleton.entities.Market;
 import org.example.spring.boot.skeleton.entities.Vendor;
 import org.example.spring.boot.skeleton.model.MarketDTO;
+import org.example.spring.boot.skeleton.model.SimpleVendorDTO;
 import org.example.spring.boot.skeleton.model.VendorDTO;
 import org.example.spring.boot.skeleton.model.VendorResponse;
 import org.example.spring.boot.skeleton.repositories.MarketRepository;
@@ -59,6 +60,11 @@ public class MarketService {
 
     }
 
+    public List<SimpleVendorDTO>findAllVendorsAtGivenMarket(Long id){
+       Market market = marketRepository.findById(id).orElseThrow();
+       return market.getVendors().stream().map( m -> vendorToSimpleDTO(m)).collect(Collectors.toList());
+    }
+
     public Market marketDTOToEntity(MarketDTO marketDTO){
         return Market.builder()
                 .profilePic(marketDTO.getProfilePic())
@@ -106,7 +112,6 @@ public class MarketService {
         return vendorResponse;
     }
 
-
     public VendorResponse vendorToResponse(Vendor vendor){
         return new VendorResponse()
                 .setIntro(vendor.getIntro())
@@ -118,6 +123,12 @@ public class MarketService {
                 .setInstagram(vendor.getInstagram())
                 .setPhone(vendor.getPhone())
                 .setWebSite(vendor.getWebSite());
+    }
+
+    public SimpleVendorDTO vendorToSimpleDTO(Vendor vendor){
+        return new SimpleVendorDTO()
+                .setIntro(vendor.getIntro())
+                .setName(vendor.getName());
     }
 
     public List<VendorResponse> allVendors() {
