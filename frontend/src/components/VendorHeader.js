@@ -21,10 +21,11 @@ const VendorHeader = (props) => {
         <h2 className="vendor-name">{name}</h2>
         <p className="vendor-description-short">{description}</p>
         <div className="vendor-payment">
-          {cardPayment && (
-            <img className="payment-icon" src={cardIcon} alt="" />
-          )}
-          {cash && <img className="payment-icon" src={cashIcon} alt="" />}
+          <img
+            className="payment-icon"
+            src={cardPayment ? cardIcon : cashIcon}
+            alt=""
+          />
           <span className="payment-text">{paymentText(cardPayment)}</span>
         </div>
       </div>
