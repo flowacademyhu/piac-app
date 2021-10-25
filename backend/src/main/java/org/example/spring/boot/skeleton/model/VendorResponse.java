@@ -1,11 +1,9 @@
 package org.example.spring.boot.skeleton.model;
 
-
 import java.util.HashSet;
 import java.util.Set;
 
 public class VendorResponse {
-
 
     private String name;
     private String intro;

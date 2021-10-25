@@ -1,7 +1,7 @@
 package org.example.spring.boot.skeleton.controller;
 
 import lombok.AllArgsConstructor;
-import org.example.spring.boot.skeleton.entities.Vendor;
+
 import org.example.spring.boot.skeleton.model.VendorDTO;
 import org.example.spring.boot.skeleton.model.VendorResponse;
 import org.example.spring.boot.skeleton.services.MarketService;
@@ -23,17 +23,17 @@ public class VendorController {
     }
 
     @GetMapping
-    public ResponseEntity<List<?>> allVendors(){
+    public ResponseEntity<List<VendorResponse>> allVendors(){
         return ResponseEntity.ok(marketService.allVendors());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Vendor> findVendorById(@PathVariable @RequestBody Long id){
+    public ResponseEntity<VendorResponse> findVendorById(@PathVariable @RequestBody Long id){
         return ResponseEntity.ok(marketService.findVendorById(id));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Vendor> updateVendor(@PathVariable @RequestBody Long id, @RequestBody VendorDTO vendorDTO){
+    public ResponseEntity<VendorResponse> updateVendor(@PathVariable @RequestBody Long id, @RequestBody VendorDTO vendorDTO){
         return ResponseEntity.ok(marketService.updateVendor(id, vendorDTO));
     }
 

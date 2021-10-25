@@ -1,7 +1,7 @@
 package org.example.spring.boot.skeleton.controller;
 
 import lombok.AllArgsConstructor;
-import org.example.spring.boot.skeleton.entities.Market;
+
 import org.example.spring.boot.skeleton.model.MarketDTO;
 import org.example.spring.boot.skeleton.services.MarketService;
 import org.springframework.http.ResponseEntity;
@@ -18,16 +18,16 @@ public class MarketController {
 
 
     @PostMapping
-    public ResponseEntity<Market> addMarket(@RequestBody MarketDTO marketDTO){
+    public ResponseEntity<MarketDTO> addMarket(@RequestBody MarketDTO marketDTO){
         return ResponseEntity.ok(marketService.addMarket(marketDTO));
     }
     @GetMapping
-    public List<MarketDTO> allMarkets(){
-        return marketService.allMarkets();
+    public ResponseEntity<List<MarketDTO>> allMarkets(){
+        return ResponseEntity.ok(marketService.allMarkets());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getMarketById(@RequestBody @PathVariable Long id){
+    public ResponseEntity<MarketDTO> getMarketById(@RequestBody @PathVariable Long id){
         return ResponseEntity.ok(marketService.getMarketById(id));
     }
 
@@ -42,8 +42,8 @@ public class MarketController {
     }
 
     @PutMapping("/{id}")
-    public Market updateMarket(@PathVariable @RequestBody Long id, @RequestBody MarketDTO marketDTO){
-         return marketService.updateMarketById(id, marketDTO);
+    public ResponseEntity<MarketDTO> updateMarket(@PathVariable @RequestBody Long id, @RequestBody MarketDTO marketDTO){
+         return ResponseEntity.ok(marketService.updateMarketById(id, marketDTO));
     }
 
 

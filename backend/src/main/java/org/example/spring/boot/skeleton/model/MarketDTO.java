@@ -1,7 +1,5 @@
 package org.example.spring.boot.skeleton.model;
 
-import org.example.spring.boot.skeleton.entities.Vendor;
-
 import javax.validation.constraints.NotNull;
 import java.util.*;
 
@@ -26,13 +24,13 @@ public class MarketDTO {
     private int numberOfVendors;
 
 
-    private Set<Vendor> vendors;
+    private Set<VendorResponse> vendors;
 
-    public Set<Vendor> getVendors() {
+    public Set<VendorResponse> getVendors() {
         return vendors;
     }
 
-    public MarketDTO setVendors(Set<Vendor> vendors) {
+    public MarketDTO setVendors(Set<VendorResponse> vendors) {
         this.vendors = vendors;
         return this;
     }
@@ -93,4 +91,6 @@ public class MarketDTO {
         this.numberOfVendors = numberOfVendors;
         return this;
     }
+
+
 }
