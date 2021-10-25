@@ -14,9 +14,7 @@ const MarketCard = ({
   return (
     <div className="marketCard">
       <img className="marketLogo" src={profilePic} alt="logo" />
-      <div className="marketName">
-        {marketName}
-      </div>
+      <div className="marketName">{marketName}</div>
       <div className="marketLocationAndDate">
         <div>{marketLocation}</div>
         <div className="parallelDateAndHour">
@@ -24,9 +22,7 @@ const MarketCard = ({
           <div className="startAndEndHours">{' ' + marketDateHours}</div>
         </div>
       </div>
-      <div div className="vendorNumber">
-        {vendorsAmount} árus
-      </div>
+      <div className="vendorNumber">{vendorsAmount} árus</div>
     </div>
   );
 };
