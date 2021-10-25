@@ -18,7 +18,7 @@ public class MarketDTO {
     private String place;
 
     @NotNull
-    private String date;
+    private Long date;
 
     @NotNull
     private String startAndEndHour;
@@ -67,21 +67,12 @@ public class MarketDTO {
         return this;
     }
 
-    public String getDate() {
+    public Long getDate() {
         return date;
     }
 
-    public MarketDTO setDate(String date) {
+    public MarketDTO setDate(Long date) {
         this.date = date;
-        return this;
-    }
-
-    public String getStartAndEndHour() {
-        return startAndEndHour;
-    }
-
-    public MarketDTO setStartAndEndHour(String startAndEndHour) {
-        this.startAndEndHour = startAndEndHour;
         return this;
     }
 
