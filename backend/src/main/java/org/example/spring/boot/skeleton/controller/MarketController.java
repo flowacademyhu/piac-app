@@ -3,6 +3,7 @@ package org.example.spring.boot.skeleton.controller;
 import lombok.AllArgsConstructor;
 
 import org.example.spring.boot.skeleton.model.MarketDTO;
+import org.example.spring.boot.skeleton.model.SimpleVendorDTO;
 import org.example.spring.boot.skeleton.services.MarketService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,6 +30,11 @@ public class MarketController {
     @GetMapping("/{id}")
     public ResponseEntity<MarketDTO> getMarketById(@RequestBody @PathVariable Long id){
         return ResponseEntity.ok(marketService.getMarketById(id));
+    }
+
+    @GetMapping("/{id}/vendors")
+    public ResponseEntity<List<SimpleVendorDTO>> findAllVendorsAtGivenMarket(@PathVariable @RequestBody Long id){
+        return ResponseEntity.ok(marketService.findAllVendorsAtGivenMarket(id));
     }
 
     @DeleteMapping
