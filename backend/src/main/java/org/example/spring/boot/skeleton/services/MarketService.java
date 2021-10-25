@@ -133,8 +133,8 @@ public class MarketService {
     public List<VendorResponse> allVendors() {
       return vendorRepository.findAll()
               .stream()
-              .map( v -> vendorToResponse(v))
-              .sorted(Comparator.comparing(VendorResponse::getName))
+              .map(this::vendorToResponse)
+              .sorted(Comparator.comparing(VendorResponse::getName,String.CASE_INSENSITIVE_ORDER))
               .collect(Collectors.toList());
     }
 
