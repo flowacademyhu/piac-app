@@ -23,13 +23,13 @@ public class MarketDTO {
     private int numberOfVendors;
 
 
-    private Set<VendorResponse> vendors;
+    private Set<DetailVendorDTO> vendors;
 
-    public Set<VendorResponse> getVendors() {
+    public Set<DetailVendorDTO> getVendors() {
         return vendors;
     }
 
-    public MarketDTO setVendors(Set<VendorResponse> vendors) {
+    public MarketDTO setVendors(Set<DetailVendorDTO> vendors) {
         this.vendors = vendors;
         return this;
     }

@@ -6,7 +6,7 @@ import org.example.spring.boot.skeleton.entities.Vendor;
 import org.example.spring.boot.skeleton.model.MarketDTO;
 import org.example.spring.boot.skeleton.model.SimpleVendorDTO;
 import org.example.spring.boot.skeleton.model.VendorDTO;
-import org.example.spring.boot.skeleton.model.VendorResponse;
+import org.example.spring.boot.skeleton.model.DetailVendorDTO;
 import org.example.spring.boot.skeleton.repositories.MarketRepository;
 import org.example.spring.boot.skeleton.repositories.VendorRepository;
 import org.springframework.stereotype.Service;
@@ -89,7 +89,7 @@ public class MarketService {
 
  //----------------------------------------VENDOR----------------------------------------------
 
-    public VendorResponse addVendor(VendorDTO vendorDTO){
+    public DetailVendorDTO addVendor(VendorDTO vendorDTO){
         Market market = marketRepository.findById(vendorDTO.getMarketId()).orElse(null);
        Set<String> allProducts = vendorDTO.getProducts().stream().collect(Collectors.toSet());
         Vendor vendor = Vendor.builder()
@@ -106,12 +106,12 @@ public class MarketService {
                 .build();
         vendor.getMarkets().add(market);
         vendorRepository.save(vendor);
-        VendorResponse vendorResponse = vendorToResponse(vendor);
-        return vendorResponse;
+        DetailVendorDTO detailVendorDTO = vendorToResponse(vendor);
+        return detailVendorDTO;
     }
 
-    public VendorResponse vendorToResponse(Vendor vendor){
-        return new VendorResponse()
+    public DetailVendorDTO vendorToResponse(Vendor vendor){
+        return new DetailVendorDTO()
                 .setIntro(vendor.getIntro())
                 .setName(vendor.getName())
                 .setCardPayment(vendor.getCardPayment())
@@ -130,19 +130,19 @@ public class MarketService {
                 .setId(vendor.getId());
     }
 
-    public List<VendorResponse> allVendors() {
+    public List<DetailVendorDTO> allVendors() {
       return vendorRepository.findAll()
               .stream()
               .map(this::vendorToResponse)
-              .sorted(Comparator.comparing(VendorResponse::getName,String.CASE_INSENSITIVE_ORDER))
+              .sorted(Comparator.comparing(DetailVendorDTO::getName,String.CASE_INSENSITIVE_ORDER))
               .collect(Collectors.toList());
     }
 
-    public VendorResponse findVendorById(Long id){
+    public DetailVendorDTO findVendorById(Long id){
        return vendorToResponse(vendorRepository.findById(id).orElse(null));
     }
 
-    public VendorResponse updateVendor(Long id, VendorDTO vendorDTO){
+    public DetailVendorDTO updateVendor(Long id, VendorDTO vendorDTO){
            Market market = marketRepository.findById(vendorDTO.getMarketId()).orElseThrow(null);
            Vendor vendor = vendorRepository.findById(id).orElseThrow(null);
            Set<Market> set = new HashSet();
