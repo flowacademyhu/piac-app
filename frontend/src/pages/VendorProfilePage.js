@@ -42,7 +42,7 @@ const VendorProfilePage = ({ vendorId }) => {
         name={vendor.name}
         description={vendor.description}
         cash={vendor.cash}
-        card={vendor.cardPayment}
+        cardPayment={vendor.cardPayment}
       />
       <VendorInfoNav
         products={vendor.products}
