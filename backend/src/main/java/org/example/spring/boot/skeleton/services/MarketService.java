@@ -91,6 +91,7 @@ public class MarketService {
         Vendor vendor = Vendor.builder()
                 .intro(vendorDTO.getIntro())
                 .name(vendorDTO.getName())
+                .cardPayment(vendorDTO.getCardPayment())
                 .markets(new HashSet<>())
                 .products(allProducts)
                 .email(vendorDTO.getEmail())
@@ -110,6 +111,7 @@ public class MarketService {
         return new VendorResponse()
                 .setIntro(vendor.getIntro())
                 .setName(vendor.getName())
+                .setCardPayment(vendor.getCardPayment())
                 .setProducts(vendor.getProducts())
                 .setEmail(vendor.getEmail())
                 .setFacebook(vendor.getFacebook())
@@ -139,6 +141,7 @@ public class MarketService {
            vendor.setProducts(vendorDTO.getProducts());
            vendor.setIntro(vendorDTO.getIntro());
            vendor.setName(vendorDTO.getName());
+           vendor.setCardPayment(vendorDTO.getCardPayment());
            vendor.setId(id);
            vendor.setFacebook(vendorDTO.getFacebook());
            vendor.setEmail(vendorDTO.getEmail());

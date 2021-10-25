@@ -9,16 +9,17 @@ public class VendorResponse {
     private String name;
     private String intro;
     private Set<String> products = new HashSet<>();
-
+    private boolean cardPayment;
     private String email;
     private String facebook;
     private String instagram;
     private String phone;
     private String webSite;
 
-    public VendorResponse(String name, String intro) {
+    public VendorResponse(String name, String intro, boolean cardPayment) {
         this.name = name;
         this.intro = intro;
+        this.cardPayment = cardPayment;
     }
 
     public VendorResponse() {
@@ -39,6 +40,15 @@ public class VendorResponse {
 
     public VendorResponse setIntro(String intro) {
         this.intro = intro;
+        return this;
+    }
+
+    public boolean getCardPayment() {
+        return cardPayment;
+    }
+
+    public VendorResponse setCardPayment(boolean cardPayment) {
+        this.cardPayment = cardPayment;
         return this;
     }
 
