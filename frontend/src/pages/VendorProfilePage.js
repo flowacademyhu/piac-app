@@ -14,7 +14,7 @@ const VendorProfilePage = ({ vendorId }) => {
   vendor.description =
     'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ab ad blanditiis facere porro dolores.';
   vendor.cash = true;
-  vendor.card = true;
+  vendor.cardPayment = true;
   vendor.products = ['product1', 'product2'];
   vendor.facebook = 'facebook.link';
   vendor.instagram = 'instagram.link';
@@ -42,7 +42,7 @@ const VendorProfilePage = ({ vendorId }) => {
         name={vendor.name}
         description={vendor.description}
         cash={vendor.cash}
-        card={vendor.card}
+        card={vendor.cardPayment}
       />
       <VendorInfoNav
         products={vendor.products}
