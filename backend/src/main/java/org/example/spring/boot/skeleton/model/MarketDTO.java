@@ -20,9 +20,6 @@ public class MarketDTO {
     @NotNull
     private Long date;
 
-    @NotNull
-    private String startAndEndHour;
-
     private int numberOfVendors;
 
 
