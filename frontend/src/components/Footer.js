@@ -24,10 +24,10 @@ const Footer = () => {
                 alt="Icon"
               />
               <div
-                id={
+                className={
                   location.pathname === '/'
-                    ? 'active-footer-label'
-                    : 'passive-footer-label'
+                    ? 'footer-label active'
+                    : 'footer-label'
                 }
               >
                 PIACOK
@@ -45,10 +45,10 @@ const Footer = () => {
                 alt="Icon"
               />
               <div
-                id={
+                className={
                   location.pathname === '/arusok'
-                    ? 'active-footer-label'
-                    : 'passive-footer-label'
+                    ? 'footer-label active'
+                    : 'footer-label'
                 }
               >
                 ÁRUSOK
