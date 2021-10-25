@@ -6,15 +6,8 @@ import cardIcon from '../img/card.svg';
 const VendorHeader = (props) => {
   const { logo, name, description, cash, cardPayment } = props;
 
-  const paymentText = (cash, cardPayment) => {
-    if (cash && cardPayment) {
-      return 'Bankkártyás és készpénzes fizetés';
-    } else if (cash) {
-      return 'Csak készpénzes fizetés';
-    } else if (cardPayment) {
-      return 'Csak bankkártyás fizetés';
-    }
-  };
+  const paymentText = (cardPayment) =>
+    cardPayment ? 'Bankkártyával is fizethetsz' : 'Csak készpénzzel fizethetsz';
 
   return (
     <header className="vendor-profile-header">
@@ -32,7 +25,7 @@ const VendorHeader = (props) => {
             <img className="payment-icon" src={cardIcon} alt="" />
           )}
           {cash && <img className="payment-icon" src={cashIcon} alt="" />}
-          <span className="payment-text">{paymentText(cash, cardPayment)}</span>
+          <span className="payment-text">{paymentText(cardPayment)}</span>
         </div>
       </div>
     </header>
