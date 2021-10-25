@@ -1,5 +1,3 @@
-Bugfix: Footer-en lévő ikonok elhelyezkedésének és méretének problémái
-
 Build a docker image from the application:
 ```
 docker build -t spring-boot-skeleton:latest . --no-cache
