@@ -20,7 +20,7 @@ const VendorProfilePage = ({ vendorId }) => {
   return (
     <>
       <VendorHeader
-        logo={vendor.logo}
+        profilePic={vendor.profilePic}
         name={vendor.name}
         description={vendor.description}
         cardPayment={vendor.cardPayment}
