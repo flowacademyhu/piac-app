@@ -31,6 +31,8 @@ public class VendorDTO {
    private String instagram;
    private String phone;
    private String webSite;
+   @NotNull
+   @Size(min = 1, max = 1000)
    private String introductionLong;
 
     public Set<String> getProducts() {
