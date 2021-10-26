@@ -29,7 +29,6 @@ const MarketCardList = () => {
                 marketName={post.name}
                 marketLocation={post.place}
                 marketDateYearMonthDay={post.date}
-                marketDateHours={post.startAndEndHour}
                 vendorsAmount={post.numberOfVendors}
               />
             </div>

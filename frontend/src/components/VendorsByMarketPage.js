@@ -33,9 +33,6 @@ const VendorsByMarketPage = () => {
           <div>{marketById.place}</div>
           <div className="parallelDateAndHour">
             <div>{marketById.date}</div>
-            <div className="startAndEndHour">
-              {' ' + marketById.standAndEndHour}
-            </div>
           </div>
         </div>
       </div>
