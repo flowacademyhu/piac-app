@@ -62,7 +62,7 @@ public class MarketService {
 
     public List<SimpleVendorDTO>findAllVendorsAtGivenMarket(Long id){
        Market market = marketRepository.findById(id).orElseThrow();
-       return market.getVendors().stream().map( m -> vendorToSimpleDTO(m)).collect(Collectors.toList());
+       return market.getVendors().stream().map(this::vendorToSimpleDTO).collect(Collectors.toList());
     }
 
     public Market marketDTOToEntity(MarketDTO marketDTO){
@@ -75,23 +75,21 @@ public class MarketService {
     }
 
     public MarketDTO marketToDTO(Market market){
-        MarketDTO marketDTO = new MarketDTO()
+        return new MarketDTO()
                 .setProfilePic(market.getProfilePic())
                 .setId(market.getId())
-                .setVendors(market.getVendors().stream().map( v -> vendorToResponse(v)).collect(Collectors.toSet()))
+                .setVendors(market.getVendors().stream().map(this::vendorToSimpleDTO).collect(Collectors.toSet()))
                 .setDate(market.getDate())
                 .setName(market.getName())
                 .setPlace(market.getPlace())
-
                 .setNumberOfVendors(market.getVendors().size());
-        return marketDTO;
     }
 
  //----------------------------------------VENDOR----------------------------------------------
 
     public DetailVendorDTO addVendor(VendorDTO vendorDTO){
         Market market = marketRepository.findById(vendorDTO.getMarketId()).orElse(null);
-       Set<String> allProducts = vendorDTO.getProducts().stream().collect(Collectors.toSet());
+       Set<String> allProducts = new HashSet<>(vendorDTO.getProducts());
         Vendor vendor = Vendor.builder()
                 .intro(vendorDTO.getIntro())
                 .name(vendorDTO.getName())
@@ -106,12 +104,12 @@ public class MarketService {
                 .build();
         vendor.getMarkets().add(market);
         vendorRepository.save(vendor);
-        DetailVendorDTO detailVendorDTO = vendorToResponse(vendor);
-        return detailVendorDTO;
+        return vendorToResponse(vendor);
     }
 
     public DetailVendorDTO vendorToResponse(Vendor vendor){
         return new DetailVendorDTO()
+                .setId(vendor.getId())
                 .setIntro(vendor.getIntro())
                 .setName(vendor.getName())
                 .setCardPayment(vendor.getCardPayment())
