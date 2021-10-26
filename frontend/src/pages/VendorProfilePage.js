@@ -10,7 +10,7 @@ const VendorProfilePage = ({ vendorId }) => {
   useEffect(() => {
     const fetchVendor = async () => {
       const response = await axios.get(
-        'localhost:8081/v1/api/vendor/' + vendorId
+        'http://localhost:8081/v1/api/vendor/' + vendorId
       );
       setVendor(response.data);
     };
