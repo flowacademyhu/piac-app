@@ -60,7 +60,6 @@ const VendorInfoNav = ({
               website={website}
               email={email}
               phone={phone}
-              introduction={introduction}
             />
             <VendorIntroduction introduction={introduction} />
           </div>
