@@ -10,7 +10,9 @@ const VendorsByMarketPage = () => {
   const [marketById, setMatketById] = useState([]);
 
   const getMarketById = async () => {
-    const response = await axios.get('http://localhost:8081/v1/api/market/1');
+    const response = await axios.get(
+      `http://localhost:8081/v1/api/market/${id}`
+    );
 
     setMatketById(response.data);
     console.log(marketById);
@@ -22,16 +24,16 @@ const VendorsByMarketPage = () => {
 
   return (
     <>
-      <div className='marketHeader'>
-        <img className='marketLogo' src={marketById.profilePic} alt='logo' />
-        <div div className='marketName'>
+      <div className="marketHeader">
+        <img className="marketLogo" src={marketById.profilePic} alt="logo" />
+        <div div className="marketName">
           {marketById.name}
         </div>
-        <div div className='marketLocationAndDate'>
+        <div div className="marketLocationAndDate">
           <div>{marketById.place}</div>
-          <div className='parallelDateAndHour'>
+          <div className="parallelDateAndHour">
             <div>{marketById.date}</div>
-            <div className='startAndEndHour'>
+            <div className="startAndEndHour">
               {' ' + marketById.standAndEndHour}
             </div>
           </div>

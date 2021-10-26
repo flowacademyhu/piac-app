@@ -8,26 +8,29 @@ import VendorsByMarketPage from './VendorsByMarketPage';
 
 const App = () => {
   return (
-    <div className='App'>
-      <div className='container-fluid'>
+    <div className="App">
+      <div className="container-fluid">
         <Router>
           <Switch>
-            <Route exact path='/'>
+            <Route exact path="/">
               <MainPage />
+            </Route>
+            <Route path="/:id">
+              <VendorsByMarketPage />
             </Route>
           </Switch>
           <Switch>
-            <Route exact path='/arusok'>
+            <Route exact path="/arusok">
               <VendorPage />
             </Route>
           </Switch>
           <Switch>
-            <Route exact path='/arusprofil'>
+            <Route exact path="/arusprofil">
               <VendorProfilePage />
             </Route>
           </Switch>
           <Switch>
-            <Route exact path='/teszt'>
+            <Route exact path="/teszt">
               <VendorsByMarketPage />
             </Route>
           </Switch>
