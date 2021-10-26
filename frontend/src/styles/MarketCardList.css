@@ -10,3 +10,7 @@
 a {
   color: #33221a;
 }
+
+a:hover {
+  color: inherit;
+}

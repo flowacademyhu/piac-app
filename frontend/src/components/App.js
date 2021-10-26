@@ -21,6 +21,9 @@ const App = () => {
             <Route exact path="/arusok">
               <VendorPage />
             </Route>
+            <Route exact path="/arusok/:id">
+              <VendorProfilePage />
+            </Route>
             <Route exact path="/arusprofil">
               <VendorProfilePage />
             </Route>
