@@ -22,16 +22,14 @@ const MarketCardList = () => {
       {posts.map((post) => (
         <div key={post.id}>
           <Link to={`/piacok/${post.id}`} style={{ textDecoration: 'none' }}>
-            <div>
-              <MarketCard
-                style={{ textDecoration: 'none' }}
-                profilePic={post.profilePic}
-                marketName={post.name}
-                marketLocation={post.place}
-                marketDateYearMonthDay={post.date}
-                vendorsAmount={post.numberOfVendors}
-              />
-            </div>
+            <MarketCard
+              style={{ textDecoration: 'none' }}
+              profilePic={post.profilePic}
+              marketName={post.name}
+              marketLocation={post.place}
+              marketDateYearMonthDay={post.date}
+              vendorsAmount={post.numberOfVendors}
+            />
           </Link>
         </div>
       ))}
