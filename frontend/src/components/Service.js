@@ -9,8 +9,7 @@ export const fetchMarkets = async () => {
     const data = response.data;
     return data;
   } catch (error) {
-    console.log('Failed to load markets');
-    throw Error(error);
+    console.warn('Failed to load markets');
   }
 };
 
@@ -23,6 +22,6 @@ export const fetchVendors = async () => {
     const data = response.data;
     return data;
   } catch (error) {
-    console.log('Failed to load vendors');
+    console.warn('Failed to load vendors');
   }
 };
