@@ -14,17 +14,15 @@
   width: 100%;
   position: relative;
 }
-
 .marketHeader {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto, 1fr, auto;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 1f auto;
+  cursor: pointer;
   user-select: none;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 20px;
   background-color: #53b896;
   width: 100%;
-  margin: auto;
   position: relative;
   color: white;
 }
