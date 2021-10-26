@@ -14,6 +14,9 @@ public class VendorDTO {
     private String name;
 
     @NotNull
+    private String profilePic;
+
+    @NotNull
     @Size(max=1000)
     private String intro;
     @NotNull
@@ -39,8 +42,9 @@ public class VendorDTO {
         return this;
     }
 
-    public VendorDTO(String name, String intro, boolean cardPayment, Long marketId) {
+    public VendorDTO(String name, String profilePic, String intro, boolean cardPayment, Long marketId) {
         this.name = name;
+        this.profilePic = profilePic;
         this.intro = intro;
         this.cardPayment = cardPayment;
         this.marketId = marketId;
@@ -55,6 +59,15 @@ public class VendorDTO {
 
     public VendorDTO setName(String name) {
         this.name = name;
+        return this;
+    }
+
+    public String getProfilePic() {
+        return profilePic;
+    }
+
+    public VendorDTO setProfilePic(String profilePic) {
+        this.profilePic = profilePic;
         return this;
     }
 

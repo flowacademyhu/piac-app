@@ -22,6 +22,7 @@ public class Vendor {
 
     @Column(unique = true)
     private String name;
+    private String profilePic;
     private String intro;
     private boolean cardPayment;
     private String email;
@@ -69,6 +70,14 @@ public class Vendor {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getProfilePic() {
+        return profilePic;
+    }
+
+    public void setProfilePic(String profilePic) {
+        this.profilePic = profilePic;
     }
 
     public String getIntro() {
