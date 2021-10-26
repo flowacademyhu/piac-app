@@ -17,7 +17,7 @@ public class VendorDTO {
     private String profilePic;
 
     @NotNull
-    @Size(max=1000)
+    @Size(min = 1, max=100)
     private String intro;
     @NotNull
     private boolean cardPayment;
@@ -32,7 +32,6 @@ public class VendorDTO {
    private String phone;
    private String webSite;
    private String introductionLong;
-
 
     public Set<String> getProducts() {
         return products;
