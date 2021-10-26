@@ -18,13 +18,17 @@
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-rows: 1f auto;
-  cursor: pointer;
   user-select: none;
   padding: 20px;
   background-color: #53b896;
   width: 100%;
   position: relative;
   color: white;
+}
+
+.marketDescribe {
+  padding-left: 20px;
+  padding-top: 5px;
 }
 
 .marketLogo {
