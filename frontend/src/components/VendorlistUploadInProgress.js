@@ -2,11 +2,11 @@ import "../styles/VendorlistUploadInProgress.css";
 
 const VendorlistUploadInProgress = () => {
   return (
-    <div className="loadingScreen">
-      <div className="middleUploadText">
-        <div>Szervezés alatt...</div>
+    <div className="uploadScreen">
+      <div className="uploadTexts middleUploadText">
+        <span>Szervezés alatt...</span>
       </div>
-      <div className="bottomInfoText">
+      <div className="uploadTexts bottomInfoText">
         <div>
           <span>Itt fogod megtalálni az árusokat,</span>
         </div>
