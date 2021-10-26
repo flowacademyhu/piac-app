@@ -22,7 +22,7 @@ const VendorProfilePage = ({ vendorId }) => {
       <VendorHeader
         profilePic={vendor.profilePic}
         name={vendor.name}
-        description={vendor.description}
+        intro={vendor.intro}
         cardPayment={vendor.cardPayment}
       />
       <VendorInfoNav

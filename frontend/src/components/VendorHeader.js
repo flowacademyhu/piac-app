@@ -4,7 +4,7 @@ import cashIcon from '../img/cash.svg';
 import cardIcon from '../img/card.svg';
 
 const VendorHeader = (props) => {
-  const { profilePic, name, description, cardPayment } = props;
+  const { profilePic, name, intro, cardPayment } = props;
 
   const paymentText = (cardPayment) =>
     cardPayment ? 'Bankkártyával is fizethetsz' : 'Csak készpénzzel fizethetsz';
@@ -19,7 +19,7 @@ const VendorHeader = (props) => {
       </div>
       <div className="vendor-header-data">
         <h2 className="vendor-name">{name}</h2>
-        <p className="vendor-description-short">{description}</p>
+        <p className="vendor-intro">{intro}</p>
         <div className="vendor-payment">
           <img
             className="payment-icon"
