@@ -30,6 +30,7 @@ public class Vendor {
     private String instagram;
     private String phone;
     private String webSite;
+    private String introductionLong;
 
     @ElementCollection(targetClass = String.class)
     private Set<String> products = new HashSet<>();
@@ -102,6 +103,14 @@ public class Vendor {
 
     public void setProducts(Set<String> products) {
         this.products = products;
+    }
+
+    public String getIntroductionLong() {
+        return introductionLong;
+    }
+
+    public void setIntroductionLong(String introductionLong) {
+        this.introductionLong = introductionLong;
     }
 
     @JsonIgnore

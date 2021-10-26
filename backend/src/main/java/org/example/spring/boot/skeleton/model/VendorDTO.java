@@ -31,6 +31,7 @@ public class VendorDTO {
    private String instagram;
    private String phone;
    private String webSite;
+   private String introductionLong;
 
 
     public Set<String> getProducts() {
@@ -140,6 +141,15 @@ public class VendorDTO {
 
     public VendorDTO setWebSite(String webSite) {
         this.webSite = webSite;
+        return this;
+    }
+
+    public String getIntroductionLong() {
+        return introductionLong;
+    }
+
+    public VendorDTO setIntroductionLong(String introductionLong) {
+        this.introductionLong = introductionLong;
         return this;
     }
 }

@@ -104,6 +104,7 @@ public class MarketService {
                 .instagram(vendorDTO.getInstagram())
                 .webSite(vendorDTO.getWebSite())
                 .phone(vendorDTO.getPhone())
+                .introductionLong((vendorDTO.getIntroductionLong()))
                 .build();
         vendor.getMarkets().add(market);
         vendorRepository.save(vendor);
@@ -122,7 +123,8 @@ public class MarketService {
                 .setFacebook(vendor.getFacebook())
                 .setInstagram(vendor.getInstagram())
                 .setPhone(vendor.getPhone())
-                .setWebSite(vendor.getWebSite());
+                .setWebSite(vendor.getWebSite())
+                .setIntroductionLong(vendor.getIntroductionLong());
     }
 
     public SimpleVendorDTO vendorToSimpleDTO(Vendor vendor){
@@ -162,6 +164,7 @@ public class MarketService {
            vendor.setPhone(vendor.getPhone());
            vendor.setInstagram(vendorDTO.getInstagram());
            vendor.setWebSite(vendorDTO.getWebSite());
+           vendor.setIntroductionLong(vendorDTO.getIntroductionLong());
 
         vendorRepository.save(vendor);
         return vendorToResponse(vendor);

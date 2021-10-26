@@ -15,6 +15,7 @@ public class DetailVendorDTO {
     private String instagram;
     private String phone;
     private String webSite;
+    private String introductionLong;
 
     public DetailVendorDTO(String name, String intro, String profilePic, boolean cardPayment) {
         this.name = name;
@@ -113,6 +114,15 @@ public class DetailVendorDTO {
 
     public DetailVendorDTO setWebSite(String webSite) {
         this.webSite = webSite;
+        return this;
+    }
+
+    public String getIntroductionLong() {
+        return introductionLong;
+    }
+
+    public DetailVendorDTO setIntroductionLong(String introductionLong) {
+        this.introductionLong = introductionLong;
         return this;
     }
 }
