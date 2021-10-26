@@ -18,7 +18,7 @@ const MarketCardList = () => {
 
   return (
     <div className='card-list'>
-      {posts.map((post, index) => {
+      {posts.map((post) => {
         return (
           <MarketCard
             profilePic={post.profilePic}
@@ -27,7 +27,7 @@ const MarketCardList = () => {
             marketDateYearMonthDay={post.date}
             marketDateHours={post.startAndEndHour}
             vendorsAmount={post.numberOfVendors}
-            key={index}
+            key={post.id}
           />
         );
       })}
