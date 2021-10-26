@@ -29,7 +29,7 @@ const VendorProfilePage = ({ vendorId }) => {
         products={vendor.products}
         facebook={vendor.facebook}
         instagram={vendor.instagram}
-        website={vendor.website}
+        website={vendor.webSite}
         email={vendor.email}
         phone={vendor.phone}
         introduction={vendor.intro}
