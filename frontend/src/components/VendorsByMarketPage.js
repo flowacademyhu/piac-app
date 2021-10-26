@@ -25,24 +25,11 @@ const VendorsByMarketPage = () => {
   return (
     <>
       <div className="marketHeader">
-        <img
-          style={{ height: '120px' }}
-          className="marketLogo"
-          src={marketById.profilePic}
-          alt="logo"
-        />
-        <div
-          div
-          className="marketName"
-          style={{ paddingLeft: '20px', fontSize: '40px' }}
-        >
+        <img className="marketLogo" src={marketById.profilePic} alt="logo" />
+        <div div className="marketName">
           {marketById.name}
         </div>
-        <div
-          div
-          className="marketLocationAndDate"
-          style={{ paddingLeft: '20px', fontSize: '20px' }}
-        >
+        <div div className="marketLocationAndDate">
           <div>{marketById.place}</div>
           <div className="parallelDateAndHour">
             <div>{marketById.date}</div>
