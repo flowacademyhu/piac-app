@@ -4,7 +4,7 @@ COPY package.json package-lock.json ./
 
 COPY node_modules ./node_modules
 
-RUN npm install
+RUN npm ci
 
 COPY public ./public
 COPY src ./src
