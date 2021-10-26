@@ -18,10 +18,6 @@ public class MarketController {
     private final MarketService marketService;
 
 
-    @PostMapping
-    public ResponseEntity<MarketDTO> addMarket(@RequestBody MarketDTO marketDTO){
-        return ResponseEntity.ok(marketService.addMarket(marketDTO));
-    }
     @GetMapping
     public ResponseEntity<List<MarketDTO>> allMarkets(){
         return ResponseEntity.ok(marketService.allMarkets());

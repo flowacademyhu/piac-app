@@ -14,6 +14,7 @@ public class Market {
 
     private String profilePic;
 
+
     private String name;
     private Long date;
     private String place;
