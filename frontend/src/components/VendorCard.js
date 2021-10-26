@@ -8,7 +8,7 @@ const VendorCard = ({ vendor, vendorDesc, imageLogo }) => {
     <div className="vendorCard">
       <img className="vendorLogo" src={imageLogo} alt="logo" />
       <div className="vendorName">{vendor}</div>
-      <div className="marketLocationAndDate">{vendorDesc}</div>
+      <div className="vendorDescription">{vendorDesc}</div>
     </div>
   );
 };
