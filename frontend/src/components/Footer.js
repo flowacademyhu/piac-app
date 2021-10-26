@@ -18,17 +18,27 @@ const Footer = () => {
           <Col style={{ cursor: 'pointer' }}>
             <Link className="footer-link" to="/">
               <img
+                className="footer-logo"
                 src={
                   location.pathname === '/' ? MarketLogoHighlight : MarketLogo
                 }
                 alt="Icon"
               />
-              <div id="market-label">PIACOK</div>
+              <div
+                className={
+                  location.pathname === '/'
+                    ? 'footer-label active'
+                    : 'footer-label'
+                }
+              >
+                PIACOK
+              </div>
             </Link>
           </Col>
           <Col style={{ cursor: 'pointer' }}>
             <Link className="footer-link" to="/arusok">
               <img
+                className="footer-logo"
                 src={
                   location.pathname === '/arusok'
                     ? VendorLogoHighlight
@@ -36,7 +46,15 @@ const Footer = () => {
                 }
                 alt="Icon"
               />
-              <div id="vendor-label">ÁRUSOK</div>
+              <div
+                className={
+                  location.pathname === '/arusok'
+                    ? 'footer-label active'
+                    : 'footer-label'
+                }
+              >
+                ÁRUSOK
+              </div>
             </Link>
           </Col>
         </Row>

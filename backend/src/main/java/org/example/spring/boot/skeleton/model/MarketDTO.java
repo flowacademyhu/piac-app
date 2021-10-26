@@ -1,12 +1,12 @@
 package org.example.spring.boot.skeleton.model;
 
-import org.example.spring.boot.skeleton.entities.Vendor;
-
 import javax.validation.constraints.NotNull;
 import java.util.*;
 
 
 public class MarketDTO {
+
+    private Long id;
 
     @NotNull
     private String profilePic;
@@ -18,21 +18,18 @@ public class MarketDTO {
     private String place;
 
     @NotNull
-    private String date;
-
-    @NotNull
-    private String startAndEndHour;
+    private Long date;
 
     private int numberOfVendors;
 
 
-    private Set<Vendor> vendors;
+    private Set<DetailVendorDTO> vendors;
 
-    public Set<Vendor> getVendors() {
+    public Set<DetailVendorDTO> getVendors() {
         return vendors;
     }
 
-    public MarketDTO setVendors(Set<Vendor> vendors) {
+    public MarketDTO setVendors(Set<DetailVendorDTO> vendors) {
         this.vendors = vendors;
         return this;
     }
@@ -67,21 +64,12 @@ public class MarketDTO {
         return this;
     }
 
-    public String getDate() {
+    public Long getDate() {
         return date;
     }
 
-    public MarketDTO setDate(String date) {
+    public MarketDTO setDate(Long date) {
         this.date = date;
-        return this;
-    }
-
-    public String getStartAndEndHour() {
-        return startAndEndHour;
-    }
-
-    public MarketDTO setStartAndEndHour(String startAndEndHour) {
-        this.startAndEndHour = startAndEndHour;
         return this;
     }
 
@@ -91,6 +79,15 @@ public class MarketDTO {
 
     public MarketDTO setNumberOfVendors(int numberOfVendors) {
         this.numberOfVendors = numberOfVendors;
+        return this;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public MarketDTO setId(Long id) {
+        this.id = id;
         return this;
     }
 }

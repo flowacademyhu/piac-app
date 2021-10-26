@@ -1,24 +1,34 @@
 package org.example.spring.boot.skeleton.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 
 import javax.persistence.*;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 
 @Entity
 @Builder
+@AllArgsConstructor
 public class Vendor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true)
     private String name;
     private String intro;
+    private boolean cardPayment;
+    private String email;
+    private String facebook;
+    private String instagram;
+    private String phone;
+    private String webSite;
 
     @ElementCollection(targetClass = String.class)
     private Set<String> products = new HashSet<>();
@@ -29,12 +39,17 @@ public class Vendor {
             inverseJoinColumns = {@JoinColumn(name = "market_id", referencedColumnName = "id")})
     private Set<Market> markets = new HashSet<>();
 
-    public Vendor(Long id, String name, String intro, Set<String> products, Set<Market> markets) {
-        this.id = id;
-        this.name = name;
-        this.intro = intro;
-        this.products = products;
-        this.markets = markets;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Vendor vendor = (Vendor) o;
+        return Objects.equals(id, vendor.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 
     public Vendor() {
@@ -64,6 +79,14 @@ public class Vendor {
         this.intro = intro;
     }
 
+    public boolean getCardPayment() {
+        return cardPayment;
+    }
+
+    public void setCardPayment(boolean cardPayment) {
+        this.cardPayment = cardPayment;
+    }
+
     public Set<String> getProducts() {
         return products;
     }
@@ -82,4 +105,48 @@ public class Vendor {
         this.markets = markets;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public Vendor setEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public String getFacebook() {
+        return facebook;
+    }
+
+    public Vendor setFacebook(String facebook) {
+        this.facebook = facebook;
+        return this;
+    }
+
+    public String getInstagram() {
+        return instagram;
+    }
+
+    public Vendor setInstagram(String instagram) {
+        this.instagram = instagram;
+        return this;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public Vendor setPhone(String phone) {
+        this.phone = phone;
+        return this;
+    }
+
+    public String getWebSite() {
+        return webSite;
+    }
+
+    public Vendor setWebSite(String webSite) {
+        this.webSite = webSite;
+        return this;
+    }
 }
