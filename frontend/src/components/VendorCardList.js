@@ -1,5 +1,6 @@
 import VendorCard from './VendorCard';
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import '../styles/MarketCardList.css';
 
 const imageLogo =
