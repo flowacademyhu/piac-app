@@ -21,7 +21,7 @@ const MarketCardList = () => {
     <div className="card-list">
       {posts.map((post) => (
         <div key={post.id}>
-          <Link to={`/${post.id}`} style={{ textDecoration: 'none' }}>
+          <Link to={`/piacok/${post.id}`} style={{ textDecoration: 'none' }}>
             <div>
               <MarketCard
                 style={{ textDecoration: 'none' }}

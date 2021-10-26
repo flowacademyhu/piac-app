@@ -15,21 +15,15 @@ const App = () => {
             <Route exact path="/">
               <MainPage />
             </Route>
-            <Route path="/:id">
+            <Route exact path="/piacok/:id">
               <VendorsByMarketPage />
             </Route>
-          </Switch>
-          <Switch>
             <Route exact path="/arusok">
               <VendorPage />
             </Route>
-          </Switch>
-          <Switch>
             <Route exact path="/arusprofil">
               <VendorProfilePage />
             </Route>
-          </Switch>
-          <Switch>
             <Route exact path="/teszt">
               <VendorsByMarketPage />
             </Route>
