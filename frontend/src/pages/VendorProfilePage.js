@@ -32,7 +32,7 @@ const VendorProfilePage = ({ vendorId }) => {
         website={vendor.webSite}
         email={vendor.email}
         phone={vendor.phone}
-        introduction={vendor.intro}
+        introductionLong={vendor.introductionLong}
       />
       <Footer />
     </>

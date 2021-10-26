@@ -22,7 +22,7 @@ const VendorInfoNav = ({
   website,
   email,
   phone,
-  introduction
+  introductionLong
 }) => {
   const [status, changeStatus] = useState(true);
 
@@ -61,7 +61,7 @@ const VendorInfoNav = ({
               email={email}
               phone={phone}
             />
-            <VendorIntroduction introduction={introduction} />
+            <VendorIntroduction introductionLong={introductionLong} />
           </div>
         </Route>
         <Route path="/markets">
