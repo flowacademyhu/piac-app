@@ -31,13 +31,13 @@ const VendorContacts = (props) => {
   ];
 
   return (
-    <div className='container'>
-      <h1 className='title'>Elérhetőségek</h1>
+    <div className="container">
+      <h1 className="title">Elérhetőségek</h1>
       {contacts.map((contact) => {
         return (
           contact.title && (
-            <div className='info'>
-              <img src={contact.logo} className='logo' alt='' />
+            <div key={contact.title} className="info">
+              <img src={contact.logo} className="logo" alt="" />
               <span>{contact.title}</span>
             </div>
           )
