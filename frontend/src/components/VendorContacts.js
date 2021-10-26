@@ -36,13 +36,13 @@ const VendorContacts = (props) => {
   ];
 
   return (
-    <div className="container">
-      <h1 className="title">Elérhetőségek</h1>
+    <div className="contact-container">
+      <h1 className="contact-title">Elérhetőségek</h1>
       {contacts.map((contact) => {
         return (
           contact.title && (
-            <div className="info">
-              <img src={contact.logo} className="logo" alt="" />
+            <div className="contact-info">
+              <img src={contact.logo} className="contact-logo" alt="" />
               <a href={contact.link + contact.title}>{contact.title}</a>
             </div>
           )
