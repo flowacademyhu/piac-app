@@ -13,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/v1/api/market")
 @AllArgsConstructor
+@CrossOrigin
 public class MarketController {
 
     private final MarketService marketService;

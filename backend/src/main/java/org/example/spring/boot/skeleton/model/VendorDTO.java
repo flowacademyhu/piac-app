@@ -22,7 +22,7 @@ public class VendorDTO {
     private Long marketId;
 
    private Set<String> products = new HashSet<>();
-    @Email
+
    private String email;
    private String facebook;
    private String instagram;

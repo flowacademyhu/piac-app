@@ -85,6 +85,10 @@ public class MarketService {
                 .setNumberOfVendors(market.getVendors().size());
     }
 
+    public Market findMarketByName (String name){
+       return marketRepository.findByName(name).orElse(null);
+    }
+
  //----------------------------------------VENDOR----------------------------------------------
 
     public DetailVendorDTO addVendor(VendorDTO vendorDTO){

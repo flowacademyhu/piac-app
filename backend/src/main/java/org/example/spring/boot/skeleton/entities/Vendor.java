@@ -33,7 +33,7 @@ public class Vendor {
     @ElementCollection(targetClass = String.class)
     private Set<String> products = new HashSet<>();
 
-    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @ManyToMany(/*cascade = CascadeType.PERSIST*/ fetch = FetchType.LAZY)
     @JoinTable(name = "vendors_markets",
             joinColumns = {@JoinColumn(name = "vendor_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "market_id", referencedColumnName = "id")})

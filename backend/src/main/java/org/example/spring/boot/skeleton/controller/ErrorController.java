@@ -15,8 +15,6 @@ import java.util.NoSuchElementException;
 @RestControllerAdvice
 public class ErrorController {
 
-
-
     @ExceptionHandler({NoSuchElementException.class})
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public Map<String, ErrorModel> handleNoSuchelement(){
