@@ -27,9 +27,6 @@ const App = () => {
             <Route exact path='/arusok/:id/:piacok'>
               <VendorProfilePage />
             </Route>
-            <Route exact path='/arusprofil'>
-              <VendorProfilePage />
-            </Route>
           </Switch>
         </Router>
       </div>
