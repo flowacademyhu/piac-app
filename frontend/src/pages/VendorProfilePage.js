@@ -4,6 +4,7 @@ import axios from 'axios';
 import Footer from '../components/Footer';
 import VendorHeader from '../components/VendorHeader';
 import VendorInfoNav from '../components/VendorInfoNav';
+import fetchVendorById from '../components/Service';
 
 const VendorProfilePage = () => {
   const [vendor, setVendor] = useState({});
