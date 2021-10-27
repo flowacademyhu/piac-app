@@ -19,7 +19,6 @@ public class MarketController {
 
     private final MarketService marketService;
 
-
     @GetMapping
     public ResponseEntity<List<MarketDTO>> allMarkets(){
         return ResponseEntity.ok(marketService.allMarkets());

@@ -1,12 +1,9 @@
 package org.example.spring.boot.skeleton.model;
 
-import javax.persistence.Column;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
-
 
 public class VendorDTO {
 
@@ -22,13 +19,11 @@ public class VendorDTO {
     private Long marketId;
 
    private Set<String> products = new HashSet<>();
-
    private String email;
    private String facebook;
    private String instagram;
    private String phone;
    private String webSite;
-
 
     public Set<String> getProducts() {
         return products;

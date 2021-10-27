@@ -1,8 +1,8 @@
 package org.example.spring.boot.skeleton.config;
 
+import lombok.AllArgsConstructor;
 import org.example.spring.boot.skeleton.jwtandsecurity.JwtAuthenticationEntryPoint;
 import org.example.spring.boot.skeleton.jwtandsecurity.JwtFilter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -16,13 +16,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
+@AllArgsConstructor
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    @Autowired
+
     private JwtAuthenticationEntryPoint authenticationEntryPoint;
-    @Autowired
     private UserDetailsService userDetailsService;
-    @Autowired
     private JwtFilter filter;
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

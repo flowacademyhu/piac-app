@@ -17,19 +17,14 @@ public class DemoApplication implements CommandLineRunner {
 	private final MarketService marketService;
 	private final VendorService vendorService;
 
-
-
 	public DemoApplication(MarketService marketService, VendorService vendorService) {
 		this.marketService = marketService;
 		this.vendorService = vendorService;
 	}
 
-
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
-
 	}
-
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -101,6 +96,4 @@ public class DemoApplication implements CommandLineRunner {
 			vendorDTO2.setPhone("+36308765432");
 			vendorService.addVendor(vendorDTO2);
 	}
-
-
 }

@@ -1,8 +1,11 @@
 package org.example.spring.boot.skeleton.model;
 
+import lombok.AllArgsConstructor;
+
 import java.util.HashSet;
 import java.util.Set;
 
+@AllArgsConstructor
 public class DetailVendorDTO {
 
     private Long id;
@@ -15,12 +18,6 @@ public class DetailVendorDTO {
     private String instagram;
     private String phone;
     private String webSite;
-
-    public DetailVendorDTO(String name, String intro, boolean cardPayment) {
-        this.name = name;
-        this.intro = intro;
-        this.cardPayment = cardPayment;
-    }
 
     public DetailVendorDTO() {
     }

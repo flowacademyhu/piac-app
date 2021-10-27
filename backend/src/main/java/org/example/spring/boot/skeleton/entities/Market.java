@@ -13,15 +13,12 @@ public class Market {
     private Long id;
 
     private String profilePic;
-
-
     private String name;
     private Long date;
     private String place;
 
     @ManyToMany(mappedBy = "markets", fetch = FetchType.LAZY)
     private Set<Vendor> vendors = new HashSet<>();
-
 
     public Market(Long id, String profilePic, String name, Long date, String place, Set<Vendor> vendors) {
         this.id = id;

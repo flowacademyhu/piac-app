@@ -9,39 +9,32 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
 import java.sql.SQLIntegrityConstraintViolationException;
-import java.util.Map;
-
 
 @RestControllerAdvice
 public class ErrorController {
 
     @ExceptionHandler({NoSuchMarketException.class})
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public Map<String, ErrorModel> handleNoSuchMarket(){
-        return Map.of(MessagesConstants.ERROR_MESSAGE_START, new ErrorModel(MessagesConstants.NOT_FOUND_MARKET_MESSAGE,
-                MessagesConstants.VIEW_WHOLE_LIST_MESSAGE));
+    public  ErrorModel handleNoSuchMarket(){
+        return  new ErrorModel(MessagesConstants.NOT_FOUND_MARKET_MESSAGE);
     }
 
     @ExceptionHandler({NoSuchVendorException.class})
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public Map<String, ErrorModel> handleNoSuchVendor(){
-        return Map.of(MessagesConstants.ERROR_MESSAGE_START, new ErrorModel(MessagesConstants.NOT_FOUND_VENDOR_MESSAGE,
-                MessagesConstants.VIEW_WHOLE_LIST_MESSAGE));
+    public ErrorModel handleNoSuchVendor(){
+        return new ErrorModel(MessagesConstants.NOT_FOUND_VENDOR_MESSAGE);
     }
 
     @ExceptionHandler({EmptyResultDataAccessException.class})
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public Map<String, ErrorModel> handleEmptyResult(){
-        return Map.of(MessagesConstants.ERROR_MESSAGE_START, new ErrorModel(MessagesConstants.NOT_ABLE_TO_DELETE_MESSAGE,
-                MessagesConstants.VIEW_WHOLE_LIST_MESSAGE));
+    public ErrorModel handleEmptyResult(){
+        return new ErrorModel(MessagesConstants.NOT_ABLE_TO_DELETE_MESSAGE);
     }
 
     @ExceptionHandler({SQLIntegrityConstraintViolationException.class})
     @ResponseStatus(HttpStatus.CONFLICT)
-    public Map<String, ErrorModel> handleIntegrityConstraint(){
-        return Map.of(MessagesConstants.ERROR_MESSAGE_START, new ErrorModel(MessagesConstants.VENDOR_NAME_EXISTS_MESSAGE,
-                MessagesConstants.CONTACT_ADMIN_MESSAGE));
+    public ErrorModel handleIntegrityConstraint(){
+        return  new ErrorModel(MessagesConstants.VENDOR_NAME_EXISTS_MESSAGE);
     }
 }

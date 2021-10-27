@@ -7,9 +7,7 @@ import org.example.spring.boot.skeleton.exceptions.NoSuchVendorException;
 import org.example.spring.boot.skeleton.model.MarketDTO;
 import org.example.spring.boot.skeleton.model.SimpleVendorDTO;
 import org.example.spring.boot.skeleton.repositories.MarketRepository;
-import org.example.spring.boot.skeleton.repositories.VendorRepository;
 import org.springframework.stereotype.Service;
-
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -18,12 +16,10 @@ import java.util.stream.Collectors;
 public class MarketService {
 
     private final MarketRepository marketRepository;
-    private final VendorRepository vendorRepository;
     private final VendorService vendorService;
 
     public Market addMarket(MarketDTO marketDTO) {
         return marketRepository.save(marketDTOToEntity(marketDTO));
-
     }
 
     public List<MarketDTO> allMarkets() {
@@ -56,9 +52,7 @@ public class MarketService {
                 .name(marketDTO.getName())
                 .build();
         marketRepository.save(market);
-
         return marketToDTO(market);
-
     }
 
     public List<SimpleVendorDTO> findAllVendorsAtGivenMarket(Long id) throws NoSuchMarketException {

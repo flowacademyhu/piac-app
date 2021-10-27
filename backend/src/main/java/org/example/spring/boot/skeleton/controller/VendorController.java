@@ -16,9 +16,7 @@ import java.util.List;
 @CrossOrigin
 public class VendorController {
 
-    private final MarketService marketService;
     private final VendorService vendorService;
-
 
     @GetMapping
     public ResponseEntity<List<DetailVendorDTO>> allVendors(){
@@ -29,5 +27,4 @@ public class VendorController {
     public ResponseEntity<DetailVendorDTO> findVendorById(@PathVariable @RequestBody Long id) throws NoSuchVendorException {
         return ResponseEntity.ok(vendorService.findVendorById(id));
     }
-
 }
