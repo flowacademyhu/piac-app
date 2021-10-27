@@ -12,13 +12,11 @@ const VendorProfilePage = () => {
   const showMarkets = useParams().piacok;
 
   useEffect(() => {
-    const fetchVendor = async () => {
-      const response = await axios.get(
-        'http://localhost:8081/v1/api/vendor/' + vendorId
-      );
-      setVendor(response.data);
+    const fetchVendor = async (id) => {
+      const response = await fetchVendorById(id);
+      setVendor(response);
     };
-    fetchVendor();
+    fetchVendor(vendorId);
   }, [vendorId]);
 
   return vendor.name ? (
