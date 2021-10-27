@@ -1,34 +1,26 @@
 import Footer from '../components/Footer';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
 import HeaderWithMarket from './HeaderWithMarket';
 import VendorListOfOneMarket from './VendorListOfOneMarket';
 import VendorlistUploadInProgress from './VendorlistUploadInProgress';
+import { fetchMarketById } from './Service';
 
 const VendorsByMarketPage = () => {
+  const [marketById, setMarketById] = useState([]);
+
   const { id } = useParams();
-  const [hasError, setHasError] = useState(null);
 
-  const instance = axios.create({ baseURL: 'http://localhost:8081' });
-
-  const [marketById, setMatketById] = useState([]);
+  const getMarketById = async () => {
+    const result = fetchMarketById(id);
+    setMarketById(result);
+  };
 
   useEffect(() => {
-    (async function () {
-      try {
-        const response = await instance.get(`/v1/api/market/${id}`);
-        setMatketById(response.data);
-      } catch (err) {
-        setHasError(true);
-      }
-    })();
+    getMarketById();
   }, [id]);
 
-  if (hasError) {
-    console.warn('API request went wrong.');
-  }
-
+  console.log(marketById);
   return (
     <>
       <HeaderWithMarket
