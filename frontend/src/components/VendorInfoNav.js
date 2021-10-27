@@ -16,6 +16,7 @@ import VendorContacts from './VendorContacts';
 import VendorIntroduction from './VendorIntroduction';
 
 const VendorInfoNav = ({
+  vendorId,
   products,
   facebook,
   instagram,
@@ -30,7 +31,7 @@ const VendorInfoNav = ({
     <Router>
       <div className="icons">
         <div className="info-icon">
-          <NavLink activeClassName="active" to="/arusprofil">
+          <NavLink activeClassName="active" to={`/arusok/${vendorId}`}>
             <div
               className={'image ' + (status ? 'active-page' : null)}
               onClick={() => changeStatus(true)}
@@ -40,7 +41,7 @@ const VendorInfoNav = ({
           </NavLink>
         </div>
         <div className="vendor-icon">
-          <NavLink to="/markets">
+          <NavLink to={`/arusok/${vendorId}/piacok`}>
             <div
               className={'image ' + (status ? null : 'active-page')}
               onClick={() => changeStatus(false)}

@@ -28,6 +28,7 @@ const VendorProfilePage = () => {
         cardPayment={vendor.cardPayment}
       />
       <VendorInfoNav
+        vendorId={vendorId}
         products={vendor.products}
         facebook={vendor.facebook}
         instagram={vendor.instagram}
