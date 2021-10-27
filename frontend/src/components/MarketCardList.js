@@ -1,6 +1,10 @@
 import MarketCard from './MarketCard';
 import React, { useState, useEffect } from 'react';
 import '../styles/MarketCardList.css';
+<<<<<<< HEAD
+=======
+import { Link } from 'react-router-dom';
+>>>>>>> 3c9f118c011a7a2c07e74a86a9b67e0b64320250
 import { fetchMarkets } from './Service';
 
 const MarketCardList = () => {
