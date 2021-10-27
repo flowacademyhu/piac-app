@@ -5,6 +5,7 @@ import java.util.Set;
 
 public class DetailVendorDTO {
 
+    private Long id;
     private String name;
     private String intro;
     private Set<String> products = new HashSet<>();
@@ -103,5 +104,18 @@ public class DetailVendorDTO {
     public DetailVendorDTO setWebSite(String webSite) {
         this.webSite = webSite;
         return this;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public DetailVendorDTO setId(Long id) {
+        this.id = id;
+        return this;
+    }
+
+    public boolean isCardPayment() {
+        return cardPayment;
     }
 }
