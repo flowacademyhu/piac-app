@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
-import {
-  BrowserRouter as Router,
-  NavLink,
-  Switch,
-  Route
-} from 'react-router-dom';
+import { BrowserRouter as Router, NavLink } from 'react-router-dom';
 import './VendorInfoNav.css';
 import Products from './Products';
 import info_mid from './../icons/navigation/info_mid.svg';
