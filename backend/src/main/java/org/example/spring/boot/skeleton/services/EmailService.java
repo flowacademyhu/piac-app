@@ -16,11 +16,11 @@ import java.util.Properties;
 @Service
 public class EmailService {
 
-
     @Value(value = "${email.password}")
     private String emailPassword;
 
-    public String emailAdress = "lambda1projekt1proba@gmail.com";
+    @Value(value = "${email.address}")
+    public String emailAddress;
 
     public void sendmail(String email) throws AddressException, MessagingException, IOException {
         Properties props = new Properties();
@@ -31,16 +31,16 @@ public class EmailService {
 
         Session session = Session.getInstance(props, new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(emailAdress, emailPassword );
+                return new PasswordAuthentication(emailAddress, emailPassword );
             }
         });
         Message msg = new MimeMessage(session);
-        msg.setFrom(new InternetAddress(emailAdress, false));
+            msg.setFrom(new InternetAddress(emailAddress, false));
 
-        msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailAdress));
-        msg.setSubject("Authentication Token");
-        msg.setContent("Your Token: " + email, "text/html");
-        msg.setSentDate(new Date());
+            msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailAddress));
+            msg.setSubject("Authentication Token");
+            msg.setContent("Your Token: " + email, "text/html");
+            msg.setSentDate(new Date());
 
         Transport.send(msg);
     }

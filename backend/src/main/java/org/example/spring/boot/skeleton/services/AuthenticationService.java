@@ -17,13 +17,10 @@ import org.springframework.stereotype.Service;
 @NoArgsConstructor
 @Service
 public class AuthenticationService {
-    @Autowired
+
     private EmailService emailService;
-    @Autowired
     private JwtUserDetailsService userDetailsService;
-    @Autowired
     private AuthenticationManager authenticationManager;
-    @Autowired
     private TokenManager tokenManager;
 
     public String createToken(JwtRequestModel request) throws Exception {
@@ -36,7 +33,7 @@ public class AuthenticationService {
                 final UserDetails userDetails = userDetailsService.loadUserByUsername(request.getUsername());
                 final String jwtToken = tokenManager.generateJwtToken(userDetails);
                 emailService.sendmail(jwtToken);
-                return "Your token has been set to your email: " + emailService.emailAdress;
+                return "Your token has been set to your email: " + emailService.emailAddress;
             }
 
         } catch (DisabledException e) {

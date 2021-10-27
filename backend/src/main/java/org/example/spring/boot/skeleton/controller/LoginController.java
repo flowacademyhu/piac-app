@@ -18,14 +18,6 @@ public class LoginController {
     @Autowired
     AuthenticationService authenticationService;
 
-    @Autowired
-    private EmailService emailService;
-    @Autowired
-    private JwtUserDetailsService userDetailsService;
-    @Autowired
-    private AuthenticationManager authenticationManager;
-    @Autowired
-    private TokenManager tokenManager;
     @PostMapping("/login")
     public String createToken(@RequestBody JwtRequestModel request) throws Exception {
        return authenticationService.createToken(request);
