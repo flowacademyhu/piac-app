@@ -5,29 +5,24 @@ import axios from 'axios';
 import HeaderWithMarket from './HeaderWithMarket';
 import VendorListOfOneMarket from './VendorListOfOneMarket';
 import VendorlistUploadInProgress from './VendorlistUploadInProgress';
+import { fetchMarketById, marketById } from './Service';
 
 const VendorsByMarketPage = () => {
   const { id } = useParams();
   const [hasError, setHasError] = useState(null);
 
-  const instance = axios.create({ baseURL: 'http://localhost:8081' });
+  const instance = axios.create({ baseURL: '/' });
 
-  const [marketById, setMatketById] = useState([]);
+  const getMarketById = async (id) => {
+    const result = await fetchMarketById(id);
+    setMarketById(result);
+  };
+
+  const [marketById, setMarketById] = useState([]);
 
   useEffect(() => {
-    (async function () {
-      try {
-        const response = await instance.get(`/v1/api/market/${id}`);
-        setMatketById(response.data);
-      } catch (err) {
-        setHasError(true);
-      }
-    })();
+    fetchMarketById();
   }, [id]);
-
-  if (hasError) {
-    console.warn('API request went wrong.');
-  }
 
   return (
     <>
