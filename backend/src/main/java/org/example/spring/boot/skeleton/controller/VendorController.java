@@ -6,6 +6,7 @@ import org.example.spring.boot.skeleton.model.VendorDTO;
 import org.example.spring.boot.skeleton.model.DetailVendorDTO;
 import org.example.spring.boot.skeleton.services.MarketService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public class VendorController {
     private final MarketService marketService;
 
     @PostMapping
-    public ResponseEntity<DetailVendorDTO> addVendorToMarket(@RequestBody VendorDTO vendorDTO){
+    public ResponseEntity<DetailVendorDTO> addVendorToMarket(@Validated @RequestBody VendorDTO vendorDTO){
         return ResponseEntity.ok(marketService.addVendor(vendorDTO));
     }
 
@@ -33,7 +34,7 @@ public class VendorController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<DetailVendorDTO> updateVendor(@PathVariable @RequestBody Long id, @RequestBody VendorDTO vendorDTO){
+    public ResponseEntity<DetailVendorDTO> updateVendor(@PathVariable @RequestBody Long id, @Validated @RequestBody VendorDTO vendorDTO){
         return ResponseEntity.ok(marketService.updateVendor(id, vendorDTO));
     }
 
