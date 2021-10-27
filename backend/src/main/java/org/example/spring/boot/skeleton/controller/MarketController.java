@@ -2,6 +2,7 @@ package org.example.spring.boot.skeleton.controller;
 
 import lombok.AllArgsConstructor;
 
+import org.example.spring.boot.skeleton.exceptions.NoSuchMarketException;
 import org.example.spring.boot.skeleton.model.MarketDTO;
 import org.example.spring.boot.skeleton.model.SimpleVendorDTO;
 import org.example.spring.boot.skeleton.services.MarketService;
@@ -25,12 +26,12 @@ public class MarketController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<MarketDTO> getMarketById(@RequestBody @PathVariable Long id){
+    public ResponseEntity<MarketDTO> getMarketById(@RequestBody @PathVariable Long id) throws Exception {
         return ResponseEntity.ok(marketService.getMarketById(id));
     }
 
     @GetMapping("/{id}/vendors")
-    public ResponseEntity<List<SimpleVendorDTO>> findAllVendorsAtGivenMarket(@PathVariable @RequestBody Long id){
+    public ResponseEntity<List<SimpleVendorDTO>> findAllVendorsAtGivenMarket(@PathVariable @RequestBody Long id) throws NoSuchMarketException {
         return ResponseEntity.ok(marketService.findAllVendorsAtGivenMarket(id));
     }
 

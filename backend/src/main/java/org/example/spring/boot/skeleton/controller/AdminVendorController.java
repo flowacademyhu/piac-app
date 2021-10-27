@@ -16,12 +16,12 @@ public class AdminVendorController {
     private final VendorService vendorService;
 
     @PostMapping
-    public ResponseEntity<DetailVendorDTO> addVendorToMarket(@RequestBody VendorDTO vendorDTO){
+    public ResponseEntity<DetailVendorDTO> addVendorToMarket(@RequestBody VendorDTO vendorDTO) throws Exception {
         return ResponseEntity.ok(vendorService.addVendor(vendorDTO));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<DetailVendorDTO> updateVendor(@PathVariable @RequestBody Long id, @RequestBody VendorDTO vendorDTO){
+    public ResponseEntity<DetailVendorDTO> updateVendor(@PathVariable @RequestBody Long id, @RequestBody VendorDTO vendorDTO) throws Exception {
         return ResponseEntity.ok(vendorService.updateVendor(id, vendorDTO));
     }
 

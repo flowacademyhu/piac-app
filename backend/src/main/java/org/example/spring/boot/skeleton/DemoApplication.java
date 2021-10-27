@@ -32,7 +32,7 @@ public class DemoApplication implements CommandLineRunner {
 
 
 	@Override
-	public void run(String... args) {
+	public void run(String... args) throws Exception {
 		MarketDTO marketDTO1 = new MarketDTO();
 			marketDTO1.setProfilePic(ProfilePics.PROFILE_PIC_POT);
 			marketDTO1.setName("Bödön Piac");

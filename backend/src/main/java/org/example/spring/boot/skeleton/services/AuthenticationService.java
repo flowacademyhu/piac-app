@@ -18,9 +18,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class AuthenticationService {
 
+    @Autowired
     private EmailService emailService;
+    @Autowired
     private JwtUserDetailsService userDetailsService;
+    @Autowired
     private AuthenticationManager authenticationManager;
+    @Autowired
     private TokenManager tokenManager;
 
     public String createToken(JwtRequestModel request) throws Exception {

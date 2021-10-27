@@ -3,6 +3,8 @@ package org.example.spring.boot.skeleton.services;
 import lombok.AllArgsConstructor;
 import org.example.spring.boot.skeleton.entities.Market;
 import org.example.spring.boot.skeleton.entities.Vendor;
+import org.example.spring.boot.skeleton.exceptions.NoSuchMarketException;
+import org.example.spring.boot.skeleton.exceptions.NoSuchVendorException;
 import org.example.spring.boot.skeleton.model.MarketDTO;
 import org.example.spring.boot.skeleton.model.SimpleVendorDTO;
 import org.example.spring.boot.skeleton.model.VendorDTO;
@@ -36,8 +38,8 @@ public class MarketService {
                 .collect(Collectors.toList());
     }
 
-    public MarketDTO getMarketById(Long id) {
-        return marketToDTO(marketRepository.findById(id).orElseThrow());
+    public MarketDTO getMarketById(Long id) throws Exception {
+        return marketToDTO(marketRepository.findById(id).orElseThrow(() ->new NoSuchMarketException()));
     }
 
     public void deleteAllMarkets() {
@@ -62,8 +64,8 @@ public class MarketService {
 
     }
 
-    public List<SimpleVendorDTO> findAllVendorsAtGivenMarket(Long id) {
-        Market market = marketRepository.findById(id).orElseThrow();
+    public List<SimpleVendorDTO> findAllVendorsAtGivenMarket(Long id) throws NoSuchMarketException {
+        Market market = marketRepository.findById(id).orElseThrow(() -> new NoSuchMarketException() );
         return market.getVendors().stream().map(vendorService::vendorToSimpleDTO).collect(Collectors.toList());
     }
 
@@ -87,8 +89,8 @@ public class MarketService {
                 .setNumberOfVendors(market.getVendors().size());
     }
 
-    public Market findMarketByName(String name) {
-        return marketRepository.findByName(name).orElse(null);
+    public Market findMarketByName(String name) throws NoSuchVendorException {
+        return marketRepository.findByName(name).orElseThrow(() -> new NoSuchVendorException());
     }
 }
 

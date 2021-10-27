@@ -3,6 +3,8 @@ package org.example.spring.boot.skeleton.services;
 import lombok.AllArgsConstructor;
 import org.example.spring.boot.skeleton.entities.Market;
 import org.example.spring.boot.skeleton.entities.Vendor;
+import org.example.spring.boot.skeleton.exceptions.NoSuchMarketException;
+import org.example.spring.boot.skeleton.exceptions.NoSuchVendorException;
 import org.example.spring.boot.skeleton.model.DetailVendorDTO;
 import org.example.spring.boot.skeleton.model.SimpleVendorDTO;
 import org.example.spring.boot.skeleton.model.VendorDTO;
@@ -23,8 +25,8 @@ public class VendorService {
     private final MarketRepository marketRepository;
     private final VendorRepository vendorRepository;
 
-    public DetailVendorDTO addVendor(VendorDTO vendorDTO){
-        Market market = marketRepository.findById(vendorDTO.getMarketId()).orElse(null);
+    public DetailVendorDTO addVendor(VendorDTO vendorDTO) throws Exception {
+        Market market = marketRepository.findById(vendorDTO.getMarketId()).orElseThrow(() -> new NoSuchMarketException());
         Set<String> allProducts = new HashSet<>(vendorDTO.getProducts());
         Vendor vendor = Vendor.builder()
                 .intro(vendorDTO.getIntro())
@@ -76,24 +78,23 @@ public class VendorService {
         return vendorToResponse(vendorRepository.findById(id).orElse(null));
     }
 
-    public DetailVendorDTO updateVendor(Long id, VendorDTO vendorDTO){
-        Market market = marketRepository.findById(vendorDTO.getMarketId()).orElseThrow(null);
-        Vendor vendor = vendorRepository.findById(id).orElseThrow(null);
-        Set<Market> set = new HashSet();
-        set.add(market);
-        vendor.setMarkets(set);
-        vendor.setProducts(vendorDTO.getProducts());
-        vendor.setIntro(vendorDTO.getIntro());
-        vendor.setName(vendorDTO.getName());
-        vendor.setCardPayment(vendorDTO.getCardPayment());
-        vendor.setId(id);
-        vendor.setFacebook(vendorDTO.getFacebook());
-        vendor.setEmail(vendorDTO.getEmail());
-        vendor.setPhone(vendor.getPhone());
-        vendor.setInstagram(vendorDTO.getInstagram());
-        vendor.setWebSite(vendorDTO.getWebSite());
-
-        vendorRepository.save(vendor);
+    public DetailVendorDTO updateVendor(Long id, VendorDTO vendorDTO) throws Exception {
+        Market market = marketRepository.findById(vendorDTO.getMarketId()).orElseThrow(() -> new NoSuchMarketException());
+        Vendor vendor = vendorRepository.findById(id).orElseThrow(() -> new NoSuchVendorException());
+            Set<Market> set = new HashSet();
+            set.add(market);
+            vendor.setMarkets(set);
+            vendor.setProducts(vendorDTO.getProducts());
+            vendor.setIntro(vendorDTO.getIntro());
+            vendor.setName(vendorDTO.getName());
+            vendor.setCardPayment(vendorDTO.getCardPayment());
+            vendor.setId(id);
+            vendor.setFacebook(vendorDTO.getFacebook());
+            vendor.setEmail(vendorDTO.getEmail());
+            vendor.setPhone(vendor.getPhone());
+            vendor.setInstagram(vendorDTO.getInstagram());
+            vendor.setWebSite(vendorDTO.getWebSite());
+            vendorRepository.save(vendor);
         return vendorToResponse(vendor);
 
     }
@@ -101,6 +102,7 @@ public class VendorService {
     public void deleteAllVendors(){
         vendorRepository.deleteAll();
     }
+
     public void deleteVendorById(Long id){
         vendorRepository.deleteById(id);
     }

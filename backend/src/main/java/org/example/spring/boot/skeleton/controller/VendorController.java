@@ -21,7 +21,6 @@ public class VendorController {
     private final VendorService vendorService;
 
 
-
     @GetMapping
     public ResponseEntity<List<DetailVendorDTO>> allVendors(){
         return ResponseEntity.ok(vendorService.allVendors());
