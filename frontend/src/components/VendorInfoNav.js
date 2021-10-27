@@ -55,26 +55,23 @@ const VendorInfoNav = ({
           </NavLink>
         </div>
       </div>
-      <Switch>
-        <Route path="/arusprofil">
-          <div className="profile-components">
-            <Products products={products} />
-            <VendorContacts
-              facebook={facebook}
-              instagram={instagram}
-              website={website}
-              email={email}
-              phone={phone}
-            />
-            <VendorIntroduction introductionLong={introductionLong} />
-          </div>
-        </Route>
-        <Route path="/markets">
-          <div className="profile-components empty-page-message">
-            <div>Hamarosan...</div>
-          </div>
-        </Route>
-      </Switch>
+      {!status ? (
+        <div className="profile-components empty-page-message">
+          <div>Hamarosan...</div>
+        </div>
+      ) : (
+        <div className="profile-components">
+          <Products products={products} />
+          <VendorContacts
+            facebook={facebook}
+            instagram={instagram}
+            website={website}
+            email={email}
+            phone={phone}
+          />
+          <VendorIntroduction introductionLong={introductionLong} />
+        </div>
+      )}
     </Router>
   );
 };
