@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 public class AuthenticationService {
 
     @Autowired
-    private EmailService emailService;
+    private  EmailService emailService;
     @Autowired
     private JwtUserDetailsService userDetailsService;
     @Autowired
@@ -45,7 +45,6 @@ public class AuthenticationService {
         } catch (BadCredentialsException e) {
             throw new Exception("INVALID_CREDENTIALS", e);
         }
-
         return null;
     }
 }

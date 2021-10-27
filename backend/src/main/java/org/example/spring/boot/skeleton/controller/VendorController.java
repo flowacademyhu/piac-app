@@ -1,9 +1,7 @@
 package org.example.spring.boot.skeleton.controller;
 
 import lombok.AllArgsConstructor;
-
 import org.example.spring.boot.skeleton.exceptions.NoSuchVendorException;
-import org.example.spring.boot.skeleton.model.VendorDTO;
 import org.example.spring.boot.skeleton.model.DetailVendorDTO;
 import org.example.spring.boot.skeleton.services.MarketService;
 import org.example.spring.boot.skeleton.services.VendorService;

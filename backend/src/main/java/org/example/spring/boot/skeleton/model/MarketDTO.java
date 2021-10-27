@@ -22,7 +22,6 @@ public class MarketDTO {
 
     private int numberOfVendors;
 
-
     private Set<SimpleVendorDTO> vendors;
 
     public Set<SimpleVendorDTO> getVendors() {

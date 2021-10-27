@@ -2,13 +2,10 @@ package org.example.spring.boot.skeleton.services;
 
 import lombok.AllArgsConstructor;
 import org.example.spring.boot.skeleton.entities.Market;
-import org.example.spring.boot.skeleton.entities.Vendor;
 import org.example.spring.boot.skeleton.exceptions.NoSuchMarketException;
 import org.example.spring.boot.skeleton.exceptions.NoSuchVendorException;
 import org.example.spring.boot.skeleton.model.MarketDTO;
 import org.example.spring.boot.skeleton.model.SimpleVendorDTO;
-import org.example.spring.boot.skeleton.model.VendorDTO;
-import org.example.spring.boot.skeleton.model.DetailVendorDTO;
 import org.example.spring.boot.skeleton.repositories.MarketRepository;
 import org.example.spring.boot.skeleton.repositories.VendorRepository;
 import org.springframework.stereotype.Service;
