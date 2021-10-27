@@ -10,14 +10,14 @@ const VendorsByMarketPage = () => {
   const { id } = useParams();
   const [hasError, setHasError] = useState(null);
 
+  const instance = axios.create({ baseURL: 'http://localhost:8081' });
+
   const [marketById, setMatketById] = useState([]);
 
   useEffect(() => {
     (async function () {
       try {
-        const response = await axios.get(
-          `http://localhost:8081/v1/api/market/${id}`
-        );
+        const response = await instance.get(`/v1/api/market/${id}`);
         setMatketById(response.data);
       } catch (err) {
         setHasError(true);
