@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+.uploadScreen {
+  background-color: #f7f5f2;
+  height: calc(100% - 230px);
+  width: 100%;
+}
+
+.uploadTexts {
+  font-family: 'Open Sans', sans-serif;
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.middleUploadText {
+  font-size: 20px;
+  font-weight: bold;
+  bottom: 50%;
+}
+
+.bottomInfoText {
+  font-size: 12px;
+  bottom: 10%;
+}
