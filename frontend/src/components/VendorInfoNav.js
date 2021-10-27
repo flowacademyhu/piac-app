@@ -26,13 +26,16 @@ const VendorInfoNav = ({
   phone,
   introductionLong
 }) => {
-  const [status, changeStatus] = useState(true);
+  const [status, changeStatus] = useState(!showMarkets);
 
   return (
     <Router>
       <div className="icons">
         <div className="info-icon">
-          <NavLink activeClassName="active" to={`/arusok/${vendorId}`}>
+          <NavLink
+            activeClassName={`${showMarkets ? '' : 'active'}`}
+            to={`/arusok/${vendorId}`}
+          >
             <div
               className={'image ' + (status ? 'active-page' : null)}
               onClick={() => changeStatus(true)}
