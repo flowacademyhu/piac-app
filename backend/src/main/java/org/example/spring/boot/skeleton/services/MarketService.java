@@ -11,6 +11,8 @@ import org.example.spring.boot.skeleton.repositories.MarketRepository;
 import org.example.spring.boot.skeleton.repositories.VendorRepository;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -21,7 +23,7 @@ public class MarketService {
     private final MarketRepository marketRepository;
     private final VendorRepository vendorRepository;
 
-    public MarketDTO addMarket(MarketDTO marketDTO){
+    public MarketDTO addMarket(MarketDTO marketDTO) throws ParseException {
         marketRepository.save(marketDTOToEntity(marketDTO));
         return marketDTO;
     }
@@ -30,7 +32,7 @@ public class MarketService {
        return  marketRepository.findAll()
                 .stream()
                 .map(this::marketToDTO)
-                .sorted(Comparator.comparing(MarketDTO::getDate).reversed())
+                .sorted(Comparator.comparing(MarketDTO::getOpeningDate).reversed())
                 .peek( m -> m.setVendors(null))
                 .collect(Collectors.toList());
     }
@@ -50,7 +52,8 @@ public class MarketService {
     public MarketDTO updateMarketById(Long id, MarketDTO marketDTO) {
         Market market = marketRepository.findById(id).orElse(null).builder()
                 .profilePic(marketDTO.getProfilePic())
-                .date(marketDTO.getDate())
+                .openingDate(marketDTO.getOpeningDate())
+                .closingDate(marketDTO.getClosingDate())
                 .place(marketDTO.getPlace())
                 .id(id)
                 .name(marketDTO.getName())
@@ -65,10 +68,11 @@ public class MarketService {
        return market.getVendors().stream().map( m -> vendorToSimpleDTO(m)).collect(Collectors.toList());
     }
 
-    public Market marketDTOToEntity(MarketDTO marketDTO){
+    public Market marketDTOToEntity(MarketDTO marketDTO) throws ParseException {
         return Market.builder()
                 .profilePic(marketDTO.getProfilePic())
-                .date(marketDTO.getDate())
+                .openingDate(marketDTO.getOpeningDate())
+                .closingDate(marketDTO.getClosingDate())
                 .name(marketDTO.getName())
                 .place(marketDTO.getPlace())
                 .build();
@@ -79,7 +83,8 @@ public class MarketService {
                 .setProfilePic(market.getProfilePic())
                 .setId(market.getId())
                 .setVendors(market.getVendors().stream().map( v -> vendorToResponse(v)).collect(Collectors.toSet()))
-                .setDate(market.getDate())
+                .setOpeningDate(market.getOpeningDate())
+                .setClosingDate(market.getClosingDate())
                 .setName(market.getName())
                 .setPlace(market.getPlace())
 

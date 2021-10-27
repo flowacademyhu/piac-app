@@ -3,37 +3,42 @@ import '../styles/MarketCard.css';
 const body = document.body;
 body.style.background = '#F7F5F2';
 
-const months = [
-  'január',
-  'február',
-  'március',
-  'április',
-  'május',
-  'június',
-  'július',
-  'augusztus',
-  'szeptember',
-  'október',
-  'november',
-  'december'
-];
-
 const MarketCard = ({
   marketName,
   marketLocation,
-  marketDates,
+  marketOpeningDate,
+  marketClosingDate,
   vendorsAmount,
   profilePic
 }) => {
-  const newMarketDate = '' + marketDates;
+  const marketOpeningDateFormatter = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  };
 
-  const year = newMarketDate.substring(0, 4);
-  const month = newMarketDate.substring(4, 6) - 1;
-  const day = newMarketDate.substring(6, 8);
-  const marketStartHour = newMarketDate.substring(8, 10);
-  const marketStartMinute = newMarketDate.substring(10, 12);
-  const marketEndHour = newMarketDate.substring(12, 14);
-  const marketEndMinute = newMarketDate.substring(14, 16);
+  const marketMinuteFormatter = {
+    hour: '2-digit',
+    minute: 'numeric'
+  };
+
+  const formattedYearMonthAndDay = new Intl.DateTimeFormat(
+    'hu-HU',
+    marketOpeningDateFormatter
+  ).format(new Date(marketOpeningDate * 1000));
+
+  const formattedOpeningHourAndMinute = new Intl.DateTimeFormat(
+    'hu-HU',
+    marketMinuteFormatter
+  ).format(new Date(marketOpeningDate * 1000));
+
+  const formattedClosingHourAndMinute = new Intl.DateTimeFormat(
+    'hu-HU',
+    marketMinuteFormatter
+  ).format(new Date(marketClosingDate * 1000));
+
+  const formattedOpeningAndClosingHour =
+    formattedOpeningHourAndMinute + ' - ' + formattedClosingHourAndMinute;
 
   return (
     <div className="marketCard">
@@ -43,15 +48,9 @@ const MarketCard = ({
         <div className="marketLocationAndDate">
           <div>{marketLocation}</div>
           <div className="parallelDateAndHour">
-            <div>{year + '. ' + months[month] + ' ' + day + '.'}</div>
+            <div>{formattedYearMonthAndDay}</div>
             <div className="startAndEndHours">
-              {marketStartHour +
-                ':' +
-                marketStartMinute +
-                ' - ' +
-                marketEndHour +
-                ':' +
-                marketEndMinute}
+              {formattedOpeningAndClosingHour}
             </div>
           </div>
         </div>
