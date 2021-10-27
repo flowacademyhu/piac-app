@@ -1,20 +1,19 @@
 import MarketCard from './MarketCard';
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import '../styles/MarketCardList.css';
 import { Link } from 'react-router-dom';
+import { fetchMarkets } from './Service';
 
 const MarketCardList = () => {
-  const [posts, setPosts] = useState([]);
+  const [markets, setMarkets] = useState([]);
 
-  const getPosts = async () => {
-    const response = await axios.get('http://localhost:8081/v1/api/market');
-
-    setPosts(response.data);
+  const getMarkets = async () => {
+    const result = await fetchMarkets();
+    setMarkets(result);
   };
 
   useEffect(() => {
-    getPosts();
+    getMarkets();
   }, []);
 
   return (
