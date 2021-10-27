@@ -7,7 +7,6 @@ const MarketCard = ({
   marketName,
   marketLocation,
   marketDateYearMonthDay,
-  marketDateHours,
   vendorsAmount,
   profilePic
 }) => {
@@ -20,7 +19,6 @@ const MarketCard = ({
           <div>{marketLocation}</div>
           <div className="parallelDateAndHour">
             <div>{marketDateYearMonthDay}</div>
-            <div className="startAndEndHours">{' ' + marketDateHours}</div>
           </div>
         </div>
       </div>
