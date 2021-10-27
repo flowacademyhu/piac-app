@@ -27,17 +27,19 @@ export const fetchVendors = async () => {
   }
 };
 
-const marketByIdAPI = `/v1/api/market`;
-
-export const fetchMarketById = async (id) => {
-  const url = marketByIdAPI;
-  try {
-    const response = await axios.get(url + '/' + id);
-    const data = response.data;
-    return data;
-  } catch (error) {
-    console.warn('Failed to load markets');
-  }
+export const fetchMarketById = (id) => {
+  let fetchMarket;
+  const MarketAPIById = `/v1/api/market/${id}`;
+  return (fetchMarket = async () => {
+    const url = MarketAPIById;
+    try {
+      const response = await axios.get(url);
+      const data = response.data;
+      return data;
+    } catch (error) {
+      console.warn('Failed to load market');
+    }
+  });
 };
 
 export const fetchVendorById = async (id) => {

@@ -1,29 +1,26 @@
 import Footer from '../components/Footer';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
 import HeaderWithMarket from './HeaderWithMarket';
 import VendorListOfOneMarket from './VendorListOfOneMarket';
 import VendorlistUploadInProgress from './VendorlistUploadInProgress';
-import { fetchMarketById, marketById } from './Service';
+import { fetchMarketById } from './Service';
 
 const VendorsByMarketPage = () => {
+  const [marketById, setMarketById] = useState([]);
+
   const { id } = useParams();
-  const [hasError, setHasError] = useState(null);
 
-  const instance = axios.create({ baseURL: '/' });
-
-  const getMarketById = async (id) => {
-    const result = await fetchMarketById(id);
+  const getMarketById = async () => {
+    const result = fetchMarketById(id);
     setMarketById(result);
   };
 
-  const [marketById, setMarketById] = useState([]);
-
   useEffect(() => {
-    fetchMarketById();
+    getMarketById();
   }, [id]);
 
+  console.log(marketById);
   return (
     <>
       <HeaderWithMarket
