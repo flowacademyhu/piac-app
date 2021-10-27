@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const MarketAPI = 'http://localhost:8081/v1/api/market';
+const MarketAPI = '/v1/api/market';
 
 export const fetchMarkets = async () => {
   let url = MarketAPI;
@@ -13,7 +13,7 @@ export const fetchMarkets = async () => {
   }
 };
 
-const VendorAPI = 'http://localhost:8081/v1/api/vendor';
+const VendorAPI = '/v1/api/vendor';
 
 export const fetchVendors = async () => {
   let url = VendorAPI;
