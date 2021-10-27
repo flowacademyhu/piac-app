@@ -30,6 +30,7 @@ public class Vendor {
     private String instagram;
     private String phone;
     private String webSite;
+    @Column(length = 1000)
     private String introductionLong;
 
     @ElementCollection(targetClass = String.class)
