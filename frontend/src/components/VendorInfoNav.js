@@ -17,6 +17,7 @@ import VendorIntroduction from './VendorIntroduction';
 
 const VendorInfoNav = ({
   vendorId,
+  showMarkets,
   products,
   facebook,
   instagram,

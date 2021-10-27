@@ -8,6 +8,7 @@ import VendorInfoNav from '../components/VendorInfoNav';
 const VendorProfilePage = () => {
   const [vendor, setVendor] = useState({});
   const vendorId = useParams().id;
+  const showMarkets = useParams().piacok;
 
   useEffect(() => {
     const fetchVendor = async () => {
@@ -29,6 +30,7 @@ const VendorProfilePage = () => {
       />
       <VendorInfoNav
         vendorId={vendorId}
+        showMarkets={showMarkets}
         products={vendor.products}
         facebook={vendor.facebook}
         instagram={vendor.instagram}
