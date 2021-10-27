@@ -85,4 +85,5 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            echo "Deploy backend: ${{ github.sha }}"
+            cd ~/felpenzzel
+            ./deploy.sh stage ${{ github.sha }}
