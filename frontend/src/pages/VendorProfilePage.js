@@ -5,8 +5,9 @@ import Footer from '../components/Footer';
 import VendorHeader from '../components/VendorHeader';
 import VendorInfoNav from '../components/VendorInfoNav';
 
-const VendorProfilePage = ({ vendorId }) => {
+const VendorProfilePage = () => {
   const [vendor, setVendor] = useState({});
+  const vendorId = useParams().id;
 
   useEffect(() => {
     const fetchVendor = async () => {
