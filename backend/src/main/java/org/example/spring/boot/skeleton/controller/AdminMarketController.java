@@ -2,6 +2,7 @@ package org.example.spring.boot.skeleton.controller;
 
 import lombok.AllArgsConstructor;
 import org.example.spring.boot.skeleton.entities.Market;
+import org.example.spring.boot.skeleton.exceptions.NoSuchMarketException;
 import org.example.spring.boot.skeleton.model.MarketDTO;
 import org.example.spring.boot.skeleton.services.MarketService;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +31,7 @@ public class AdminMarketController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<MarketDTO> updateMarket(@PathVariable @RequestBody Long id, @RequestBody MarketDTO marketDTO){
+    public ResponseEntity<MarketDTO> updateMarket(@PathVariable @RequestBody Long id, @RequestBody MarketDTO marketDTO) throws NoSuchMarketException {
         return ResponseEntity.ok(marketService.updateMarketById(id, marketDTO));
     }
 

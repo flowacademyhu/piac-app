@@ -39,7 +39,7 @@ public class MarketService {
     }
 
     public MarketDTO getMarketById(Long id) throws Exception {
-        return marketToDTO(marketRepository.findById(id).orElseThrow(() ->new NoSuchMarketException()));
+        return marketToDTO(marketRepository.findById(id).orElseThrow(NoSuchMarketException::new));
     }
 
     public void deleteAllMarkets() {
@@ -50,8 +50,8 @@ public class MarketService {
         marketRepository.deleteById(id);
     }
 
-    public MarketDTO updateMarketById(Long id, MarketDTO marketDTO) {
-        Market market = marketRepository.findById(id).orElse(null).builder()
+    public MarketDTO updateMarketById(Long id, MarketDTO marketDTO) throws NoSuchMarketException {
+        Market market = marketRepository.findById(id).orElseThrow(NoSuchMarketException::new).builder()
                 .profilePic(marketDTO.getProfilePic())
                 .date(marketDTO.getDate())
                 .place(marketDTO.getPlace())
@@ -65,7 +65,7 @@ public class MarketService {
     }
 
     public List<SimpleVendorDTO> findAllVendorsAtGivenMarket(Long id) throws NoSuchMarketException {
-        Market market = marketRepository.findById(id).orElseThrow(() -> new NoSuchMarketException() );
+        Market market = marketRepository.findById(id).orElseThrow(NoSuchMarketException::new);
         return market.getVendors().stream().map(vendorService::vendorToSimpleDTO).collect(Collectors.toList());
     }
 
@@ -90,7 +90,7 @@ public class MarketService {
     }
 
     public Market findMarketByName(String name) throws NoSuchVendorException {
-        return marketRepository.findByName(name).orElseThrow(() -> new NoSuchVendorException());
+        return marketRepository.findByName(name).orElseThrow(NoSuchVendorException::new);
     }
 }
 

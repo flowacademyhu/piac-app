@@ -26,7 +26,7 @@ public class VendorService {
     private final VendorRepository vendorRepository;
 
     public DetailVendorDTO addVendor(VendorDTO vendorDTO) throws Exception {
-        Market market = marketRepository.findById(vendorDTO.getMarketId()).orElseThrow(() -> new NoSuchMarketException());
+        Market market = marketRepository.findById(vendorDTO.getMarketId()).orElseThrow(NoSuchMarketException::new);
         Set<String> allProducts = new HashSet<>(vendorDTO.getProducts());
         Vendor vendor = Vendor.builder()
                 .intro(vendorDTO.getIntro())
@@ -74,13 +74,13 @@ public class VendorService {
                 .collect(Collectors.toList());
     }
 
-    public DetailVendorDTO findVendorById(Long id){
-        return vendorToResponse(vendorRepository.findById(id).orElse(null));
+    public DetailVendorDTO findVendorById(Long id) throws NoSuchVendorException {
+        return vendorToResponse(vendorRepository.findById(id).orElseThrow(NoSuchVendorException::new));
     }
 
     public DetailVendorDTO updateVendor(Long id, VendorDTO vendorDTO) throws Exception {
-        Market market = marketRepository.findById(vendorDTO.getMarketId()).orElseThrow(() -> new NoSuchMarketException());
-        Vendor vendor = vendorRepository.findById(id).orElseThrow(() -> new NoSuchVendorException());
+        Market market = marketRepository.findById(vendorDTO.getMarketId()).orElseThrow(NoSuchMarketException::new);
+        Vendor vendor = vendorRepository.findById(id).orElseThrow(NoSuchVendorException::new);
             Set<Market> set = new HashSet();
             set.add(market);
             vendor.setMarkets(set);
