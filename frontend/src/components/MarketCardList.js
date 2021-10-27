@@ -1,11 +1,8 @@
 import MarketCard from './MarketCard';
 import React, { useState, useEffect } from 'react';
 import '../styles/MarketCardList.css';
-<<<<<<< HEAD
-=======
-import { Link } from 'react-router-dom';
->>>>>>> 3c9f118c011a7a2c07e74a86a9b67e0b64320250
 import { fetchMarkets } from './Service';
+import { Link } from 'react-router-dom';
 
 const MarketCardList = () => {
   const [markets, setMarkets] = useState([]);
@@ -21,17 +18,20 @@ const MarketCardList = () => {
 
   return (
     <div className="card-list">
-      {markets.map((post, index) => {
+      {markets.map((post) => {
         return (
-          <MarketCard
-            profilePic={post.profilePic}
-            marketName={post.name}
-            marketLocation={post.place}
-            marketDateYearMonthDay={post.date}
-            marketDateHours={post.startAndEndHour}
-            vendorsAmount={post.numberOfVendors}
-            key={index}
-          />
+          <div key={post.id}>
+            <Link to={`/piacok/${post.id}`} style={{ textDecoration: 'none' }}>
+              <MarketCard
+                style={{ textDecoration: 'none' }}
+                profilePic={post.profilePic}
+                marketName={post.name}
+                marketLocation={post.place}
+                marketDateYearMonthDay={post.date}
+                vendorsAmount={post.numberOfVendors}
+              />
+            </Link>
+          </div>
         );
       })}
     </div>

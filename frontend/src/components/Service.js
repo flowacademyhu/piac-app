@@ -3,7 +3,7 @@ import axios from 'axios';
 const MarketAPI = '/v1/api/market';
 
 export const fetchMarkets = async () => {
-  let url = MarketAPI;
+  const url = MarketAPI;
   try {
     const response = await axios.get(url);
     const data = response.data;
@@ -16,7 +16,7 @@ export const fetchMarkets = async () => {
 const VendorAPI = '/v1/api/vendor';
 
 export const fetchVendors = async () => {
-  let url = VendorAPI;
+  const url = VendorAPI;
   try {
     const response = await axios.get(url);
     const data = response.data;

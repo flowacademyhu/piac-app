@@ -1,25 +1,12 @@
-import MarketCard from './MarketCard';
 import React, { useState, useEffect } from 'react';
 import '../styles/MarketCardList.css';
-<<<<<<< HEAD
-import { fetchMarkets } from './Service';
-=======
-import { Link } from 'react-router-dom';
 import { fetchVendors } from './Service';
->>>>>>> 3c9f118c011a7a2c07e74a86a9b67e0b64320250
+import VendorCard from './VendorCard';
+import { Link } from 'react-router-dom';
 
-const MarketCardList = () => {
-  const [markets, setMarkets] = useState([]);
+const imageLogo =
+  'https://scontent-vie1-1.xx.fbcdn.net/v/t1.6435-9/128194749_3718400788226892_2631429779387369230_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=973b4a&_nc_ohc=ZRn8DPeEpMgAX_e0Aw-&_nc_ht=scontent-vie1-1.xx&oh=b25f36537a474921e7c1bf971c277d3c&oe=6195513B';
 
-<<<<<<< HEAD
-  const getMarkets = async () => {
-    const result = await fetchMarkets();
-    setMarkets(result);
-  };
-
-  useEffect(() => {
-    getMarkets();
-=======
 const VendorCardList = () => {
   const [vendors, setVendors] = useState([]);
 
@@ -30,26 +17,25 @@ const VendorCardList = () => {
 
   useEffect(() => {
     getVendors();
->>>>>>> 3c9f118c011a7a2c07e74a86a9b67e0b64320250
   }, []);
 
   return (
     <div className="card-list">
-      {markets.map((post, index) => {
+      {vendors.map((post) => {
         return (
-          <MarketCard
-            profilePic={post.profilePic}
-            marketName={post.name}
-            marketLocation={post.place}
-            marketDateYearMonthDay={post.date}
-            marketDateHours={post.startAndEndHour}
-            vendorsAmount={post.numberOfVendors}
-            key={index}
-          />
+          <div key={post.id}>
+            <Link to={`/arusok/${post.id}`} style={{ textDecoration: 'none' }}>
+              <VendorCard
+                imageLogo={imageLogo}
+                vendor={post.name}
+                vendorDesc={post.intro}
+              />
+            </Link>
+          </div>
         );
       })}
     </div>
   );
 };
 
-export default MarketCardList;
+export default VendorCardList;
