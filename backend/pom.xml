@@ -14,7 +14,7 @@
     <properties>
         <java.version>11</java.version>
     </properties>
-    <groupId>com.spring.security</groupId>
+    <groupId>org.flowacademy.hu</groupId>
     <artifactId>jwtbasic</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>jwtbasic</name>

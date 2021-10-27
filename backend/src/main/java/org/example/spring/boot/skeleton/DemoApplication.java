@@ -1,8 +1,10 @@
 package org.example.spring.boot.skeleton;
 
+import org.example.spring.boot.skeleton.helper.StartUpRunner;
 import org.example.spring.boot.skeleton.model.MarketDTO;
 import org.example.spring.boot.skeleton.model.VendorDTO;
 import org.example.spring.boot.skeleton.services.MarketService;
+import org.example.spring.boot.skeleton.services.VendorService;
 import org.example.spring.boot.skeleton.utilities.ProfilePics;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -14,14 +16,19 @@ import java.util.Set;
 public class DemoApplication implements CommandLineRunner {
 
 	private final MarketService marketService;
+	private final VendorService vendorService;
+	private StartUpRunner startUpRunner;
 
-	public DemoApplication(MarketService marketService) {
+
+	public DemoApplication(MarketService marketService, VendorService vendorService) {
 		this.marketService = marketService;
+		this.vendorService = vendorService;
 	}
 
 
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
+
 	}
 
 
@@ -76,7 +83,7 @@ public class DemoApplication implements CommandLineRunner {
 			vendorDTO1.setMarketId(foundMarket.getId());
 			Set<String> newSet = Set.of("chilik","paprikakrémek","csípős szószok");
 			vendorDTO1.setProducts(newSet);
-			marketService.addVendor(vendorDTO1);
+			vendorService.addVendor(vendorDTO1);
 
 		VendorDTO vendorDTO2 = new VendorDTO();
 			vendorDTO2.setName("Jut incase");
@@ -85,7 +92,7 @@ public class DemoApplication implements CommandLineRunner {
 			vendorDTO2.setMarketId(foundMarket2.getId());
 			Set<String> newSet2 = Set.of("lebomló zacskók","papírdobozok","kézműves szappanok");
 			vendorDTO2.setProducts(newSet2);
-			marketService.addVendor(vendorDTO2);
+			vendorService.addVendor(vendorDTO2);
 	}
 
 

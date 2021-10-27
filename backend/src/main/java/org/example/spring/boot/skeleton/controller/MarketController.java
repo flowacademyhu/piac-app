@@ -34,20 +34,4 @@ public class MarketController {
         return ResponseEntity.ok(marketService.findAllVendorsAtGivenMarket(id));
     }
 
-    @DeleteMapping
-    public void deleteAllMarkets(){
-        marketService.deleteAllMarkets();
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteMarketById(@PathVariable Long id){
-        marketService.deleteMarketById(id);
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<MarketDTO> updateMarket(@PathVariable @RequestBody Long id, @RequestBody MarketDTO marketDTO){
-         return ResponseEntity.ok(marketService.updateMarketById(id, marketDTO));
-    }
-
-
 }

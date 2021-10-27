@@ -20,18 +20,19 @@ public class MarketService {
 
     private final MarketRepository marketRepository;
     private final VendorRepository vendorRepository;
+    private final VendorService vendorService;
 
-    public MarketDTO addMarket(MarketDTO marketDTO){
-        marketRepository.save(marketDTOToEntity(marketDTO));
-        return marketDTO;
+    public Market addMarket(MarketDTO marketDTO) {
+        return marketRepository.save(marketDTOToEntity(marketDTO));
+
     }
 
-    public List<MarketDTO> allMarkets(){
-       return  marketRepository.findAll()
+    public List<MarketDTO> allMarkets() {
+        return marketRepository.findAll()
                 .stream()
                 .map(this::marketToDTO)
                 .sorted(Comparator.comparing(MarketDTO::getDate).reversed())
-                .peek( m -> m.setVendors(null))
+                .peek(m -> m.setVendors(null))
                 .collect(Collectors.toList());
     }
 
@@ -55,17 +56,18 @@ public class MarketService {
                 .id(id)
                 .name(marketDTO.getName())
                 .build();
-      marketRepository.save(market);
-      return marketToDTO(market);
+        marketRepository.save(market);
+
+        return marketToDTO(market);
 
     }
 
-    public List<SimpleVendorDTO>findAllVendorsAtGivenMarket(Long id){
-       Market market = marketRepository.findById(id).orElseThrow();
-       return market.getVendors().stream().map(this::vendorToSimpleDTO).collect(Collectors.toList());
+    public List<SimpleVendorDTO> findAllVendorsAtGivenMarket(Long id) {
+        Market market = marketRepository.findById(id).orElseThrow();
+        return market.getVendors().stream().map(vendorService::vendorToSimpleDTO).collect(Collectors.toList());
     }
 
-    public Market marketDTOToEntity(MarketDTO marketDTO){
+    public Market marketDTOToEntity(MarketDTO marketDTO) {
         return Market.builder()
                 .profilePic(marketDTO.getProfilePic())
                 .date(marketDTO.getDate())
@@ -74,95 +76,20 @@ public class MarketService {
                 .build();
     }
 
-    public MarketDTO marketToDTO(Market market){
+    public MarketDTO marketToDTO(Market market) {
         return new MarketDTO()
                 .setProfilePic(market.getProfilePic())
                 .setId(market.getId())
-                .setVendors(market.getVendors().stream().map(this::vendorToSimpleDTO).collect(Collectors.toSet()))
+                .setVendors(market.getVendors().stream().map(vendorService::vendorToSimpleDTO).collect(Collectors.toSet()))
                 .setDate(market.getDate())
                 .setName(market.getName())
                 .setPlace(market.getPlace())
                 .setNumberOfVendors(market.getVendors().size());
     }
 
-    public Market findMarketByName (String name){
-       return marketRepository.findByName(name).orElse(null);
-    }
-
- //----------------------------------------VENDOR----------------------------------------------
-
-    public DetailVendorDTO addVendor(VendorDTO vendorDTO){
-        Market market = marketRepository.findById(vendorDTO.getMarketId()).orElse(null);
-       Set<String> allProducts = new HashSet<>(vendorDTO.getProducts());
-        Vendor vendor = Vendor.builder()
-                .intro(vendorDTO.getIntro())
-                .name(vendorDTO.getName())
-                .cardPayment(vendorDTO.getCardPayment())
-                .markets(new HashSet<>())
-                .products(allProducts)
-                .email(vendorDTO.getEmail())
-                .facebook(vendorDTO.getFacebook())
-                .instagram(vendorDTO.getInstagram())
-                .webSite(vendorDTO.getWebSite())
-                .phone(vendorDTO.getPhone())
-                .build();
-        vendor.getMarkets().add(market);
-        vendorRepository.save(vendor);
-        return vendorToResponse(vendor);
-    }
-
-    public DetailVendorDTO vendorToResponse(Vendor vendor){
-        return new DetailVendorDTO()
-                .setId(vendor.getId())
-                .setIntro(vendor.getIntro())
-                .setName(vendor.getName())
-                .setCardPayment(vendor.getCardPayment())
-                .setProducts(vendor.getProducts())
-                .setEmail(vendor.getEmail())
-                .setFacebook(vendor.getFacebook())
-                .setInstagram(vendor.getInstagram())
-                .setPhone(vendor.getPhone())
-                .setWebSite(vendor.getWebSite());
-    }
-
-    public SimpleVendorDTO vendorToSimpleDTO(Vendor vendor){
-        return new SimpleVendorDTO()
-                .setIntro(vendor.getIntro())
-                .setName(vendor.getName())
-                .setId(vendor.getId());
-    }
-
-    public List<DetailVendorDTO> allVendors() {
-      return vendorRepository.findAll()
-              .stream()
-              .map(this::vendorToResponse)
-              .sorted(Comparator.comparing(DetailVendorDTO::getName,String.CASE_INSENSITIVE_ORDER))
-              .collect(Collectors.toList());
-    }
-
-    public DetailVendorDTO findVendorById(Long id){
-       return vendorToResponse(vendorRepository.findById(id).orElse(null));
-    }
-
-    public DetailVendorDTO updateVendor(Long id, VendorDTO vendorDTO){
-           Market market = marketRepository.findById(vendorDTO.getMarketId()).orElseThrow(null);
-           Vendor vendor = vendorRepository.findById(id).orElseThrow(null);
-           Set<Market> set = new HashSet();
-           set.add(market);
-           vendor.setMarkets(set);
-           vendor.setProducts(vendorDTO.getProducts());
-           vendor.setIntro(vendorDTO.getIntro());
-           vendor.setName(vendorDTO.getName());
-           vendor.setCardPayment(vendorDTO.getCardPayment());
-           vendor.setId(id);
-           vendor.setFacebook(vendorDTO.getFacebook());
-           vendor.setEmail(vendorDTO.getEmail());
-           vendor.setPhone(vendor.getPhone());
-           vendor.setInstagram(vendorDTO.getInstagram());
-           vendor.setWebSite(vendorDTO.getWebSite());
-
-        vendorRepository.save(vendor);
-        return vendorToResponse(vendor);
-
+    public Market findMarketByName(String name) {
+        return marketRepository.findByName(name).orElse(null);
     }
 }
+
+
