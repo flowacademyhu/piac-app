@@ -77,16 +77,12 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
     needs: [build-frontend, build-backend]
-    env:
-      SHA: ${{ github.sha }}
     steps:
       - name: Deploy backend
         uses: appleboy/ssh-action@master
-        env:
-          SHA: ${{ github.sha }}
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            echo "Deploy backend: $SHA"
+            echo "Deploy backend: ${{ github.sha }}"
