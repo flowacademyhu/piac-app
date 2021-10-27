@@ -7,6 +7,7 @@ public class DetailVendorDTO {
 
     private String name;
     private String intro;
+    private String profilePic;
     private Set<String> products = new HashSet<>();
     private boolean cardPayment;
     private String email;
@@ -14,10 +15,12 @@ public class DetailVendorDTO {
     private String instagram;
     private String phone;
     private String webSite;
+    private String introductionLong;
 
-    public DetailVendorDTO(String name, String intro, boolean cardPayment) {
+    public DetailVendorDTO(String name, String intro, String profilePic, boolean cardPayment) {
         this.name = name;
         this.intro = intro;
+        this.profilePic = profilePic;
         this.cardPayment = cardPayment;
     }
 
@@ -39,6 +42,15 @@ public class DetailVendorDTO {
 
     public DetailVendorDTO setIntro(String intro) {
         this.intro = intro;
+        return this;
+    }
+
+    public String getProfilePic() {
+        return profilePic;
+    }
+
+    public DetailVendorDTO setProfilePic(String profilePic) {
+        this.profilePic = profilePic;
         return this;
     }
 
@@ -102,6 +114,15 @@ public class DetailVendorDTO {
 
     public DetailVendorDTO setWebSite(String webSite) {
         this.webSite = webSite;
+        return this;
+    }
+
+    public String getIntroductionLong() {
+        return introductionLong;
+    }
+
+    public DetailVendorDTO setIntroductionLong(String introductionLong) {
+        this.introductionLong = introductionLong;
         return this;
     }
 }

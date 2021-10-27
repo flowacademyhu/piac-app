@@ -94,6 +94,7 @@ public class MarketService {
        Set<String> allProducts = vendorDTO.getProducts().stream().collect(Collectors.toSet());
         Vendor vendor = Vendor.builder()
                 .intro(vendorDTO.getIntro())
+                .profilePic((vendorDTO.getProfilePic()))
                 .name(vendorDTO.getName())
                 .cardPayment(vendorDTO.getCardPayment())
                 .markets(new HashSet<>())
@@ -103,6 +104,7 @@ public class MarketService {
                 .instagram(vendorDTO.getInstagram())
                 .webSite(vendorDTO.getWebSite())
                 .phone(vendorDTO.getPhone())
+                .introductionLong((vendorDTO.getIntroductionLong()))
                 .build();
         vendor.getMarkets().add(market);
         vendorRepository.save(vendor);
@@ -114,19 +116,22 @@ public class MarketService {
         return new DetailVendorDTO()
                 .setIntro(vendor.getIntro())
                 .setName(vendor.getName())
+                .setProfilePic((vendor.getProfilePic()))
                 .setCardPayment(vendor.getCardPayment())
                 .setProducts(vendor.getProducts())
                 .setEmail(vendor.getEmail())
                 .setFacebook(vendor.getFacebook())
                 .setInstagram(vendor.getInstagram())
                 .setPhone(vendor.getPhone())
-                .setWebSite(vendor.getWebSite());
+                .setWebSite(vendor.getWebSite())
+                .setIntroductionLong(vendor.getIntroductionLong());
     }
 
     public SimpleVendorDTO vendorToSimpleDTO(Vendor vendor){
         return new SimpleVendorDTO()
                 .setIntro(vendor.getIntro())
                 .setName(vendor.getName())
+                .setProfilePic((vendor.getProfilePic()))
                 .setId(vendor.getId());
     }
 
@@ -151,6 +156,7 @@ public class MarketService {
            vendor.setProducts(vendorDTO.getProducts());
            vendor.setIntro(vendorDTO.getIntro());
            vendor.setName(vendorDTO.getName());
+           vendor.setProfilePic((vendorDTO.getProfilePic()));
            vendor.setCardPayment(vendorDTO.getCardPayment());
            vendor.setId(id);
            vendor.setFacebook(vendorDTO.getFacebook());
@@ -158,6 +164,7 @@ public class MarketService {
            vendor.setPhone(vendor.getPhone());
            vendor.setInstagram(vendorDTO.getInstagram());
            vendor.setWebSite(vendorDTO.getWebSite());
+           vendor.setIntroductionLong(vendorDTO.getIntroductionLong());
 
         vendorRepository.save(vendor);
         return vendorToResponse(vendor);
