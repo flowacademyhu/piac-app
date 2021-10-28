@@ -71,3 +71,37 @@ jobs:
 
       - name: Push Docker image
         run: docker push $IMAGE_NAME
+        
+  deploy-staging:
+    name: Deploy to staging
+    runs-on: ubuntu-latest
+    environment: stage
+    if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
+    needs: [build-frontend, build-backend]
+    steps:
+      - name: Deploy backend
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd ~/felpenzzel
+            ./deploy.sh stage ${{ github.sha }}
+            
+  deploy-live:
+    name: Deploy to live
+    runs-on: ubuntu-latest
+    environment: live
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    needs: [build-frontend, build-backend]
+    steps:
+      - name: Deploy backend
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd ~/felpenzzel
+            ./deploy.sh live ${{ github.sha }}

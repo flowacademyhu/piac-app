@@ -1,9 +1,9 @@
-import emailLogo from "./icons/social/email.svg";
-import facebookLogo from "./icons/social/facebook.svg";
-import instagramLogo from "./icons/social/instagram.svg";
-import phoneLogo from "./icons/social/phone.svg";
-import webLogo from "./icons/social/web.svg";
-import "../styles/VendorContacts.css";
+import emailLogo from './icons/social/email.svg';
+import facebookLogo from './icons/social/facebook.svg';
+import instagramLogo from './icons/social/instagram.svg';
+import phoneLogo from './icons/social/phone.svg';
+import webLogo from './icons/social/web.svg';
+import '../styles/VendorContacts.css';
 
 const VendorContacts = (props) => {
   const { facebook, instagram, website, email, phone } = props;
@@ -11,28 +11,28 @@ const VendorContacts = (props) => {
     {
       title: facebook,
       logo: facebookLogo,
-      link: "https:",
+      link: 'https:'
     },
     {
       title: instagram,
       logo: instagramLogo,
-      link: "https:",
+      link: 'https:'
     },
     {
       title: website,
       logo: webLogo,
-      link: "https:",
+      link: 'https:'
     },
     {
       title: email,
       logo: emailLogo,
-      link: "mailto:",
+      link: 'mailto:'
     },
     {
       title: phone,
       logo: phoneLogo,
-      link: "tel:",
-    },
+      link: 'tel:'
+    }
   ];
 
   return (
