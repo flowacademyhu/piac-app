@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import '../styles/MarketCardList.css';
 import { fetchVendors } from './Service';
 import VendorCard from './VendorCard';
@@ -15,7 +15,7 @@ const VendorCardList = () => {
     setVendors(result);
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     getVendors();
   }, []);
 
