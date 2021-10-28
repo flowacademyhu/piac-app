@@ -43,7 +43,12 @@ const VendorContacts = (props) => {
           contact.title && (
             <div key={index} className="contact-info">
               <img src={contact.logo} className="contact-logo" alt="" />
-              <a className="contact-links" href={contact.link + contact.title}>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-links"
+                href={contact.link + contact.title}
+              >
                 {contact.title}
               </a>
             </div>
