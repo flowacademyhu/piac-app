@@ -12,8 +12,6 @@ import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 const Footer = () => {
   const location = useLocation();
 
-  useLayoutEffect(() => {}, []);
-
   return (
     <div className="footer">
       <Container className="container-fluid">

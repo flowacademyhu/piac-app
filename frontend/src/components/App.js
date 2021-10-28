@@ -5,29 +5,31 @@ import MainPage from '../pages/MainPage';
 import VendorPage from '../pages/VendorPage';
 import VendorProfilePage from '../pages/VendorProfilePage';
 import VendorsByMarketPage from './VendorsByMarketPage';
+import Footer from './Footer';
 
 const App = () => {
   return (
-    <div className='App'>
-      <div className='container-fluid'>
+    <div className="App">
+      <div className="container-fluid">
         <Router>
           <Switch>
-            <Route exact path='/'>
+            <Route exact path="/">
               <MainPage />
             </Route>
-            <Route exact path='/piacok/:id'>
+            <Route exact path="/piacok/:id">
               <VendorsByMarketPage />
             </Route>
-            <Route exact path='/arusok'>
+            <Route exact path="/arusok">
               <VendorPage />
             </Route>
-            <Route exact path='/arusok/:id'>
+            <Route exact path="/arusok/:id">
               <VendorProfilePage />
             </Route>
-            <Route exact path='/arusprofil'>
+            <Route exact path="/arusprofil">
               <VendorProfilePage />
             </Route>
           </Switch>
+          <Footer />
         </Router>
       </div>
     </div>

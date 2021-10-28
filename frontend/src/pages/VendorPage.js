@@ -7,7 +7,6 @@ const VendorPage = () => {
     <>
       <HomeVendorHeader />
       <VendorCardList />
-      <Footer />
     </>
   );
 };
