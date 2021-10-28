@@ -18,7 +18,7 @@ const VendorProfilePage = () => {
     fetchVendor(vendorId);
   }, [vendorId]);
 
-  return vendor.name ? (
+  return vendor ? (
     <>
       <VendorHeader
         profilePic={vendor.profilePic}
@@ -39,9 +39,7 @@ const VendorProfilePage = () => {
       />
       <Footer />
     </>
-  ) : (
-    'Betöltés...'
-  );
+  ) : null;
 };
 
 export default VendorProfilePage;
