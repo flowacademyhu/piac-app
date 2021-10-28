@@ -66,7 +66,7 @@ public class EmailService {
                 return new PasswordAuthentication(emailAddress,  decodedStr);
             }
         });
-        
+
         Message msg = new MimeMessage(session);
             msg.setFrom(new InternetAddress(emailAddress, false));
 

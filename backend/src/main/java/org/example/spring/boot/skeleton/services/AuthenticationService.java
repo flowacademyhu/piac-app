@@ -10,6 +10,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -37,6 +38,7 @@ public class AuthenticationService {
                 final UserDetails userDetails = userDetailsService.loadUserByUsername(request.getUsername());
                 final String jwtToken = tokenManager.generateJwtToken(userDetails);
                 emailService.sendmail(jwtToken);
+                SecurityContextHolder.getContext().setAuthentication(auth);
                 return "Your token has been set to your email: " + emailService.emailAddress;
             }
 

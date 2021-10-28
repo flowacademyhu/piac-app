@@ -18,16 +18,6 @@ public class AdminVendorController {
 
     private final VendorService vendorService;
 
-    @GetMapping
-    public ResponseEntity<List<DetailVendorDTO>> allVendors(){
-        return ResponseEntity.ok(vendorService.allVendors());
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<DetailVendorDTO> findVendorById(@PathVariable @RequestBody Long id) throws NoSuchVendorException {
-        return ResponseEntity.ok(vendorService.findVendorById(id));
-    }
-
     @PostMapping
     public ResponseEntity<DetailVendorDTO> addVendorToMarket(@RequestBody VendorDTO vendorDTO) throws Exception {
         return ResponseEntity.ok(vendorService.addVendor(vendorDTO));

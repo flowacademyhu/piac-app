@@ -1,7 +1,5 @@
 package org.example.spring.boot.skeleton.config;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.example.spring.boot.skeleton.jwtandsecurity.JwtAuthenticationEntryPoint;
 import org.example.spring.boot.skeleton.jwtandsecurity.JwtFilter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,24 +42,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManagerBean();
     }
 
-    @Autowired
-    public void configureAuth(AuthenticationManagerBuilder auth) throws Exception{
-            auth.inMemoryAuthentication()
-                .withUser("user")
-                .password("pass")
-                .roles("USER")
-                .and()
-                .withUser(adminName)
-                .password("password")
-                .roles("ADMIN");
-    }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/**/admin/**").hasRole("ADMIN")
-                .and().authorizeRequests().antMatchers("/**/admin/**").authenticated()
+                    .antMatchers("/**/admin/**").hasRole("ADMIN")
                 .anyRequest().permitAll()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(authenticationEntryPoint)

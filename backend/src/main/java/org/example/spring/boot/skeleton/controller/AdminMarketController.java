@@ -19,21 +19,6 @@ public class AdminMarketController {
 
     private final MarketService marketService;
 
-    @GetMapping
-    public ResponseEntity<List<MarketDTO>> allMarkets(){
-        return ResponseEntity.ok(marketService.allMarkets());
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<MarketDTO> getMarketById(@RequestBody @PathVariable Long id) throws Exception {
-        return ResponseEntity.ok(marketService.getMarketById(id));
-    }
-
-    @GetMapping("/{id}/vendors")
-    public ResponseEntity<List<SimpleVendorDTO>> findAllVendorsAtGivenMarket(@PathVariable @RequestBody Long id) throws NoSuchMarketException {
-        return ResponseEntity.ok(marketService.findAllVendorsAtGivenMarket(id));
-    }
-
     @PostMapping
     public ResponseEntity<Market> addMarket(@RequestBody MarketDTO marketDTO){
         return ResponseEntity.ok(marketService.addMarket(marketDTO));
