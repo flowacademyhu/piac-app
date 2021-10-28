@@ -18,7 +18,6 @@ const MarketCardList = () => {
 
   return (
     <div className="card-list">
-      {markets.map((post) => {
       {markets.map((market) => {
         return (
           <div key={market.id}>
