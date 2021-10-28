@@ -1,29 +1,15 @@
-<<<<<<< HEAD
-import MarketCard from "./MarketCard";
-import React, { useState, useEffect, Component } from "react";
-import axios from "axios";
-import "../styles/MarketCardList.css";
-=======
 import MarketCard from './MarketCard';
 import React, { useState, useEffect } from 'react';
 import '../styles/MarketCardList.css';
 import { fetchMarkets } from './Service';
 import { Link } from 'react-router-dom';
->>>>>>> origin/develop
 
 const MarketCardList = () => {
   const [markets, setMarkets] = useState([]);
 
-<<<<<<< HEAD
-  const getPosts = async () => {
-    const response = await axios.get("http://localhost:8081/v1/api/market");
-
-    setPosts(response.data);
-=======
   const getMarkets = async () => {
     const result = await fetchMarkets();
     setMarkets(result);
->>>>>>> origin/develop
   };
 
   useEffect(() => {
@@ -32,22 +18,22 @@ const MarketCardList = () => {
 
   return (
     <div className="card-list">
-<<<<<<< HEAD
-      {posts.map((post, index) => {
-=======
       {markets.map((post) => {
->>>>>>> origin/develop
+      {markets.map((market) => {
         return (
-          <div key={post.id}>
-            <Link to={`/piacok/${post.id}`} style={{ textDecoration: 'none' }}>
+          <div key={market.id}>
+            <Link
+              to={`/piacok/${market.id}`}
+              style={{ textDecoration: 'none' }}
+            >
               <MarketCard
                 style={{ textDecoration: 'none' }}
-                profilePic={post.profilePic}
-                marketName={post.name}
-                marketLocation={post.place}
-                marketOpeningDate={post.openingDate}
-                marketClosingDate={post.closingDate}
-                vendorsAmount={post.numberOfVendors}
+                profilePic={market.profilePic}
+                marketName={market.name}
+                marketLocation={market.place}
+                marketOpeningDate={market.openingDate}
+                marketClosingDate={market.closingDate}
+                vendorsAmount={market.numberOfVendors}
               />
             </Link>
           </div>
