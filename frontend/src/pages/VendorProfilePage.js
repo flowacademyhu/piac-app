@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Footer from '../components/Footer';
 import VendorHeader from '../components/VendorHeader';
 import VendorInfoNav from '../components/VendorInfoNav';
 
-const VendorProfilePage = ({ vendorId }) => {
+const VendorProfilePage = () => {
   const [vendor, setVendor] = useState({});
+  const vendorId = useParams().id;
+  const showMarkets = useParams().piacok;
 
   useEffect(() => {
     const fetchVendor = async () => {
       const response = await axios.get(
-        'localhost:8081/v1/api/vendor/' + vendorId
+        'http://localhost:8081/v1/api/vendor/' + vendorId
       );
       setVendor(response.data);
     };
@@ -20,19 +23,21 @@ const VendorProfilePage = ({ vendorId }) => {
   return (
     <>
       <VendorHeader
-        logo={vendor.logo}
+        profilePic={vendor.profilePic}
         name={vendor.name}
-        description={vendor.description}
+        intro={vendor.intro}
         cardPayment={vendor.cardPayment}
       />
       <VendorInfoNav
+        vendorId={vendorId}
+        showMarkets={showMarkets}
         products={vendor.products}
         facebook={vendor.facebook}
         instagram={vendor.instagram}
-        website={vendor.website}
+        website={vendor.webSite}
         email={vendor.email}
         phone={vendor.phone}
-        introduction={vendor.intro}
+        introductionLong={vendor.introductionLong}
       />
       <Footer />
     </>
