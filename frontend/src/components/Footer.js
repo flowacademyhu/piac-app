@@ -14,7 +14,7 @@ const Footer = () => {
   return (
     <div className="footer">
       <Container className="container-fluid">
-        <Row>
+        <Row className="footer-row">
           <Col style={{ cursor: 'pointer' }}>
             <Link className="footer-link" to="/">
               <img
