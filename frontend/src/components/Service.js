@@ -43,9 +43,9 @@ export const fetchMarketById = (id) => {
 };
 
 export const fetchVendorById = async (id) => {
-  const url = VendorAPI;
+  const url = VendorAPI + '/' + id;
   try {
-    const response = await axios.get(url + '/' + id);
+    const response = await axios.get(url);
     const data = response.data;
     return data;
   } catch (error) {
