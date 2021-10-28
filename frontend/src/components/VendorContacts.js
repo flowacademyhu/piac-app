@@ -43,7 +43,9 @@ const VendorContacts = (props) => {
           contact.title && (
             <div key={index} className="contact-info">
               <img src={contact.logo} className="contact-logo" alt="" />
-              <a href={contact.link + contact.title}>{contact.title}</a>
+              <a className="contact-links" href={contact.link + contact.title}>
+                {contact.title}
+              </a>
             </div>
           )
         );
