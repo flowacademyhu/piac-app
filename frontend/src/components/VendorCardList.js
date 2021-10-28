@@ -17,15 +17,18 @@ const VendorCardList = () => {
   }, []);
 
   return (
-    <div className="card-list">
-      {vendors.map((post) => {
+    <div className='card-list'>
+      {vendors.map((vendor) => {
         return (
-          <div key={post.id}>
-            <Link to={`/arusok/${post.id}`} style={{ textDecoration: 'none' }}>
+          <div key={vendor.id}>
+            <Link
+              to={`/arusok/${vendor.id}`}
+              style={{ textDecoration: 'none' }}
+            >
               <VendorCard
-                imageLogo={post.profilePic}
-                vendor={post.name}
-                vendorDesc={post.intro}
+                imageLogo={vendor.profilePic}
+                vendor={vendor.name}
+                vendorDesc={vendor.intro}
               />
             </Link>
           </div>
