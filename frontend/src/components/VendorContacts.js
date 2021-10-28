@@ -42,7 +42,7 @@ const VendorContacts = (props) => {
       {contacts.map((contact, index) => {
         return (
           contact.title && (
-            <div key={index} className="contact-info">
+            <div key={v4()} className="contact-info">
               <img src={contact.logo} className="contact-logo" alt="" />
               <a
                 target="_blank"
