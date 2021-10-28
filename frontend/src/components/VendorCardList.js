@@ -16,8 +16,6 @@ const VendorCardList = () => {
     getVendors();
   }, []);
 
-  console.log(vendors);
-
   return (
     <div className="card-list">
       {vendors.map((post) => {
