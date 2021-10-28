@@ -11,7 +11,10 @@ public class VendorDTO {
     private String name;
 
     @NotNull
-    @Size(max=1000)
+    private String profilePic;
+
+    @NotNull
+    @Size(min = 1, max=100)
     private String intro;
     @NotNull
     private boolean cardPayment;
@@ -24,6 +27,12 @@ public class VendorDTO {
    private String instagram;
    private String phone;
    private String webSite;
+<<<<<<< HEAD
+=======
+   @NotNull
+   @Size(min = 1, max = 1000)
+   private String introductionLong;
+>>>>>>> origin/develop
 
     public Set<String> getProducts() {
         return products;
@@ -34,8 +43,9 @@ public class VendorDTO {
         return this;
     }
 
-    public VendorDTO(String name, String intro, boolean cardPayment, Long marketId) {
+    public VendorDTO(String name, String profilePic, String intro, boolean cardPayment, Long marketId) {
         this.name = name;
+        this.profilePic = profilePic;
         this.intro = intro;
         this.cardPayment = cardPayment;
         this.marketId = marketId;
@@ -50,6 +60,15 @@ public class VendorDTO {
 
     public VendorDTO setName(String name) {
         this.name = name;
+        return this;
+    }
+
+    public String getProfilePic() {
+        return profilePic;
+    }
+
+    public VendorDTO setProfilePic(String profilePic) {
+        this.profilePic = profilePic;
         return this;
     }
 
@@ -122,6 +141,15 @@ public class VendorDTO {
 
     public VendorDTO setWebSite(String webSite) {
         this.webSite = webSite;
+        return this;
+    }
+
+    public String getIntroductionLong() {
+        return introductionLong;
+    }
+
+    public VendorDTO setIntroductionLong(String introductionLong) {
+        this.introductionLong = introductionLong;
         return this;
     }
 }

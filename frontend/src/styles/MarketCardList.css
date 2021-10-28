@@ -6,3 +6,11 @@
   row-gap: 30px;
   padding: 30px;
 }
+
+a {
+  color: #33221a;
+}
+
+a:hover {
+  color: inherit;
+}

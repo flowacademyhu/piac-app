@@ -8,6 +8,8 @@ import org.example.spring.boot.skeleton.services.MarketService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
+
 @RestController
 @RequestMapping("/v1/api/admin/market")
 @AllArgsConstructor
@@ -17,7 +19,7 @@ public class AdminMarketController {
     private final MarketService marketService;
 
     @PostMapping
-    public ResponseEntity<Market> addMarket(@RequestBody MarketDTO marketDTO){
+    public ResponseEntity<MarketDTO> addMarket(@RequestBody MarketDTO marketDTO) throws ParseException {
         return ResponseEntity.ok(marketService.addMarket(marketDTO));
     }
     @DeleteMapping

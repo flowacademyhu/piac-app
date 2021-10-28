@@ -3,18 +3,32 @@
 
 .marketCard {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto, 1fr, auto;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 1f auto;
   cursor: pointer;
   user-select: none;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  background-color: #fffdfc;
+  padding: 20px;
+  background-color: white;
   width: 100%;
-  margin: auto;
   position: relative;
+}
+.marketHeader {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 1f auto;
+  user-select: none;
+  padding: 20px;
+  background-color: #53b896;
+  width: 100%;
+  position: relative;
+  color: white;
+}
+
+.marketDescribe {
+  padding-left: 20px;
+  padding-top: 5px;
 }
 
 .marketLogo {
@@ -22,7 +36,7 @@
   border-radius: 80px;
   grid-column: 1;
   grid-row-start: 1;
-  grid-row-end: 4;
+  grid-row-end: 3;
   border-style: solid;
   border-width: 1px;
   border-color: lightgrey;
@@ -30,9 +44,13 @@
   margin: auto;
 }
 
-.marketName {
+.topMarketInfo {
   grid-column: 2;
   grid-row: 1;
+  padding-left: 20px;
+}
+
+.marketName {
   font-family: 'Open Sans', sans-serif;
   font-size: 20px;
   font-weight: bold;
@@ -40,19 +58,20 @@
 }
 
 .marketLocationAndDate {
-  grid-column: 2;
-  grid-row: 2;
   font-family: 'Open Sans', sans-serif;
   font-size: 12px;
   overflow-wrap: break-word;
 }
 
 .vendorNumber {
+  display: flex;
+  align-items: flex-end;
   grid-column: 2;
-  grid-row: 3;
+  grid-row: 2;
   font-family: 'Open Sans', sans-serif;
   font-size: 12px;
   overflow-wrap: break-word;
+  padding-left: 20px;
 }
 
 .parallelDateAndHour {
