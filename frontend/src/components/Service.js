@@ -49,6 +49,6 @@ export const fetchVendorById = async (id) => {
     const data = response.data;
     return data;
   } catch (error) {
-    console.warn('Failed to load vendors');
+    console.warn('Failed to load vendor');
   }
 };
