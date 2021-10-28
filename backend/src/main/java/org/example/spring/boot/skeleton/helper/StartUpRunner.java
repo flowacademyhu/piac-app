@@ -88,6 +88,8 @@ public class StartUpRunner implements CommandLineRunner {
         vendorDTO2.setFacebook("JustInCase-Facebook");
         vendorDTO2.setCardPayment(true);
         vendorDTO2.setPhone("+36308765432");
+        vendorDTO2.setWebSite("www.justincase.com");
+        vendorDTO2.setInstagram("justInCase.insta");
         vendorService.addVendor(vendorDTO2);
     }
 }

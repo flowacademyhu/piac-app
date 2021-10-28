@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import java.io.IOException;
+import java.util.Base64;
 import java.util.Date;
 import java.util.Properties;
 
@@ -57,11 +58,15 @@ public class EmailService {
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587");
 
+        Base64.Decoder decoder = Base64.getDecoder();
+        byte[] decodedBytes = decoder.decode(emailPassword);
+        String decodedStr = new String(decodedBytes);
         Session session = Session.getInstance(props, new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(emailAddress, emailPassword );
+                return new PasswordAuthentication(emailAddress,  decodedStr);
             }
         });
+        
         Message msg = new MimeMessage(session);
             msg.setFrom(new InternetAddress(emailAddress, false));
 
