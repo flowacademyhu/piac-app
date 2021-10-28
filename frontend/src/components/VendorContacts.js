@@ -38,10 +38,10 @@ const VendorContacts = (props) => {
   return (
     <div className="contact-container">
       <h1 className="contact-title">Elérhetőségek</h1>
-      {contacts.map((contact) => {
+      {contacts.map((contact, index) => {
         return (
           contact.title && (
-            <div className="contact-info">
+            <div key={index} className="contact-info">
               <img src={contact.logo} className="contact-logo" alt="" />
               <a href={contact.link + contact.title}>{contact.title}</a>
             </div>
