@@ -27,7 +27,8 @@ const MarketCardList = () => {
                 profilePic={post.profilePic}
                 marketName={post.name}
                 marketLocation={post.place}
-                marketDateYearMonthDay={post.date}
+                marketOpeningDate={post.openingDate}
+                marketClosingDate={post.closingDate}
                 vendorsAmount={post.numberOfVendors}
               />
             </Link>
