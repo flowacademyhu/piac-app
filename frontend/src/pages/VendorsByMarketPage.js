@@ -18,7 +18,6 @@ const VendorsByMarketPage = () => {
     fetchMarket(marketId);
   }, [marketId]);
 
-  console.log(market);
   return (
     <>
       <HeaderWithMarket
@@ -27,11 +26,9 @@ const VendorsByMarketPage = () => {
         place={market.place}
         date={market.date}
       />
-      {market.vendors && market.vendors.length > 0
-? (
+      {market.vendors && market.vendors.length > 0 ? (
         <VendorListOfOneMarket market={market} />
-      )
-: (
+      ) : (
         <VendorlistUploadInProgress />
       )}
       <Footer />
