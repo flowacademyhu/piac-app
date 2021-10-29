@@ -10,35 +10,40 @@ const VendorContacts = (props) => {
   const contacts = [
     {
       title: facebook,
-      logo: facebookLogo
+      logo: facebookLogo,
+      link: 'https:'
     },
     {
       title: instagram,
-      logo: instagramLogo
+      logo: instagramLogo,
+      link: 'https:'
     },
     {
       title: website,
-      logo: webLogo
+      logo: webLogo,
+      link: 'https:'
     },
     {
       title: email,
-      logo: emailLogo
+      logo: emailLogo,
+      link: 'mailto:'
     },
     {
       title: phone,
-      logo: phoneLogo
+      logo: phoneLogo,
+      link: 'tel:'
     }
   ];
 
   return (
-    <div className='container'>
-      <h1 className='title'>Elérhetőségek</h1>
+    <div className="contact-container">
+      <h1 className="contact-title">Elérhetőségek</h1>
       {contacts.map((contact) => {
         return (
           contact.title && (
-            <div className='info'>
-              <img src={contact.logo} className='logo' alt='' />
-              <span>{contact.title}</span>
+            <div className="contact-info">
+              <img src={contact.logo} className="contact-logo" alt="" />
+              <a href={contact.link + contact.title}>{contact.title}</a>
             </div>
           )
         );
