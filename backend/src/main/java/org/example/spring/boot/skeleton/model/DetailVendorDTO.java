@@ -5,6 +5,7 @@ import java.util.Set;
 
 public class DetailVendorDTO {
 
+    private Long id;
     private String name;
     private String intro;
     private String profilePic;
@@ -117,6 +118,18 @@ public class DetailVendorDTO {
         return this;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public DetailVendorDTO setId(Long id) {
+        this.id = id;
+        return this;
+    }
+
+    public boolean isCardPayment() {
+        return cardPayment;
+    }
     public String getIntroductionLong() {
         return introductionLong;
     }

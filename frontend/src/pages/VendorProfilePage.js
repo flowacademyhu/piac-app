@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
 import Footer from '../components/Footer';
 import VendorHeader from '../components/VendorHeader';
 import VendorInfoNav from '../components/VendorInfoNav';
+import { fetchVendorById } from '../components/Service';
 
 const VendorProfilePage = () => {
   const [vendor, setVendor] = useState({});
@@ -11,16 +11,14 @@ const VendorProfilePage = () => {
   const showMarkets = useParams().piacok;
 
   useEffect(() => {
-    const fetchVendor = async () => {
-      const response = await axios.get(
-        'http://localhost:8081/v1/api/vendor/' + vendorId
-      );
-      setVendor(response.data);
+    const fetchVendor = async (id) => {
+      const response = await fetchVendorById(id);
+      setVendor(response);
     };
-    fetchVendor();
+    fetchVendor(vendorId);
   }, [vendorId]);
 
-  return (
+  return vendor ? (
     <>
       <VendorHeader
         profilePic={vendor.profilePic}
@@ -40,7 +38,7 @@ const VendorProfilePage = () => {
         introductionLong={vendor.introductionLong}
       />
     </>
-  );
+  ) : null;
 };
 
 export default VendorProfilePage;

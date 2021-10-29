@@ -119,6 +119,7 @@ public class MarketService {
 
     public DetailVendorDTO vendorToResponse(Vendor vendor){
         return new DetailVendorDTO()
+                .setId(vendor.getId())
                 .setIntro(vendor.getIntro())
                 .setName(vendor.getName())
                 .setProfilePic((vendor.getProfilePic()))

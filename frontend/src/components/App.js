@@ -4,7 +4,7 @@ import './Header.css';
 import MainPage from '../pages/MainPage';
 import VendorPage from '../pages/VendorPage';
 import VendorProfilePage from '../pages/VendorProfilePage';
-import VendorsByMarketPage from './VendorsByMarketPage';
+import VendorsByMarketPage from '../pages/VendorsByMarketPage';
 import Footer from './Footer';
 
 const App = () => {
@@ -25,7 +25,7 @@ const App = () => {
             <Route exact path="/arusok/:id">
               <VendorProfilePage />
             </Route>
-            <Route exact path="/arusprofil">
+            <Route exact path="/arusok/:id/:piacok">
               <VendorProfilePage />
             </Route>
           </Switch>
