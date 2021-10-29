@@ -12,17 +12,17 @@ const Footer = () => {
   const location = useLocation();
 
   return (
-    <div className="footer">
-      <Container className="container-fluid">
-        <Row className="footer-row">
+    <div className='footer'>
+      <Container className='container-fluid'>
+        <Row className='footer-row'>
           <Col style={{ cursor: 'pointer' }}>
-            <Link className="footer-link" to="/">
+            <Link className='footer-link' to='/'>
               <img
-                className="footer-logo"
+                className='footer-logo'
                 src={
                   location.pathname === '/' ? MarketLogoHighlight : MarketLogo
                 }
-                alt="Icon"
+                alt='Icon'
               />
               <div
                 className={
@@ -36,15 +36,15 @@ const Footer = () => {
             </Link>
           </Col>
           <Col style={{ cursor: 'pointer' }}>
-            <Link className="footer-link" to="/arusok">
+            <Link className='footer-link' to='/arusok'>
               <img
-                className="footer-logo"
+                className='footer-logo'
                 src={
                   location.pathname === '/arusok'
                     ? VendorLogoHighlight
                     : VendorLogo
                 }
-                alt="Icon"
+                alt='Icon'
               />
               <div
                 className={
