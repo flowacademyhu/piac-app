@@ -39,7 +39,6 @@ const VendorProfilePage = () => {
         phone={vendor.phone}
         introductionLong={vendor.introductionLong}
       />
-      <Footer />
     </>
   );
 };

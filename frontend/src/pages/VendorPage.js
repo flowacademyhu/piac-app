@@ -1,13 +1,11 @@
-import Footer from '../components/Footer';
-import HomeVendorHeader from '../components/HomeVendorHeader';
 import VendorCardList from '../components/VendorCardList';
+import Header from '../components/Header';
 
 const VendorPage = () => {
   return (
     <>
-      <HomeVendorHeader />
+      <Header />
       <VendorCardList />
-      <Footer />
     </>
   );
 };

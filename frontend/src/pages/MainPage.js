@@ -7,7 +7,6 @@ const MainPage = () => {
     <>
       <Header />
       <MarketCardList />
-      <Footer />
     </>
   );
 };
