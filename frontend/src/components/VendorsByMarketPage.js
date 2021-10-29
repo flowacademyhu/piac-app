@@ -20,7 +20,6 @@ const VendorsByMarketPage = () => {
     getMarketById();
   }, [id]);
 
-  console.log(marketById);
   return (
     <>
       <HeaderWithMarket
@@ -29,9 +28,11 @@ const VendorsByMarketPage = () => {
         place={marketById.place}
         date={marketById.date}
       />
-      {marketById.vendors && marketById.vendors.length > 0 ? (
+      {marketById.vendors && marketById.vendors.length > 0
+? (
         <VendorListOfOneMarket market={marketById} />
-      ) : (
+      )
+: (
         <VendorlistUploadInProgress />
       )}
       <Footer />
