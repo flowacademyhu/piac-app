@@ -1,7 +1,6 @@
 import React from 'react';
 import ProductList from './ProductList';
 import './Products.css';
-import { Container, Row, Col } from 'react-bootstrap';
 
 const Products = ({ products }) => {
   return (
