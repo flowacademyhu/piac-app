@@ -1,6 +1,5 @@
 package org.example.spring.boot.skeleton.model;
 
-
 public class SimpleVendorDTO {
 
     private Long id;

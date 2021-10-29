@@ -1,10 +1,8 @@
 package org.example.spring.boot.skeleton.jwtandsecurity;
 
-import java.util.ArrayList;
 import java.util.Collections;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
