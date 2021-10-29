@@ -3,7 +3,7 @@ import VendorCard from '../components/VendorCard';
 
 const VendorListOfOneMarket = ({ market }) => {
   return (
-    <div className="card-list">
+    <div className='card-list'>
       {market.vendors &&
         market.vendors.map((vendor) => {
           return (

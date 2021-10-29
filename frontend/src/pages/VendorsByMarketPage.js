@@ -20,15 +20,20 @@ const VendorsByMarketPage = () => {
 
   return (
     <>
-      <HeaderWithMarket
-        profilePic={market.profilePic}
-        name={market.name}
-        place={market.place}
-        date={market.date}
-      />
-      {market.vendors && market.vendors.length > 0 ? (
+      {market.id && (
+        <HeaderWithMarket
+          profilePic={market.profilePic}
+          marketName={market.name}
+          marketLocation={market.place}
+          marketOpeningDate={market.openingDate}
+          marketClosingDate={market.closingDate}
+        />
+      )}
+      {market.vendors && market.vendors.length > 0
+? (
         <VendorListOfOneMarket market={market} />
-      ) : (
+      )
+: (
         <VendorlistUploadInProgress />
       )}
       <Footer />

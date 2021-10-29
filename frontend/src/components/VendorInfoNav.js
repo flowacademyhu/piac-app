@@ -25,8 +25,8 @@ const VendorInfoNav = ({
 
   return (
     <Router>
-      <div className="icons">
-        <div className="info-icon">
+      <div className='icons'>
+        <div className='info-icon'>
           <NavLink
             activeClassName={`${showMarkets ? '' : 'active'}`}
             to={`/arusok/${vendorId}`}
@@ -35,27 +35,29 @@ const VendorInfoNav = ({
               className={'image ' + (status ? 'active-page' : null)}
               onClick={() => changeStatus(true)}
             >
-              <img src={status ? info_primary : info_mid} alt="info" />
+              <img src={status ? info_primary : info_mid} alt='info' />
             </div>
           </NavLink>
         </div>
-        <div className="vendor-icon">
+        <div className='vendor-icon'>
           <NavLink to={`/arusok/${vendorId}/piacok`}>
             <div
               className={'image ' + (status ? null : 'active-page')}
               onClick={() => changeStatus(false)}
             >
-              <img src={status ? market_mid : market_primary} alt="market" />
+              <img src={status ? market_mid : market_primary} alt='market' />
             </div>
           </NavLink>
         </div>
       </div>
-      {!status ? (
-        <div className="profile-components empty-page-message">
+      {!status
+? (
+        <div className='profile-components empty-page-message'>
           <div>Hamarosan...</div>
         </div>
-      ) : (
-        <div className="profile-components">
+      )
+: (
+        <div className='profile-components'>
           <Products products={products} />
           <VendorContacts
             facebook={facebook}

@@ -9,23 +9,23 @@ import Footer from './Footer';
 
 const App = () => {
   return (
-    <div className="App">
-      <div className="container-fluid">
+    <div className='App'>
+      <div className='container-fluid'>
         <Router>
           <Switch>
-            <Route exact path="/">
+            <Route exact path='/'>
               <MainPage />
             </Route>
-            <Route exact path="/piacok/:id">
+            <Route exact path='/piacok/:id'>
               <VendorsByMarketPage />
             </Route>
-            <Route exact path="/arusok">
+            <Route exact path='/arusok'>
               <VendorPage />
             </Route>
-            <Route exact path="/arusok/:id">
+            <Route exact path='/arusok/:id'>
               <VendorProfilePage />
             </Route>
-            <Route exact path="/arusok/:id/:piacok">
+            <Route exact path='/arusok/:id/:piacok'>
               <VendorProfilePage />
             </Route>
           </Switch>
