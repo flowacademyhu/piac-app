@@ -36,7 +36,9 @@ const VendorsByMarketPage = () => {
       {market.vendors && market.vendors.length > 0 ? (
         <VendorListOfOneMarket market={market} />
       ) : (
-        <VendorlistUploadInProgress body={'Szervezés alatt...'} />
+        <VendorlistUploadInProgress
+          title={market.id ? 'Szervezés alatt...' : 'Betöltés...'}
+        />
       )}
       <Footer />
     </>
