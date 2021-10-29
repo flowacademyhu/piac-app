@@ -5,6 +5,7 @@ import MainPage from '../pages/MainPage';
 import VendorPage from '../pages/VendorPage';
 import VendorProfilePage from '../pages/VendorProfilePage';
 import VendorsByMarketPage from '../pages/VendorsByMarketPage';
+import Footer from './Footer';
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
               <VendorProfilePage />
             </Route>
           </Switch>
+          <Footer />
         </Router>
       </div>
     </div>
