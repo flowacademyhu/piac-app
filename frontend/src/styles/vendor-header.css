@@ -23,11 +23,6 @@ body {
 }
 
 .vendor-logo-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  max-width: 15vh;
 }
 
 .circle {
