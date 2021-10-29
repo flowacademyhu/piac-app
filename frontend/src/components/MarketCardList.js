@@ -17,7 +17,7 @@ const MarketCardList = () => {
   }, []);
 
   return (
-    <div className="card-list">
+    <div className='card-list'>
       {markets.map((market) => {
         return (
           <div key={market.id}>

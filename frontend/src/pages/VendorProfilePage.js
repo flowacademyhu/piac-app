@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import Footer from '../components/Footer';
 import VendorHeader from '../components/VendorHeader';
 import VendorInfoNav from '../components/VendorInfoNav';
 import { fetchVendorById } from '../components/Service';
@@ -18,7 +17,8 @@ const VendorProfilePage = () => {
     fetchVendor(vendorId);
   }, [vendorId]);
 
-  return vendor ? (
+  return vendor
+? (
     <>
       <VendorHeader
         profilePic={vendor.profilePic}
@@ -38,7 +38,8 @@ const VendorProfilePage = () => {
         introductionLong={vendor.introductionLong}
       />
     </>
-  ) : null;
+  )
+: null;
 };
 
 export default VendorProfilePage;
