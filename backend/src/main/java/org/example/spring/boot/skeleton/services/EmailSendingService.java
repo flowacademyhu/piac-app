@@ -1,18 +1,19 @@
 package org.example.spring.boot.skeleton.services;
 
+import com.sendgrid.Method;
+import com.sendgrid.Request;
+import com.sendgrid.Response;
+import com.sendgrid.SendGrid;
 import com.sendgrid.helpers.mail.Mail;
 import com.sendgrid.helpers.mail.objects.Content;
 import com.sendgrid.helpers.mail.objects.Email;
+
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+
+import org.example.spring.boot.skeleton.model.JwtRequestModel;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import java.io.IOException;
-import java.util.Base64;
-import java.util.Date;
-import java.util.Properties;
-
-import com.sendgrid.*;
 
 import javax.mail.Message;
 import javax.mail.PasswordAuthentication;
@@ -20,35 +21,57 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Base64;
+import java.util.Date;
+import java.util.Properties;
+import java.util.Scanner;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Service
-public class EmailService {
+public class EmailSendingService {
 
     @Value(value = "${email.password}")
-    private String emailPassword;
+    public String emailPassword;
 
     @Value(value = "${email.address}")
     public String emailAddress;
 
-    public void sendmail(String email) throws Exception {
+//    public String getAPIKey() {
+//
+//        try {
+//            File myObj = new File("/home/kovarik/Lambda_project/apikey.txt");
+//            Scanner myReader = new Scanner(myObj);
+//            while (myReader.hasNextLine()) {
+//                String data = myReader.nextLine();
+//                System.out.println(data);
+//                return data;
+//            }
+//        } catch (
+//                FileNotFoundException e) {
+//            System.out.println("An error occurred.");
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
+
+    public void sendmail( String token) throws Exception {
 //        Email from = new Email(emailAddress);
 //        String subject = "Sending with SendGrid is Fun";
 //        Email to = new Email(emailAddress);
-//        Content content = new Content("text/plain", email);
+//        Content content = new Content("text/plain", token);
 //        Mail mail = new Mail(from, subject, to, content);
-//
-//        SendGrid sg = new SendGrid(System.getenv(email));
+//        SendGrid sg = new SendGrid(getAPIKey());
 //        Request request = new Request();
 //        try {
 //            request.setMethod(Method.POST);
-//            request.setEndpoint("/login");
+//            request.setEndpoint("mail/send");
 //            request.setBody(mail.build());
 //            Response response = sg.api(request);
-//            System.out.println(response.getStatusCode());
-//            System.out.println(response.getBody());
-//            System.out.println(response.getHeaders());
+//            return "done";
 //        } catch (IOException ex) {
 //            throw ex;
 //        }
@@ -72,9 +95,12 @@ public class EmailService {
 
             msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailAddress));
             msg.setSubject("Authentication Token");
-            msg.setContent("Your Token: " + email, "text/html");
+            msg.setContent("Your Token: " + token, "text/html");
             msg.setSentDate(new Date());
 
         Transport.send(msg);
+
     }
+
+
 }

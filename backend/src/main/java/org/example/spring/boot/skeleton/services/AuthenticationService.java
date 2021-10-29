@@ -20,7 +20,7 @@ import org.springframework.stereotype.Service;
 public class AuthenticationService {
 
     @Autowired
-    private  EmailService emailService;
+    private EmailSendingService emailSendingService;
     @Autowired
     private JwtUserDetailsService userDetailsService;
     @Autowired
@@ -37,11 +37,10 @@ public class AuthenticationService {
             if (auth.isAuthenticated()) {
                 final UserDetails userDetails = userDetailsService.loadUserByUsername(request.getUsername());
                 final String jwtToken = tokenManager.generateJwtToken(userDetails);
-                emailService.sendmail(jwtToken);
+                emailSendingService.sendmail(jwtToken);
                 SecurityContextHolder.getContext().setAuthentication(auth);
-                return "Your token has been set to your email: " + emailService.emailAddress;
+                return "Your token has been set to your email: " + emailSendingService.emailAddress;
             }
-
         } catch (DisabledException e) {
             throw new Exception("USER_DISABLED", e);
         } catch (BadCredentialsException e) {
