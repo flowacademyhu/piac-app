@@ -1,10 +1,10 @@
 import '../styles/VendorlistUploadInProgress.css';
 
-const VendorlistUploadInProgress = () => {
+const VendorlistUploadInProgress = ({ title }) => {
   return (
     <div className='uploadScreen'>
       <div className='uploadTexts middleUploadText'>
-        <span>Szervezés alatt...</span>
+        <span>{title}</span>
       </div>
       <div className='uploadTexts bottomInfoText'>
         <div>

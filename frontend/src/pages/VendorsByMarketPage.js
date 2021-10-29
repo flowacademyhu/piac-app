@@ -18,6 +18,10 @@ const VendorsByMarketPage = () => {
     fetchMarket(marketId);
   }, [marketId]);
 
+  if (!market) {
+    return <VendorlistUploadInProgress body="Betöltés..." />;
+  }
+
   return (
     <>
       {market.id && (
@@ -29,12 +33,10 @@ const VendorsByMarketPage = () => {
           marketClosingDate={market.closingDate}
         />
       )}
-      {market.vendors && market.vendors.length > 0
-? (
+      {market.vendors && market.vendors.length > 0 ? (
         <VendorListOfOneMarket market={market} />
-      )
-: (
-        <VendorlistUploadInProgress />
+      ) : (
+        <VendorlistUploadInProgress body={'Szervezés alatt...'} />
       )}
       <Footer />
     </>
