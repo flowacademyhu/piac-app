@@ -32,7 +32,7 @@ public class MarketService {
        return  marketRepository.findAll()
                 .stream()
                 .map(this::marketToDTO)
-                .sorted(Comparator.comparing(MarketDTO::getOpeningDate).reversed())
+                .sorted(Comparator.comparing(MarketDTO::getOpeningDate))
                 .peek( m -> m.setVendors(null))
                 .collect(Collectors.toList());
     }
