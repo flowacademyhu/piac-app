@@ -18,7 +18,7 @@ const MarketCardList = () => {
   }, []);
 
   return (
-    <div className="card-list">
+    <div className='card-list'>
       {markets.map((market) => {
         if (currentTime.getTime() / 1000 < market.closingDate) {
           return (
