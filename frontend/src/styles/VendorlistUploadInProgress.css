@@ -8,9 +8,13 @@
 
 .uploadTexts {
   font-family: 'Open Sans', sans-serif;
-  position: fixed;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  height: calc(100% - 160px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+  padding: 30px;
+  text-align: center;
 }
 
 .middleUploadText {
