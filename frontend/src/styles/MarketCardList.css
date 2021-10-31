@@ -1,5 +1,4 @@
 .card-list {
-  overflow-y: auto;
   display: flex;
   flex-direction: column;
   row-gap: 30px;
