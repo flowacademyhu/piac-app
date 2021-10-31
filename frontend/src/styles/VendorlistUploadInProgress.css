@@ -7,6 +7,7 @@
 }
 
 .uploadTexts {
+  margin-top: 80px;
   font-family: 'Open Sans', sans-serif;
   height: calc(100% - 160px);
   overflow-y: auto;
@@ -15,15 +16,18 @@
   row-gap: 30px;
   padding: 30px;
   text-align: center;
+  vertical-align: middle;
 }
 
 .middleUploadText {
   font-size: 20px;
   font-weight: bold;
+  overflow-y: hidden;
   bottom: 50%;
 }
 
 .bottomInfoText {
   font-size: 12px;
+  overflow-y: hidden;
   bottom: 10%;
 }
