@@ -14,6 +14,7 @@
   font-family: 'Amatic SC', cursive;
   font-size: 65px;
   height: 150px;
+  z-index: 1;
 }
 
 .market-header {
