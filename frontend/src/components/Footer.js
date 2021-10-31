@@ -25,6 +25,7 @@ const Footer = () => {
                 alt='Icon'
               />
               <div
+                style={{ cursor: 'default' }}
                 className={
                   location.pathname === '/'
                     ? 'footer-label active'
@@ -47,6 +48,7 @@ const Footer = () => {
                 alt='Icon'
               />
               <div
+                style={{ cursor: 'default' }}
                 className={
                   location.pathname === '/arusok'
                     ? 'footer-label active'
