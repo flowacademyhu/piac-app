@@ -24,7 +24,7 @@
   padding-top: 1rem;
   text-decoration: none;
   background-color: #fffdfc;
-  position: relative;
+  position: fixed;
   justify-content: center;
   text-align: center;
   bottom: 0;
