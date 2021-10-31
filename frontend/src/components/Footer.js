@@ -15,7 +15,7 @@ const Footer = () => {
     <div className='footer'>
       <Container className='container-fluid'>
         <Row className='footer-row'>
-          <Col style={{ cursor: 'pointer' }}>
+          <Col>
             <Link className='footer-link' to='/'>
               <img
                 className='footer-logo'
@@ -35,7 +35,7 @@ const Footer = () => {
               </div>
             </Link>
           </Col>
-          <Col style={{ cursor: 'pointer' }}>
+          <Col>
             <Link className='footer-link' to='/arusok'>
               <img
                 className='footer-logo'
