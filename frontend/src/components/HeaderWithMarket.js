@@ -8,8 +8,9 @@ const HeaderWithMarket = ({
   marketClosingDate
 }) => {
   return (
-    <div className='marketHeader'>
+    <div className="marketHeader">
       <MarketInfo
+        marketHeaderStyle={{ height: '80px' }}
         profilePic={profilePic}
         marketName={marketName}
         marketLocation={marketLocation}

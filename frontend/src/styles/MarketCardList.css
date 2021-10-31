@@ -1,5 +1,5 @@
 .card-list {
-  height: calc(100% - 230px);
+  height: calc(100% - 160px);
   overflow-y: auto;
   display: flex;
   flex-direction: column;

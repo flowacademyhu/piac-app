@@ -29,11 +29,9 @@ const VendorsByMarketPage = () => {
           marketClosingDate={market.closingDate}
         />
       )}
-      {market.vendors && market.vendors.length > 0
-? (
+      {market.vendors && market.vendors.length > 0 ? (
         <VendorListOfOneMarket market={market} />
-      )
-: (
+      ) : (
         <VendorlistUploadInProgress />
       )}
       <Footer />
