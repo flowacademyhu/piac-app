@@ -11,7 +11,16 @@ const VendorHeader = (props) => {
 
   return (
     <header className="vendor-profile-header">
-      <div className="vendor-logo-container"></div>
+      <div
+        className="vendor-logo-container"
+        style={
+          profilePic
+            ? {
+                backgroundImage: `url(${profilePic})`
+              }
+            : {}
+        }
+      ></div>
       <div className="vendor-header-data">
         <h2 className="vendor-name">{name}</h2>
         <p className="vendor-intro">{intro}</p>

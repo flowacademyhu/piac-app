@@ -36,7 +36,16 @@ const MarketInfo = ({
 
   return (
     <>
-      <div className='marketLogo headerLogo'></div>
+      <div
+        className='marketLogo headerLogo'
+        style={
+          profilePic
+            ? {
+                backgroundImage: `url(${profilePic})`
+              }
+            : {}
+        }
+      ></div>
       <div className='topMarketInfo'>
         <div className='marketName'>{marketName}</div>
         <div className='marketLocationAndDate'>
