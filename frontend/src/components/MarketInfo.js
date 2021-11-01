@@ -36,7 +36,7 @@ const MarketInfo = ({
 
   return (
     <>
-      <img className='marketLogo headerLogo' src={profilePic} alt='logo' />
+      <div className='marketLogo headerLogo'></div>
       <div className='topMarketInfo'>
         <div className='marketName'>{marketName}</div>
         <div className='marketLocationAndDate'>
