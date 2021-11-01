@@ -27,6 +27,9 @@
   border-color: lightgrey;
   align-self: center;
   margin: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .vendorName {

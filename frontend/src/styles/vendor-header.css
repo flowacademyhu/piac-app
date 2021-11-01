@@ -27,6 +27,9 @@ body {
   width: 110px;
   border-radius: 50%;
   border: 1px solid lightgrey;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .vendor-name {
