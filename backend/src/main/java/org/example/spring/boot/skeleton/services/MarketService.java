@@ -102,14 +102,15 @@ public class MarketService {
     }
 
     public SimpleMarketDTO marketToSimpleDTO(Market market) {
-        return new SimpleMarketDTO()
-                .setId(market.getId())
-                .setProfilePic(market.getProfilePic())
-                .setName(market.getName())
-                .setPlace(market.getPlace())
-                .setOpeningDate(market.getOpeningDate())
-                .setClosingDate(market.getClosingDate())
-                .setNumberOfVendors(market.getVendors().size());
+        return SimpleMarketDTO.builder()
+                .id(market.getId())
+                .profilePic(market.getProfilePic())
+                .name(market.getName())
+                .place(market.getPlace())
+                .openingDate(market.getOpeningDate())
+                .closingDate(market.getClosingDate())
+                .numberOfVendors(market.getVendors().size())
+                .build();
     }
 
     public List<SimpleMarketDTO> findAllMarketsByVendorId(Long id) throws NoSuchVendorException {

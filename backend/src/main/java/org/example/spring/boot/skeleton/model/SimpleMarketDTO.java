@@ -1,5 +1,8 @@
 package org.example.spring.boot.skeleton.model;
 
+import lombok.Builder;
+
+@Builder
 public class SimpleMarketDTO {
     private Long id;
     private String profilePic;
