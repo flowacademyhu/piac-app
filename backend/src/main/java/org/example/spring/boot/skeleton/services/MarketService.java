@@ -1,18 +1,16 @@
 package org.example.spring.boot.skeleton.services;
 
 import lombok.AllArgsConstructor;
-import org.example.spring.boot.skeleton.entities.Market;
-import org.example.spring.boot.skeleton.entities.Vendor;
 import org.example.spring.boot.skeleton.model.MarketDTO;
+import org.example.spring.boot.skeleton.entities.Market;
+import org.example.spring.boot.skeleton.exceptions.NoSuchMarketException;
+import org.example.spring.boot.skeleton.exceptions.NoSuchVendorException;
 import org.example.spring.boot.skeleton.model.SimpleVendorDTO;
-import org.example.spring.boot.skeleton.model.VendorDTO;
-import org.example.spring.boot.skeleton.model.DetailVendorDTO;
 import org.example.spring.boot.skeleton.repositories.MarketRepository;
-import org.example.spring.boot.skeleton.repositories.VendorRepository;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -21,24 +19,27 @@ import java.util.stream.Collectors;
 public class MarketService {
 
     private final MarketRepository marketRepository;
-    private final VendorRepository vendorRepository;
+    private final VendorService vendorService;
 
     public MarketDTO addMarket(MarketDTO marketDTO) throws ParseException {
         marketRepository.save(marketDTOToEntity(marketDTO));
         return marketDTO;
     }
 
-    public List<MarketDTO> allMarkets(){
-       return  marketRepository.findAll()
+    public List<MarketDTO> allMarkets() {
+        return marketRepository.findAll()
                 .stream()
                 .map(this::marketToDTO)
                 .sorted(Comparator.comparing(MarketDTO::getOpeningDate).reversed())
+                .peek(m -> m.setVendors(null))
+                .sorted(Comparator.comparing(MarketDTO::getOpeningDate).reversed())
                 .peek( m -> m.setVendors(null))
+
                 .collect(Collectors.toList());
     }
 
-    public MarketDTO getMarketById(Long id) {
-        return marketToDTO(marketRepository.findById(id).orElseThrow());
+    public MarketDTO getMarketById(Long id) throws Exception {
+        return marketToDTO(marketRepository.findById(id).orElseThrow(NoSuchMarketException::new));
     }
 
     public void deleteAllMarkets() {
@@ -49,8 +50,8 @@ public class MarketService {
         marketRepository.deleteById(id);
     }
 
-    public MarketDTO updateMarketById(Long id, MarketDTO marketDTO) {
-        Market market = marketRepository.findById(id).orElse(null).builder()
+    public MarketDTO updateMarketById(Long id, MarketDTO marketDTO) throws NoSuchMarketException {
+        Market market = marketRepository.findById(id).orElseThrow(NoSuchMarketException::new).builder()
                 .profilePic(marketDTO.getProfilePic())
                 .openingDate(marketDTO.getOpeningDate())
                 .closingDate(marketDTO.getClosingDate())
@@ -58,15 +59,15 @@ public class MarketService {
                 .id(id)
                 .name(marketDTO.getName())
                 .build();
-      marketRepository.save(market);
-      return marketToDTO(market);
-
+        marketRepository.save(market);
+        return marketToDTO(market);
     }
 
-    public List<SimpleVendorDTO>findAllVendorsAtGivenMarket(Long id){
-       Market market = marketRepository.findById(id).orElseThrow();
-       return market.getVendors().stream().map( m -> vendorToSimpleDTO(m)).collect(Collectors.toList());
+    public List<SimpleVendorDTO> findAllVendorsAtGivenMarket(Long id) throws NoSuchMarketException {
+        Market market = marketRepository.findById(id).orElseThrow(NoSuchMarketException::new);
+        return market.getVendors().stream().map(vendorService::vendorToSimpleDTO).collect(Collectors.toList());
     }
+
 
     public Market marketDTOToEntity(MarketDTO marketDTO) throws ParseException {
         return Market.builder()
@@ -78,102 +79,22 @@ public class MarketService {
                 .build();
     }
 
-    public MarketDTO marketToDTO(Market market){
-        MarketDTO marketDTO = new MarketDTO()
+    public MarketDTO marketToDTO(Market market) {
+        return new MarketDTO()
                 .setProfilePic(market.getProfilePic())
                 .setId(market.getId())
-                .setVendors(market.getVendors().stream().map( v -> vendorToResponse(v)).collect(Collectors.toSet()))
+                .setVendors(market.getVendors().stream().map(vendorService::vendorToSimpleDTO).collect(Collectors.toSet()))
                 .setOpeningDate(market.getOpeningDate())
                 .setClosingDate(market.getClosingDate())
                 .setName(market.getName())
                 .setPlace(market.getPlace())
-
                 .setNumberOfVendors(market.getVendors().size());
-        return marketDTO;
     }
 
- //----------------------------------------VENDOR----------------------------------------------
 
-    public DetailVendorDTO addVendor(VendorDTO vendorDTO){
-        Market market = marketRepository.findById(vendorDTO.getMarketId()).orElse(null);
-       Set<String> allProducts = vendorDTO.getProducts().stream().collect(Collectors.toSet());
-        Vendor vendor = Vendor.builder()
-                .intro(vendorDTO.getIntro())
-                .profilePic((vendorDTO.getProfilePic()))
-                .name(vendorDTO.getName())
-                .cardPayment(vendorDTO.getCardPayment())
-                .markets(new HashSet<>())
-                .products(allProducts)
-                .email(vendorDTO.getEmail())
-                .facebook(vendorDTO.getFacebook())
-                .instagram(vendorDTO.getInstagram())
-                .webSite(vendorDTO.getWebSite())
-                .phone(vendorDTO.getPhone())
-                .introductionLong((vendorDTO.getIntroductionLong()))
-                .build();
-        vendor.getMarkets().add(market);
-        vendorRepository.save(vendor);
-        DetailVendorDTO detailVendorDTO = vendorToResponse(vendor);
-        return detailVendorDTO;
+    public MarketDTO findMarketByName(String name) throws NoSuchVendorException {
+       var market = marketRepository.findByName(name).orElseThrow(NoSuchVendorException::new);
+        return marketToDTO(market);
     }
 
-    public DetailVendorDTO vendorToResponse(Vendor vendor){
-        return new DetailVendorDTO()
-                .setId(vendor.getId())
-                .setIntro(vendor.getIntro())
-                .setName(vendor.getName())
-                .setProfilePic((vendor.getProfilePic()))
-                .setCardPayment(vendor.getCardPayment())
-                .setProducts(vendor.getProducts())
-                .setEmail(vendor.getEmail())
-                .setFacebook(vendor.getFacebook())
-                .setInstagram(vendor.getInstagram())
-                .setPhone(vendor.getPhone())
-                .setWebSite(vendor.getWebSite())
-                .setIntroductionLong(vendor.getIntroductionLong());
-    }
-
-    public SimpleVendorDTO vendorToSimpleDTO(Vendor vendor){
-        return new SimpleVendorDTO()
-                .setIntro(vendor.getIntro())
-                .setName(vendor.getName())
-                .setProfilePic((vendor.getProfilePic()))
-                .setId(vendor.getId());
-    }
-
-    public List<DetailVendorDTO> allVendors() {
-      return vendorRepository.findAll()
-              .stream()
-              .map(this::vendorToResponse)
-              .sorted(Comparator.comparing(DetailVendorDTO::getName,String.CASE_INSENSITIVE_ORDER))
-              .collect(Collectors.toList());
-    }
-
-    public DetailVendorDTO findVendorById(Long id){
-       return vendorToResponse(vendorRepository.findById(id).orElse(null));
-    }
-
-    public DetailVendorDTO updateVendor(Long id, VendorDTO vendorDTO){
-           Market market = marketRepository.findById(vendorDTO.getMarketId()).orElseThrow(null);
-           Vendor vendor = vendorRepository.findById(id).orElseThrow(null);
-           Set<Market> set = new HashSet();
-           set.add(market);
-           vendor.setMarkets(set);
-           vendor.setProducts(vendorDTO.getProducts());
-           vendor.setIntro(vendorDTO.getIntro());
-           vendor.setName(vendorDTO.getName());
-           vendor.setProfilePic((vendorDTO.getProfilePic()));
-           vendor.setCardPayment(vendorDTO.getCardPayment());
-           vendor.setId(id);
-           vendor.setFacebook(vendorDTO.getFacebook());
-           vendor.setEmail(vendorDTO.getEmail());
-           vendor.setPhone(vendor.getPhone());
-           vendor.setInstagram(vendorDTO.getInstagram());
-           vendor.setWebSite(vendorDTO.getWebSite());
-           vendor.setIntroductionLong(vendorDTO.getIntroductionLong());
-
-        vendorRepository.save(vendor);
-        return vendorToResponse(vendor);
-
-    }
 }
