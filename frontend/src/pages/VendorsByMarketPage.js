@@ -31,11 +31,14 @@ const VendorsByMarketPage = () => {
       {market.vendors && market.vendors.length > 0 ? (
         <VendorListOfOneMarket market={market} />
       ) : (
-        <VendorlistUploadInProgress
-          title={market.id ? 'Szervezés alatt...' : 'Betöltés...'}
-          body={market.id ? 'Itt fogod megtalálni az árusokat,' : ' '}
-          footer={market.id ? 'akik ezen a piacon jelen lesznek.' : ' '}
-        />
+        <>
+          {!market.id ? <div className="marketLoading" /> : ''}
+          <VendorlistUploadInProgress
+            title={market.id ? 'Szervezés alatt...' : 'Betöltés...'}
+            body={market.id ? 'Itt fogod megtalálni az árusokat,' : ' '}
+            footer={market.id ? 'akik ezen a piacon jelen lesznek.' : ' '}
+          />
+        </>
       )}
     </>
   );

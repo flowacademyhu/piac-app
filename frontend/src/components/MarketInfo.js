@@ -46,7 +46,7 @@ const MarketInfo = ({
               }
             : {}
         }
-      ></div>
+      />
       <div className='topMarketInfo'>
         <div className='marketName'>{marketName}</div>
         <div className='marketLocationAndDate'>
