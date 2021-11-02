@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import VendorHeader from '../components/VendorHeader';
 import VendorInfoNav from '../components/VendorInfoNav';
 import { fetchVendorById } from '../components/Service';
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 const VendorProfilePage = () => {
   const [vendor, setVendor] = useState({});
@@ -17,8 +18,7 @@ const VendorProfilePage = () => {
     fetchVendor(vendorId);
   }, [vendorId]);
 
-  return vendor
-? (
+  return vendor ? (
     <>
       <VendorHeader
         profilePic={vendor.profilePic}
@@ -38,8 +38,9 @@ const VendorProfilePage = () => {
         introductionLong={vendor.introductionLong}
       />
     </>
-  )
-: null;
+  ) : (
+    <Redirect to="/arusok" />
+  );
 };
 
 export default VendorProfilePage;
