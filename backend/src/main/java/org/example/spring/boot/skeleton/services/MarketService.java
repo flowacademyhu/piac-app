@@ -5,6 +5,7 @@ import org.example.spring.boot.skeleton.model.MarketDTO;
 import org.example.spring.boot.skeleton.entities.Market;
 import org.example.spring.boot.skeleton.exceptions.NoSuchMarketException;
 import org.example.spring.boot.skeleton.exceptions.NoSuchVendorException;
+import org.example.spring.boot.skeleton.model.SimpleMarketDTO;
 import org.example.spring.boot.skeleton.model.SimpleVendorDTO;
 import org.example.spring.boot.skeleton.repositories.MarketRepository;
 import org.springframework.stereotype.Service;
@@ -95,6 +96,17 @@ public class MarketService {
     public MarketDTO findMarketByName(String name) throws NoSuchVendorException {
        var market = marketRepository.findByName(name).orElseThrow(NoSuchVendorException::new);
         return marketToDTO(market);
+    }
+
+    public SimpleMarketDTO marketToSimpleDTO(Market market) {
+        return new SimpleMarketDTO()
+                .setId(market.getId())
+                .setProfilePic(market.getProfilePic())
+                .setName(market.getName())
+                .setPlace(market.getPlace())
+                .setOpeningDate(market.getOpeningDate())
+                .setClosingDate(market.getClosingDate())
+                .setNumberOfVendors(market.getVendors().size());
     }
 
 }
