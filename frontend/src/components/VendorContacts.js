@@ -12,12 +12,12 @@ const VendorContacts = (props) => {
     {
       title: facebook,
       logo: facebookLogo,
-      link: 'https:'
+      link: 'https://facebook.com/'
     },
     {
       title: instagram,
       logo: instagramLogo,
-      link: 'https:'
+      link: 'https://instagram.com/'
     },
     {
       title: website,
