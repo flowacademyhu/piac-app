@@ -3,7 +3,9 @@ package org.example.spring.boot.skeleton.controller;
 import lombok.AllArgsConstructor;
 import org.example.spring.boot.skeleton.exceptions.NoSuchVendorException;
 import org.example.spring.boot.skeleton.model.DetailVendorDTO;
+import org.example.spring.boot.skeleton.model.SimpleMarketDTO;
 import org.example.spring.boot.skeleton.model.VendorDTO;
+import org.example.spring.boot.skeleton.services.MarketService;
 import org.example.spring.boot.skeleton.services.VendorService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -19,6 +21,7 @@ public class VendorController {
 
 
     private final VendorService vendorService;
+    private final MarketService marketService;
 
     @GetMapping
     public ResponseEntity<List<DetailVendorDTO>> allVendors(){
@@ -36,5 +39,9 @@ public class VendorController {
         return ResponseEntity.ok(vendorService.updateVendor(id, vendorDTO));
     }
 
+    @GetMapping("/{id}/markets")
+    public ResponseEntity<List<SimpleMarketDTO>> getAllMarketsByVendorId(@PathVariable @RequestBody Long id) throws NoSuchVendorException{
+        return ResponseEntity.ok(marketService.findAllMarketsByVendorId(id));
+    }
 
 }
