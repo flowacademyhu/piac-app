@@ -24,8 +24,9 @@ const VendorInfoNav = ({
   const [status, changeStatus] = useState(!showMarkets);
 
   return (
+    <>
+    <div className='icons'>
     <Router>
-      <div className='icons'>
         <div className='info-icon'>
           <NavLink
             activeClassName={`${showMarkets ? '' : 'active'}`}
@@ -49,6 +50,8 @@ const VendorInfoNav = ({
             </div>
           </NavLink>
         </div>
+    </Router>
+
       </div>
       {!status
 ? (
@@ -68,8 +71,8 @@ const VendorInfoNav = ({
           />
           <VendorIntroduction introductionLong={introductionLong} />
         </div>
-      )}
-    </Router>
+        )}
+      </>
   );
 };
 export default VendorInfoNav;
