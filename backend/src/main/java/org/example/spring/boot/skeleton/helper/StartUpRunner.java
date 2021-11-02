@@ -16,9 +16,11 @@ public class StartUpRunner implements CommandLineRunner {
     private final MarketService marketService;
     private final VendorService vendorService;
 
+
     public StartUpRunner(MarketService marketService, VendorService vendorService) {
         this.marketService = marketService;
         this.vendorService = vendorService;
+
     }
     @Override
     public void run(String... args) throws Exception {

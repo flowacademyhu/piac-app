@@ -2,11 +2,14 @@ package org.example.spring.boot.skeleton.services;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+
 import net.bytebuddy.utility.RandomString;
+
 import org.example.spring.boot.skeleton.exceptions.WrongPasswordException;
 import org.example.spring.boot.skeleton.model.JwtRequestModel;
 import org.example.spring.boot.skeleton.jwtandsecurity.JwtUserDetailsService;
 import org.example.spring.boot.skeleton.jwtandsecurity.TokenManager;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -30,7 +33,7 @@ public class AuthenticationService {
     @Autowired
     private TokenManager tokenManager;
 
-    private String modifPassword;
+    private String generatedPassword;
     private String tokenForExchange;
 
     public String createToken(JwtRequestModel request) throws Exception {
@@ -45,7 +48,7 @@ public class AuthenticationService {
                 String generatedString = RandomString.make(15);
                 tokenForExchange = jwtToken;
                 emailSendingService.sendmail(generatedString);
-                modifPassword = generatedString;
+                generatedPassword = generatedString;
                 SecurityContextHolder.getContext().setAuthentication(auth);
                 request.setPassword(generatedString);
                 return "Your code has been set to your email: " + emailSendingService.emailAddress;
@@ -59,9 +62,9 @@ public class AuthenticationService {
     }
 
     public String getToken(String password) throws WrongPasswordException {
-        if (!password.equals(modifPassword)) {
+        if (!password.equals(generatedPassword)) {
             throw new WrongPasswordException();
-        }   modifPassword = null;
+        }   generatedPassword = null;
             return tokenForExchange;
     }
 }

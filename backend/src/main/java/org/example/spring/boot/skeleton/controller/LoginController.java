@@ -4,7 +4,6 @@ import org.example.spring.boot.skeleton.exceptions.WrongPasswordException;
 import org.example.spring.boot.skeleton.model.AdminRequest;
 import org.example.spring.boot.skeleton.model.JwtRequestModel;
 import org.example.spring.boot.skeleton.services.AuthenticationService;
-import org.example.spring.boot.skeleton.services.EmailSendingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,8 +18,6 @@ public class LoginController {
 
     @Autowired
     AuthenticationService authenticationService;
-    @Autowired
-    EmailSendingService emailSendingService;
 
     @PostMapping("/login")
     public String createToken(@RequestBody JwtRequestModel request) throws Exception {

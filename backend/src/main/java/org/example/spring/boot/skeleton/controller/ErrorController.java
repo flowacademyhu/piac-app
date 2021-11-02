@@ -1,5 +1,6 @@
 package org.example.spring.boot.skeleton.controller;
 
+import io.jsonwebtoken.ExpiredJwtException;
 import org.example.spring.boot.skeleton.exceptions.NoSuchMarketException;
 import org.example.spring.boot.skeleton.exceptions.NoSuchVendorException;
 import org.example.spring.boot.skeleton.exceptions.WrongPasswordException;
@@ -43,5 +44,11 @@ public class ErrorController {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorModel handleWrongPassword(){
         return new ErrorModel(MessagesConstants.WRONG_PASSWORD);
+    }
+
+    @ExceptionHandler({ExpiredJwtException.class})
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorModel handleExpiredJwt(){
+        return new ErrorModel(MessagesConstants.JWT_EXPIRED);
     }
 }
