@@ -112,8 +112,8 @@ public class MarketService {
                 .setNumberOfVendors(market.getVendors().size());
     }
 
-    public List<SimpleMarketDTO> findAllMarketsByVendorId(Long id) {
-        Vendor vendor = vendorRepository.findById(id).orElseThrow();
+    public List<SimpleMarketDTO> findAllMarketsByVendorId(Long id) throws NoSuchVendorException {
+        Vendor vendor = vendorRepository.findById(id).orElseThrow(NoSuchVendorException::new);
         return vendor.getMarkets().stream().map(market -> marketToSimpleDTO(market)).collect(Collectors.toList());
     }
 
