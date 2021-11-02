@@ -1,10 +1,14 @@
 package org.example.spring.boot.skeleton.model;
 
+import lombok.AllArgsConstructor;
+
+import javax.persistence.ElementCollection;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
+@AllArgsConstructor
 public class VendorDTO {
 
     @NotNull
@@ -21,18 +25,17 @@ public class VendorDTO {
     @NotNull
     private Long marketId;
 
+
    private Set<String> products = new HashSet<>();
    private String email;
    private String facebook;
    private String instagram;
    private String phone;
    private String webSite;
-<<<<<<< HEAD
-=======
+
    @NotNull
    @Size(min = 1, max = 1000)
    private String introductionLong;
->>>>>>> origin/develop
 
     public Set<String> getProducts() {
         return products;
@@ -41,14 +44,6 @@ public class VendorDTO {
     public VendorDTO setProducts(Set<String> products) {
         this.products = products;
         return this;
-    }
-
-    public VendorDTO(String name, String profilePic, String intro, boolean cardPayment, Long marketId) {
-        this.name = name;
-        this.profilePic = profilePic;
-        this.intro = intro;
-        this.cardPayment = cardPayment;
-        this.marketId = marketId;
     }
 
     public VendorDTO() {

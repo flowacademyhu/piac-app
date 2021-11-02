@@ -21,8 +21,7 @@ public class DetailVendorDTO {
     private String webSite;
     private String introductionLong;
 
-<<<<<<< HEAD
-=======
+
     public DetailVendorDTO(String name, String intro, String profilePic, boolean cardPayment) {
         this.name = name;
         this.intro = intro;
@@ -30,7 +29,7 @@ public class DetailVendorDTO {
         this.cardPayment = cardPayment;
     }
 
->>>>>>> origin/develop
+
     public DetailVendorDTO() {
     }
 
@@ -50,6 +49,7 @@ public class DetailVendorDTO {
     public DetailVendorDTO setIntro(String intro) {
         this.intro = intro;
         return this;
+
     }
 
     public String getProfilePic() {
@@ -124,21 +124,22 @@ public class DetailVendorDTO {
         return this;
     }
 
-<<<<<<< HEAD
+
     public Long getId() {
         return id;
     }
 
     public DetailVendorDTO setId(Long id) {
         this.id = id;
-=======
+        return this;
+    }
+
     public String getIntroductionLong() {
         return introductionLong;
     }
 
     public DetailVendorDTO setIntroductionLong(String introductionLong) {
         this.introductionLong = introductionLong;
->>>>>>> origin/develop
         return this;
     }
 }

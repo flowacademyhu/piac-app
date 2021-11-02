@@ -1,7 +1,7 @@
 package org.example.spring.boot.skeleton.controller;
 
 import lombok.AllArgsConstructor;
-import org.example.spring.boot.skeleton.entities.Market;
+
 import org.example.spring.boot.skeleton.exceptions.NoSuchMarketException;
 import org.example.spring.boot.skeleton.model.MarketDTO;
 import org.example.spring.boot.skeleton.services.MarketService;

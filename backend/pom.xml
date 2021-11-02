@@ -15,9 +15,9 @@
         <java.version>11</java.version>
     </properties>
     <groupId>org.flowacademy.hu</groupId>
-    <artifactId>jwtbasic</artifactId>
+    <artifactId>market-app</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>jwtbasic</name>
+    <name>own-market-app-by-flowacademy</name>
 
 
     <dependencies>

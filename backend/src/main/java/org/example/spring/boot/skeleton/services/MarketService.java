@@ -84,7 +84,6 @@ public class MarketService {
                 .setProfilePic(market.getProfilePic())
                 .setId(market.getId())
                 .setVendors(market.getVendors().stream().map(vendorService::vendorToSimpleDTO).collect(Collectors.toSet()))
-                .setVendors(market.getVendors().stream().map( v -> vendorService.vendorToSimpleDTO(v)).collect(Collectors.toSet()))
                 .setOpeningDate(market.getOpeningDate())
                 .setClosingDate(market.getClosingDate())
                 .setName(market.getName())

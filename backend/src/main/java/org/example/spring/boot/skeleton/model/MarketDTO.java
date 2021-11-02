@@ -1,8 +1,6 @@
 package org.example.spring.boot.skeleton.model;
 
 import javax.validation.constraints.NotNull;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 

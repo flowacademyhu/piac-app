@@ -47,16 +47,17 @@ public class VendorService {
 
     public DetailVendorDTO vendorToResponse(Vendor vendor){
         return new DetailVendorDTO()
-                .setId(vendor.getId())
-                .setIntro(vendor.getIntro())
-                .setName(vendor.getName())
-                .setCardPayment(vendor.getCardPayment())
-                .setProducts(vendor.getProducts())
-                .setEmail(vendor.getEmail())
-                .setFacebook(vendor.getFacebook())
-                .setInstagram(vendor.getInstagram())
-                .setPhone(vendor.getPhone())
-                .setWebSite(vendor.getWebSite());
+         .setId(vendor.getId())
+        .setIntro(vendor.getIntro())
+        .setName(vendor.getName())
+        .setCardPayment(vendor.getCardPayment())
+        .setProducts(vendor.getProducts())
+        .setEmail(vendor.getEmail())
+        .setFacebook(vendor.getFacebook())
+        .setInstagram(vendor.getInstagram())
+        .setPhone(vendor.getPhone())
+        .setWebSite(vendor.getWebSite());
+
     }
 
     public SimpleVendorDTO vendorToSimpleDTO(Vendor vendor){

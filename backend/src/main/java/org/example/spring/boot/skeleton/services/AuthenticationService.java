@@ -36,7 +36,7 @@ public class AuthenticationService {
                 final UserDetails userDetails = userDetailsService.loadUserByUsername(request.getUsername());
                 final String jwtToken = tokenManager.generateJwtToken(userDetails);
 
-                return "Done";
+                return jwtToken;
             }
 
         } catch (DisabledException e) {

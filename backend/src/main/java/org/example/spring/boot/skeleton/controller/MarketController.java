@@ -21,7 +21,7 @@ public class MarketController {
     private final MarketService marketService;
 
     @GetMapping
-    public ResponseEntity<List<MarketDTO>> allMarkets(){
+    public ResponseEntity<List<MarketDTO>> allMarkets() throws ParseException{
         return ResponseEntity.ok(marketService.allMarkets());
     }
 

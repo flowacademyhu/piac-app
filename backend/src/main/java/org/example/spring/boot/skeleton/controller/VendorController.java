@@ -3,7 +3,7 @@ package org.example.spring.boot.skeleton.controller;
 import lombok.AllArgsConstructor;
 import org.example.spring.boot.skeleton.exceptions.NoSuchVendorException;
 import org.example.spring.boot.skeleton.model.DetailVendorDTO;
-import org.example.spring.boot.skeleton.services.MarketService;
+import org.example.spring.boot.skeleton.model.VendorDTO;
 import org.example.spring.boot.skeleton.services.VendorService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -17,16 +17,8 @@ import java.util.List;
 @CrossOrigin
 public class VendorController {
 
-<<<<<<< HEAD
-    private final VendorService vendorService;
-=======
-    private final MarketService marketService;
 
-    @PostMapping
-    public ResponseEntity<DetailVendorDTO> addVendorToMarket(@Validated @RequestBody VendorDTO vendorDTO){
-        return ResponseEntity.ok(marketService.addVendor(vendorDTO));
-    }
->>>>>>> origin/develop
+    private final VendorService vendorService;
 
     @GetMapping
     public ResponseEntity<List<DetailVendorDTO>> allVendors(){
@@ -37,13 +29,12 @@ public class VendorController {
     public ResponseEntity<DetailVendorDTO> findVendorById(@PathVariable @RequestBody Long id) throws NoSuchVendorException {
         return ResponseEntity.ok(vendorService.findVendorById(id));
     }
-<<<<<<< HEAD
-=======
+
 
     @PutMapping("/{id}")
-    public ResponseEntity<DetailVendorDTO> updateVendor(@PathVariable @RequestBody Long id, @Validated @RequestBody VendorDTO vendorDTO){
-        return ResponseEntity.ok(marketService.updateVendor(id, vendorDTO));
+    public ResponseEntity<DetailVendorDTO> updateVendor(@PathVariable @RequestBody Long id, @Validated @RequestBody VendorDTO vendorDTO) throws Exception {
+        return ResponseEntity.ok(vendorService.updateVendor(id, vendorDTO));
     }
 
->>>>>>> origin/develop
+
 }
