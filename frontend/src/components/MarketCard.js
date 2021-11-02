@@ -21,7 +21,9 @@ const MarketCard = ({
         marketOpeningDate={marketOpeningDate}
         marketClosingDate={marketClosingDate}
       />
-      <div className='vendorNumber'>{vendorsAmount} árus</div>
+      <div className='vendorNumber'>
+        {vendorsAmount === 0 ? 'Szervezés alatt...' : `${vendorsAmount} árus`}
+      </div>
     </div>
   );
 };

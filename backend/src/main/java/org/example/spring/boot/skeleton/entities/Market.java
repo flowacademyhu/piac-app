@@ -13,7 +13,6 @@ public class Market {
     private Long id;
 
     private String profilePic;
-
     private String name;
 
     private Long openingDate;
