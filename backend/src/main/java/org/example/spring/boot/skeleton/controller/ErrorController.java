@@ -2,6 +2,7 @@ package org.example.spring.boot.skeleton.controller;
 
 import org.example.spring.boot.skeleton.exceptions.NoSuchMarketException;
 import org.example.spring.boot.skeleton.exceptions.NoSuchVendorException;
+import org.example.spring.boot.skeleton.exceptions.WrongPasswordException;
 import org.example.spring.boot.skeleton.model.ErrorModel;
 import org.example.spring.boot.skeleton.utilities.MessagesConstants;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -36,5 +37,11 @@ public class ErrorController {
     @ResponseStatus(HttpStatus.CONFLICT)
     public ErrorModel handleIntegrityConstraint(){
         return  new ErrorModel(MessagesConstants.VENDOR_NAME_EXISTS_MESSAGE);
+    }
+
+    @ExceptionHandler({WrongPasswordException.class})
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorModel handleWrongPassword(){
+        return new ErrorModel(MessagesConstants.WRONG_PASSWORD);
     }
 }

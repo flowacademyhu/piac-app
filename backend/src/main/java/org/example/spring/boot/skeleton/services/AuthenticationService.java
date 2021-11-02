@@ -2,6 +2,8 @@ package org.example.spring.boot.skeleton.services;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import net.bytebuddy.utility.RandomString;
+import org.example.spring.boot.skeleton.exceptions.WrongPasswordException;
 import org.example.spring.boot.skeleton.model.JwtRequestModel;
 import org.example.spring.boot.skeleton.jwtandsecurity.JwtUserDetailsService;
 import org.example.spring.boot.skeleton.jwtandsecurity.TokenManager;
@@ -28,6 +30,9 @@ public class AuthenticationService {
     @Autowired
     private TokenManager tokenManager;
 
+    private String modifPassword;
+    private String tokenForExchange;
+
     public String createToken(JwtRequestModel request) throws Exception {
         try {
             var auth = authenticationManager.authenticate(
@@ -37,9 +42,13 @@ public class AuthenticationService {
             if (auth.isAuthenticated()) {
                 final UserDetails userDetails = userDetailsService.loadUserByUsername(request.getUsername());
                 final String jwtToken = tokenManager.generateJwtToken(userDetails);
-                emailSendingService.sendmail(jwtToken);
+                String generatedString = RandomString.make(15);
+                tokenForExchange = jwtToken;
+                emailSendingService.sendmail(generatedString);
+                modifPassword = generatedString;
                 SecurityContextHolder.getContext().setAuthentication(auth);
-                return "Your token has been set to your email: " + emailSendingService.emailAddress;
+                request.setPassword(generatedString);
+                return "Your code has been set to your email: " + emailSendingService.emailAddress;
             }
         } catch (DisabledException e) {
             throw new Exception("USER_DISABLED", e);
@@ -48,4 +57,12 @@ public class AuthenticationService {
         }
         return null;
     }
+
+    public String getToken(String password) throws WrongPasswordException {
+        if (!password.equals(modifPassword)) {
+            throw new WrongPasswordException();
+        }   modifPassword = null;
+            return tokenForExchange;
+    }
 }
+
