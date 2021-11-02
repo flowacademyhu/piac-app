@@ -1,4 +1,3 @@
-import Footer from '../components/Footer';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import HeaderWithMarket from '../components/HeaderWithMarket';

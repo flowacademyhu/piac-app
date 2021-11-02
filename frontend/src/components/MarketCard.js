@@ -13,7 +13,7 @@ const MarketCard = ({
   profilePic
 }) => {
   return (
-    <div className='marketCard'>
+    <div className="marketCard">
       <MarketInfo
         profilePic={profilePic}
         marketName={marketName}
@@ -21,7 +21,7 @@ const MarketCard = ({
         marketOpeningDate={marketOpeningDate}
         marketClosingDate={marketClosingDate}
       />
-      <div className='vendorNumber'>
+      <div className="vendorNumber">
         {vendorsAmount === 0 ? 'Szervezés alatt...' : `${vendorsAmount} árus`}
       </div>
     </div>
