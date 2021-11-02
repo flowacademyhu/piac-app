@@ -10,6 +10,8 @@ const HeaderWithMarket = ({
   return (
     <div className='marketHeader'>
       <MarketInfo
+        header
+        marketHeaderLogoStyle
         profilePic={profilePic}
         marketName={marketName}
         marketLocation={marketLocation}

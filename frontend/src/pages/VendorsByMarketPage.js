@@ -38,7 +38,6 @@ const VendorsByMarketPage = () => {
           footer={market.id ? 'akik ezen a piacon jelen lesznek.' : ' '}
         />
       )}
-      <Footer />
     </>
   );
 };

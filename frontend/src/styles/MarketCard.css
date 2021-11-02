@@ -19,16 +19,16 @@
   grid-template-columns: auto 1fr;
   grid-template-rows: 1f auto;
   user-select: none;
-  padding: 20px;
+  padding: 10px;
   background-color: #53b896;
   width: 100%;
   position: relative;
   color: white;
+  height: 100px;
 }
 
 .marketDescribe {
   padding-left: 20px;
-  padding-top: 5px;
 }
 
 .marketLogo {
@@ -48,10 +48,19 @@
   background-size: contain;
 }
 
+.headerLogo {
+  height: 80px;
+}
+
+.cardLogo {
+  height: 110px;
+}
+
 .topMarketInfo {
   grid-column: 2;
   grid-row: 1;
   padding-left: 20px;
+  position: 'relative';
 }
 
 .marketName {
