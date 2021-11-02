@@ -29,9 +29,11 @@ public class MarketService {
     }
 
     public List<MarketDTO> allMarkets(){
-       return  marketRepository.findAll()
+        Date currentDate = new Date();
+        return  marketRepository.findAll()
                 .stream()
                 .map(this::marketToDTO)
+                .filter(el -> el.getClosingDate() > currentDate.getTime() / 1000)
                 .sorted(Comparator.comparing(MarketDTO::getOpeningDate))
                 .peek( m -> m.setVendors(null))
                 .collect(Collectors.toList());
