@@ -1,8 +1,6 @@
 package org.example.spring.boot.skeleton.model;
 
 import javax.validation.constraints.NotNull;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 
@@ -27,14 +25,13 @@ public class MarketDTO {
 
     private int numberOfVendors;
 
+    private Set<SimpleVendorDTO> vendors;
 
-    private Set<DetailVendorDTO> vendors;
-
-    public Set<DetailVendorDTO> getVendors() {
+    public Set<SimpleVendorDTO> getVendors() {
         return vendors;
     }
 
-    public MarketDTO setVendors(Set<DetailVendorDTO> vendors) {
+    public MarketDTO setVendors(Set<SimpleVendorDTO> vendors) {
         this.vendors = vendors;
         return this;
     }

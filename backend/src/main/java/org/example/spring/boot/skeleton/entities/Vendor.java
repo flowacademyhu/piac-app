@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 
 import javax.persistence.*;
-
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -36,7 +35,7 @@ public class Vendor {
     @ElementCollection(targetClass = String.class)
     private Set<String> products = new HashSet<>();
 
-    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
     @JoinTable(name = "vendors_markets",
             joinColumns = {@JoinColumn(name = "vendor_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "market_id", referencedColumnName = "id")})

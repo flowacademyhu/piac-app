@@ -17,7 +17,8 @@
 
 .vendorLogo {
   height: 110px;
-  border-radius: 80px;
+  width: 110px;
+  border-radius: 50%;
   grid-column: 1;
   grid-row-start: 1;
   grid-row-end: 3;
@@ -26,6 +27,9 @@
   border-color: lightgrey;
   align-self: center;
   margin: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .vendorName {
