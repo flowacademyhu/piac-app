@@ -1,5 +1,5 @@
 import MarketCard from './MarketCard';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import '../styles/MarketCardList.css';
 import { fetchMarkets } from './Service';
 import { Link } from 'react-router-dom';
@@ -12,12 +12,12 @@ const MarketCardList = () => {
     setMarkets(result);
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     getMarkets();
   }, []);
 
   return (
-    <div className="card-list">
+    <div className='card-list'>
       {markets.map((market) => {
         return (
           <div key={market.id}>

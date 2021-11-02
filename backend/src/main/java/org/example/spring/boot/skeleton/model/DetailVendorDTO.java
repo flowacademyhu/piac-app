@@ -124,7 +124,6 @@ public class DetailVendorDTO {
         return this;
     }
 
-
     public Long getId() {
         return id;
     }
@@ -132,6 +131,10 @@ public class DetailVendorDTO {
     public DetailVendorDTO setId(Long id) {
         this.id = id;
         return this;
+    }
+
+    public boolean isCardPayment() {
+        return cardPayment;
     }
 
     public String getIntroductionLong() {

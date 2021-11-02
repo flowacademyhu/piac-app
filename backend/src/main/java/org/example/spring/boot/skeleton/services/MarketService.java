@@ -91,9 +91,9 @@ public class MarketService {
                 .setNumberOfVendors(market.getVendors().size());
     }
 
+
     public MarketDTO findMarketByName(String name) throws NoSuchVendorException {
        var market = marketRepository.findByName(name).orElseThrow(NoSuchVendorException::new);
-
         return marketToDTO(market);
     }
 

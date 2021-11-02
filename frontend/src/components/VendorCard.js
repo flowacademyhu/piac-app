@@ -5,10 +5,10 @@ body.style.background = '#F7F5F2';
 
 const VendorCard = ({ vendor, vendorDesc, imageLogo }) => {
   return (
-    <div className="vendorCard">
-      <img className="vendorLogo" src={imageLogo} alt="logo" />
-      <div className="vendorName">{vendor}</div>
-      <div className="vendorDescription">{vendorDesc}</div>
+    <div className='vendorCard'>
+      <img className='vendorLogo' src={imageLogo} alt='logo' />
+      <div className='vendorName'>{vendor}</div>
+      <div className='vendorDescription'>{vendorDesc}</div>
     </div>
   );
 };

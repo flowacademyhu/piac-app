@@ -25,3 +25,25 @@ export const fetchVendors = async () => {
     console.warn('Failed to load vendors');
   }
 };
+
+export const fetchMarketById = async (id) => {
+  const url = MarketAPI + '/' + id;
+  try {
+    const response = await axios.get(url);
+    const data = response.data;
+    return data;
+  } catch (error) {
+    console.warn('Failed to load market');
+  }
+};
+
+export const fetchVendorById = async (id) => {
+  const url = VendorAPI + '/' + id;
+  try {
+    const response = await axios.get(url);
+    const data = response.data;
+    return data;
+  } catch (error) {
+    console.warn('Failed to load vendor');
+  }
+};

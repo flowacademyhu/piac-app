@@ -1,17 +1,21 @@
-const HeaderWithMarket = (props) => {
-  const { profilePic, name, place, date } = props;
+import MarketInfo from './MarketInfo';
+
+const HeaderWithMarket = ({
+  profilePic,
+  marketName,
+  marketLocation,
+  marketOpeningDate,
+  marketClosingDate
+}) => {
   return (
-    <div className="marketHeader">
-      <img className="marketLogo" src={profilePic} alt="logo" />
-      <div className="marketDescribe">
-        <div className="marketName">{name}</div>
-        <div className="marketLocationAndDate">
-          <div>{place}</div>
-          <div className="parallelDateAndHour">
-            <div>{date}</div>
-          </div>
-        </div>
-      </div>
+    <div className='marketHeader'>
+      <MarketInfo
+        profilePic={profilePic}
+        marketName={marketName}
+        marketLocation={marketLocation}
+        marketOpeningDate={marketOpeningDate}
+        marketClosingDate={marketClosingDate}
+      />
     </div>
   );
 };

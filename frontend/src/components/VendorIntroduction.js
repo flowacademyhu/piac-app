@@ -5,7 +5,7 @@ const VendorIntroduction = ({ introductionLong }) => {
   return (
     <>
       {introductionLong && (
-        <div className="introduction">
+        <div className='introduction'>
           <h2>Bemutatkozás</h2>
           <p>{introductionLong}</p>
         </div>

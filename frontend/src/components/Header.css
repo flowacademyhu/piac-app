@@ -4,9 +4,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url('../headers/market.jpeg');
-
   background-position: center;
   background-size: cover;
   position: relative;
@@ -19,20 +16,13 @@
   height: 150px;
 }
 
+.market-header {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url('../headers/market.jpeg');
+}
+
 .vendor-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     url('../headers/vendor.jpeg');
   background-position-y: 60%;
-  background-size: cover;
-  position: relative;
-  top: 0;
-  left: 0;
-  width: 100%;
-  color: #f7f5f2;
-  font-family: 'Amatic SC', cursive;
-  font-size: 65px;
-  height: 150px;
 }
