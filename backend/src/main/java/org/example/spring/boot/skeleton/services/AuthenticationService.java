@@ -51,12 +51,10 @@ public class AuthenticationService {
                 generatedPassword = generatedString;
                 SecurityContextHolder.getContext().setAuthentication(auth);
                 request.setPassword(generatedString);
-                return "Your code has been set to your email: " + emailSendingService.emailAddress;
+                return "Your code has been sent to your email: " + emailSendingService.emailAddress;
             }
-        } catch (DisabledException e) {
-            throw new Exception("USER_DISABLED", e);
-        } catch (BadCredentialsException e) {
-            throw new Exception("INVALID_CREDENTIALS", e);
+        } catch (DisabledException | BadCredentialsException e) {
+
         }
         return null;
     }
