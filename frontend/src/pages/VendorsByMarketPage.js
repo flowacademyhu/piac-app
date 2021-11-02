@@ -5,20 +5,33 @@ import HeaderWithMarket from '../components/HeaderWithMarket';
 import VendorListOfOneMarket from '../components/VendorListOfOneMarket';
 import VendorlistUploadInProgress from '../components/VendorlistUploadInProgress';
 import { fetchMarketById } from '../components/Service';
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 const VendorsByMarketPage = () => {
   const [market, setMarket] = useState({});
+  const [error, hasError] = useState(false);
   const marketId = useParams().id;
 
   useEffect(() => {
     const fetchMarket = async (id) => {
       const response = await fetchMarketById(id);
-      setMarket(response);
+      if (response === undefined) {
+        hasError(true);
+      } else {
+        setMarket(response);
+      }
     };
     fetchMarket(marketId);
   }, [marketId]);
 
-  return (
+  const vendorList =
+    market.vendors && market.vendors.length > 0 ? (
+      <VendorListOfOneMarket market={market} />
+    ) : (
+      <VendorlistUploadInProgress />
+    );
+
+  return !error ? (
     <>
       {market.id && (
         <HeaderWithMarket
@@ -29,15 +42,11 @@ const VendorsByMarketPage = () => {
           marketClosingDate={market.closingDate}
         />
       )}
-      {market.vendors && market.vendors.length > 0
-? (
-        <VendorListOfOneMarket market={market} />
-      )
-: (
-        <VendorlistUploadInProgress />
-      )}
+      {vendorList}
       <Footer />
     </>
+  ) : (
+    <Redirect to="/" />
   );
 };
 

@@ -7,18 +7,23 @@ import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 const VendorProfilePage = () => {
   const [vendor, setVendor] = useState({});
+  const [error, hasError] = useState(false);
   const vendorId = useParams().id;
   const showMarkets = useParams().piacok;
 
   useEffect(() => {
     const fetchVendor = async (id) => {
       const response = await fetchVendorById(id);
-      setVendor(response);
+      if (response === undefined) {
+        hasError(true);
+      } else {
+        setVendor(response);
+      }
     };
     fetchVendor(vendorId);
   }, [vendorId]);
 
-  return vendor ? (
+  return !error ? (
     <>
       <VendorHeader
         profilePic={vendor.profilePic}
