@@ -34,7 +34,6 @@ const VendorsByMarketPage = () => {
       ) : (
         <VendorlistUploadInProgress />
       )}
-      <Footer />
     </>
   );
 };
