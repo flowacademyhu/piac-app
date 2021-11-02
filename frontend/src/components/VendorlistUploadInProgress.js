@@ -1,17 +1,17 @@
 import '../styles/VendorlistUploadInProgress.css';
 
-const VendorlistUploadInProgress = () => {
+const VendorlistUploadInProgress = ({ title, body, footer }) => {
   return (
-    <div className='uploadScreen'>
+    <div className='card-list'>
       <div className='uploadTexts middleUploadText'>
-        <span>Szervezés alatt...</span>
+        <span>{title}</span>
       </div>
       <div className='uploadTexts bottomInfoText'>
         <div>
-          <span>Itt fogod megtalálni az árusokat,</span>
+          <span>{body}</span>
         </div>
         <div>
-          <span>akik ezen a piacon jelen lesznek.</span>
+          <span>{footer}</span>
         </div>
       </div>
     </div>

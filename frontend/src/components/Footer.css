@@ -21,7 +21,7 @@
 }
 
 .footer {
-  padding-top: 1rem;
+  padding-top: 5px;
   text-decoration: none;
   background-color: #fffdfc;
   position: fixed;
@@ -31,7 +31,7 @@
   width: 100%;
   border-top: solid;
   border-width: 0.5px;
-  height: 80px;
+  height: 100px;
 }
 
 .container-fluid {
