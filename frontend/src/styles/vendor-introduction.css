@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 
 .introduction {
@@ -9,6 +9,7 @@
 .introduction h2 {
   font-family: 'Amatic SC', cursive;
   font-size: 32px;
+  font-weight: 700;
   margin-top: 0;
 }
 
