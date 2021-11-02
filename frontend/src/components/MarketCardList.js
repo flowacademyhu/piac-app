@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 
 const MarketCardList = () => {
   const [markets, setMarkets] = useState([]);
-  // let currentTime = new Date();
 
   const getMarkets = async () => {
     const result = await fetchMarkets();
