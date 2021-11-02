@@ -21,9 +21,6 @@ import java.io.IOException;
 @Service
 public class EmailSendingService {
 
-    @Value(value = "${email.password}")
-    public String emailPassword;
-
     @Value(value = "${email.address}")
     public String emailAddress;
 
