@@ -1,6 +1,7 @@
 package org.example.spring.boot.skeleton.services;
 
 import lombok.AllArgsConstructor;
+import org.example.spring.boot.skeleton.entities.Vendor;
 import org.example.spring.boot.skeleton.model.MarketDTO;
 import org.example.spring.boot.skeleton.entities.Market;
 import org.example.spring.boot.skeleton.exceptions.NoSuchMarketException;
@@ -8,6 +9,7 @@ import org.example.spring.boot.skeleton.exceptions.NoSuchVendorException;
 import org.example.spring.boot.skeleton.model.SimpleMarketDTO;
 import org.example.spring.boot.skeleton.model.SimpleVendorDTO;
 import org.example.spring.boot.skeleton.repositories.MarketRepository;
+import org.example.spring.boot.skeleton.repositories.VendorRepository;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
@@ -20,6 +22,7 @@ import java.util.stream.Collectors;
 public class MarketService {
 
     private final MarketRepository marketRepository;
+    private final VendorRepository vendorRepository;
     private final VendorService vendorService;
 
     public MarketDTO addMarket(MarketDTO marketDTO) throws ParseException {
@@ -107,6 +110,11 @@ public class MarketService {
                 .setOpeningDate(market.getOpeningDate())
                 .setClosingDate(market.getClosingDate())
                 .setNumberOfVendors(market.getVendors().size());
+    }
+
+    public List<SimpleMarketDTO> findAllMarketsByVendorId(Long id) {
+        Vendor vendor = vendorRepository.findById(id).orElseThrow();
+        return vendor.getMarkets().stream().map(market -> marketToSimpleDTO(market)).collect(Collectors.toList());
     }
 
 }
