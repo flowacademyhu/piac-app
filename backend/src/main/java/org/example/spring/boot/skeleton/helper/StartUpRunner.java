@@ -25,8 +25,8 @@ public class StartUpRunner implements CommandLineRunner {
         MarketDTO marketDTO1 = new MarketDTO();
         marketDTO1.setProfilePic(ProfilePics.PROFILE_PIC_POT);
         marketDTO1.setName("Bödön Piac");
-        marketDTO1.setOpeningDate(1634972400L);
-        marketDTO1.setClosingDate(1634986800L);
+        marketDTO1.setOpeningDate(1641214151L);
+        marketDTO1.setClosingDate(1641214571L);
         marketDTO1.setPlace("Szeged Pláza");
         marketService.addMarket(marketDTO1);
 
@@ -41,8 +41,8 @@ public class StartUpRunner implements CommandLineRunner {
         MarketDTO marketDTO3 = new MarketDTO();
         marketDTO3.setProfilePic(ProfilePics.PROFILE_PIC_POT);
         marketDTO3.setName("Bödön Piac2");
-        marketDTO3.setOpeningDate(1634972400L);
-        marketDTO3.setClosingDate(1634986800L);
+        marketDTO3.setOpeningDate(1643892551L);
+        marketDTO3.setClosingDate(1643892551L);
         marketDTO3.setPlace("Szeged Pláza");
         marketService.addMarket(marketDTO3);
 

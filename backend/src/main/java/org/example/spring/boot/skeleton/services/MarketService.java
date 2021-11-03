@@ -36,7 +36,11 @@ public class MarketService {
     }
 
     public List<MarketDTO> findAllUpcomingMarkets() {
-        return marketRepository.findAllUpcomingMarkets().stream().map(this::marketToDTO).collect(Collectors.toList());
+        return marketRepository.findAllUpcomingMarkets()
+                .stream().map(this::marketToDTO)
+                .sorted(Comparator.comparing(MarketDTO::getOpeningDate))
+                .peek(m -> m.setVendors(null))
+                .collect(Collectors.toList());
     }
 
     public MarketDTO getMarketById(Long id) throws Exception {
