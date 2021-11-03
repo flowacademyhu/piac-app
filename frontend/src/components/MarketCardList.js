@@ -5,15 +5,15 @@ import { fetchUpcomingMarkets } from './Service';
 import { Link } from 'react-router-dom';
 
 const MarketCardList = () => {
-  const [upcomingMarkets, setupcomingMarkets] = useState([]);
+  const [upcomingMarkets, setUpcomingMarkets] = useState([]);
 
-  const getCurrentMarkets = async () => {
+  const getUpcomingMarkets = async () => {
     const result = await fetchUpcomingMarkets();
-    setupcomingMarkets(result);
+    setUpcomingMarkets(result);
   };
 
   useLayoutEffect(() => {
-    getCurrentMarkets();
+    getUpcomingMarkets();
   }, []);
 
   return (
