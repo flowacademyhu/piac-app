@@ -46,6 +46,14 @@
   grid-row: 2;
   font-family: 'Open Sans', sans-serif;
   font-size: 12px;
-  overflow-wrap: break-word;
+  overflow: hidden;
   padding-left: 10px;
+  width: 100%;
+  max-height: 55px;
+  white-space: normal;
+  word-break: break-word;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
 }
