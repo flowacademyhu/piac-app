@@ -16,16 +16,14 @@ public class StartUpRunner implements CommandLineRunner {
     private final MarketService marketService;
     private final VendorService vendorService;
 
-
     public StartUpRunner(MarketService marketService, VendorService vendorService) {
         this.marketService = marketService;
         this.vendorService = vendorService;
-
     }
+
     @Override
     public void run(String... args) throws Exception {
        if(marketService.allMarkets().size() == 0) {
-
            MarketDTO marketDTO1 = new MarketDTO();
            marketDTO1.setProfilePic(ProfilePics.PROFILE_PIC_POT);
            marketDTO1.setName("Bödön Piac");
@@ -104,7 +102,5 @@ public class StartUpRunner implements CommandLineRunner {
            vendorDTO2.setInstagram("justInCase.insta");
            vendorService.addVendor(vendorDTO2);
        }
-
-
     }
 }
