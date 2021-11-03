@@ -34,13 +34,4 @@ public class MarketController {
     public ResponseEntity<List<SimpleVendorDTO>> findAllVendorsAtGivenMarket(@PathVariable @RequestBody Long id) throws NoSuchMarketException {
         return ResponseEntity.ok(marketService.findAllVendorsAtGivenMarket(id));
     }
-
-    @GetMapping("/demo")
-    public void demoData() {
-        try {
-            marketService.demoData();
-        } catch (Exception e) {
-
-        }
-    }
 }
