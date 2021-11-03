@@ -1,5 +1,7 @@
 import React from 'react';
 import '../styles/vendor-introduction.css';
+import { v4 } from 'uuid';
+
 
 const VendorIntroduction = ({ introductionLong }) => {
   return (
@@ -8,7 +10,7 @@ const VendorIntroduction = ({ introductionLong }) => {
         <div className='introduction'>
           <h2>Bemutatkozás</h2>
           {introductionLong.split('\n').map((introduction) => (
-            <p className='introduction-line'>{introduction}</p>
+            <p key={v4()} className='introduction-line'>{introduction}</p>
           ))}
         </div>
       )}
