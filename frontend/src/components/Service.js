@@ -26,6 +26,19 @@ export const fetchVendors = async () => {
   }
 };
 
+const CurrentMarketAPI = '/v1/api/market/upcoming';
+
+export const fetchCurrentMarkets = async () => {
+  const url = CurrentMarketAPI;
+  try {
+    const response = await axios.get(url);
+    const data = response.data;
+    return data;
+  } catch (error) {
+    console.warn('Failed to load markets');
+  }
+};
+
 export const fetchMarketById = async (id) => {
   const url = MarketAPI + '/' + id;
   try {
