@@ -17,6 +17,27 @@ const VendorsByMarketPage = () => {
     fetchMarket(marketId);
   }, [marketId]);
 
+  const renderVendorList = () => {
+    if (market.vendors && market.vendors.length > 0) {
+      return <VendorListOfOneMarket market={market} />;
+    } else if (market.id) {
+      return (
+        <VendorlistUploadInProgress
+          title='Szervezés alatt...'
+          body='Itt fogod megtalálni az árusokat,'
+          footer='akik ezen a piacon jelen lesznek.'
+        />
+      );
+    } else {
+      return (
+        <>
+          <div className='marketLoading' />
+          <VendorlistUploadInProgress title='Betöltés...' />
+        </>
+      );
+    }
+  };
+
   return (
     <>
       {market.id && (
@@ -28,24 +49,8 @@ const VendorsByMarketPage = () => {
           marketClosingDate={market.closingDate}
         />
       )}
-      {market.vendors && market.vendors.length > 0 ? (
-        <VendorListOfOneMarket market={market} />
-      ) : (
-        <>
-          {market.id ? (
-            <VendorlistUploadInProgress
-              title="Szervezés alatt..."
-              body="Itt fogod megtalálni az árusokat,"
-              footer="akik ezen a piacon jelen lesznek."
-            />
-          ) : (
-            <>
-              <div className="marketLoading" />
-              <VendorlistUploadInProgress title="Betöltés..." />
-            </>
-          )}
-        </>
-      )}
+
+      {renderVendorList()}
     </>
   );
 };
