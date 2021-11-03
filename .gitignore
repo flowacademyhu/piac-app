@@ -2,3 +2,5 @@
 .idea/*
 target/*
 *.iml
+sendgrid.env
+sendgrid.env
