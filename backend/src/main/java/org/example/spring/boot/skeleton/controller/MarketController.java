@@ -40,7 +40,7 @@ public class MarketController {
         try {
             marketService.demoData();
         } catch (Exception e) {
-            System.out.println("Error endpoint");
+
         }
     }
 }
