@@ -26,7 +26,7 @@ public class MarketService {
         return marketRepository.findAll()
                 .stream()
                 .map(this::marketToDTO)
-                .sorted(Comparator.comparing(MarketDTO::getDate).reversed())
+                .sorted(Comparator.comparing(MarketDTO::getOpeningDate).reversed())
                 .peek(m -> m.setVendors(null))
                 .collect(Collectors.toList());
     }
@@ -46,7 +46,8 @@ public class MarketService {
     public MarketDTO updateMarketById(Long id, MarketDTO marketDTO) throws NoSuchMarketException {
         Market market = marketRepository.findById(id).orElseThrow(NoSuchMarketException::new).builder()
                 .profilePic(marketDTO.getProfilePic())
-                .date(marketDTO.getDate())
+                .openingDate(marketDTO.getOpeningDate())
+                .closingDate(marketDTO.getClosingDate())
                 .place(marketDTO.getPlace())
                 .id(id)
                 .name(marketDTO.getName())
@@ -63,7 +64,8 @@ public class MarketService {
     public Market marketDTOToEntity(MarketDTO marketDTO) {
         return Market.builder()
                 .profilePic(marketDTO.getProfilePic())
-                .date(marketDTO.getDate())
+                .openingDate(marketDTO.getOpeningDate())
+                .closingDate(marketDTO.getClosingDate())
                 .name(marketDTO.getName())
                 .place(marketDTO.getPlace())
                 .build();
@@ -74,7 +76,8 @@ public class MarketService {
                 .setProfilePic(market.getProfilePic())
                 .setId(market.getId())
                 .setVendors(market.getVendors().stream().map(vendorService::vendorToSimpleDTO).collect(Collectors.toSet()))
-                .setDate(market.getDate())
+                .setOpeningDate(market.getOpeningDate())
+                .setClosingDate(market.getClosingDate())
                 .setName(market.getName())
                 .setPlace(market.getPlace())
                 .setNumberOfVendors(market.getVendors().size());

@@ -3,6 +3,7 @@ package org.example.spring.boot.skeleton.model;
 import javax.validation.constraints.NotNull;
 import java.util.*;
 
+
 public class MarketDTO {
 
     private Long id;
@@ -17,7 +18,10 @@ public class MarketDTO {
     private String place;
 
     @NotNull
-    private Long date;
+    private Long openingDate;
+
+    @NotNull
+    private Long closingDate;
 
     private int numberOfVendors;
 
@@ -62,12 +66,21 @@ public class MarketDTO {
         return this;
     }
 
-    public Long getDate() {
-        return date;
+    public Long getOpeningDate() {
+        return openingDate;
     }
 
-    public MarketDTO setDate(Long date) {
-        this.date = date;
+    public MarketDTO setOpeningDate(Long openingDate) {
+        this.openingDate = openingDate;
+        return this;
+    }
+
+    public Long getClosingDate() {
+        return closingDate;
+    }
+
+    public MarketDTO setClosingDate(Long closingDate) {
+        this.closingDate = closingDate;
         return this;
     }
 
