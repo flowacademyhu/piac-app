@@ -33,8 +33,8 @@ public class StartUpRunner implements CommandLineRunner {
         MarketDTO marketDTO2 = new MarketDTO();
         marketDTO2.setProfilePic(ProfilePics.PROFILE_PIC_FOX);
         marketDTO2.setName("Böba Piac Karácsony");
-        marketDTO2.setOpeningDate(1634972400L);
-        marketDTO2.setClosingDate(1634986800L);
+        marketDTO2.setOpeningDate(1638459984L);
+        marketDTO2.setClosingDate(1638470784L);
         marketDTO2.setPlace("Szeged Pláza");
         marketService.addMarket(marketDTO2);
 

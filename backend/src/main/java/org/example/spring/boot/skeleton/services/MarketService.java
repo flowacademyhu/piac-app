@@ -27,14 +27,16 @@ public class MarketService {
     }
 
     public List<MarketDTO> allMarkets(){
-        Date currentDate = new Date();
         return  marketRepository.findAll()
                 .stream()
                 .map(this::marketToDTO)
-                .filter(el -> el.getClosingDate() > currentDate.getTime() / 1000)
                 .sorted(Comparator.comparing(MarketDTO::getOpeningDate))
                 .peek( m -> m.setVendors(null))
                 .collect(Collectors.toList());
+    }
+
+    public List<MarketDTO> findAllUpcomingMarkets() {
+        return marketRepository.findAllUpcomingMarkets().stream().map(this::marketToDTO).collect(Collectors.toList());
     }
 
     public MarketDTO getMarketById(Long id) throws Exception {
