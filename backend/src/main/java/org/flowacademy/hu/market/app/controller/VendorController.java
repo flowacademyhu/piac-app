@@ -7,6 +7,7 @@ import org.flowacademy.hu.market.app.model.SimpleMarketDTO;
 import org.flowacademy.hu.market.app.model.VendorDTO;
 import org.flowacademy.hu.market.app.services.MarketService;
 import org.flowacademy.hu.market.app.services.VendorService;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;

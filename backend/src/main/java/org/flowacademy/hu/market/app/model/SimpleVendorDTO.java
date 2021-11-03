@@ -1,6 +1,5 @@
 package org.flowacademy.hu.market.app.model;
 
-
 public class SimpleVendorDTO {
 
     private Long id;

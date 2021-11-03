@@ -2,7 +2,7 @@
 
 .footer-label {
   font-family: 'Bebas Neue', cursive;
-  font-size: 20px;
+  font-size: 18px;
   color: #705a4f;
   text-decoration: none;
   outline-style: none;
@@ -17,22 +17,23 @@
 }
 
 .footer-logo {
-  height: 30px;
+  height: 25px;
 }
 
 .footer {
   padding-top: 5px;
   text-decoration: none;
   background-color: #fffdfc;
-  position: relative;
+  position: fixed;
   justify-content: center;
   text-align: center;
+  vertical-align: middle;
   bottom: 0;
-  left: 0;
   width: 100%;
   border-top: solid;
+  border-color: #CCBEB8;
   border-width: 0.5px;
-  height: 100px;
+  height: 60px;
 }
 
 .container-fluid {

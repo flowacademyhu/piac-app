@@ -11,7 +11,6 @@ import org.flowacademy.hu.market.app.model.VendorDTO;
 import org.flowacademy.hu.market.app.repositories.MarketRepository;
 import org.flowacademy.hu.market.app.repositories.VendorRepository;
 import org.springframework.stereotype.Service;
-
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
@@ -84,20 +83,19 @@ public class VendorService {
         Vendor vendor = vendorRepository.findById(id).orElseThrow(NoSuchVendorException::new);
             Set<Market> set = new HashSet();
             set.add(market);
-            vendor.setMarkets(set);
-            vendor.setProducts(vendorDTO.getProducts());
-            vendor.setIntro(vendorDTO.getIntro());
-            vendor.setName(vendorDTO.getName());
-            vendor.setCardPayment(vendorDTO.getCardPayment());
-            vendor.setId(id);
-            vendor.setFacebook(vendorDTO.getFacebook());
-            vendor.setEmail(vendorDTO.getEmail());
-            vendor.setPhone(vendor.getPhone());
-            vendor.setInstagram(vendorDTO.getInstagram());
-            vendor.setWebSite(vendorDTO.getWebSite());
-            vendorRepository.save(vendor);
-        return vendorToResponse(vendor);
-
+            vendor.builder().phone(vendorDTO.getPhone())
+                    .webSite(vendorDTO.getWebSite())
+                    .instagram(vendorDTO.getInstagram())
+                    .facebook(vendorDTO.getFacebook())
+                    .email(vendorDTO.getEmail())
+                    .markets(set)
+                    .products(vendorDTO.getProducts())
+                    .name(vendorDTO.getName())
+                    .intro(vendorDTO.getIntro())
+                    .id(id)
+                    .build();
+                 vendorRepository.save(vendor);
+            return vendorToResponse(vendor);
     }
 
     public void deleteAllVendors(){

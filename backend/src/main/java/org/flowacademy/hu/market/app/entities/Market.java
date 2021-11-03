@@ -19,7 +19,7 @@ public class Market {
     private Long closingDate;
     private String place;
 
-    @ManyToMany(mappedBy = "markets", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "markets", fetch = FetchType.EAGER)
     private Set<Vendor> vendors = new HashSet<>();
 
 

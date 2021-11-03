@@ -25,6 +25,11 @@ public class MarketController {
         return ResponseEntity.ok(marketService.allMarkets());
     }
 
+    @GetMapping("/upcoming")
+    public ResponseEntity<List<MarketDTO>> findAllUpcomingMarkets() {
+        return ResponseEntity.ok(marketService.findAllUpcomingMarkets());
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<MarketDTO> getMarketById(@RequestBody @PathVariable Long id) throws Exception {
         return ResponseEntity.ok(marketService.getMarketById(id));
@@ -34,5 +39,4 @@ public class MarketController {
     public ResponseEntity<List<SimpleVendorDTO>> findAllVendorsAtGivenMarket(@PathVariable @RequestBody Long id) throws NoSuchMarketException {
         return ResponseEntity.ok(marketService.findAllVendorsAtGivenMarket(id));
     }
-
 }

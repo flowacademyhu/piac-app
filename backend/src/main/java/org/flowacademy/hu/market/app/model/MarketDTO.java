@@ -3,7 +3,6 @@ package org.flowacademy.hu.market.app.model;
 import javax.validation.constraints.NotNull;
 import java.util.*;
 
-
 public class MarketDTO {
 
     private Long id;
