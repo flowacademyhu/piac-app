@@ -6,6 +6,7 @@ import VendorPage from '../pages/VendorPage';
 import VendorProfilePage from '../pages/VendorProfilePage';
 import VendorsByMarketPage from '../pages/VendorsByMarketPage';
 import Footer from './Footer';
+import '../../node_modules/delayed-scroll-restoration-polyfill/index';
 
 const App = () => {
   return (
