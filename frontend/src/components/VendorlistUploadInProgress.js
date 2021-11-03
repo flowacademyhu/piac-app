@@ -2,7 +2,7 @@ import '../styles/VendorlistUploadInProgress.css';
 
 const VendorlistUploadInProgress = ({ title, body, footer }) => {
   return (
-    <div className='uploadScreen'>
+    <div className='card-list'>
       <div className='uploadTexts middleUploadText'>
         <span>{title}</span>
       </div>

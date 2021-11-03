@@ -9,8 +9,6 @@ import Footer from './Footer';
 
 const App = () => {
   return (
-    <div className='App'>
-      <div className='container-fluid'>
         <Router>
           <Switch>
             <Route exact path='/'>
@@ -31,8 +29,6 @@ const App = () => {
           </Switch>
           <Footer />
         </Router>
-      </div>
-    </div>
   );
 };
 

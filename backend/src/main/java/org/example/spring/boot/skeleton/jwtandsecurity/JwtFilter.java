@@ -39,10 +39,8 @@ public class JwtFilter extends OncePerRequestFilter {
             } catch(Exception e){
                 System.out.println("Exception: " + e);
             }
-        } else {
-            System.out.println("Bearer String not found in token");
         }
-        if (null != username &&SecurityContextHolder.getContext().getAuthentication() == null) {
+        if (null != username && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = userDetailsService.loadUserByUsername(username);
             if (tokenManager.validateJwtToken(token, userDetails)) {
                 UsernamePasswordAuthenticationToken

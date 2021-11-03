@@ -3,7 +3,8 @@ const MarketInfo = ({
   marketName,
   marketLocation,
   marketOpeningDate,
-  marketClosingDate
+  marketClosingDate,
+  header
 }) => {
   const marketOpeningDateFormatter = {
     year: 'numeric',
@@ -37,7 +38,7 @@ const MarketInfo = ({
   return (
     <>
       <div
-        className='marketLogo headerLogo'
+        className={header ? 'marketLogo headerLogo' : 'marketLogo cardLogo'}
         style={
           profilePic
             ? {

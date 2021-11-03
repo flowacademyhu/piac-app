@@ -1,9 +1,16 @@
-#docker build -t spring-boot-skeleton:latest . --no-cache
-#docker run -dp 8081:8081 spring-boot-skeleton
 FROM maven:openjdk AS build
-COPY ./src /home/app/src
+
+RUN mkdir /home/app
+
+WORKDIR /home/app/
+
 COPY ./pom.xml /home/app
-RUN mvn -f /home/app/pom.xml clean package -DskipTests
+
+RUN mvn -B verify clean --fail-never
+
+COPY ./src /home/app/src
+
+RUN mvn clean package -DskipTests
 
 FROM openjdk
 COPY --from=build /home/app/target/*.jar /usr/local/lib/spring-boot-skeleton.jar

@@ -6,14 +6,14 @@
   justify-content: center;
   background-position: center;
   background-size: cover;
-  position: relative;
+  position: sticky;
   top: 0;
-  left: 0;
   width: 100%;
   color: #f7f5f2;
   font-family: 'Amatic SC', cursive;
   font-size: 65px;
-  height: 150px;
+  z-index: 1;
+  height: 100px;
 }
 
 .market-header {
