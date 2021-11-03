@@ -14,7 +14,7 @@ const VendorProfilePage = () => {
   useEffect(() => {
     const fetchVendor = async (id) => {
       const response = await fetchVendorById(id);
-      if (response === undefined) {
+      if (!response) {
         hasError(true);
       } else {
         setVendor(response);
@@ -23,28 +23,33 @@ const VendorProfilePage = () => {
     fetchVendor(vendorId);
   }, [vendorId]);
 
-  return !error ? (
+  return (
     <>
-      <VendorHeader
-        profilePic={vendor.profilePic}
-        name={vendor.name}
-        intro={vendor.intro}
-        cardPayment={vendor.cardPayment}
-      />
-      <VendorInfoNav
-        vendorId={vendorId}
-        showMarkets={showMarkets}
-        products={vendor.products}
-        facebook={vendor.facebook}
-        instagram={vendor.instagram}
-        website={vendor.webSite}
-        email={vendor.email}
-        phone={vendor.phone}
-        introductionLong={vendor.introductionLong}
-      />
+      {!error && vendor.id ? (
+        <>
+          <VendorHeader
+            profilePic={vendor.profilePic}
+            name={vendor.name}
+            intro={vendor.intro}
+            cardPayment={vendor.cardPayment}
+          />
+          <VendorInfoNav
+            vendorId={vendorId}
+            showMarkets={showMarkets}
+            products={vendor.products}
+            facebook={vendor.facebook}
+            instagram={vendor.instagram}
+            website={vendor.webSite}
+            email={vendor.email}
+            phone={vendor.phone}
+            introductionLong={vendor.introductionLong}
+          />
+        </>
+      ) : (
+        <div style={{ height: '90%' }} />
+      )}
+      {error && <Redirect to="/arusok" />}
     </>
-  ) : (
-    <Redirect to="/arusok" />
   );
 };
 

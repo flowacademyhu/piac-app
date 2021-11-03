@@ -15,7 +15,7 @@ const VendorsByMarketPage = () => {
   useEffect(() => {
     const fetchMarket = async (id) => {
       const response = await fetchMarketById(id);
-      if (response === undefined) {
+      if (!response) {
         hasError(true);
       } else {
         setMarket(response);
@@ -31,22 +31,25 @@ const VendorsByMarketPage = () => {
       <VendorlistUploadInProgress />
     );
 
-  return !error ? (
+  return (
     <>
-      {market.id && (
-        <HeaderWithMarket
-          profilePic={market.profilePic}
-          marketName={market.name}
-          marketLocation={market.place}
-          marketOpeningDate={market.openingDate}
-          marketClosingDate={market.closingDate}
-        />
+      {!error && market.id ? (
+        <>
+          <HeaderWithMarket
+            profilePic={market.profilePic}
+            marketName={market.name}
+            marketLocation={market.place}
+            marketOpeningDate={market.openingDate}
+            marketClosingDate={market.closingDate}
+          />
+          {vendorList}
+          <Footer />
+        </>
+      ) : (
+        <div style={{ height: '90%' }} />
       )}
-      {vendorList}
-      <Footer />
+      {error && <Redirect to="/" />}
     </>
-  ) : (
-    <Redirect to="/" />
   );
 };
 
