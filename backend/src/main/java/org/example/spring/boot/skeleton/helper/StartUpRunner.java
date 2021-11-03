@@ -77,8 +77,7 @@ public class StartUpRunner implements CommandLineRunner {
            VendorDTO vendorDTO1 = new VendorDTO();
            vendorDTO1.setName("Chilikirály");
            vendorDTO1.setIntro("Chilizz belünk, Magyarország legjobb chilijeivel...");
-           var foundMarket = marketService.findMarketByName("Bödön Piac Platinum");
-           vendorDTO1.setMarketId(foundMarket.getId());
+           vendorDTO1.setMarketId(1L);
            Set<String> newSet = Set.of("chilik","paprikakrémek","csípős szószok");
            vendorDTO1.setProducts(newSet);
            vendorDTO1.setEmail("chiliking@flow.hu");
@@ -90,8 +89,7 @@ public class StartUpRunner implements CommandLineRunner {
            VendorDTO vendorDTO2 = new VendorDTO();
            vendorDTO2.setName("Just incase");
            vendorDTO2.setIntro("Praktikus termékek, környezettudatos ajándékcsomagok....");
-           var foundMarket2 = marketService.findMarketByName("Bödön Piac Awesome Edition");
-           vendorDTO2.setMarketId(foundMarket2.getId());
+           vendorDTO2.setMarketId(2L);
            Set<String> newSet2 = Set.of("lebomló zacskók","papírdobozok","kézműves szappanok");
            vendorDTO2.setProducts(newSet2);
            vendorDTO2.setEmail("csakugy@flow.hu");
