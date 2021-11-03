@@ -32,11 +32,19 @@ public class MarketService {
         return marketDTO;
     }
 
-    public List<MarketDTO> allMarkets() {
-        return marketRepository.findAll()
+    public List<MarketDTO> allMarkets(){
+        return  marketRepository.findAll()
                 .stream()
                 .map(this::marketToDTO)
-                .sorted(Comparator.comparing(MarketDTO::getOpeningDate).reversed())
+                .sorted(Comparator.comparing(MarketDTO::getOpeningDate))
+                .peek( m -> m.setVendors(null))
+                .collect(Collectors.toList());
+    }
+
+    public List<MarketDTO> findAllUpcomingMarkets() {
+        return marketRepository.findAllUpcomingMarkets()
+                .stream().map(this::marketToDTO)
+                .sorted(Comparator.comparing(MarketDTO::getOpeningDate))
                 .peek(m -> m.setVendors(null))
                 .collect(Collectors.toList());
     }
