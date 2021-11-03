@@ -1,6 +1,5 @@
 package org.flowacademy.hu.market.app.config;
 
-//import lombok.AllArgsConstructor;
 import org.flowacademy.hu.market.app.jwtandsecurity.JwtAuthenticationEntryPoint;
 import org.flowacademy.hu.market.app.jwtandsecurity.JwtFilter;
 import org.springframework.beans.factory.annotation.Autowired;
