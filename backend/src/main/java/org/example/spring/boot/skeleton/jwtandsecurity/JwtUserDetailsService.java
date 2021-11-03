@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
 
-    @Value(value = "${admin}")
+    @Value(value = "${admin.name}")
     private String adminName;
     @Value(value = "${randomAdminPassword}")
     private String password;

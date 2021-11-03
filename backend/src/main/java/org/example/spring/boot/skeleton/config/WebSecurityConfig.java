@@ -25,7 +25,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private JwtFilter filter;
 
-    @Value(value = "${admin}")
+    @Value(value = "${admin.name}")
     private String adminName;
     @Bean
     public PasswordEncoder passwordEncoder() {

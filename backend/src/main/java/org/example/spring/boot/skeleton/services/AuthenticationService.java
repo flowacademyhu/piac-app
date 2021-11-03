@@ -51,7 +51,7 @@ public class AuthenticationService {
                 generatedPassword = generatedString;
                 SecurityContextHolder.getContext().setAuthentication(auth);
                 request.setPassword(generatedString);
-                return "Your code has been sent to your email: " + emailSendingService.emailAddress;
+                return "Your code has been sent to your email: " + emailSendingService.getEmailAddress();
             }
         } catch (DisabledException | BadCredentialsException e) {
 

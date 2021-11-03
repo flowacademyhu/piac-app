@@ -22,10 +22,14 @@ import java.io.IOException;
 public class EmailSendingService {
 
     @Value(value = "${email.address}")
-    public String emailAddress;
+    private String emailAddress;
 
     @Value("${my.sendgrid.apikey}")
     private  String sendGridApiKey;
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
 
     public void sendmail( String token) throws Exception {
         Email from = new Email(emailAddress);
