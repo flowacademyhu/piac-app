@@ -35,4 +35,12 @@ public class MarketController {
         return ResponseEntity.ok(marketService.findAllVendorsAtGivenMarket(id));
     }
 
+    @GetMapping("/demo")
+    public void demoData() {
+        try {
+            marketService.demoData();
+        } catch (Exception e) {
+            System.out.println("Error endpoint");
+        }
+    }
 }
