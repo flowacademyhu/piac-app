@@ -7,7 +7,9 @@ const VendorIntroduction = ({ introductionLong }) => {
       {introductionLong && (
         <div className='introduction'>
           <h2>Bemutatkozás</h2>
-          <p>{introductionLong}</p>
+          {introductionLong.split('\n').map((introduction) => (
+            <p className='introduction-line'>{introduction}</p>
+          ))}
         </div>
       )}
     </>
