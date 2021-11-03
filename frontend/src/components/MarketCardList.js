@@ -1,24 +1,24 @@
 import MarketCard from './MarketCard';
 import React, { useState, useLayoutEffect } from 'react';
 import '../styles/MarketCardList.css';
-import { fetchMarkets } from './Service';
+import { fetchCurrentMarkets } from './Service';
 import { Link } from 'react-router-dom';
 
 const MarketCardList = () => {
-  const [markets, setMarkets] = useState([]);
+  const [currentMarkets, setCurrentMarkets] = useState([]);
 
-  const getMarkets = async () => {
-    const result = await fetchMarkets();
-    setMarkets(result);
+  const getCurrentMarkets = async () => {
+    const result = await fetchCurrentMarkets();
+    setCurrentMarkets(result);
   };
 
   useLayoutEffect(() => {
-    getMarkets();
+    getCurrentMarkets();
   }, []);
 
   return (
     <div className='card-list'>
-      {markets.map((market) => {
+      {currentMarkets.map((market) => {
         return (
           <div key={market.id}>
             <Link
