@@ -4,7 +4,7 @@
 .vendorCard {
   display: grid;
   grid-template-columns: auto 1fr;
-  grid-template-rows: auto 2fr;
+  grid-template-rows: 1f auto;
   cursor: pointer;
   user-select: none;
   border-radius: 10px;
@@ -36,9 +36,16 @@
   font-family: 'Open Sans', sans-serif;
   font-size: 20px;
   font-weight: bold;
-  overflow-wrap: break-word;
+  overflow: hidden;
   padding-left: 10px;
   padding-bottom: 10px;
+  max-height: 60px;
+  white-space: normal;
+  word-break: break-word;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
 }
 
 .vendorDescription {
