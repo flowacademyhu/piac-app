@@ -6,36 +6,30 @@ body {
 
 .vendor-profile-header {
   background-color: #fffdfc;
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr;
   position: sticky;
   top: 0;
   width: 100%;
   height: 170px;
+  padding: 20px;
 }
 
 .vendor-header-data {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 10px;
+  padding-left: 10px;
 }
 
 .vendor-logo-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  max-width: 15vh;
-}
-
-.circle {
+  height: 110px;
+  width: 110px;
+  border-radius: 50%;
+  border: 1px solid lightgrey;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
-  border-radius: 50%;
-  height: 13vh;
-  width: 13vh;
-  border: 1px solid #ccbeb8;
+  background-size: contain;
 }
 
 .vendor-name {
@@ -45,7 +39,7 @@ body {
   margin: 0;
 }
 
-.vendor-description-short {
+.vendor-intro {
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
   font-size: 10px;
@@ -56,7 +50,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-weight: 400;
   font-size: 10px;
-  margin: 10px 0 0 0;
+  margin: 10px 0;
 }
 
 .payment-icon {

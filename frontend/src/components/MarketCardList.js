@@ -1,34 +1,41 @@
-import MarketCard from "./MarketCard";
-import React, { useState, useEffect, Component } from "react";
-import axios from "axios";
-import "../styles/MarketCardList.css";
+import MarketCard from './MarketCard';
+import React, { useState, useLayoutEffect } from 'react';
+import '../styles/MarketCardList.css';
+import { fetchMarkets } from './Service';
+import { Link } from 'react-router-dom';
 
 const MarketCardList = () => {
-  const [posts, setPosts] = useState([]);
+  const [markets, setMarkets] = useState([]);
 
-  const getPosts = async () => {
-    const response = await axios.get("http://localhost:8081/v1/api/market");
-
-    setPosts(response.data);
+  const getMarkets = async () => {
+    const result = await fetchMarkets();
+    setMarkets(result);
   };
 
-  useEffect(() => {
-    getPosts();
+  useLayoutEffect(() => {
+    getMarkets();
   }, []);
 
   return (
-    <div className="card-list">
-      {posts.map((post, index) => {
+    <div className='card-list'>
+      {markets.map((market) => {
         return (
-          <MarketCard
-            profilePic={post.profilePic}
-            marketName={post.name}
-            marketLocation={post.place}
-            marketDateYearMonthDay={post.date}
-            marketDateHours={post.startAndEndHour}
-            vendorsAmount={post.numberOfVendors}
-            key={index}
-          />
+          <div key={market.id}>
+            <Link
+              to={`/piacok/${market.id}`}
+              style={{ textDecoration: 'none' }}
+            >
+              <MarketCard
+                style={{ textDecoration: 'none' }}
+                profilePic={market.profilePic}
+                marketName={market.name}
+                marketLocation={market.place}
+                marketOpeningDate={market.openingDate}
+                marketClosingDate={market.closingDate}
+                vendorsAmount={market.numberOfVendors}
+              />
+            </Link>
+          </div>
         );
       })}
     </div>

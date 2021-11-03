@@ -1,13 +1,16 @@
 package org.example.spring.boot.skeleton.services;
 
 import lombok.AllArgsConstructor;
+import org.example.spring.boot.skeleton.model.MarketDTO;
 import org.example.spring.boot.skeleton.entities.Market;
 import org.example.spring.boot.skeleton.exceptions.NoSuchMarketException;
 import org.example.spring.boot.skeleton.exceptions.NoSuchVendorException;
-import org.example.spring.boot.skeleton.model.MarketDTO;
 import org.example.spring.boot.skeleton.model.SimpleVendorDTO;
 import org.example.spring.boot.skeleton.repositories.MarketRepository;
 import org.springframework.stereotype.Service;
+
+import java.text.ParseException;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -18,8 +21,9 @@ public class MarketService {
     private final MarketRepository marketRepository;
     private final VendorService vendorService;
 
-    public Market addMarket(MarketDTO marketDTO) {
-        return marketRepository.save(marketDTOToEntity(marketDTO));
+    public MarketDTO addMarket(MarketDTO marketDTO) throws ParseException {
+        marketRepository.save(marketDTOToEntity(marketDTO));
+        return marketDTO;
     }
 
     public List<MarketDTO> allMarkets() {
@@ -28,6 +32,9 @@ public class MarketService {
                 .map(this::marketToDTO)
                 .sorted(Comparator.comparing(MarketDTO::getOpeningDate).reversed())
                 .peek(m -> m.setVendors(null))
+                .sorted(Comparator.comparing(MarketDTO::getOpeningDate).reversed())
+                .peek( m -> m.setVendors(null))
+
                 .collect(Collectors.toList());
     }
 
@@ -61,7 +68,8 @@ public class MarketService {
         return market.getVendors().stream().map(vendorService::vendorToSimpleDTO).collect(Collectors.toList());
     }
 
-    public Market marketDTOToEntity(MarketDTO marketDTO) {
+
+    public Market marketDTOToEntity(MarketDTO marketDTO) throws ParseException {
         return Market.builder()
                 .profilePic(marketDTO.getProfilePic())
                 .openingDate(marketDTO.getOpeningDate())
@@ -83,9 +91,10 @@ public class MarketService {
                 .setNumberOfVendors(market.getVendors().size());
     }
 
-    public Market findMarketByName(String name) throws NoSuchVendorException {
-        return marketRepository.findByName(name).orElseThrow(NoSuchVendorException::new);
+
+    public MarketDTO findMarketByName(String name) throws NoSuchVendorException {
+       var market = marketRepository.findByName(name).orElseThrow(NoSuchVendorException::new);
+        return marketToDTO(market);
     }
+
 }
-
-

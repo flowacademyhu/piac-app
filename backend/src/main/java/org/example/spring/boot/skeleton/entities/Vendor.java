@@ -3,6 +3,7 @@ package org.example.spring.boot.skeleton.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Objects;
@@ -20,6 +21,7 @@ public class Vendor {
 
     @Column(unique = true)
     private String name;
+    private String profilePic;
     private String intro;
     private boolean cardPayment;
     private String email;
@@ -27,6 +29,8 @@ public class Vendor {
     private String instagram;
     private String phone;
     private String webSite;
+    @Column(length = 1000)
+    private String introductionLong;
 
     @ElementCollection(targetClass = String.class)
     private Set<String> products = new HashSet<>();
@@ -69,6 +73,14 @@ public class Vendor {
         this.name = name;
     }
 
+    public String getProfilePic() {
+        return profilePic;
+    }
+
+    public void setProfilePic(String profilePic) {
+        this.profilePic = profilePic;
+    }
+
     public String getIntro() {
         return intro;
     }
@@ -91,6 +103,14 @@ public class Vendor {
 
     public void setProducts(Set<String> products) {
         this.products = products;
+    }
+
+    public String getIntroductionLong() {
+        return introductionLong;
+    }
+
+    public void setIntroductionLong(String introductionLong) {
+        this.introductionLong = introductionLong;
     }
 
     @JsonIgnore

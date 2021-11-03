@@ -9,6 +9,7 @@ import org.example.spring.boot.skeleton.services.MarketService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.util.List;
 
 @RestController
@@ -20,7 +21,7 @@ public class MarketController {
     private final MarketService marketService;
 
     @GetMapping
-    public ResponseEntity<List<MarketDTO>> allMarkets(){
+    public ResponseEntity<List<MarketDTO>> allMarkets() throws ParseException{
         return ResponseEntity.ok(marketService.allMarkets());
     }
 

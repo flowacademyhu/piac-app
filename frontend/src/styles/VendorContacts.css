@@ -2,29 +2,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
 
 body {
-    background-color: #f7f5f2;
+  background-color: #f7f5f2;
 }
 
-.container {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 12px;
-    color: red;
-    padding: 15px;
+.contact-container {
+  padding: 15px;
 }
 
-.title {
-    font-family: 'Amatic SC', cursive;
-    font-size: 32px;
-    color: black;
+.contact-title {
+  font-family: 'Amatic SC', cursive;
+  font-size: 32px;
+  color: #33221a;
 }
 
-.logo {
-    padding-right: 10px;
+.contact-logo {
+  padding-right: 10px;
 }
 
-.info {
-    text-align: left;
-    align-content: center;
-    padding-bottom: 15px;
-    display: flex;
+.contact-info {
+  text-align: left;
+  align-content: center;
+  padding-bottom: 15px;
+  display: flex;
+}
+
+.contact-links {
+  color: #cc4400;
+  text-decoration: none;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.contact-links:hover {
+  color: #cc4400;
 }

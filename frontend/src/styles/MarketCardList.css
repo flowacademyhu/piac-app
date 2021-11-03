@@ -1,8 +1,14 @@
 .card-list {
-  height: calc(100% - 230px);
-  overflow-y: auto;
   display: flex;
   flex-direction: column;
   row-gap: 30px;
-  padding: 30px;
+  padding: 30px 30px 110px;
+}
+
+a {
+  color: #33221a;
+}
+
+a:hover {
+  color: inherit;
 }

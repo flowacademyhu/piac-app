@@ -7,40 +7,19 @@ import MarketLogo from '../icons/navigation/market_dark.svg';
 import MarketLogoHighlight from '../icons/navigation/market_primary.svg';
 
 import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
+import FooterButton from './FooterButton';
 
 const Footer = () => {
-  const location = useLocation();
-
   return (
-    <div className="footer">
-      <Container className="container-fluid">
-        <Row>
-          <Col style={{ cursor: 'pointer' }}>
-            <Link className="footer-link" to="/">
-              <img
-                className="footer-logo"
-                src={
-                  location.pathname === '/' ? MarketLogoHighlight : MarketLogo
-                }
-                alt="Icon"
-              />
-              <div id="market-label">PIACOK</div>
-            </Link>
-          </Col>
-          <Col style={{ cursor: 'pointer' }}>
-            <Link className="footer-link" to="/arusok">
-              <img
-                className="footer-logo"
-                src={
-                  location.pathname === '/arusok'
-                    ? VendorLogoHighlight
-                    : VendorLogo
-                }
-                alt="Icon"
-              />
-              <div id="vendor-label">ÁRUSOK</div>
-            </Link>
-          </Col>
+    <div className='footer'>
+      <Container className='container-fluid'>
+        <Row className='footer-row'>
+          <FooterButton requestParam='/' appelation='PIACOK' logo='market' />
+          <FooterButton
+            requestParam='/arusok'
+            appelation='ÁRUSOK'
+            logo='vendor'
+          />
         </Row>
       </Container>
     </div>

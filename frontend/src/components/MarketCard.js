@@ -1,4 +1,5 @@
 import '../styles/MarketCard.css';
+import MarketInfo from './MarketInfo';
 
 const body = document.body;
 body.style.background = '#F7F5F2';
@@ -6,23 +7,23 @@ body.style.background = '#F7F5F2';
 const MarketCard = ({
   marketName,
   marketLocation,
-  marketDateYearMonthDay,
-  marketDateHours,
+  marketOpeningDate,
+  marketClosingDate,
   vendorsAmount,
   profilePic
 }) => {
   return (
-    <div className="marketCard">
-      <img className="marketLogo" src={profilePic} alt="logo" />
-      <div className="marketName">{marketName}</div>
-      <div className="marketLocationAndDate">
-        <div>{marketLocation}</div>
-        <div className="parallelDateAndHour">
-          <div>{marketDateYearMonthDay}</div>
-          <div className="startAndEndHours">{' ' + marketDateHours}</div>
-        </div>
+    <div className='marketCard'>
+      <MarketInfo
+        profilePic={profilePic}
+        marketName={marketName}
+        marketLocation={marketLocation}
+        marketOpeningDate={marketOpeningDate}
+        marketClosingDate={marketClosingDate}
+      />
+      <div className='vendorNumber'>
+        {vendorsAmount === 0 ? 'Szervezés alatt...' : `${vendorsAmount} árus`}
       </div>
-      <div className="vendorNumber">{vendorsAmount} árus</div>
     </div>
   );
 };

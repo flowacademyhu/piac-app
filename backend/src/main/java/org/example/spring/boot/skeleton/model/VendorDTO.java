@@ -1,22 +1,30 @@
 package org.example.spring.boot.skeleton.model;
 
+import lombok.AllArgsConstructor;
+
+import javax.persistence.ElementCollection;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
+@AllArgsConstructor
 public class VendorDTO {
 
     @NotNull
     private String name;
 
     @NotNull
-    @Size(max=1000)
+    private String profilePic;
+
+    @NotNull
+    @Size(min = 1, max=100)
     private String intro;
     @NotNull
     private boolean cardPayment;
     @NotNull
     private Long marketId;
+
 
    private Set<String> products = new HashSet<>();
    private String email;
@@ -25,6 +33,10 @@ public class VendorDTO {
    private String phone;
    private String webSite;
 
+   @NotNull
+   @Size(min = 1, max = 1000)
+   private String introductionLong;
+
     public Set<String> getProducts() {
         return products;
     }
@@ -32,13 +44,6 @@ public class VendorDTO {
     public VendorDTO setProducts(Set<String> products) {
         this.products = products;
         return this;
-    }
-
-    public VendorDTO(String name, String intro, boolean cardPayment, Long marketId) {
-        this.name = name;
-        this.intro = intro;
-        this.cardPayment = cardPayment;
-        this.marketId = marketId;
     }
 
     public VendorDTO() {
@@ -50,6 +55,15 @@ public class VendorDTO {
 
     public VendorDTO setName(String name) {
         this.name = name;
+        return this;
+    }
+
+    public String getProfilePic() {
+        return profilePic;
+    }
+
+    public VendorDTO setProfilePic(String profilePic) {
+        this.profilePic = profilePic;
         return this;
     }
 
@@ -122,6 +136,15 @@ public class VendorDTO {
 
     public VendorDTO setWebSite(String webSite) {
         this.webSite = webSite;
+        return this;
+    }
+
+    public String getIntroductionLong() {
+        return introductionLong;
+    }
+
+    public VendorDTO setIntroductionLong(String introductionLong) {
+        this.introductionLong = introductionLong;
         return this;
     }
 }
