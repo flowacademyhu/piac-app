@@ -26,10 +26,10 @@ export const fetchVendors = async () => {
   }
 };
 
-const CurrentMarketAPI = '/v1/api/market/upcoming';
+const UpcomingMarketAPI = '/v1/api/market/upcoming';
 
-export const fetchCurrentMarkets = async () => {
-  const url = CurrentMarketAPI;
+export const fetchUpcomingMarkets = async () => {
+  const url = UpcomingMarketAPI;
   try {
     const response = await axios.get(url);
     const data = response.data;
