@@ -10,7 +10,7 @@ const VendorIntroduction = ({ introductionLong }) => {
         <div className='introduction'>
           <h2>Bemutatkozás</h2>
           {introductionLong.split('\n').map((introduction) => (
-            <p key={v4()} className='introduction-line'>{introduction}</p>
+            <p key={v4()}>{introduction}</p>
           ))}
         </div>
       )}
