@@ -28,7 +28,7 @@ export const fetchVendors = async () => {
   }
 };
 
-const UpcomingMarketAPI = '/v1/api/market/';
+const UpcomingMarketAPI = '/v1/api/market/upcoming';
 
 export const fetchUpcomingMarkets = async () => {
   const url = UpcomingMarketAPI;
