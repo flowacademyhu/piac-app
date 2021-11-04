@@ -9,6 +9,8 @@ on:
       - '**'
   workflow_dispatch:
 
+concurrency: ci-${{ github.event_name	}}-${{ github.ref }}
+
 jobs:
   build-frontend:
     runs-on: ubuntu-latest
