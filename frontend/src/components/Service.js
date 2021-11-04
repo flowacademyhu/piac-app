@@ -10,6 +10,7 @@ export const fetchMarkets = async () => {
     return data;
   } catch (error) {
     console.warn('Failed to load markets');
+    throw Error;
   }
 };
 
@@ -23,6 +24,7 @@ export const fetchVendors = async () => {
     return data;
   } catch (error) {
     console.warn('Failed to load vendors');
+    throw Error;
   }
 };
 
@@ -36,6 +38,7 @@ export const fetchUpcomingMarkets = async () => {
     return data;
   } catch (error) {
     console.warn('Failed to load markets');
+    throw Error;
   }
 };
 
@@ -47,6 +50,7 @@ export const fetchMarketById = async (id) => {
     return data;
   } catch (error) {
     console.warn('Failed to load market');
+    throw Error;
   }
 };
 
@@ -58,5 +62,6 @@ export const fetchVendorById = async (id) => {
     return data;
   } catch (error) {
     console.warn('Failed to load vendor');
+    throw Error;
   }
 };
