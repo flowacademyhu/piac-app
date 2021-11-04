@@ -4,8 +4,10 @@
   row-gap: 30px;
   column-gap: 30px;
   padding: 30px 30px 110px;
-  justify-content: space-around; 
+  justify-items: flex-start;
 }
+ 
+  
 
 a {
   color: #33221a;
