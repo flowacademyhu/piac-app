@@ -26,6 +26,8 @@ const App = () => {
           </Switch>
           <Footer />
         </Router>
+      </div>
+    </div>
   );
 };
 

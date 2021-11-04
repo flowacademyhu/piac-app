@@ -29,16 +29,16 @@ const VendorsByMarketPage = () => {
     } else if (market.id) {
       return (
         <VendorlistUploadInProgress
-          title='Szervezés alatt...'
-          body='Itt fogod megtalálni az árusokat,'
-          footer='akik ezen a piacon jelen lesznek.'
+          title="Szervezés alatt..."
+          body="Itt fogod megtalálni az árusokat,"
+          footer="akik ezen a piacon jelen lesznek."
         />
       );
     } else {
       return (
         <>
-          <div className='marketLoading' />
-          <VendorlistUploadInProgress title='Betöltés...' />
+          <div className="marketLoading" />
+          <VendorlistUploadInProgress title="Betöltés..." />
         </>
       );
     }
