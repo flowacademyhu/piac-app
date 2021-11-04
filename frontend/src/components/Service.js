@@ -28,7 +28,7 @@ export const fetchVendors = async () => {
   }
 };
 
-const UpcomingMarketAPI = '/v1/api/market/upcoming';
+const UpcomingMarketAPI = '/v1/api/market/';
 
 export const fetchUpcomingMarkets = async () => {
   const url = UpcomingMarketAPI;
@@ -38,7 +38,7 @@ export const fetchUpcomingMarkets = async () => {
     return data;
   } catch (error) {
     console.warn('Failed to load markets');
-    throw Error;
+    throw Error('Hiba történt! Kérlek frissítsd újra az oldalt!');
   }
 };
 
