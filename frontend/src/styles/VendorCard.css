@@ -3,7 +3,7 @@
 
 .vendorCard {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 2fr;
   cursor: pointer;
   user-select: none;
@@ -12,8 +12,9 @@
   padding: 20px;
   background-color: white;
   position: relative;
-  max-width: 20em;
-  max-height: 10em;
+  width: 20em;
+  height: 10em;
+  
 }
 
 .vendorLogo {
@@ -26,8 +27,6 @@
   border-style: solid;
   border-width: 1px;
   border-color: lightgrey;
-  align-self: center;
-  margin: auto;
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
