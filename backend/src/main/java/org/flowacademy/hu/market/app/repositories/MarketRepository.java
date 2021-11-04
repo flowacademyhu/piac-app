@@ -14,4 +14,7 @@ public interface MarketRepository extends JpaRepository<Market, Long> {
 
     @Query("SELECT markets FROM Market markets WHERE markets.closingDate > UNIX_TIMESTAMP()")
     List<Market> findAllUpcomingMarkets();
+
+    @Query("SELECT markets FROM Market markets WHERE markets.closingDate > UNIX_TIMESTAMP()")
+    List<Market> findAllUpcomingMarketsByVendorId();
 }
