@@ -1,4 +1,3 @@
-import Footer from '../components/Footer';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import HeaderWithMarket from '../components/HeaderWithMarket';
@@ -18,6 +17,27 @@ const VendorsByMarketPage = () => {
     fetchMarket(marketId);
   }, [marketId]);
 
+  const renderVendorList = () => {
+    if (market.vendors && market.vendors.length > 0) {
+      return <VendorListOfOneMarket market={market} />;
+    } else if (market.id) {
+      return (
+        <VendorlistUploadInProgress
+          title='Szervezés alatt...'
+          body='Itt fogod megtalálni az árusokat,'
+          footer='akik ezen a piacon jelen lesznek.'
+        />
+      );
+    } else {
+      return (
+        <>
+          <div className='marketLoading' />
+          <VendorlistUploadInProgress title='Betöltés...' />
+        </>
+      );
+    }
+  };
+
   return (
     <>
       {market.id && (
@@ -29,15 +49,8 @@ const VendorsByMarketPage = () => {
           marketClosingDate={market.closingDate}
         />
       )}
-      {market.vendors && market.vendors.length > 0 ? (
-        <VendorListOfOneMarket market={market} />
-      ) : (
-        <VendorlistUploadInProgress
-          title={market.id ? 'Szervezés alatt...' : 'Betöltés...'}
-          body={market.id ? 'Itt fogod megtalálni az árusokat,' : ' '}
-          footer={market.id ? 'akik ezen a piacon jelen lesznek.' : ' '}
-        />
-      )}
+
+      {renderVendorList()}
     </>
   );
 };
