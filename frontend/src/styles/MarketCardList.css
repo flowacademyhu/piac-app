@@ -1,8 +1,10 @@
 .card-list {
   display: flex;
-  flex-direction: column;
+  flex-flow: row wrap;
   row-gap: 30px;
+  column-gap: 30px;
   padding: 30px 30px 110px;
+  justify-content: space-around; 
 }
 
 a {
