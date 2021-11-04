@@ -1,6 +1,4 @@
 import React from 'react';
-import Header from './Header';
-import VendorlistUploadInProgress from './VendorlistUploadInProgress';
 
 class ErrorBoundary extends React.Component {
   constructor (props) {
@@ -16,8 +14,7 @@ class ErrorBoundary extends React.Component {
     if (this.state.hasError) {
       return (
         <>
-          <Header />
-          <VendorlistUploadInProgress title='Something went wrong!' />
+          <h1>Something went wrong!</h1>
         </>
       );
     }

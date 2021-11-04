@@ -3,11 +3,9 @@ import React, { useState, useLayoutEffect } from 'react';
 import '../styles/MarketCardList.css';
 import { fetchUpcomingMarkets } from './Service';
 import { Link } from 'react-router-dom';
-import VendorlistUploadInProgress from './VendorlistUploadInProgress';
 
 const MarketCardList = () => {
   const [upcomingMarkets, setUpcomingMarkets] = useState([]);
-  const [error, setError] = useState(null);
 
   const getUpcomingMarkets = async () => {
     const result = await fetchUpcomingMarkets();
@@ -15,16 +13,10 @@ const MarketCardList = () => {
   };
 
   useLayoutEffect(() => {
-    getUpcomingMarkets().catch((err) => setError(err.message));
+    getUpcomingMarkets();
   }, []);
 
-  return error
-? (
-    <>
-      <VendorlistUploadInProgress title={error} />
-    </>
-  )
-: (
+  return (
     <div className='card-list'>
       {upcomingMarkets.map((market) => {
         return (
