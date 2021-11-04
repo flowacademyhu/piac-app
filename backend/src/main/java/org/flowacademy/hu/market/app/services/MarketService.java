@@ -223,9 +223,9 @@ public class MarketService {
 
     public List<SimpleMarketDTO> findAllUpcomingMarketsByVendorId(Long id) throws NoSuchVendorException {
         Vendor vendor = vendorRepository.findById(id).orElseThrow(NoSuchVendorException::new);
-        return vendor.getMarkets()
+        return marketRepository.findAllUpcomingMarketsForVendor()
                 .stream()
-                .filter(market -> market.getClosingDate() > System.currentTimeMillis() / 1000L)
+                .filter(market -> market.getVendors().contains(vendor))
                 .map(this::marketToSimpleDTO)
                 .sorted(Comparator.comparing(SimpleMarketDTO::getOpeningDate))
                 .collect(Collectors.toList());
