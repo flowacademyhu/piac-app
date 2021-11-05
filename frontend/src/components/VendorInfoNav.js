@@ -77,7 +77,7 @@ const VendorInfoNav = ({
           <div>
             <h2 className='vendor-profile-markets-title'>Melyik piacon találod legközelebb?</h2>
             <div className='card-list'>
-              {upcomingMarkets.length && upcomingMarkets.length > 0 ?
+              {upcomingMarkets.length > 0 ?
                 upcomingMarkets.map((market) => {
                 return (
                   <div key={market.id}>
