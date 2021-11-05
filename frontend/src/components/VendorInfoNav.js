@@ -55,8 +55,7 @@ const VendorInfoNav = ({
       </div>
       {!status
 ? (
-        <div className='profile-components empty-page-message'>
-          <div>Hamarosan...</div>
+        <div>
         </div>
       )
 : (
