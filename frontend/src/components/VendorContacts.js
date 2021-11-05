@@ -22,7 +22,7 @@ const VendorContacts = (props) => {
     {
       title: website,
       logo: webLogo,
-      link: 'https:'
+      link: '//'
     },
     {
       title: email,
