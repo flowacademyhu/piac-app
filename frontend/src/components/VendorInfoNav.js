@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, NavLink } from 'react-router-dom';
 import './VendorInfoNav.css';
 import Products from './Products';
@@ -9,6 +9,8 @@ import market_primary from './../icons/navigation/market_primary.svg';
 
 import VendorContacts from './VendorContacts';
 import VendorIntroduction from './VendorIntroduction';
+
+import { fetchUpcomingMarketsByVendorId } from './Service'
 
 const VendorInfoNav = ({
   vendorId,
@@ -22,6 +24,21 @@ const VendorInfoNav = ({
   introductionLong
 }) => {
   const [status, changeStatus] = useState(!showMarkets);
+  const [upcomingMarkets, setUpcomingMarkets] = useState([])
+  const [hasError, setHasError] = useState(false)
+
+  useEffect(() => {
+    const fetchUpcomingMarkets = async (id) => {
+      const response = await fetchUpcomingMarketsByVendorId(vendorId);
+      setUpcomingMarkets(response)
+      if (!response) {
+        setHasError(true);
+      } else {
+        setUpcomingMarkets(response);
+      }
+    };
+    fetchUpcomingMarkets(vendorId);
+  }, [vendorId]);
 
   return (
     <>
