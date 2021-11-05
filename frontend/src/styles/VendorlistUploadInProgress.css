@@ -15,7 +15,6 @@
   position: absolute;
   display: flex;
   text-align: center;
-  overflow-y: auto;
 }
 
 .topInfoText {
@@ -23,7 +22,6 @@
   font-weight: bold;
   top: 50%;
   transform: translateY(-50%);
-  overflow-y: hidden;
 }
 
 .bottomInfoText {
@@ -32,5 +30,4 @@
   transform: translateY(-50%);
   width: 200px;
   padding-bottom: 40px;
-  overflow-y: hidden;
 }
