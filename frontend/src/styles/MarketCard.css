@@ -4,7 +4,7 @@
 .marketCard {
   display: grid;
   grid-template-columns: auto 1fr;
-  grid-template-rows: 1f 1fr;
+  grid-template-rows: 25% 60% 15%;
   cursor: pointer;
   user-select: none;
   border-radius: 10px;
@@ -12,6 +12,7 @@
   padding: 20px;
   background-color: white;
   position:relative;
+  max-width: 20em;
 }
 .marketHeader {
   display: grid;

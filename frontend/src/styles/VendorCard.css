@@ -12,9 +12,7 @@
   padding: 20px;
   background-color: white;
   position: relative;
-  width: 20em;
-  height: 10em;
-  
+  height: 10em; 
 }
 
 .vendorLogo {
@@ -49,4 +47,59 @@
   font-size: 12px;
   overflow-wrap: break-word;
   padding-left: 20px;
+}
+
+@media screen and (max-width:300px){
+  .vendorDescription, .vendorName{
+    max-width:90px;
+  }
+
+  .vendorCard{
+      height: auto;
+  }
+}
+
+@media screen and (min-width:400px){
+  .vendorCard {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr 2fr;
+  }
+  .vendorDescription, .vendorName{
+    max-width: 220px;
+    padding-left: 25px;
+  }
+}
+
+@media screen and (min-width:600px) and (max-width:809px){
+    .card-list{
+    justify-content:  center;
+    }
+    .vendorCard{
+      width: 36em;
+    }
+}
+
+@media screen and (min-width:410px) and (max-width:600px){
+  .card-list{
+  justify-content:  center;
+  }
+  .vendorCard{
+  width: 26em;
+  }
+}
+
+@media screen and (min-width:1000px) and (max-width:1200px){
+  .card-list{
+  justify-content:  space-between;
+  }
+  .vendorCard{
+    width: 28em;
+  }
+}
+
+@media screen and (min-width:1450px) {
+  .vendorCard{
+    width:32em
+  }
 }
