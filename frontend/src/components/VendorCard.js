@@ -13,7 +13,9 @@ const VendorCard = ({ vendor, vendorDesc, imageLogo }) => {
             ? {
                 backgroundImage: `url(${imageLogo})`
               }
-            : {}
+            : {
+                backgroundImage: `url('https://user-images.githubusercontent.com/7010495/140438421-99216f69-adcd-4d8b-9d8d-b06c5f168986.png')`
+              }
         }
       ></div>
       <div className='vendorName'>{vendor}</div>

@@ -10,27 +10,29 @@ const VendorHeader = (props) => {
     cardPayment ? 'Bankkártyával is fizethetsz' : 'Csak készpénzzel fizethetsz';
 
   return (
-    <header className="vendor-profile-header">
+    <header className='vendor-profile-header'>
       <div
-        className="vendor-logo-container"
+        className='vendor-logo-container'
         style={
           profilePic
             ? {
                 backgroundImage: `url(${profilePic})`
               }
-            : {}
+            : {
+                backgroundImage: `url('https://user-images.githubusercontent.com/7010495/140438421-99216f69-adcd-4d8b-9d8d-b06c5f168986.png')`
+              }
         }
       ></div>
-      <div className="vendor-header-data">
-        <h2 className="vendor-name">{name}</h2>
-        <p className="vendor-intro">{intro}</p>
-        <div className="vendor-payment">
+      <div className='vendor-header-data'>
+        <h2 className='vendor-name'>{name}</h2>
+        <p className='vendor-intro'>{intro}</p>
+        <div className='vendor-payment'>
           <img
-            className="payment-icon"
+            className='payment-icon'
             src={cardPayment ? cardIcon : cashIcon}
-            alt=""
+            alt=''
           />
-          <span className="payment-text">{paymentText(cardPayment)}</span>
+          <span className='payment-text'>{paymentText(cardPayment)}</span>
         </div>
       </div>
     </header>
