@@ -223,7 +223,7 @@ public class MarketService {
 
     public List<SimpleMarketDTO> findAllUpcomingMarketsByVendorId(Long id) throws NoSuchVendorException {
         Vendor vendor = vendorRepository.findById(id).orElseThrow(NoSuchVendorException::new);
-        return marketRepository.findAllUpcomingMarketsForVendor()
+        return marketRepository.findAllUpcomingMarkets()
                 .stream()
                 .filter(market -> market.getVendors().contains(vendor))
                 .map(this::marketToSimpleDTO)
