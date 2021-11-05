@@ -2,6 +2,7 @@ import React from 'react';
 import '../styles/vendor-header.css';
 import cashIcon from '../img/cash.svg';
 import cardIcon from '../img/card.svg';
+import defaultVendorImage from '../img/defaultVendorImage.png';
 
 const VendorHeader = (props) => {
   const { profilePic, name, intro, cardPayment } = props;
@@ -19,7 +20,7 @@ const VendorHeader = (props) => {
                 backgroundImage: `url(${profilePic})`
               }
             : {
-                backgroundImage: `url('https://user-images.githubusercontent.com/7010495/140438421-99216f69-adcd-4d8b-9d8d-b06c5f168986.png')`
+                backgroundImage: `url(${defaultVendorImage})`
               }
         }
       ></div>

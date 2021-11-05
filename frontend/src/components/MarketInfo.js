@@ -1,3 +1,5 @@
+import defaultMarketImage from '../img/defaultMarketImage.png';
+
 const MarketInfo = ({
   profilePic,
   marketName,
@@ -45,7 +47,7 @@ const MarketInfo = ({
                 backgroundImage: `url(${profilePic})`
               }
             : {
-                backgroundImage: `url('https://user-images.githubusercontent.com/7010495/140438423-ea5354cb-d042-4af9-9ba3-fa8240210019.png')`
+                backgroundImage: `url(${defaultMarketImage})`
               }
         }
       />
