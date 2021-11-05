@@ -3,9 +3,11 @@ import { useParams } from 'react-router-dom';
 import VendorHeader from '../components/VendorHeader';
 import VendorInfoNav from '../components/VendorInfoNav';
 import { fetchVendorById } from '../components/Service';
+import ErrorBody from '../components/ErrorBody';
 
 const VendorProfilePage = () => {
   const [vendor, setVendor] = useState({});
+  const [error, setError] = useState(null);
   const vendorId = useParams().id;
   const showMarkets = useParams().piacok;
 
@@ -14,10 +16,10 @@ const VendorProfilePage = () => {
       const response = await fetchVendorById(id);
       setVendor(response);
     };
-    fetchVendor(vendorId);
+    fetchVendor(vendorId).catch((err) => setError(err.message));
   }, [vendorId]);
 
-  return vendor
+  return !error && vendor
 ? (
     <>
       <VendorHeader
@@ -37,9 +39,12 @@ const VendorProfilePage = () => {
         phone={vendor.phone}
         introductionLong={vendor.introductionLong}
       />
+      )
     </>
   )
-: null;
+: (
+    <ErrorBody error={error} />
+  );
 };
 
 export default VendorProfilePage;

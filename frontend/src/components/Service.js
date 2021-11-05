@@ -10,6 +10,9 @@ export const fetchMarkets = async () => {
     return data;
   } catch (error) {
     console.warn('Failed to load markets');
+    throw Error(
+      'Nem sikerült betölteni az árusok listáját, nézz vissza kicsit később!'
+    );
   }
 };
 
@@ -23,6 +26,9 @@ export const fetchVendors = async () => {
     return data;
   } catch (error) {
     console.warn('Failed to load vendors');
+    throw Error(
+      'Nem sikerült betölteni az árusok listáját, nézz vissza kicsit később!'
+    );
   }
 };
 
@@ -36,6 +42,9 @@ export const fetchUpcomingMarkets = async () => {
     return data;
   } catch (error) {
     console.warn('Failed to load upcoming markets');
+    throw Error(
+      'Nem sikerült betölteni a piacok listáját, nézz vissza kicsit később!'
+    );
   }
 };
 
@@ -47,6 +56,7 @@ export const fetchMarketById = async (id) => {
     return data;
   } catch (error) {
     console.warn('Failed to load market');
+    throw Error('Nem sikerült betölteni a kért piac oldalát!');
   }
 };
 
@@ -58,5 +68,6 @@ export const fetchVendorById = async (id) => {
     return data;
   } catch (error) {
     console.warn('Failed to load vendor');
+    throw Error('Nem sikerült betölteni a kért kereskedő oldalát!');
   }
 };

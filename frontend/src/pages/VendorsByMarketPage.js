@@ -4,9 +4,11 @@ import HeaderWithMarket from '../components/HeaderWithMarket';
 import VendorListOfOneMarket from '../components/VendorListOfOneMarket';
 import VendorlistUploadInProgress from '../components/VendorlistUploadInProgress';
 import { fetchMarketById } from '../components/Service';
+import ErrorBody from '../components/ErrorBody';
 
 const VendorsByMarketPage = () => {
   const [market, setMarket] = useState({});
+  const [error, setError] = useState(null);
   const marketId = useParams().id;
 
   useEffect(() => {
@@ -14,7 +16,7 @@ const VendorsByMarketPage = () => {
       const response = await fetchMarketById(id);
       setMarket(response);
     };
-    fetchMarket(marketId);
+    fetchMarket(marketId).catch((err) => setError(err.message));
   }, [marketId]);
 
   const renderVendorList = () => {
@@ -49,8 +51,8 @@ const VendorsByMarketPage = () => {
           marketClosingDate={market.closingDate}
         />
       )}
-
-      {renderVendorList()}
+      <ErrorBody error={error} />
+      {!error && renderVendorList()}
     </>
   );
 };
