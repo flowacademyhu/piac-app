@@ -5,7 +5,7 @@
   width: 100%;
 }
 
-.inProgress-Text {
+.inProgressText {
   justify-content: center;
   flex-direction: row;
 }
@@ -15,7 +15,6 @@
   position: absolute;
   display: flex;
   text-align: center;
-  justify-content: center;
   overflow-y: auto;
 }
 
