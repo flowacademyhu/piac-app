@@ -33,7 +33,7 @@
 .vendorName {
   grid-column: 2;
   grid-row: 1;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans';
   font-size: 20px;
   font-weight: bold;
   overflow: hidden;
@@ -51,7 +51,7 @@
 .vendorDescription {
   grid-column: 2;
   grid-row: 2;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans';
   font-size: 12px;
   overflow: hidden;
   padding-left: 10px;

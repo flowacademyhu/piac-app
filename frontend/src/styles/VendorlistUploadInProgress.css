@@ -7,7 +7,7 @@
 
 .uploadTexts {
   margin-top: 80px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans';
   height: calc(100% - 160px);
   overflow-y: auto;
   display: flex;

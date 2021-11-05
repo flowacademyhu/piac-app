@@ -10,7 +10,7 @@ body {
 }
 
 .contact-title {
-  font-family: 'Amatic SC', cursive;
+  font-family: 'Amatic SC';
   font-size: 32px;
   font-weight: 700;
   color: #33221a;
@@ -30,7 +30,7 @@ body {
 .contact-links {
   color: #cc4400;
   text-decoration: none;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans';
   font-weight: bold;
   font-size: 12px;
 }

@@ -7,14 +7,14 @@
 }
 
 .introduction h2 {
-  font-family: 'Amatic SC', cursive;
+  font-family: 'Amatic SC';
   font-size: 32px;
   font-weight: 700;
   margin-top: 0;
 }
 
 .introduction p {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans';
   font-size: 12px;
   white-space: pre-wrap;
 }
