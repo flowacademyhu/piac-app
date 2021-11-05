@@ -33,6 +33,7 @@ public class VendorService {
                 .cardPayment(vendorDTO.getCardPayment())
                 .markets(new HashSet<>())
                 .products(allProducts)
+                .profilePic(vendorDTO.getProfilePic())
                 .email(vendorDTO.getEmail())
                 .facebook(vendorDTO.getFacebook())
                 .instagram(vendorDTO.getInstagram())
@@ -53,6 +54,7 @@ public class VendorService {
         .setProducts(vendor.getProducts())
         .setEmail(vendor.getEmail())
         .setFacebook(vendor.getFacebook())
+        .setProfilePic(vendor.getProfilePic())
         .setInstagram(vendor.getInstagram())
         .setPhone(vendor.getPhone())
         .setWebSite(vendor.getWebSite());
@@ -63,6 +65,7 @@ public class VendorService {
         return new SimpleVendorDTO()
                 .setIntro(vendor.getIntro())
                 .setName(vendor.getName())
+                .setProfilePic(vendor.getProfilePic())
                 .setId(vendor.getId());
     }
 
@@ -89,6 +92,7 @@ public class VendorService {
                     .facebook(vendorDTO.getFacebook())
                     .email(vendorDTO.getEmail())
                     .markets(set)
+                    .profilePic(vendorDTO.getProfilePic())
                     .products(vendorDTO.getProducts())
                     .name(vendorDTO.getName())
                     .intro(vendorDTO.getIntro())
