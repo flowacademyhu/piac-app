@@ -62,7 +62,7 @@ export const fetchVendorById = async (id) => {
 };
 
 export const fetchMarketsByVendorId = async (vendorId) => {
-  const url = VendorAPI + '/' + vendorId + '/markets';
+  const url = VendorAPI + '/' + vendorId + '/upcoming';
   try {
     const response = await axios.get(url);
     const data = response.data;
