@@ -6,6 +6,7 @@ body.style.background = '#F7F5F2';
 const VendorCard = ({ vendor, vendorDesc, imageLogo }) => {
   return (
     <div className='vendorCard'>
+      
       <div
         className='vendorLogo'
         style={
