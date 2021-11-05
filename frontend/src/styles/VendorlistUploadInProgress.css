@@ -5,28 +5,33 @@
   width: 100%;
 }
 
-.uploadTexts {
-  margin-top: 80px;
-  font-family: 'Open Sans', sans-serif;
-  height: calc(100% - 160px);
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  row-gap: 30px;
-  padding: 30px;
-  text-align: center;
-  vertical-align: middle;
+.inProgress-Text {
+  justify-content: center;
+  flex-direction: row;
 }
 
-.middleUploadText {
+.uploadTexts {
+  font-family: 'Open Sans', sans-serif;
+  position: absolute;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+.topInfoText {
   font-size: 20px;
   font-weight: bold;
+  top: 50%;
+  transform: translateY(-50%);
   overflow-y: hidden;
-  bottom: 50%;
 }
 
 .bottomInfoText {
   font-size: 12px;
+  top: 90%;
+  transform: translateY(-50%);
+  width: 200px;
+  padding-bottom: 40px;
   overflow-y: hidden;
-  bottom: 10%;
 }
