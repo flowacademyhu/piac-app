@@ -2,26 +2,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 
 .vendorCard {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 2fr;
+  display: flex;
+  flex-direction: row wrap;
+  flex-grow: 1 6;
   cursor: pointer;
   user-select: none;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
-  padding: 20px;
+  padding: 10px;
   background-color: white;
+  width: 100%;
   position: relative;
-  height: 10em; 
+}
+
+.vendorInfo{
+  display: flex;
+  flex-flow: column wrap;
+  align-content: flex-start;
 }
 
 .vendorLogo {
-  height: 110px;
-  width: 110px;
+  min-height: 100px;
+  min-width: 100px;
   border-radius: 50%;
-  grid-column: 1;
-  grid-row-start: 1;
-  grid-row-end: 3;
   border-style: solid;
   border-width: 1px;
   border-color: lightgrey;
@@ -31,75 +34,41 @@
 }
 
 .vendorName {
-  grid-column: 2;
-  grid-row: 1;
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   font-weight: bold;
-  overflow-wrap: break-word;
-  padding-left: 20px;
+  overflow: hidden;
+  padding-left: 10px;
+  padding-bottom: 5px;
+  white-space: normal;
+  word-break: break-word;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
 }
 
 .vendorDescription {
-  grid-column: 2;
-  grid-row: 2;
   font-family: 'Open Sans', sans-serif;
   font-size: 12px;
-  overflow-wrap: break-word;
-  padding-left: 20px;
+  overflow: hidden;
+  padding-left: 10px;
+  width: 100%;
+  white-space: normal;
+  flex-wrap: wrap;
+  word-break: break-word;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
 }
 
-@media screen and (max-width:300px){
-  .vendorDescription, .vendorName{
-    max-width:90px;
-  }
-
-  .vendorCard{
-      height: auto;
-  }
-}
-
-@media screen and (min-width:400px){
-  .vendorCard {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-template-rows: 1fr 2fr;
-  }
-  .vendorDescription, .vendorName{
-    max-width: 220px;
-    padding-left: 25px;
-  }
-}
-
-@media screen and (min-width:600px) and (max-width:809px){
-    .card-list{
-    justify-content:  center;
-    }
-    .vendorCard{
-      width: 36em;
-    }
-}
-
-@media screen and (min-width:430px) and (max-width:600px){
+/* @media screen and (min-width:1450px) {
   .card-list{
-  justify-content:  center;
+    flex-flow: row wrap;
+    justify-content: space-between;
   }
   .vendorCard{
-  width: 26em;
+    width: 37em;
   }
-}
-
-@media screen and (min-width:1000px) and (max-width:1200px){
-  .card-list{
-  justify-content:  space-between;
-  }
-  .vendorCard{
-    width: 28em;
-  }
-}
-
-@media screen and (min-width:1450px) {
-  .vendorCard{
-    width:32em
-  }
-}
+} */
