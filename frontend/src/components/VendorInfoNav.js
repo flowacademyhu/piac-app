@@ -10,7 +10,7 @@ import market_primary from './../icons/navigation/market_primary.svg';
 import VendorContacts from './VendorContacts';
 import VendorIntroduction from './VendorIntroduction';
 
-import { fetchUpcomingMarketsByVendorId } from './Service'
+import { fetchUpcomingMarketsByVendorId } from './Service';
 import MarketCard from './MarketCard';
 import '../styles/MarketCardList.css';
 
@@ -26,13 +26,13 @@ const VendorInfoNav = ({
   introductionLong
 }) => {
   const [status, changeStatus] = useState(!showMarkets);
-  const [upcomingMarkets, setUpcomingMarkets] = useState([])
-  const [hasError, setHasError] = useState(false)
+  const [upcomingMarkets, setUpcomingMarkets] = useState([]);
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
     const fetchUpcomingMarkets = async (id) => {
       const response = await fetchUpcomingMarketsByVendorId(vendorId);
-      setUpcomingMarkets(response)
+      setUpcomingMarkets(response);
       if (!response) {
         setHasError(true);
       } else {
@@ -44,41 +44,43 @@ const VendorInfoNav = ({
 
   return (
     <>
-    <div className='icons'>
-    <Router>
-        <div className='info-icon'>
-          <NavLink
-            activeClassName={`${showMarkets ? '' : 'active'}`}
-            to={`/arusok/${vendorId}`}
-          >
-            <div
-              className={'image ' + (status ? 'active-page' : null)}
-              onClick={() => changeStatus(true)}
+      <div className='icons'>
+        <Router>
+          <div className='info-icon'>
+            <NavLink
+              activeClassName={`${showMarkets ? '' : 'active'}`}
+              to={`/arusok/${vendorId}`}
             >
-              <img src={status ? info_primary : info_mid} alt='info' />
-            </div>
-          </NavLink>
-        </div>
-        <div className='vendor-icon'>
-          <NavLink to={`/arusok/${vendorId}/piacok`}>
-            <div
-              className={'image ' + (status ? null : 'active-page')}
-              onClick={() => changeStatus(false)}
-            >
-              <img src={status ? market_mid : market_primary} alt='market' />
-            </div>
-          </NavLink>
-        </div>
-    </Router>
-
+              <div
+                className={'image ' + (status ? 'active-page' : null)}
+                onClick={() => changeStatus(true)}
+              >
+                <img src={status ? info_primary : info_mid} alt='info' />
+              </div>
+            </NavLink>
+          </div>
+          <div className='vendor-icon'>
+            <NavLink to={`/arusok/${vendorId}/piacok`}>
+              <div
+                className={'image ' + (status ? null : 'active-page')}
+                onClick={() => changeStatus(false)}
+              >
+                <img src={status ? market_mid : market_primary} alt='market' />
+              </div>
+            </NavLink>
+          </div>
+        </Router>
       </div>
       {!status
 ? (
-          <div>
-            <h2 className='vendor-profile-markets-title'>Melyik piacon találod legközelebb?</h2>
-            <div className='card-list'>
-              {upcomingMarkets.length > 0 ?
-                upcomingMarkets.map((market) => {
+        <div>
+          <h2 className='vendor-profile-markets-title'>
+            Melyik piacon találod legközelebb?
+          </h2>
+          <div className='card-list'>
+            {upcomingMarkets.length > 0
+? (
+              upcomingMarkets.map((market) => {
                 return (
                   <div key={market.id}>
                     <Link
@@ -96,15 +98,18 @@ const VendorInfoNav = ({
                       />
                     </Link>
                   </div>
-        );
-                }) : <p className='empty-page-message'>Nincs megjeleníthető piac</p>
-      }
-            </div>
+                );
+              })
+            )
+: (
+              <p className='empty-page-message'>Nincs megjeleníthető piac</p>
+            )}
           </div>
+        </div>
       )
 : (
         <div className='profile-components'>
-          <Products products={products} />
+          {products.length > 0 && <Products products={products} />}
           <VendorContacts
             facebook={facebook}
             instagram={instagram}
@@ -114,8 +119,8 @@ const VendorInfoNav = ({
           />
           <VendorIntroduction introductionLong={introductionLong} />
         </div>
-        )}
-      </>
+      )}
+    </>
   );
 };
 export default VendorInfoNav;
