@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, NavLink } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, NavLink, Link } from 'react-router-dom';
 import './VendorInfoNav.css';
 import Products from './Products';
 import info_mid from './../icons/navigation/info_mid.svg';
@@ -9,6 +9,10 @@ import market_primary from './../icons/navigation/market_primary.svg';
 
 import VendorContacts from './VendorContacts';
 import VendorIntroduction from './VendorIntroduction';
+
+import { fetchUpcomingMarketsByVendorId } from './Service'
+import MarketCard from './MarketCard';
+import '../styles/MarketCardList.css';
 
 const VendorInfoNav = ({
   vendorId,
@@ -22,10 +26,26 @@ const VendorInfoNav = ({
   introductionLong
 }) => {
   const [status, changeStatus] = useState(!showMarkets);
+  const [upcomingMarkets, setUpcomingMarkets] = useState([])
+  const [hasError, setHasError] = useState(false)
+
+  useEffect(() => {
+    const fetchUpcomingMarkets = async (id) => {
+      const response = await fetchUpcomingMarketsByVendorId(vendorId);
+      setUpcomingMarkets(response)
+      if (!response) {
+        setHasError(true);
+      } else {
+        setUpcomingMarkets(response);
+      }
+    };
+    fetchUpcomingMarkets(vendorId);
+  }, [vendorId]);
 
   return (
+    <>
+    <div className='icons'>
     <Router>
-      <div className='icons'>
         <div className='info-icon'>
           <NavLink
             activeClassName={`${showMarkets ? '' : 'active'}`}
@@ -49,12 +69,38 @@ const VendorInfoNav = ({
             </div>
           </NavLink>
         </div>
+    </Router>
+
       </div>
       {!status
 ? (
-        <div className='profile-components empty-page-message'>
-          <div>Hamarosan...</div>
-        </div>
+          <div>
+            <h2 className='vendor-profile-markets-title'>Melyik piacon találod legközelebb?</h2>
+            <div className='card-list'>
+              {upcomingMarkets.length > 0 ?
+                upcomingMarkets.map((market) => {
+                return (
+                  <div key={market.id}>
+                    <Link
+                      to={`/piacok/${market.id}`}
+                      style={{ textDecoration: 'none' }}
+                    >
+                      <MarketCard
+                        style={{ textDecoration: 'none' }}
+                        profilePic={market.profilePic}
+                        marketName={market.name}
+                        marketLocation={market.place}
+                        marketOpeningDate={market.openingDate}
+                        marketClosingDate={market.closingDate}
+                        vendorsAmount={market.numberOfVendors}
+                      />
+                    </Link>
+                  </div>
+        );
+                }) : <p className='empty-page-message'>Nincs megjeleníthető piac</p>
+      }
+            </div>
+          </div>
       )
 : (
         <div className='profile-components'>
@@ -68,8 +114,8 @@ const VendorInfoNav = ({
           />
           <VendorIntroduction introductionLong={introductionLong} />
         </div>
-      )}
-    </Router>
+        )}
+      </>
   );
 };
 export default VendorInfoNav;
