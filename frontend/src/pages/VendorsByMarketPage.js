@@ -30,8 +30,7 @@ const VendorsByMarketPage = () => {
       return (
         <VendorlistUploadInProgress
           title="Szervezés alatt..."
-          body="Itt fogod megtalálni az árusokat,"
-          footer="akik ezen a piacon jelen lesznek."
+          body="Itt fogod megtalálni az árusokat, akik ezen a piacon jelen lesznek."
         />
       );
     } else {
