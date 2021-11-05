@@ -45,4 +45,9 @@ public class VendorController {
         return ResponseEntity.ok(marketService.findAllMarketsByVendorId(id));
     }
 
+    @GetMapping("/{id}/upcoming")
+    public ResponseEntity<List<SimpleMarketDTO>> getAllUpcomingMarketsByVendorId(@PathVariable @RequestBody Long id) throws NoSuchVendorException {
+        return ResponseEntity.ok(marketService.findAllUpcomingMarketsByVendorId(id));
+    }
+
 }

@@ -4,15 +4,21 @@ import HeaderWithMarket from '../components/HeaderWithMarket';
 import VendorListOfOneMarket from '../components/VendorListOfOneMarket';
 import VendorlistUploadInProgress from '../components/VendorlistUploadInProgress';
 import { fetchMarketById } from '../components/Service';
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 const VendorsByMarketPage = () => {
   const [market, setMarket] = useState({});
+  const [error, hasError] = useState(false);
   const marketId = useParams().id;
 
   useEffect(() => {
     const fetchMarket = async (id) => {
       const response = await fetchMarketById(id);
-      setMarket(response);
+      if (!response) {
+        hasError(true);
+      } else {
+        setMarket(response);
+      }
     };
     fetchMarket(marketId);
   }, [marketId]);
@@ -23,16 +29,15 @@ const VendorsByMarketPage = () => {
     } else if (market.id) {
       return (
         <VendorlistUploadInProgress
-          title='Szervezés alatt...'
-          body='Itt fogod megtalálni az árusokat,'
-          footer='akik ezen a piacon jelen lesznek.'
+          title="Szervezés alatt..."
+          body="Itt fogod megtalálni az árusokat, akik ezen a piacon jelen lesznek."
         />
       );
     } else {
       return (
         <>
-          <div className='marketLoading' />
-          <VendorlistUploadInProgress title='Betöltés...' />
+          <div className="marketLoading" />
+          <VendorlistUploadInProgress title="Betöltés..." />
         </>
       );
     }
@@ -40,17 +45,21 @@ const VendorsByMarketPage = () => {
 
   return (
     <>
-      {market.id && (
-        <HeaderWithMarket
-          profilePic={market.profilePic}
-          marketName={market.name}
-          marketLocation={market.place}
-          marketOpeningDate={market.openingDate}
-          marketClosingDate={market.closingDate}
-        />
+      {!error && market.id ? (
+        <>
+          <HeaderWithMarket
+            profilePic={market.profilePic}
+            marketName={market.name}
+            marketLocation={market.place}
+            marketOpeningDate={market.openingDate}
+            marketClosingDate={market.closingDate}
+          />
+          {renderVendorList()}
+        </>
+      ) : (
+        <div style={{ height: '90%' }} />
       )}
-
-      {renderVendorList()}
+      {error && <Redirect to="/" />}
     </>
   );
 };

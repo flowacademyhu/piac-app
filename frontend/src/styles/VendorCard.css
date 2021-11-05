@@ -4,7 +4,6 @@
 .vendorCard {
   display: flex;
   flex-direction: row wrap;
-  flex-grow: 1 6;
   cursor: pointer;
   user-select: none;
   border-radius: 10px;
@@ -55,20 +54,9 @@
   padding-left: 10px;
   width: 100%;
   white-space: normal;
-  flex-wrap: wrap;
   word-break: break-word;
   text-overflow: ellipsis;
   -webkit-box-orient: vertical;
   display: -webkit-box;
   -webkit-line-clamp: 3;
 }
-
-/* @media screen and (min-width:1450px) {
-  .card-list{
-    flex-flow: row wrap;
-    justify-content: space-between;
-  }
-  .vendorCard{
-    width: 37em;
-  }
-} */

@@ -33,7 +33,7 @@ public class VendorDTO {
    private String webSite;
 
    @NotNull
-   @Size(min = 1, max = 1000)
+   @Size(min = 1, max = 2500)
    private String introductionLong;
 
     public Set<String> getProducts() {

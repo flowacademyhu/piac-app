@@ -1,18 +1,13 @@
 import '../styles/VendorlistUploadInProgress.css';
 
-const VendorlistUploadInProgress = ({ title, body, footer }) => {
+const VendorlistUploadInProgress = ({ title, body }) => {
   return (
-    <div className='card-list'>
-      <div className='uploadTexts middleUploadText'>
-        <span>{title}</span>
+    <div className="card-list inProgressText">
+      <div className="uploadTexts topInfoText">
+        <div>{title}</div>
       </div>
-      <div className='uploadTexts bottomInfoText'>
-        <div>
-          <span>{body}</span>
-        </div>
-        <div>
-          <span>{footer}</span>
-        </div>
+      <div className="uploadTexts bottomInfoText">
+        <div>{body}</div>
       </div>
     </div>
   );
