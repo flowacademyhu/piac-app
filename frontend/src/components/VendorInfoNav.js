@@ -55,7 +55,8 @@ const VendorInfoNav = ({
       </div>
       {!status
 ? (
-        <div>
+          <div>
+            <h2 className='vendor-profile-markets-title'>Melyik piacon találod legközelebb?</h2>
         </div>
       )
 : (
