@@ -77,7 +77,8 @@ const VendorInfoNav = ({
           <div>
             <h2 className='vendor-profile-markets-title'>Melyik piacon találod legközelebb?</h2>
             <div className='card-list'>
-              {upcomingMarkets.map((market) => {
+              {upcomingMarkets.length && upcomingMarkets.length > 0 ?
+                upcomingMarkets.map((market) => {
                 return (
                   <div key={market.id}>
                     <Link
@@ -96,7 +97,8 @@ const VendorInfoNav = ({
                     </Link>
                   </div>
         );
-      })}
+                }) : <p className='empty-page-message'>Nincs megjeleníthető piac</p>
+      }
             </div>
           </div>
       )
