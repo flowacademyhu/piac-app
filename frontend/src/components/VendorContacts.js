@@ -22,7 +22,7 @@ const VendorContacts = (props) => {
     {
       title: website,
       logo: webLogo,
-      link: 'https:'
+      link: ''
     },
     {
       title: email,
@@ -46,7 +46,7 @@ const VendorContacts = (props) => {
               <img src={contact.logo} className='contact-logo' alt='' />
               <a
                 target='_blank'
-                rel='noopener noreferrer'
+                rel='noopener noreferrer external'
                 className='contact-links'
                 href={contact.link + contact.title}
               >
