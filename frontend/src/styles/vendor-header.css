@@ -33,21 +33,21 @@ body {
 }
 
 .vendor-name {
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
   font-weight: 700;
   font-size: 20px;
   margin: 0;
 }
 
 .vendor-intro {
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
   font-weight: 400;
   font-size: 10px;
 }
 
 .vendor-payment {
   display: flex;
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
   font-weight: 400;
   font-size: 10px;
   margin: 10px 0;

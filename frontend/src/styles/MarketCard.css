@@ -72,7 +72,7 @@
 }
 
 .marketName {
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
   font-size: 20px;
   font-weight: bold;
   overflow: hidden;
@@ -87,7 +87,7 @@
 }
 
 .marketLocationAndDate {
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
   font-size: 12px;
   overflow-wrap: break-word;
 }
@@ -97,7 +97,7 @@
   align-items: flex-end;
   grid-column: 2;
   grid-row: 2;
-  font-family: 'Open Sans';
+  font-family: 'Open Sans', sans-serif;
   font-size: 12px;
   overflow-wrap: break-word;
   padding-left: 10px;
