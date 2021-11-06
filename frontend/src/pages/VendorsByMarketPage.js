@@ -51,6 +51,7 @@ const VendorsByMarketPage = () => {
           marketClosingDate={market.closingDate}
         />
       )}
+      <div className='marketHeader' />
       <ErrorBody error={error} />
       {!error && renderVendorList()}
     </>

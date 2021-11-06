@@ -4,6 +4,7 @@ import VendorHeader from '../components/VendorHeader';
 import VendorInfoNav from '../components/VendorInfoNav';
 import { fetchVendorById } from '../components/Service';
 import ErrorBody from '../components/ErrorBody';
+import HeaderWithMarket from '../components/HeaderWithMarket';
 
 const VendorProfilePage = () => {
   const [vendor, setVendor] = useState({});
@@ -43,7 +44,10 @@ const VendorProfilePage = () => {
     </>
   )
 : (
-    <ErrorBody error={error} />
+    <>
+      <div className='marketHeader' />
+      <ErrorBody error={error} />
+    </>
   );
 };
 
