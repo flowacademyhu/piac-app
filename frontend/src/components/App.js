@@ -18,11 +18,6 @@ const App = () => {
             <Route exact path="/piacok/:id" component={VendorsByMarketPage} />
             <Route exact path="/arusok" component={VendorPage} />
             <Route exact path="/arusok/:id" component={VendorProfilePage} />
-            <Route
-              exact
-              path="/arusok/:id/:piacok"
-              component={VendorProfilePage}
-            />
           </Switch>
           <Footer />
         </Router>

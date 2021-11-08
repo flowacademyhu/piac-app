@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, NavLink, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import MarketCard from './MarketCard';
 
 const VendorProfileMarkets = ({ upcomingMarkets }) => {
