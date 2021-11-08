@@ -2,7 +2,7 @@ import React from "react";
 import "../styles/vendor-header.css";
 import cashIcon from "../img/cash.svg";
 import cardIcon from "../img/card.svg";
-import defaultVendorImage from '../img/defaultVendorImage.png';
+import defaultVendorImage from "../img/defaultVendorImage.png";
 
 const VendorHeader = (props) => {
   const { profilePic, name, intro, cardPayment } = props;
@@ -11,29 +11,29 @@ const VendorHeader = (props) => {
     cardPayment ? "Bankkártyával is fizethetsz" : "Csak készpénzzel fizethetsz";
 
   return (
-    <header className='vendor-profile-header'>
+    <header className="vendor-profile-header">
       <div
-        className='vendor-logo-container'
+        className="vendor-logo-container"
         style={
           profilePic
             ? {
                 backgroundImage: `url(${profilePic})`,
               }
             : {
-                backgroundImage: `url(${defaultVendorImage})`
+                backgroundImage: `url(${defaultVendorImage})`,
               }
         }
       ></div>
-      <div className='vendor-header-data'>
-        <h2 className='vendor-name'>{name}</h2>
-        <p className='vendor-intro'>{intro}</p>
-        <div className='vendor-payment'>
+      <div className="vendor-header-data">
+        <h2 className="vendor-name">{name}</h2>
+        <p className="vendor-intro">{intro}</p>
+        <div className="vendor-payment">
           <img
-            className='payment-icon'
+            className="payment-icon"
             src={cardPayment ? cardIcon : cashIcon}
-            alt=''
+            alt=""
           />
-          <span className='payment-text'>{paymentText(cardPayment)}</span>
+          <span className="payment-text">{paymentText(cardPayment)}</span>
         </div>
       </div>
     </header>
