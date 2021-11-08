@@ -1,5 +1,5 @@
-import VendorCardList from '../components/VendorCardList';
-import Header from '../components/Header';
+import VendorCardList from "../components/VendorCardList";
+import Header from "../components/Header";
 
 const VendorPage = () => {
   return (

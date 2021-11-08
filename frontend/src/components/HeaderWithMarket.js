@@ -1,15 +1,14 @@
-import MarketInfo from './MarketInfo';
-import '../styles/HeaderWithMarket.css'
+import MarketInfo from "./MarketInfo";
 
 const HeaderWithMarket = ({
   profilePic,
   marketName,
   marketLocation,
   marketOpeningDate,
-  marketClosingDate
+  marketClosingDate,
 }) => {
   return (
-    <div className='marketHeader'>
+    <div className="marketHeader">
       <MarketInfo
         header
         marketHeaderLogoStyle

@@ -4,3 +4,4 @@ target/*
 *.iml
 sendgrid.env
 sendgrid.env
+.idea/

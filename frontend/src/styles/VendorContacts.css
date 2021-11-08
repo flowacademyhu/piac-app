@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap");
 
 body {
   background-color: #f7f5f2;
@@ -10,8 +10,9 @@ body {
 }
 
 .contact-title {
-  font-family: 'Amatic SC', cursive;
+  font-family: "Amatic SC", sans-serif;
   font-size: 32px;
+  font-weight: 700;
   color: #33221a;
 }
 
@@ -29,7 +30,7 @@ body {
 .contact-links {
   color: #cc4400;
   text-decoration: none;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: bold;
   font-size: 12px;
 }

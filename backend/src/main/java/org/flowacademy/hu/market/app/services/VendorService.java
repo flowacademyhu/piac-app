@@ -11,6 +11,7 @@ import org.flowacademy.hu.market.app.model.VendorDTO;
 import org.flowacademy.hu.market.app.repositories.MarketRepository;
 import org.flowacademy.hu.market.app.repositories.VendorRepository;
 import org.springframework.stereotype.Service;
+
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
@@ -30,39 +31,45 @@ public class VendorService {
         Vendor vendor = Vendor.builder()
                 .intro(vendorDTO.getIntro())
                 .name(vendorDTO.getName())
+                .profilePic(vendorDTO.getProfilePic())
                 .cardPayment(vendorDTO.getCardPayment())
                 .markets(new HashSet<>())
                 .products(allProducts)
+                .profilePic(vendorDTO.getProfilePic())
                 .email(vendorDTO.getEmail())
                 .facebook(vendorDTO.getFacebook())
                 .instagram(vendorDTO.getInstagram())
                 .webSite(vendorDTO.getWebSite())
                 .phone(vendorDTO.getPhone())
+                .introductionLong(vendorDTO.getIntroductionLong())
                 .build();
         vendor.getMarkets().add(market);
         vendorRepository.save(vendor);
         return vendorToResponse(vendor);
     }
 
-    public DetailVendorDTO vendorToResponse(Vendor vendor){
+    public DetailVendorDTO vendorToResponse(Vendor vendor) {
         return new DetailVendorDTO()
-         .setId(vendor.getId())
-        .setIntro(vendor.getIntro())
-        .setName(vendor.getName())
-        .setCardPayment(vendor.getCardPayment())
-        .setProducts(vendor.getProducts())
-        .setEmail(vendor.getEmail())
-        .setFacebook(vendor.getFacebook())
-        .setInstagram(vendor.getInstagram())
-        .setPhone(vendor.getPhone())
-        .setWebSite(vendor.getWebSite());
+                .setId(vendor.getId())
+                .setIntro(vendor.getIntro())
+                .setName(vendor.getName())
+                .setProfilePic(vendor.getProfilePic())
+                .setCardPayment(vendor.getCardPayment())
+                .setProducts(vendor.getProducts())
+                .setEmail(vendor.getEmail())
+                .setFacebook(vendor.getFacebook())
+                .setInstagram(vendor.getInstagram())
+                .setPhone(vendor.getPhone())
+                .setWebSite(vendor.getWebSite())
+                .setIntroductionLong(vendor.getIntroductionLong());
 
     }
 
-    public SimpleVendorDTO vendorToSimpleDTO(Vendor vendor){
+    public SimpleVendorDTO vendorToSimpleDTO(Vendor vendor) {
         return new SimpleVendorDTO()
                 .setIntro(vendor.getIntro())
                 .setName(vendor.getName())
+                .setProfilePic(vendor.getProfilePic())
                 .setId(vendor.getId());
     }
 
@@ -70,7 +77,7 @@ public class VendorService {
         return vendorRepository.findAll()
                 .stream()
                 .map(this::vendorToResponse)
-                .sorted(Comparator.comparing(DetailVendorDTO::getName,String.CASE_INSENSITIVE_ORDER))
+                .sorted(Comparator.comparing(DetailVendorDTO::getName, String.CASE_INSENSITIVE_ORDER))
                 .collect(Collectors.toList());
     }
 
@@ -81,28 +88,30 @@ public class VendorService {
     public DetailVendorDTO updateVendor(Long id, VendorDTO vendorDTO) throws Exception {
         Market market = marketRepository.findById(vendorDTO.getMarketId()).orElseThrow(NoSuchMarketException::new);
         Vendor vendor = vendorRepository.findById(id).orElseThrow(NoSuchVendorException::new);
-            Set<Market> set = new HashSet();
-            set.add(market);
-            vendor.builder().phone(vendorDTO.getPhone())
-                    .webSite(vendorDTO.getWebSite())
-                    .instagram(vendorDTO.getInstagram())
-                    .facebook(vendorDTO.getFacebook())
-                    .email(vendorDTO.getEmail())
-                    .markets(set)
-                    .products(vendorDTO.getProducts())
-                    .name(vendorDTO.getName())
-                    .intro(vendorDTO.getIntro())
-                    .id(id)
-                    .build();
-                 vendorRepository.save(vendor);
-            return vendorToResponse(vendor);
+        Set<Market> set = new HashSet();
+        set.add(market);
+        vendor.builder().phone(vendorDTO.getPhone())
+                .webSite(vendorDTO.getWebSite())
+                .instagram(vendorDTO.getInstagram())
+                .facebook(vendorDTO.getFacebook())
+                .email(vendorDTO.getEmail())
+                .profilePic(vendorDTO.getProfilePic())
+                .markets(set)
+                .products(vendorDTO.getProducts())
+                .name(vendorDTO.getName())
+                .intro(vendorDTO.getIntro())
+                .introductionLong(vendor.getIntroductionLong())
+                .id(id)
+                .build();
+        vendorRepository.save(vendor);
+        return vendorToResponse(vendor);
     }
 
-    public void deleteAllVendors(){
+    public void deleteAllVendors() {
         vendorRepository.deleteAll();
     }
 
-    public void deleteVendorById(Long id){
+    public void deleteVendorById(Long id) {
         vendorRepository.deleteById(id);
     }
 }
