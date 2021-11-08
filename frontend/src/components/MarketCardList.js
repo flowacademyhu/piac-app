@@ -1,9 +1,9 @@
-import MarketCard from './MarketCard';
-import React, { useState, useLayoutEffect } from 'react';
-import '../styles/MarketCardList.css';
-import { fetchUpcomingMarkets } from './Service';
-import { Link } from 'react-router-dom';
-import ErrorBody from './ErrorBody';
+import MarketCard from "./MarketCard";
+import React, { useState, useLayoutEffect } from "react";
+import "../styles/MarketCardList.css";
+import { fetchUpcomingMarkets } from "./Service";
+import { Link } from "react-router-dom";
+import ErrorBody from "./ErrorBody";
 
 const MarketCardList = () => {
   const [upcomingMarkets, setUpcomingMarkets] = useState([]);
@@ -19,18 +19,19 @@ const MarketCardList = () => {
   }, []);
 
   return (
-    <div className='card-list'>
-      <ErrorBody error={error} />
-      {!error &&
+    <div className="card-list">
+      {error ? (
+        <ErrorBody error={error} />
+      ) : (
         upcomingMarkets.map((market) => {
           return (
             <div key={market.id}>
               <Link
                 to={`/piacok/${market.id}`}
-                style={{ textDecoration: 'none' }}
+                style={{ textDecoration: "none" }}
               >
                 <MarketCard
-                  style={{ textDecoration: 'none' }}
+                  style={{ textDecoration: "none" }}
                   profilePic={market.profilePic}
                   marketName={market.name}
                   marketLocation={market.place}
@@ -41,7 +42,8 @@ const MarketCardList = () => {
               </Link>
             </div>
           );
-        })}
+        })
+      )}
     </div>
   );
 };
