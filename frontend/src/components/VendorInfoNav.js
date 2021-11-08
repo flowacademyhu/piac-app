@@ -4,8 +4,8 @@ import "./VendorInfoNav.css";
 import Products from "./Products";
 import info_mid from "./../icons/navigation/info_mid.svg";
 import info_primary from "./../icons/navigation/info_primary.svg";
-import market_mid from "./../icons/navigation/market_mid.svg";
-import market_primary from "./../icons/navigation/market_primary.svg";
+import market_mid from "./../icons/navigation/calendar-gray.svg";
+import market_primary from "./../icons/navigation/calendar-primary.svg";
 
 import VendorContacts from "./VendorContacts";
 import VendorIntroduction from "./VendorIntroduction";
