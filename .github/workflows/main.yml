@@ -134,7 +134,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: live
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-    needs: [build-frontend, build-backend]
+    needs: [build-frontend, build-backend, build-admin]
     steps:
       - name: Deploy backend
         uses: appleboy/ssh-action@master
