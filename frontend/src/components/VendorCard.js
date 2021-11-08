@@ -16,8 +16,10 @@ const VendorCard = ({ vendor, vendorDesc, imageLogo }) => {
             : {}
         }
       ></div>
-      <div className='vendorName'>{vendor}</div>
-      <div className='vendorDescription'>{vendorDesc}</div>
+      <div className='vendorInfo'>
+        <div className='vendorName'>{vendor}</div>
+        <div className='vendorDescription'>{vendorDesc}</div>
+      </div>
     </div>
   );
 };
