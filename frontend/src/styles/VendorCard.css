@@ -33,15 +33,12 @@
 }
 
 .vendorName {
-<<<<<<< HEAD
   grid-column: 2;
   grid-row: 1;
   font-family: "Open Sans", sans-serif;
   font-size: 20px;
-=======
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
->>>>>>> 0cf6bc7d2d8e653c5ededb3aa2bd9ac62b4061b6
   font-weight: bold;
   overflow: hidden;
   padding-left: 10px;
@@ -55,11 +52,8 @@
 }
 
 .vendorDescription {
-<<<<<<< HEAD
   grid-column: 2;
   grid-row: 2;
-=======
->>>>>>> 0cf6bc7d2d8e653c5ededb3aa2bd9ac62b4061b6
   font-family: "Open Sans", sans-serif;
   font-size: 12px;
   overflow: hidden;
