@@ -6,23 +6,26 @@
   justify-content: center;
   background-position: center;
   background-size: cover;
-  position: sticky;
-  top: 0;
+  position: relative;
+  top: 0;   
   width: 100%;
-  color: #f7f5f2;
+  color: #33221A;
   font-family: "Amatic SC", sans-serif;
   font-size: 65px;
   z-index: 1;
-  height: 100px;
 }
 
 .market-header {
+  /*
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     url("../headers/market.jpeg");
+    */
 }
 
 .vendor-header {
+  /*
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     url("../headers/vendor.jpeg");
   background-position-y: 60%;
+  */
 }
