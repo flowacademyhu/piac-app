@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
 
 .vendorCard {
   display: flex;
@@ -14,7 +14,7 @@
   position: relative;
 }
 
-.vendorInfo{
+.vendorInfo {
   display: flex;
   flex-flow: column wrap;
   align-content: flex-start;
@@ -33,7 +33,7 @@
 }
 
 .vendorName {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 16px;
   font-weight: bold;
   overflow: hidden;
@@ -48,7 +48,7 @@
 }
 
 .vendorDescription {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 12px;
   overflow: hidden;
   padding-left: 10px;
