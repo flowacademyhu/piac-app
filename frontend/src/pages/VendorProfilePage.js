@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import VendorHeader from '../components/VendorHeader';
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import VendorHeader from "../components/VendorHeader";
 import {
   fetchVendorById,
-  fetchUpcomingMarketsByVendorId
-} from '../components/Service';
-import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
-import VendorProfileInfo from '../components/VendorProfileInfo';
-import VendorProfileMarkets from '../components/VendorProfileMarkets';
-import '../components/VendorInfoNav.css';
+  fetchUpcomingMarketsByVendorId,
+} from "../components/Service";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+import VendorProfileInfo from "../components/VendorProfileInfo";
+import VendorProfileMarkets from "../components/VendorProfileMarkets";
+import "../components/VendorInfoNav.css";
 
 const VendorProfilePage = () => {
   const [vendor, setVendor] = useState({});
@@ -55,7 +55,7 @@ const VendorProfilePage = () => {
           <VendorProfileMarkets upcomingMarkets={upcomingMarkets} />
         </>
       ) : (
-        <div style={{ height: '90%' }} />
+        <div style={{ height: "90%" }} />
       )}
       {error && <Redirect to="/arusok" />}
     </>

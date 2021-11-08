@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
+import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 
 const Header = () => {
   const location = useLocation();
@@ -6,12 +6,12 @@ const Header = () => {
   return (
     <div
       className={
-        location.pathname === '/'
-          ? 'header market-header'
-          : 'header vendor-header'
+        location.pathname === "/"
+          ? "header market-header"
+          : "header vendor-header"
       }
     >
-      {location.pathname === '/' ? 'Piacok' : 'Árusok'}
+      {location.pathname === "/" ? "Piacok" : "Árusok"}
     </div>
   );
 };
