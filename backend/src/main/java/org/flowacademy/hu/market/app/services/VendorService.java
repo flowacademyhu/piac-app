@@ -100,7 +100,6 @@ public class VendorService {
                 .setIntroductionLong(vendor.getIntroductionLong())
                 .setId(id)
                 .setMarkets(markets);
-        System.out.println(vendor.getName());
         vendorRepository.save(vendor);
         return vendorToResponse(vendor);
     }
