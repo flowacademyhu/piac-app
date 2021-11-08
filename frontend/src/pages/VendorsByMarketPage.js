@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import HeaderWithMarket from '../components/HeaderWithMarket';
-import VendorListOfOneMarket from '../components/VendorListOfOneMarket';
-import VendorlistUploadInProgress from '../components/VendorlistUploadInProgress';
-import { fetchMarketById } from '../components/Service';
-import ErrorBody from '../components/ErrorBody';
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import HeaderWithMarket from "../components/HeaderWithMarket";
+import VendorListOfOneMarket from "../components/VendorListOfOneMarket";
+import VendorlistUploadInProgress from "../components/VendorlistUploadInProgress";
+import { fetchMarketById } from "../components/Service";
+import ErrorBody from "../components/ErrorBody";
 
 const VendorsByMarketPage = () => {
   const [market, setMarket] = useState({});
@@ -25,16 +25,16 @@ const VendorsByMarketPage = () => {
     } else if (market.id) {
       return (
         <VendorlistUploadInProgress
-          title='Szervezés alatt...'
-          body='Itt fogod megtalálni az árusokat,'
-          footer='akik ezen a piacon jelen lesznek.'
+          title="Szervezés alatt..."
+          body="Itt fogod megtalálni az árusokat,"
+          footer="akik ezen a piacon jelen lesznek."
         />
       );
     } else {
       return (
         <>
-          <div className='marketLoading' />
-          <VendorlistUploadInProgress title='Betöltés...' />
+          <div className="marketLoading" />
+          <VendorlistUploadInProgress title="Betöltés..." />
         </>
       );
     }
@@ -51,9 +51,8 @@ const VendorsByMarketPage = () => {
           marketClosingDate={market.closingDate}
         />
       )}
-      <div className='marketHeader' />
-      <ErrorBody error={error} />
-      {!error && renderVendorList()}
+      <div className="marketHeader" />
+      {error ? <ErrorBody error={error} /> : renderVendorList()}
     </>
   );
 };
