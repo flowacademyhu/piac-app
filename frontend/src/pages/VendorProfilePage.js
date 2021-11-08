@@ -41,10 +41,10 @@ const VendorProfilePage = () => {
             profilePic={vendor.profilePic}
             name={vendor.name}
             intro={vendor.intro}
-            cardPayment={vendor.cardPayment}
           />
           <VendorProfileInfo
             products={vendor.products}
+            cardPayment={vendor.cardPayment}
             facebook={vendor.facebook}
             instagram={vendor.instagram}
             website={vendor.webSite}
