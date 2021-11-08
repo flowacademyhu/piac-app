@@ -86,21 +86,21 @@ public class VendorService {
     public DetailVendorDTO updateVendor(Long id, VendorDTO vendorDTO) throws Exception {
         Market market = marketRepository.findById(vendorDTO.getMarketId()).orElseThrow(NoSuchMarketException::new);
         Vendor vendor = vendorRepository.findById(id).orElseThrow(NoSuchVendorException::new);
-        Set<Market> set = new HashSet();
-        set.add(market);
-        vendor.builder().phone(vendorDTO.getPhone())
-                .webSite(vendorDTO.getWebSite())
-                .instagram(vendorDTO.getInstagram())
-                .facebook(vendorDTO.getFacebook())
-                .email(vendorDTO.getEmail())
-                .profilePic(vendorDTO.getProfilePic())
-                .markets(set)
-                .products(vendorDTO.getProducts())
-                .name(vendorDTO.getName())
-                .intro(vendorDTO.getIntro())
-                .introductionLong(vendor.getIntroductionLong())
-                .id(id)
-                .build();
+        Set<Market> markets = new HashSet();
+        markets.add(market);
+        vendor.setPhone(vendorDTO.getPhone())
+                .setWebSite(vendorDTO.getWebSite())
+                .setInstagram(vendorDTO.getInstagram())
+                .setFacebook(vendorDTO.getFacebook())
+                .setEmail(vendorDTO.getEmail())
+                .setProfilePic(vendorDTO.getProfilePic())
+                .setProducts(vendorDTO.getProducts())
+                .setName(vendorDTO.getName())
+                .setIntro(vendorDTO.getIntro())
+                .setIntroductionLong(vendor.getIntroductionLong())
+                .setId(id)
+                .setMarkets(markets);
+        System.out.println(vendor.getName());
         vendorRepository.save(vendor);
         return vendorToResponse(vendor);
     }

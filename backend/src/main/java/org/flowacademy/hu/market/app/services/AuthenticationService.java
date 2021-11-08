@@ -53,7 +53,7 @@ public class AuthenticationService {
                 return "Your code has been sent to your email: " + emailSendingService.getEmailAddress();
             }
         } catch (DisabledException | BadCredentialsException e) {
-
+            throw e;
         }
         return null;
     }

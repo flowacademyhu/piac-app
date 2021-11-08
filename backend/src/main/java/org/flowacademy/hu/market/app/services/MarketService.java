@@ -83,7 +83,6 @@ public class MarketService {
         return market.getVendors().stream().map(vendorService::vendorToSimpleDTO).collect(Collectors.toList());
     }
 
-
     public Market marketDTOToEntity(MarketDTO marketDTO) throws ParseException {
         return Market.builder()
                 .profilePic(marketDTO.getProfilePic())
@@ -95,18 +94,17 @@ public class MarketService {
     }
 
     public MarketDTO marketToDTO(Market market) {
-        Set<Vendor> collect = market.getVendors();
-        if(collect == null) collect = new HashSet<>();
-
+        Set<Vendor> vendorCollection = market.getVendors();
+        if(vendorCollection == null) vendorCollection = new HashSet<>();
         return new MarketDTO()
                 .setProfilePic(market.getProfilePic())
                 .setId(market.getId())
-                .setVendors(collect.stream().map(vendorService::vendorToSimpleDTO).collect(Collectors.toSet()))
+                .setVendors(vendorCollection.stream().map(vendorService::vendorToSimpleDTO).collect(Collectors.toSet()))
                 .setOpeningDate(market.getOpeningDate())
                 .setClosingDate(market.getClosingDate())
                 .setName(market.getName())
                 .setPlace(market.getPlace())
-                .setNumberOfVendors(collect.size());
+                .setNumberOfVendors(vendorCollection.size());
     }
 
 
@@ -218,7 +216,7 @@ public class MarketService {
 
     public List<SimpleMarketDTO> findAllMarketsByVendorId(Long id) throws NoSuchVendorException {
         Vendor vendor = vendorRepository.findById(id).orElseThrow(NoSuchVendorException::new);
-        return vendor.getMarkets().stream().map(market -> marketToSimpleDTO(market)).collect(Collectors.toList());
+        return vendor.getMarkets().stream().map(this::marketToSimpleDTO).collect(Collectors.toList());
     }
 
     public List<SimpleMarketDTO> findAllUpcomingMarketsByVendorId(Long id) throws NoSuchVendorException {
