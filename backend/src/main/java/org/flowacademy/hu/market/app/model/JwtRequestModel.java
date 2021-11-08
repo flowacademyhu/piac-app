@@ -6,14 +6,14 @@ public class JwtRequestModel implements Serializable {
 
     private static final long serialVersionUID = 2636936156391265891L;
     private String username;
-    private String password;
+    private final String password = "password";
 
     public JwtRequestModel() {
     }
 
-    public JwtRequestModel(String username, String password) {
+    public JwtRequestModel(String username) {
         super();
-        this.username = username; this.password = password;
+        this.username = username;
     }
 
     public String getUsername() {
@@ -26,9 +26,5 @@ public class JwtRequestModel implements Serializable {
 
     public String getPassword() {
         return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 }

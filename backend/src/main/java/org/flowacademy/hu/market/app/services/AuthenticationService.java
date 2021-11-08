@@ -49,13 +49,13 @@ public class AuthenticationService {
                 emailSendingService.sendmail(generatedString);
                 generatedPassword = generatedString;
                 SecurityContextHolder.getContext().setAuthentication(auth);
-                request.setPassword(generatedString);
                 return "Your code has been sent to your email: " + emailSendingService.getEmailAddress();
             }
         } catch (DisabledException | BadCredentialsException e) {
-
+            e.printStackTrace();
+                return "Failed in catch";
         }
-        return null;
+        return "Failed in finally";
     }
 
     public String getToken(String password) throws WrongPasswordException {
