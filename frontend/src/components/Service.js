@@ -68,6 +68,6 @@ export const fetchVendorById = async (id) => {
     return data;
   } catch (error) {
     console.warn('Failed to load vendor');
-    throw Error('Nem sikerült betölteni a kért kereskedő oldalát!');
+    throw Error('Nem sikerült betölteni a kért árus oldalát!');
   }
 };
