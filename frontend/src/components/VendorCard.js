@@ -1,4 +1,5 @@
 import "../styles/VendorCard.css";
+import defaultVendorImage from "../img/defaultVendorImage.png";
 
 const body = document.body;
 body.style.background = "#F7F5F2";
@@ -13,7 +14,9 @@ const VendorCard = ({ vendor, vendorDesc, imageLogo }) => {
             ? {
                 backgroundImage: `url(${imageLogo})`,
               }
-            : {}
+            : {
+                backgroundImage: `url(${defaultVendorImage})`,
+              }
         }
       ></div>
       <div className="vendorInfo">
