@@ -23,7 +23,7 @@ const VendorInfoNav = ({
   website,
   email,
   phone,
-  introductionLong
+  introductionLong,
 }) => {
   const [status, changeStatus] = useState(!showMarkets);
   const [upcomingMarkets, setUpcomingMarkets] = useState([]);
@@ -105,7 +105,7 @@ const VendorInfoNav = ({
         </div>
       ) : (
         <div className="profile-components">
-          <Products products={products} />
+          {products.length > 0 && <Products products={products} />}
           <VendorContacts
             facebook={facebook}
             instagram={instagram}

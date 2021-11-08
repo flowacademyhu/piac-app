@@ -16,7 +16,7 @@ const VendorHeader = (props) => {
         style={
           profilePic
             ? {
-                backgroundImage: `url(${profilePic})`
+                backgroundImage: `url(${profilePic})`,
               }
             : {}
         }

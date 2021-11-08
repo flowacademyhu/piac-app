@@ -4,17 +4,17 @@ const MarketInfo = ({
   marketLocation,
   marketOpeningDate,
   marketClosingDate,
-  header
+  header,
 }) => {
   const marketOpeningDateFormatter = {
     year: "numeric",
     month: "long",
-    day: "numeric"
+    day: "numeric",
   };
 
   const marketMinuteFormatter = {
     hour: "2-digit",
-    minute: "numeric"
+    minute: "numeric",
   };
 
   const formattedYearMonthAndDay = new Intl.DateTimeFormat(
@@ -42,7 +42,7 @@ const MarketInfo = ({
         style={
           profilePic
             ? {
-                backgroundImage: `url(${profilePic})`
+                backgroundImage: `url(${profilePic})`,
               }
             : {}
         }
