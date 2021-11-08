@@ -18,6 +18,7 @@ body {
 
 .contact-logo {
   padding-right: 10px;
+  filter: grayscale(100%) brightness(2.1) contrast(0.9);
 }
 
 .contact-info {
@@ -28,7 +29,7 @@ body {
 }
 
 .contact-links {
-  color: #cc4400;
+  color: #53b896;
   text-decoration: none;
   font-family: "Open Sans", sans-serif;
   font-weight: bold;
@@ -36,5 +37,5 @@ body {
 }
 
 .contact-links:hover {
-  color: #cc4400;
+  color: #53b896;
 }
