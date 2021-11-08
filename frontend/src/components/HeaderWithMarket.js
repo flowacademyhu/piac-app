@@ -1,4 +1,4 @@
-import MarketInfo from './MarketInfo';
+import MarketInfo from "./MarketInfo";
 
 const HeaderWithMarket = ({
   profilePic,
@@ -8,7 +8,7 @@ const HeaderWithMarket = ({
   marketClosingDate
 }) => {
   return (
-    <div className='marketHeader'>
+    <div className="marketHeader">
       <MarketInfo
         header
         marketHeaderLogoStyle

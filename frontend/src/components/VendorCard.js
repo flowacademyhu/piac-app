@@ -1,13 +1,13 @@
-import '../styles/VendorCard.css';
+import "../styles/VendorCard.css";
 
 const body = document.body;
-body.style.background = '#F7F5F2';
+body.style.background = "#F7F5F2";
 
 const VendorCard = ({ vendor, vendorDesc, imageLogo }) => {
   return (
-    <div className='vendorCard'>
+    <div className="vendorCard">
       <div
-        className='vendorLogo'
+        className="vendorLogo"
         style={
           imageLogo
             ? {
@@ -16,8 +16,8 @@ const VendorCard = ({ vendor, vendorDesc, imageLogo }) => {
             : {}
         }
       ></div>
-      <div className='vendorName'>{vendor}</div>
-      <div className='vendorDescription'>{vendorDesc}</div>
+      <div className="vendorName">{vendor}</div>
+      <div className="vendorDescription">{vendorDesc}</div>
     </div>
   );
 };
