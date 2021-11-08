@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import MarketCard from './MarketCard';
+import { Link } from "react-router-dom";
+import MarketCard from "./MarketCard";
 
 const VendorProfileMarkets = ({ upcomingMarkets }) => {
   return (
@@ -14,10 +14,10 @@ const VendorProfileMarkets = ({ upcomingMarkets }) => {
               <div key={market.id}>
                 <Link
                   to={`/piacok/${market.id}`}
-                  style={{ textDecoration: 'none' }}
+                  style={{ textDecoration: "none" }}
                 >
                   <MarketCard
-                    style={{ textDecoration: 'none' }}
+                    style={{ textDecoration: "none" }}
                     profilePic={market.profilePic}
                     marketName={market.name}
                     marketLocation={market.place}

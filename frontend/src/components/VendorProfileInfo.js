@@ -1,6 +1,6 @@
-import Products from './Products';
-import VendorContacts from './VendorContacts';
-import VendorIntroduction from './VendorIntroduction';
+import Products from "./Products";
+import VendorContacts from "./VendorContacts";
+import VendorIntroduction from "./VendorIntroduction";
 
 const VendorProfileInfo = ({
   products,
@@ -9,7 +9,7 @@ const VendorProfileInfo = ({
   website,
   email,
   phone,
-  introductionLong
+  introductionLong,
 }) => {
   return (
     <div className="profile-components">
