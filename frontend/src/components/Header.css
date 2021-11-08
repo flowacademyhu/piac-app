@@ -2,30 +2,33 @@
 
 .header {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-position: center;
+  position: relative;
+  top: 0;
+  font-family: "Amatic SC", sans-serif;
+  font-weight: 600;
+  font-size: 40px;
+  color: #33221a;
+  z-index: 1;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.Logo {
+  display: flex;
+  width: 40px;
+  height: 40px;
+}
+
+.MarketLogoContainer {
   align-items: center;
   justify-content: center;
-  background-position: center;
-  background-size: cover;
-  position: relative;
-  top: 0;   
-  width: 100%;
-  color: #33221A;
-  font-family: "Amatic SC", sans-serif;
-  font-size: 65px;
-  z-index: 1;
-}
-
-.market-header {
-  /*
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url("../headers/market.jpeg");
-    */
-}
-
-.vendor-header {
-  /*
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url("../headers/vendor.jpeg");
-  background-position-y: 60%;
-  */
+  display: grid;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #ffffff;
 }

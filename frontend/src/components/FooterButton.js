@@ -1,10 +1,10 @@
 import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
 import { Link } from "react-router-dom";
 import { Col } from "react-bootstrap";
-import MarketLogo from "../icons/navigation/market_dark.svg";
-import MarketLogoHighlight from "../icons/navigation/market_primary.svg";
-import VendorLogo from "../icons/navigation/vendor_dark.svg";
-import VendorLogoHighlight from "../icons/navigation/vendor_primary.svg";
+import MarketLogo from "../icons/navigation/calendar-dark-gray.svg";
+import MarketLogoHighlight from "../icons/navigation/calendar-primary.svg";
+import VendorLogo from "../icons/navigation/vendor-dark-gray.svg";
+import VendorLogoHighlight from "../icons/navigation/vendor-primary.svg";
 
 import "./Footer.css";
 
