@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import HeaderWithMarket from '../components/HeaderWithMarket';
-import VendorListOfOneMarket from '../components/VendorListOfOneMarket';
-import VendorlistUploadInProgress from '../components/VendorlistUploadInProgress';
-import { fetchMarketById } from '../components/Service';
-import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import HeaderWithMarket from "../components/HeaderWithMarket";
+import VendorListOfOneMarket from "../components/VendorListOfOneMarket";
+import VendorlistUploadInProgress from "../components/VendorlistUploadInProgress";
+import { fetchMarketById } from "../components/Service";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 
 const VendorsByMarketPage = () => {
   const [market, setMarket] = useState({});
@@ -30,8 +30,7 @@ const VendorsByMarketPage = () => {
       return (
         <VendorlistUploadInProgress
           title="Szervezés alatt..."
-          body="Itt fogod megtalálni az árusokat,"
-          footer="akik ezen a piacon jelen lesznek."
+          body="Itt fogod megtalálni az árusokat, akik ezen a piacon jelen lesznek."
         />
       );
     } else {
@@ -58,7 +57,7 @@ const VendorsByMarketPage = () => {
           {renderVendorList()}
         </>
       ) : (
-        <div style={{ height: '90%' }} />
+        <div style={{ height: "90%" }} />
       )}
       {error && <Redirect to="/" />}
     </>

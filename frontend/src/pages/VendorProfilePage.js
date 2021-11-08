@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import VendorHeader from '../components/VendorHeader';
-import VendorInfoNav from '../components/VendorInfoNav';
-import { fetchVendorById } from '../components/Service';
-import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import VendorHeader from "../components/VendorHeader";
+import VendorInfoNav from "../components/VendorInfoNav";
+import { fetchVendorById } from "../components/Service";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 
 const VendorProfilePage = () => {
   const [vendor, setVendor] = useState({});
@@ -46,7 +46,7 @@ const VendorProfilePage = () => {
           />
         </>
       ) : (
-        <div style={{ height: '90%' }} />
+        <div style={{ height: "90%" }} />
       )}
       {error && <Redirect to="/arusok" />}
     </>

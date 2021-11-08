@@ -1,14 +1,14 @@
-import React from 'react';
-import '../styles/vendor-header.css';
-import cashIcon from '../img/cash.svg';
-import cardIcon from '../img/card.svg';
+import React from "react";
+import "../styles/vendor-header.css";
+import cashIcon from "../img/cash.svg";
+import cardIcon from "../img/card.svg";
 import defaultVendorImage from '../img/defaultVendorImage.png';
 
 const VendorHeader = (props) => {
   const { profilePic, name, intro, cardPayment } = props;
 
   const paymentText = (cardPayment) =>
-    cardPayment ? 'Bankkártyával is fizethetsz' : 'Csak készpénzzel fizethetsz';
+    cardPayment ? "Bankkártyával is fizethetsz" : "Csak készpénzzel fizethetsz";
 
   return (
     <header className='vendor-profile-header'>
@@ -17,7 +17,7 @@ const VendorHeader = (props) => {
         style={
           profilePic
             ? {
-                backgroundImage: `url(${profilePic})`
+                backgroundImage: `url(${profilePic})`,
               }
             : {
                 backgroundImage: `url(${defaultVendorImage})`

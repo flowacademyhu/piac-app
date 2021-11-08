@@ -1,10 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
 
 .vendorCard {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-rows: 1f auto;
+  display: flex;
+  flex-direction: row wrap;
   cursor: pointer;
   user-select: none;
   border-radius: 10px;
@@ -15,13 +14,16 @@
   position: relative;
 }
 
+.vendorInfo {
+  display: flex;
+  flex-flow: column wrap;
+  align-content: flex-start;
+}
+
 .vendorLogo {
   height: 100px;
   width: 100px;
   border-radius: 50%;
-  grid-column: 1;
-  grid-row-start: 1;
-  grid-row-end: 3;
   border-style: solid;
   border-width: 1px;
   border-color: #705a4f;
@@ -31,15 +33,12 @@
 }
 
 .vendorName {
-  grid-column: 2;
-  grid-row: 1;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 20px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
   font-weight: bold;
   overflow: hidden;
   padding-left: 10px;
-  padding-bottom: 10px;
-  max-height: 60px;
+  padding-bottom: 5px;
   white-space: normal;
   word-break: break-word;
   text-overflow: ellipsis;
@@ -49,14 +48,11 @@
 }
 
 .vendorDescription {
-  grid-column: 2;
-  grid-row: 2;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 12px;
   overflow: hidden;
   padding-left: 10px;
   width: 100%;
-  max-height: 55px;
   white-space: normal;
   word-break: break-word;
   text-overflow: ellipsis;
