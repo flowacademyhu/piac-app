@@ -5,7 +5,6 @@ body {
 }
 
 .vendor-profile-header {
-  background-color: #fffdfc;
   display: grid;
   grid-template-columns: auto 1fr;
   top: 0;
