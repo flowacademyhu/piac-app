@@ -1,11 +1,15 @@
 package org.flowacademy.hu.market.app.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class SimpleVendorDTO {
 
     private Long id;
     private String intro;
     private String name;
     private String profilePic;
+    private Set<String> products = new HashSet<>();
 
     public SimpleVendorDTO(String intro, String name, String profilePic) {
         this.intro = intro;
@@ -49,6 +53,15 @@ public class SimpleVendorDTO {
 
     public SimpleVendorDTO setProfilePic(String profilePic) {
         this.profilePic = profilePic;
+        return this;
+    }
+
+    public Set<String> getProducts() {
+        return products;
+    }
+
+    public SimpleVendorDTO setProducts(Set<String> products) {
+        this.products = products;
         return this;
     }
 }
