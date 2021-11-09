@@ -28,7 +28,7 @@ body {
 }
 
 .contact-links {
-  color: #cc4400;
+  color: #53b896;
   text-decoration: none;
   font-family: "Open Sans", sans-serif;
   font-weight: bold;
@@ -36,5 +36,5 @@ body {
 }
 
 .contact-links:hover {
-  color: #cc4400;
+  color: #53b896;
 }

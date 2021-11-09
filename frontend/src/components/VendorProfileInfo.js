@@ -1,6 +1,7 @@
 import Products from "./Products";
 import VendorContacts from "./VendorContacts";
 import VendorIntroduction from "./VendorIntroduction";
+import Payment from "./Payment";
 
 const VendorProfileInfo = ({
   products,
@@ -10,10 +11,12 @@ const VendorProfileInfo = ({
   email,
   phone,
   introductionLong,
+  cardPayment,
 }) => {
   return (
     <div className="profile-components">
       <Products products={products} />
+      <Payment cardPayment={cardPayment} />
       <VendorContacts
         facebook={facebook}
         instagram={instagram}
