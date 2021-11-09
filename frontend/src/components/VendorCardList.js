@@ -34,8 +34,6 @@ const VendorCardList = () => {
               .includes(searchTerm.toLowerCase())
         );
 
-  console.log(vendors);
-
   return (
     <>
       <div className="search-area">
