@@ -3,13 +3,13 @@
 .footer-label {
   font-family: "Bebas Neue", sans-serif;
   font-size: 18px;
-  color: #705a4f;
+  color: #ccbeb8;
   text-decoration: none;
   outline-style: none;
 }
 
 .active {
-  color: #cc4400;
+  color: #53b896;
 }
 
 .footer-link {
@@ -31,8 +31,9 @@
   bottom: 0;
   width: 100%;
   border-top: solid;
-  border-color: #ccbeb8;
+  border-color: #53b896;
   border-width: 0.5px;
+  border-top-width: 2px;
   height: 60px;
 }
 
