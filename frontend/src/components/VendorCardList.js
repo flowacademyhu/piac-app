@@ -18,7 +18,7 @@ const VendorCardList = () => {
     getVendors();
   }, []);
 
-  const lower = (obj) => {
+  const comparingWithKeywords = (obj) => {
     return obj.toLowerCase().includes(searchTerm.toLowerCase());
   };
 
@@ -27,10 +27,10 @@ const VendorCardList = () => {
       ? vendors
       : vendors.filter(
           (vendor) =>
-            lower(vendor.name) ||
-            lower(vendor.products.join(" ")) ||
-            lower(vendor.intro) ||
-            lower(vendor.introductionLong)
+            comparingWithKeywords(vendor.name) ||
+            comparingWithKeywords(vendor.products.join(" ")) ||
+            comparingWithKeywords(vendor.intro) ||
+            comparingWithKeywords(vendor.introductionLong)
         );
 
   return (

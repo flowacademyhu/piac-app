@@ -25,7 +25,7 @@ const VendorsByMarketPage = () => {
     fetchMarket(marketId);
   }, [marketId]);
 
-  const lower = (obj) => {
+  const comparingWithKeywords = (obj) => {
     return obj.toLowerCase().includes(searchTerm.toLowerCase());
   };
 
@@ -34,10 +34,10 @@ const VendorsByMarketPage = () => {
       ? market.vendors
       : market.vendors.filter(
           (vendor) =>
-            lower(vendor.name) ||
-            lower(vendor.products.join(" ")) ||
-            lower(vendor.intro) ||
-            lower(vendor.introductionLong)
+            comparingWithKeywords(vendor.name) ||
+            comparingWithKeywords(vendor.products.join(" ")) ||
+            comparingWithKeywords(vendor.intro) ||
+            comparingWithKeywords(vendor.introductionLong)
         );
 
   const renderVendorList = () => {
