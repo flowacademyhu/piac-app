@@ -1,9 +1,9 @@
 import React, { useState, useLayoutEffect } from "react";
-import "../styles/Search.css";
 import "../styles/MarketCardList.css";
 import { fetchVendors } from "./Service";
 import VendorCard from "./VendorCard";
 import { Link } from "react-router-dom";
+import SearchArea from "./SearchArea";
 
 const VendorCardList = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -18,34 +18,29 @@ const VendorCardList = () => {
     getVendors();
   }, []);
 
+  const lower = (obj) => {
+    return obj.toLowerCase().includes(searchTerm.toLowerCase());
+  };
+
   const filteredVendorArray =
     searchTerm.length === 0
       ? vendors
       : vendors.filter(
           (vendor) =>
-            vendor.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            vendor.products
-              .join(" ")
-              .toLowerCase()
-              .includes(searchTerm.toLowerCase()) ||
-            vendor.intro.toLowerCase().includes(searchTerm.toLowerCase()) ||
-            vendor.introductionLong
-              .toLowerCase()
-              .includes(searchTerm.toLowerCase())
+            lower(vendor.name) ||
+            lower(vendor.products.join(" ")) ||
+            lower(vendor.intro) ||
+            lower(vendor.introductionLong)
         );
 
   return (
     <>
-      <div className="search-area">
-        <input
-          className="search-bar"
-          placeholder="Keress termékre vagy árusra..."
-          type="text"
-          onChange={(e) => {
-            setSearchTerm(e.target.value);
-          }}
-        />
-      </div>
+      <SearchArea
+        onChange={(e) => {
+          setSearchTerm(e.target.value);
+        }}
+        placeHolder="Keress termékre vagy árusra..."
+      />
       <div className="card-list">
         {filteredVendorArray.map((vendor) => {
           return (
