@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import MarketTable from "./components/MarketTable";
-import VendorTable from "./components/VendorTable";
+import MarketTablePage from "./pages/MarketTablePage";
+import VendorTablePage from "./pages/VendorTablePage";
 import Menu from "./components/Menu";
 
 function App() {
@@ -9,8 +9,8 @@ function App() {
       <Router>
         <Menu />
         <Routes>
-          <Route exact path="/piac" element={<MarketTable />} />
-          <Route exact path="/arus" element={<VendorTable />} />
+          <Route exact path="/piac" element={<MarketTablePage />} />
+          <Route exact path="/arus" element={<VendorTablePage />} />
         </Routes>
       </Router>
     </>
