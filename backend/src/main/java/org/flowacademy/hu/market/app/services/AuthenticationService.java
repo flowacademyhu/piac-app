@@ -33,8 +33,6 @@ public class AuthenticationService {
     @Autowired
     private TokenManager tokenManager;
 
-    private String tokenForExchange;
-
     public String createToken(JwtRequestModel request) throws Exception {
         try {
             var auth = authenticationManager.authenticate(
@@ -43,11 +41,11 @@ public class AuthenticationService {
                 final UserDetails userDetails = userDetailsService.loadUserByUsername(request.getEmailAddress());
                 final String jwtToken = tokenManager.generateJwtToken(userDetails);
                 String generatedString = RandomString.make(15);
-                tokenForExchange = jwtToken;
                 emailSendingService.sendmail(request.getEmailAddress(), generatedString);
                 SecurityContextHolder.getContext().setAuthentication(auth);
                  Admin result =  userDetailsService.findAdmin(userDetails.getUsername());
-                 result.setToken(generatedString);
+                 result.setGeneratedString(generatedString);
+                 result.setJwtToken(jwtToken);
                  userDetailsService.saveAdmin(result);
                 return "Your code has been sent to your email: " + request.getEmailAddress();
 
@@ -58,17 +56,17 @@ public class AuthenticationService {
     }
 
     public String getJwtToken(String token) throws WrongPasswordException {
+        Admin admin = userDetailsService.getAdminByToken(token);
         try{
-            Admin admin = userDetailsService.getAdminByToken(token);
-            if (!admin.getToken().equals(token)) {
+            if (!admin.getGeneratedString().equals(token)) {
                 throw new WrongPasswordException();
             }
-            admin.setToken(null);
+            admin.setGeneratedString(null);
             userDetailsService.saveAdmin(admin);
         }catch ( WrongPasswordException | NullPointerException e){
             throw new WrongPasswordException();
         }
-        return tokenForExchange;
+        return admin.getJwtToken();
     }
 }
 

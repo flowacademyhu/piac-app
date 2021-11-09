@@ -40,17 +40,17 @@ public class JwtUserDetailsService implements UserDetailsService {
     }
 
     public void saveAdmin(Admin admin){
-        adminRepository.save(admin);
+        adminRepository.saveAndFlush(admin);
     }
 
     public Admin getAdminByToken(String token){
      try{
-         adminRepository.getAdminByToken(token);
+         adminRepository.getAdminByGeneratedString(token);
      }
      catch(NullPointerException e){
          e.printStackTrace();
      }
-        return adminRepository.getAdminByToken(token);
+        return adminRepository.getAdminByGeneratedString(token);
     }
 
 

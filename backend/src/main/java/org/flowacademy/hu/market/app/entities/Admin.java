@@ -1,5 +1,6 @@
 package org.flowacademy.hu.market.app.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -8,6 +9,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 public class Admin {
 
     @Id
@@ -18,12 +20,9 @@ public class Admin {
     @NotNull
     @Column(unique = true)
     private String email;
-    private String token;
+    private String generatedString;
+    private String jwtToken;
 
-    public Admin(String email, String token) {
-        this.email = email;
-        this.token = token;
-    }
 
     public String getEmail() {
         return email;
@@ -34,12 +33,21 @@ public class Admin {
         return this;
     }
 
-    public String getToken() {
-        return token;
+    public String getGeneratedString() {
+        return generatedString;
     }
 
-    public Admin setToken(String token) {
-        this.token = token;
+    public Admin setGeneratedString(String token) {
+        this.generatedString = token;
+        return this;
+    }
+
+    public String getJwtToken() {
+        return jwtToken;
+    }
+
+    public Admin setJwtToken(String jwtToken) {
+        this.jwtToken = jwtToken;
         return this;
     }
 }
