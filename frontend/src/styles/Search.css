@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
+
+.search-area {
+  background-color: #53b896;
+  padding: 10px 20px 10px 20px;
+  margin-bottom: 10px;
+  max-width: 100%;
+  position: relative;
+}
+
+.search-bar {
+  border: 0;
+  outline: none;
+  background-color: #fffdfc;
+  border-radius: 5px;
+  min-height: 30px;
+  width: 100%;
+  margin: 0;
+  height: 100%;
+  padding: 0px 10px 0px 10px;
+  box-sizing: border-box;
+  font-family: "Open Sans";
+  font-weight: bold;
+  font-size: 14px;
+  color: #705a4f;
+}
+
+.search-bar::placeholder {
+  color: #ccb8ad;
+  font-family: "Open Sans";
+  font-style: italic;
+  font-size: 14px;
+}

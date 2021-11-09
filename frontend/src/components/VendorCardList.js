@@ -1,4 +1,5 @@
 import React, { useState, useLayoutEffect } from "react";
+import "../styles/Search.css";
 import "../styles/MarketCardList.css";
 import { fetchVendors } from "./Service";
 import VendorCard from "./VendorCard";
@@ -31,13 +32,16 @@ const VendorCardList = () => {
 
   return (
     <>
-      <input
-        placeholder="Search..."
-        type="text"
-        onChange={(e) => {
-          setSearchTerm(e.target.value);
-        }}
-      />
+      <div className="search-area">
+        <input
+          className="search-bar"
+          placeholder="Keress termékre vagy árusra..."
+          type="text"
+          onChange={(e) => {
+            setSearchTerm(e.target.value);
+          }}
+        />
+      </div>
       <div className="card-list">
         {filteredVendorArray.map((vendor) => {
           return (
