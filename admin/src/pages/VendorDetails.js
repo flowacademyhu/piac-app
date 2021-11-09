@@ -18,7 +18,7 @@ const VendorDetails = ({ vendor }) => {
     };
   }
   const [updatedVendor, setUpdatedVendor] = useState(vendor);
-  const title = vendor ? "Árus módosítása" : "Új árus hozzáadása";
+  const title = vendor.id ? "Árus módosítása" : "Új árus hozzáadása";
   return (
     <Form className="container">
       <h1 className="my-3">{title}</h1>
