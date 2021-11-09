@@ -7,38 +7,38 @@ const MarketInfo = ({
   header
 }) => {
   const marketOpeningDateFormatter = {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
+    year: "numeric",
+    month: "long",
+    day: "numeric"
   };
 
   const marketMinuteFormatter = {
-    hour: '2-digit',
-    minute: 'numeric'
+    hour: "2-digit",
+    minute: "numeric"
   };
 
   const formattedYearMonthAndDay = new Intl.DateTimeFormat(
-    'hu-HU',
+    "hu-HU",
     marketOpeningDateFormatter
   ).format(new Date(marketOpeningDate * 1000));
 
   const formattedOpeningHourAndMinute = new Intl.DateTimeFormat(
-    'hu-HU',
+    "hu-HU",
     marketMinuteFormatter
   ).format(new Date(marketOpeningDate * 1000));
 
   const formattedClosingHourAndMinute = new Intl.DateTimeFormat(
-    'hu-HU',
+    "hu-HU",
     marketMinuteFormatter
   ).format(new Date(marketClosingDate * 1000));
 
   const formattedOpeningAndClosingHour =
-    formattedOpeningHourAndMinute + ' - ' + formattedClosingHourAndMinute;
+    formattedOpeningHourAndMinute + " - " + formattedClosingHourAndMinute;
 
   return (
     <>
       <div
-        className={header ? 'marketLogo headerLogo' : 'marketLogo cardLogo'}
+        className={header ? "marketLogo headerLogo" : "marketLogo cardLogo"}
         style={
           profilePic
             ? {
@@ -47,13 +47,13 @@ const MarketInfo = ({
             : {}
         }
       />
-      <div className='topMarketInfo'>
-        <div className='marketName'>{marketName}</div>
-        <div className='marketLocationAndDate'>
+      <div className="topMarketInfo">
+        <div className="marketName">{marketName}</div>
+        <div className="marketLocationAndDate">
           <div>{marketLocation}</div>
-          <div className='parallelDateAndHour'>
+          <div className="parallelDateAndHour">
             <div>{formattedYearMonthAndDay}</div>
-            <div className='startAndEndHours'>
+            <div className="startAndEndHours">
               {formattedOpeningAndClosingHour}
             </div>
           </div>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap");
 
 .header {
   display: flex;
@@ -10,7 +10,7 @@
   top: 0;
   width: 100%;
   color: #f7f5f2;
-  font-family: 'Amatic SC', cursive;
+  font-family: "Amatic SC", cursive;
   font-size: 65px;
   z-index: 1;
   height: 100px;
@@ -18,11 +18,11 @@
 
 .market-header {
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url('../headers/market.jpeg');
+    url("../headers/market.jpeg");
 }
 
 .vendor-header {
   background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url('../headers/vendor.jpeg');
+    url("../headers/vendor.jpeg");
   background-position-y: 60%;
 }

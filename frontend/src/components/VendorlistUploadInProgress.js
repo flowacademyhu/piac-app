@@ -1,12 +1,12 @@
-import '../styles/VendorlistUploadInProgress.css';
+import "../styles/VendorlistUploadInProgress.css";
 
 const VendorlistUploadInProgress = ({ title, body, footer }) => {
   return (
-    <div className='card-list'>
-      <div className='uploadTexts middleUploadText'>
+    <div className="card-list">
+      <div className="uploadTexts middleUploadText">
         <span>{title}</span>
       </div>
-      <div className='uploadTexts bottomInfoText'>
+      <div className="uploadTexts bottomInfoText">
         <div>
           <span>{body}</span>
         </div>
