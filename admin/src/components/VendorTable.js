@@ -16,7 +16,7 @@ const VendorTable = () => {
   }, []);
 
   return (
-    <div className="vendorTable">
+    <div>
       <div>
         <p class="font-weight-bold">ÁRUSOK</p>
         <Button style={{ marginTop: "20px", marginBottom: "20px" }}>
