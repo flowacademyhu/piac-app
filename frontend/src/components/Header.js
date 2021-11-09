@@ -1,6 +1,4 @@
 import {
-  NavLink,
-  useLocation,
   BrowserRouter as Router,
   Switch,
   Route,
@@ -10,8 +8,6 @@ import VendorLogo from "../icons/navigation/vendor-dark-gray.svg";
 import "./Header.css";
 
 const Header = () => {
-  const location = useLocation();
-
   return (
     <Router>
       <Switch>
