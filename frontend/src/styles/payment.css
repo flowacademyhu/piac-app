@@ -1,0 +1,16 @@
+.vendor-payment {
+  display: flex;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  margin: 25px 0 10px;
+  padding: 0 20px;
+}
+
+.payment-icon {
+  margin-right: 5px;
+}
+
+.payment-text {
+  margin-left: 5px;
+}
