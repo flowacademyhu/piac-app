@@ -1,6 +1,12 @@
 package org.flowacademy.hu.market.app.jwtandsecurity;
 
 import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.flowacademy.hu.market.app.exceptions.NoSuchAdminException;
+import org.flowacademy.hu.market.app.repositories.AdminRepository;
+import org.flowacademy.hu.market.app.entities.*;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -13,18 +19,44 @@ import org.springframework.stereotype.Service;
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
 
-    @Value(value = "${admin.name}")
-    private String adminName;
+    private final AdminRepository adminRepository;
+
     @Value(value = "${randomAdminPassword}")
     private String password;
 
+    public JwtUserDetailsService(AdminRepository adminRepository) {
+        this.adminRepository = adminRepository;
+    }
+
+    public Admin findAdmin(String emailAddress) throws NoSuchAdminException {
+        var users = adminRepository.findAll().stream().filter(u -> u.getEmail().equals(emailAddress)).collect(Collectors.toList());
+        if(users.isEmpty()){
+            return new Admin(emailAddress, "");
+        }
+        return users.stream().findFirst().orElseThrow(NoSuchAdminException::new);
+    }
+
+    public List<Admin> findAllAdmins(){
+        return adminRepository.findAll();
+    }
+
+    public void saveAdmin(Admin admin){
+        adminRepository.save(admin);
+    }
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        if (adminName.equals(username)) {
+    public UserDetails loadUserByUsername(String emailAddress) {
+        Admin admin = null;
+        try {
+            admin = findAdmin(emailAddress);
+        } catch (NoSuchAdminException e) {
+            e.printStackTrace();
+        }
+        if (admin.getEmail().equals(emailAddress)) {
             var authorities = Collections.singletonList(new SimpleGrantedAuthority("ROLE_ADMIN"));
-            return new User(adminName, password, authorities);
+            System.out.println("az admin a userdetailServiceben" + admin);
+            return new User(admin.getEmail(), password, authorities);
         } else {
-            throw new UsernameNotFoundException("User not found with username: " + username);
+            throw new UsernameNotFoundException("User not found with emailAddress: " + emailAddress);
         }
     }
 }

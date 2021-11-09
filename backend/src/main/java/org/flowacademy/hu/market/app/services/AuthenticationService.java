@@ -38,18 +38,21 @@ public class AuthenticationService {
     public String createToken(JwtRequestModel request) throws Exception {
         try {
             var auth = authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(request.getUsername(),
+                    new UsernamePasswordAuthenticationToken(request.getEmailAddress(),
                             request.getPassword()));
 
             if (auth.isAuthenticated()) {
-                final UserDetails userDetails = userDetailsService.loadUserByUsername(request.getUsername());
+                final UserDetails userDetails = userDetailsService.loadUserByUsername(request.getEmailAddress());
                 final String jwtToken = tokenManager.generateJwtToken(userDetails);
                 String generatedString = RandomString.make(15);
                 tokenForExchange = jwtToken;
-                emailSendingService.sendmail(generatedString);
                 generatedPassword = generatedString;
+                emailSendingService.sendmail(request.getEmailAddress(), generatedString);
                 SecurityContextHolder.getContext().setAuthentication(auth);
-                return "Your code has been sent to your email: " + emailSendingService.getEmailAddress();
+              var result =  userDetailsService.findAdmin(userDetails.getUsername());
+              result.setToken(generatedString);
+                userDetailsService.saveAdmin(result);
+                return "Your code has been sent to your email: " + request.getEmailAddress();
             }
         } catch (DisabledException | BadCredentialsException e) {
             e.printStackTrace();
@@ -58,10 +61,10 @@ public class AuthenticationService {
         return "Failed in finally";
     }
 
-    public String getToken(String password) throws WrongPasswordException {
-        if (!password.equals(generatedPassword)) {
+    public String getToken(String generatedString) throws WrongPasswordException {
+        if (!generatedString.equals(generatedPassword)) {
             throw new WrongPasswordException();
-        }   generatedPassword = null;
+        }
             return tokenForExchange;
     }
 }
