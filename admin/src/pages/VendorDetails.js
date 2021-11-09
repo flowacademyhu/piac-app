@@ -22,6 +22,18 @@ const VendorDetails = ({ vendor }) => {
   return (
     <Form className="container">
       <h1 className="my-3">{title}</h1>
+      <Form.Group className="mb-3" controlId="formVendorName">
+        <Form.Label>Árus neve</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Árus neve..."
+          value={updatedVendor.name}
+          required
+          onChange={(e) =>
+            setUpdatedVendor({ ...updatedVendor, name: e.target.value })
+          }
+        />
+      </Form.Group>
     </Form>
   );
 };
