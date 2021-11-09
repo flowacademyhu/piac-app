@@ -9,6 +9,9 @@ import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 const VendorsByMarketPage = () => {
   const [market, setMarket] = useState({});
   const [error, hasError] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  console.log(market.vendors);
   const marketId = useParams().id;
 
   useEffect(() => {
@@ -23,9 +26,35 @@ const VendorsByMarketPage = () => {
     fetchMarket(marketId);
   }, [marketId]);
 
+  const filteredVendorArray =
+    searchTerm.length === 0
+      ? market.vendors
+      : market.vendors.filter(
+          (vendor) =>
+            vendor.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            vendor.products
+              .join(" ")
+              .toLowerCase()
+              .includes(searchTerm.toLowerCase())
+        );
+
   const renderVendorList = () => {
     if (market.vendors && market.vendors.length > 0) {
-      return <VendorListOfOneMarket market={market} />;
+      return (
+        <>
+          <div className="search-area">
+            <input
+              className="search-bar"
+              placeholder="Keress termékre vagy árusra..."
+              type="text"
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+              }}
+            />
+          </div>
+          <VendorListOfOneMarket vendors={filteredVendorArray} />
+        </>
+      );
     } else if (market.id) {
       return (
         <VendorlistUploadInProgress
