@@ -2,7 +2,22 @@ import { useState } from "react";
 import { Form } from "react-bootstrap";
 
 const VendorDetails = ({ vendor }) => {
-  const [updatedVendor, setUpdatedVendor] = useState(vendor ? vendor : {});
+  if (!vendor) {
+    vendor = {
+      name: "",
+      intro: "",
+      profilePic: "",
+      cardPayment: false,
+      email: "",
+      facebook: "",
+      instagram: "",
+      introductionLong: "",
+      phone: "",
+      products: [],
+      webSite: "",
+    };
+  }
+  const [updatedVendor, setUpdatedVendor] = useState(vendor);
   const title = vendor ? "Árus módosítása" : "Új árus hozzáadása";
   return (
     <Form className="container">
