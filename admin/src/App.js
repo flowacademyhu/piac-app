@@ -1,14 +1,16 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import MarketTablePage from "./pages/MarketTablePage";
-import VendorTablePage from "./pages/VendorTablePage";
+import MarketTable from "./components/MarketTable";
+import VendorTable from "./components/VendorTable";
+import Menu from "./components/Menu";
 
 function App() {
   return (
     <>
       <Router>
+        <Menu />
         <Routes>
-          <Route exact path="/piac" element={<MarketTablePage />} />
-          <Route exact path="/arus" element={<VendorTablePage />} />
+          <Route exact path="/piac" element={<MarketTable />} />
+          <Route exact path="/arus" element={<VendorTable />} />
         </Routes>
       </Router>
     </>
