@@ -2,7 +2,6 @@ package org.flowacademy.hu.market.app.jwtandsecurity;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.flowacademy.hu.market.app.exceptions.NoSuchAdminException;
 import org.flowacademy.hu.market.app.repositories.AdminRepository;
@@ -29,11 +28,11 @@ public class JwtUserDetailsService implements UserDetailsService {
     }
 
     public Admin findAdmin(String emailAddress) throws NoSuchAdminException {
-        var users = adminRepository.findAll().stream().filter(u -> u.getEmail().equals(emailAddress)).collect(Collectors.toList());
-        if(users.isEmpty()){
-            return new Admin(emailAddress, "");
+        Admin admin = adminRepository.getAdminByEmail(emailAddress);
+        if(admin != null ){
+            return admin;
         }
-        return users.stream().findFirst().orElseThrow(NoSuchAdminException::new);
+        throw new NoSuchAdminException();
     }
 
     public List<Admin> findAllAdmins(){
@@ -43,6 +42,18 @@ public class JwtUserDetailsService implements UserDetailsService {
     public void saveAdmin(Admin admin){
         adminRepository.save(admin);
     }
+
+    public Admin getAdminByToken(String token){
+     try{
+         adminRepository.getAdminByToken(token);
+     }
+     catch(NullPointerException e){
+         e.printStackTrace();
+     }
+        return adminRepository.getAdminByToken(token);
+    }
+
+
     @Override
     public UserDetails loadUserByUsername(String emailAddress) {
         Admin admin = null;
@@ -53,7 +64,6 @@ public class JwtUserDetailsService implements UserDetailsService {
         }
         if (admin.getEmail().equals(emailAddress)) {
             var authorities = Collections.singletonList(new SimpleGrantedAuthority("ROLE_ADMIN"));
-            System.out.println("az admin a userdetailServiceben" + admin);
             return new User(admin.getEmail(), password, authorities);
         } else {
             throw new UsernameNotFoundException("User not found with emailAddress: " + emailAddress);

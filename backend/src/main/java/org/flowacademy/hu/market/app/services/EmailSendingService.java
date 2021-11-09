@@ -29,7 +29,7 @@ public class EmailSendingService {
         Email from = new Email(emailAddress);
         String subject = "Sending with SendGrid is Fun";
         Email to = new Email(emailAddress);
-        Content content = new Content("text/plain", "http://localhost:8081/token/" + generatedString);
+        Content content = new Content("text/plain", "http://localhost:8081/" + generatedString);
         Mail mail = new Mail(from, subject, to, content);
         SendGrid sg = new SendGrid(sendGridApiKey);
         Request request = new Request();

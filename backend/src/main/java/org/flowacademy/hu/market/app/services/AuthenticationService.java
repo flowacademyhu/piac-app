@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 
 import net.bytebuddy.utility.RandomString;
 
+import org.flowacademy.hu.market.app.entities.Admin;
 import org.flowacademy.hu.market.app.exceptions.WrongPasswordException;
 import org.flowacademy.hu.market.app.model.JwtRequestModel;
 import org.flowacademy.hu.market.app.jwtandsecurity.JwtUserDetailsService;
@@ -32,7 +33,6 @@ public class AuthenticationService {
     @Autowired
     private TokenManager tokenManager;
 
-    private String generatedPassword;
     private String tokenForExchange;
 
     public String createToken(JwtRequestModel request) throws Exception {
@@ -40,32 +40,35 @@ public class AuthenticationService {
             var auth = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(request.getEmailAddress(),
                             request.getPassword()));
-
-            if (auth.isAuthenticated()) {
                 final UserDetails userDetails = userDetailsService.loadUserByUsername(request.getEmailAddress());
                 final String jwtToken = tokenManager.generateJwtToken(userDetails);
                 String generatedString = RandomString.make(15);
                 tokenForExchange = jwtToken;
-                generatedPassword = generatedString;
                 emailSendingService.sendmail(request.getEmailAddress(), generatedString);
                 SecurityContextHolder.getContext().setAuthentication(auth);
-              var result =  userDetailsService.findAdmin(userDetails.getUsername());
-              result.setToken(generatedString);
-                userDetailsService.saveAdmin(result);
+                 Admin result =  userDetailsService.findAdmin(userDetails.getUsername());
+                 result.setToken(generatedString);
+                 userDetailsService.saveAdmin(result);
                 return "Your code has been sent to your email: " + request.getEmailAddress();
-            }
+
         } catch (DisabledException | BadCredentialsException e) {
             e.printStackTrace();
                 return "Failed in catch";
         }
-        return "Failed in finally";
     }
 
-    public String getToken(String generatedString) throws WrongPasswordException {
-        if (!generatedString.equals(generatedPassword)) {
+    public String getJwtToken(String token) throws WrongPasswordException {
+        try{
+            Admin admin = userDetailsService.getAdminByToken(token);
+            if (!admin.getToken().equals(token)) {
+                throw new WrongPasswordException();
+            }
+            admin.setToken(null);
+            userDetailsService.saveAdmin(admin);
+        }catch ( WrongPasswordException | NullPointerException e){
             throw new WrongPasswordException();
         }
-            return tokenForExchange;
+        return tokenForExchange;
     }
 }
 
