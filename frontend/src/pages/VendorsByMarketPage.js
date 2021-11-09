@@ -5,6 +5,7 @@ import VendorListOfOneMarket from "../components/VendorListOfOneMarket";
 import VendorlistUploadInProgress from "../components/VendorlistUploadInProgress";
 import { fetchMarketById } from "../components/Service";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+import "../styles/VendorsByMarketPage.css";
 
 const VendorsByMarketPage = () => {
   const [market, setMarket] = useState({});
@@ -54,6 +55,7 @@ const VendorsByMarketPage = () => {
             marketOpeningDate={market.openingDate}
             marketClosingDate={market.closingDate}
           />
+          <div className="vendorListQuestion">Kikkel találkozhatsz?</div>
           {renderVendorList()}
         </>
       ) : (

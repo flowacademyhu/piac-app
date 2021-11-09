@@ -1,0 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap");
+
+.vendorListQuestion {
+  font-family: "Amatic SC", sans-serif;
+  font-weight: bold;
+  font-size: 32px;
+  color: #705a4f;
+  padding-left: 20px;
+}

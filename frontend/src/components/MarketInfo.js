@@ -9,7 +9,6 @@ const MarketInfo = ({
   header,
 }) => {
   const marketOpeningDateFormatter = {
-    year: "numeric",
     month: "long",
     day: "numeric",
   };
@@ -53,14 +52,9 @@ const MarketInfo = ({
       />
       <div className="topMarketInfo">
         <div className="marketName">{marketName}</div>
-        <div className="marketLocationAndDate">
-          <div>{marketLocation}</div>
-          <div className="parallelDateAndHour">
-            <div>{formattedYearMonthAndDay}</div>
-            <div className="startAndEndHours">
-              {formattedOpeningAndClosingHour}
-            </div>
-          </div>
+        <div className="marketLocationAndDate">{marketLocation}</div>
+        <div className="parallelDateAndHour">
+          {formattedYearMonthAndDay} {formattedOpeningAndClosingHour}
         </div>
       </div>
     </>
