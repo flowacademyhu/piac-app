@@ -30,7 +30,7 @@ const MarketTable = () => {
   };
 
   return (
-    <div className="marketTable mr-5">
+    <div>
       <div>
         <p class="font-weight-bold">PIACOK</p>
         <Button style={{ marginTop: "20px", marginBottom: "20px" }}>
