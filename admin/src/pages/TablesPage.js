@@ -1,6 +1,6 @@
 import MarketTable from "../components/MarketTable";
 import VendorTable from "../components/VendorTable";
-import "../styles/Tables.css"
+import "../styles/Tables.css";
 
 const TablesPage = () => {
   return (
