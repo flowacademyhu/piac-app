@@ -3,7 +3,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom/cjs/react-router-dom.min";
-import MarketLogo from "../icons/navigation/calendar-gray.svg";
+import MarketLogo from "../icons/navigation/calendar-dark-gray.svg";
 import VendorLogo from "../icons/navigation/vendor-dark-gray.svg";
 import "./Header.css";
 
