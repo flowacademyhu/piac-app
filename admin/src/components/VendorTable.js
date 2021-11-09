@@ -17,7 +17,7 @@ const VendorTable = () => {
 
   return (
     <div>
-      <div align="center">
+      <div className="text-center">
         <p className="font-weight-bold">ÁRUSOK</p>
         <Button style={{ marginTop: "20px", marginBottom: "20px" }}>
           ÚJ ÁRUS FELVÉTELE
@@ -36,12 +36,10 @@ const VendorTable = () => {
             return (
               <tr key={vendor.id}>
                 <td>{vendor.name}</td>
-                <td>
-                  <Button onClick={() => console.log("Szerkesztés")}>
-                    Szerkeszt
-                  </Button>
+                <td className="text-center">
+                  <Button>Szerkeszt</Button>
                 </td>
-                <td>
+                <td className="text-center">
                   <Button>Töröl</Button>
                 </td>
               </tr>
