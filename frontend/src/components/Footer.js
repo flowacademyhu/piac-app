@@ -11,7 +11,7 @@ const Footer = () => {
           <FooterButton
             requestParam="/arusok"
             appelation="ÁRUSOK"
-            logo="vendor"
+            logo="vendor "
           />
         </Row>
       </Container>
