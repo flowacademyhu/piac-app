@@ -9,11 +9,11 @@ import "./Header.css";
 
 const Header = () => {
   return (
-    <Router>
+    <div>
       <Switch>
         <Route exact path="/">
           <div className="Header">
-            <div className="MarketLogoContainer">
+            <div className="LogoContainer">
               <img className="Logo" src={MarketLogo} alt="Logo" />
             </div>
             <div className="Markets">Piacok</div>
@@ -23,14 +23,14 @@ const Header = () => {
       <Switch>
         <Route exact path="/arusok">
           <div className="Header">
-            <div className="MarketLogoContainer">
+            <div className="LogoContainer">
               <img className="Logo" src={VendorLogo} alt="Logo" />
             </div>
             <div className="Vendors">Árusok</div>
           </div>
         </Route>
       </Switch>
-    </Router>
+    </div>
   );
 };
 export default Header;
