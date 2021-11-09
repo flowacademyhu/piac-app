@@ -5,11 +5,9 @@ body {
 }
 
 .vendor-profile-header {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  top: 0;
-  width: 100%;
-  height: 170px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 20px;
 }
 
