@@ -10,6 +10,7 @@ public class SimpleVendorDTO {
     private String name;
     private String profilePic;
     private Set<String> products = new HashSet<>();
+    private String introductionLong;
 
     public SimpleVendorDTO(String intro, String name, String profilePic) {
         this.intro = intro;
@@ -62,6 +63,15 @@ public class SimpleVendorDTO {
 
     public SimpleVendorDTO setProducts(Set<String> products) {
         this.products = products;
+        return this;
+    }
+
+    public String getIntroductionLong() {
+        return introductionLong;
+    }
+
+    public SimpleVendorDTO setIntroductionLong(String introductionLong) {
+        this.introductionLong = introductionLong;
         return this;
     }
 }
