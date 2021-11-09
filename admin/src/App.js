@@ -1,15 +1,17 @@
-import TablesPage from "./pages/TablesPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import MarketTablePage from "./pages/MarketTablePage";
+import VendorTablePage from "./pages/VendorTablePage";
 
 function App() {
   return (
-    <div style={{ display: "flex" }}>
+    <>
       <Router>
         <Routes>
-          <Route exact path="/tablazatok" element={<TablesPage />} />
+          <Route exact path="/piac" element={<MarketTablePage />} />
+          <Route exact path="/arus" element={<VendorTablePage />} />
         </Routes>
       </Router>
-    </div>
+    </>
   );
 }
 
