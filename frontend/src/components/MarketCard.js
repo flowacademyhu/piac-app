@@ -10,7 +10,7 @@ const MarketCard = ({
   marketOpeningDate,
   marketClosingDate,
   vendorsAmount,
-  profilePic
+  profilePic,
 }) => {
   return (
     <div className="marketCard">

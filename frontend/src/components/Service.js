@@ -26,9 +26,6 @@ export const fetchVendors = async () => {
     return data;
   } catch (error) {
     console.warn("Failed to load vendors");
-    throw Error(
-      "Nem sikerült betölteni az árusok listáját, nézz vissza kicsit később!"
-    );
   }
 };
 
@@ -56,7 +53,6 @@ export const fetchMarketById = async (id) => {
     return data;
   } catch (error) {
     console.warn("Failed to load market");
-    throw Error("Nem sikerült betölteni a kért piac oldalát!");
   }
 };
 
@@ -68,6 +64,16 @@ export const fetchVendorById = async (id) => {
     return data;
   } catch (error) {
     console.warn("Failed to load vendor");
-    throw Error("Nem sikerült betölteni a kért árus oldalát!");
+  }
+};
+
+export const fetchUpcomingMarketsByVendorId = async (vendorId) => {
+  const url = VendorAPI + "/" + vendorId + "/upcoming";
+  try {
+    const response = await axios.get(url);
+    const data = response.data;
+    return data;
+  } catch (error) {
+    console.warn("Failed to load markets");
   }
 };

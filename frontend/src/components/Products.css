@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap");
+
 body {
   margin: 0;
 }
@@ -13,8 +15,9 @@ body {
 }
 
 .product-title {
-  font-family: "Amatic SC";
+  font-family: "Amatic SC", sans-serif;
   font-size: 32px;
+  font-weight: 700;
   color: #fffdfc;
   margin-bottom: 10px;
   text-align: left;
@@ -27,7 +30,7 @@ body {
 
 .product-item {
   text-align: center;
-  font-family: "Bebas Neue";
+  font-family: "Bebas Neue", sans-serif;
   font-size: 24px;
   color: #53b896;
   background-color: #fffdfc;

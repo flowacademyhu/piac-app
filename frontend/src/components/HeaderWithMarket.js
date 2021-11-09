@@ -6,7 +6,7 @@ const HeaderWithMarket = ({
   marketName,
   marketLocation,
   marketOpeningDate,
-  marketClosingDate
+  marketClosingDate,
 }) => {
   return (
     <div className="marketHeader">

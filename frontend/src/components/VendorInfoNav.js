@@ -19,7 +19,7 @@ const VendorInfoNav = ({
   website,
   email,
   phone,
-  introductionLong
+  introductionLong,
 }) => {
   const [status, changeStatus] = useState(!showMarkets);
 
