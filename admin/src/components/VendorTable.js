@@ -17,7 +17,7 @@ const VendorTable = () => {
 
   return (
     <div>
-      <div>
+      <div align="center">
         <p class="font-weight-bold">ÁRUSOK</p>
         <Button style={{ marginTop: "20px", marginBottom: "20px" }}>
           ÚJ ÁRUS FELVÉTELE
