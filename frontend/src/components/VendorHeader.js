@@ -19,10 +19,8 @@ const VendorHeader = (props) => {
               }
         }
       ></div>
-      <div className="vendor-header-data">
-        <h2 className="vendor-name">{name}</h2>
-        <p className="vendor-intro">{intro}</p>
-      </div>
+      <h2 className="vendor-name">{name}</h2>
+      <p className="vendor-intro">{intro}</p>
     </header>
   );
 };

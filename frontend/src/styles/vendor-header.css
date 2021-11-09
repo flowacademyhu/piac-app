@@ -11,13 +11,6 @@ body {
   padding: 20px;
 }
 
-.vendor-header-data {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding-left: 10px;
-}
-
 .vendor-logo-container {
   height: 100px;
   width: 100px;
