@@ -1,0 +1,12 @@
+.tables {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.marketTable {
+  grid-column: 1;
+}
+
+.vendorTable {
+  grid-column: 2;
+}
