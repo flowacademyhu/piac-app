@@ -27,8 +27,14 @@ const VendorCardList = () => {
             vendor.products
               .join(" ")
               .toLowerCase()
+              .includes(searchTerm.toLowerCase()) ||
+            vendor.intro.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            vendor.introductionLong
+              .toLowerCase()
               .includes(searchTerm.toLowerCase())
         );
+
+  console.log(vendors);
 
   return (
     <>
