@@ -1,8 +1,8 @@
-import emailLogo from "./icons/social/email.svg";
-import facebookLogo from "./icons/social/facebook.svg";
-import instagramLogo from "./icons/social/instagram.svg";
-import phoneLogo from "./icons/social/phone.svg";
-import webLogo from "./icons/social/web.svg";
+import emailLogo from "../icons/social/email.svg";
+import facebookLogo from "../icons/social/facebook.svg";
+import instagramLogo from "../icons/social/instagram.svg";
+import phoneLogo from "../icons/social/phone.svg";
+import webLogo from "../icons/social/web.svg";
 import "../styles/VendorContacts.css";
 import { v4 } from "uuid";
 

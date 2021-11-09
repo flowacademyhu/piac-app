@@ -1,3 +1,5 @@
+import defaultMarketImage from "../img/defaultMarketImage.png";
+
 const MarketInfo = ({
   profilePic,
   marketName,
@@ -44,7 +46,9 @@ const MarketInfo = ({
             ? {
                 backgroundImage: `url(${profilePic})`,
               }
-            : {}
+            : {
+                backgroundImage: `url(${defaultMarketImage})`,
+              }
         }
       />
       <div className="topMarketInfo">

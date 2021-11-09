@@ -5,28 +5,16 @@ body {
 }
 
 .vendor-profile-header {
-  background-color: #fffdfc;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  position: sticky;
-  top: 0;
-  width: 100%;
-  height: 170px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 20px;
 }
 
-.vendor-header-data {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding-left: 10px;
-}
-
 .vendor-logo-container {
-  height: 110px;
-  width: 110px;
+  height: 100px;
+  width: 100px;
   border-radius: 50%;
-  border: 1px solid lightgrey;
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -34,29 +22,14 @@ body {
 
 .vendor-name {
   font-family: "Open Sans", sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  margin: 0;
+  font-weight: bold;
+  font-size: 24px;
+  margin: 20px 0;
 }
 
 .vendor-intro {
   font-family: "Open Sans", sans-serif;
-  font-weight: 400;
-  font-size: 10px;
-}
-
-.vendor-payment {
-  display: flex;
-  font-family: "Open Sans", sans-serif;
-  font-weight: 400;
-  font-size: 10px;
-  margin: 10px 0;
-}
-
-.payment-icon {
-  margin-right: 5px;
-}
-
-.payment-text {
-  margin-left: 5px;
+  font-weight: normal;
+  font-size: 14px;
+  margin: 0;
 }
