@@ -1,22 +1,11 @@
-import { Container, Col, Navbar, Nav } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 import MarketTable from "../components/MarketTable";
-import { Link } from "react-router-dom";
+import Menu from "../components/Menu";
 
 const MarketTablePage = () => {
   return (
     <>
-      <Navbar bg="primary" variant="dark">
-        <Container>
-          <Nav className="me-auto">
-            <Link to="/piac" className="nav-link">
-              Piacok
-            </Link>
-            <Link to="/arus" className="nav-link">
-              Árusok
-            </Link>
-          </Nav>
-        </Container>
-      </Navbar>
+      <Menu />
       <Col>
         <MarketTable />
       </Col>
