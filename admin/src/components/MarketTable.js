@@ -31,7 +31,7 @@ const MarketTable = () => {
 
   return (
     <div>
-      <div>
+      <div align="center">
         <p class="font-weight-bold">PIACOK</p>
         <Button style={{ marginTop: "20px", marginBottom: "20px" }}>
           ÚJ PIAC FELVÉTELE
