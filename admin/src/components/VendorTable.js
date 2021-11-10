@@ -42,7 +42,7 @@ const VendorTable = () => {
                 <td>{vendor.name}</td>
                 <td className="text-center">
                   <Link
-                    to="/arus/szerkeszt"
+                    to={`/arus/szerkeszt/${vendor.id}`}
                     component={<VendorDetails />}
                     state={vendor}
                   >
