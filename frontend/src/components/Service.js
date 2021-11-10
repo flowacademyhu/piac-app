@@ -10,6 +10,9 @@ export const fetchMarkets = async () => {
     return data;
   } catch (error) {
     console.warn("Failed to load markets");
+    throw Error(
+      "Nem sikerült betölteni az árusok listáját, nézz vissza kicsit később!"
+    );
   }
 };
 
@@ -35,7 +38,10 @@ export const fetchUpcomingMarkets = async () => {
     const data = response.data;
     return data;
   } catch (error) {
-    console.warn("Failed to load markets");
+    console.warn("Failed to load upcoming markets");
+    throw Error(
+      "Nem sikerült betölteni a piacok listáját, nézz vissza kicsit később!"
+    );
   }
 };
 

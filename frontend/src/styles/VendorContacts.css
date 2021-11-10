@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap");
 
@@ -6,7 +7,7 @@ body {
 }
 
 .contact-container {
-  padding: 15px;
+  padding: 20px;
 }
 
 .contact-title {
@@ -28,7 +29,7 @@ body {
 }
 
 .contact-links {
-  color: #cc4400;
+  color: #53b896;
   text-decoration: none;
   font-family: "Open Sans", sans-serif;
   font-weight: bold;
@@ -36,5 +37,5 @@ body {
 }
 
 .contact-links:hover {
-  color: #cc4400;
+  color: #53b896;
 }

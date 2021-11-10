@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 
 import net.bytebuddy.utility.RandomString;
 
+import org.flowacademy.hu.market.app.entities.Admin;
+import org.flowacademy.hu.market.app.exceptions.NoSuchAdminException;
 import org.flowacademy.hu.market.app.exceptions.WrongPasswordException;
 import org.flowacademy.hu.market.app.model.JwtRequestModel;
 import org.flowacademy.hu.market.app.jwtandsecurity.JwtUserDetailsService;
@@ -16,6 +18,7 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @AllArgsConstructor
@@ -32,37 +35,34 @@ public class AuthenticationService {
     @Autowired
     private TokenManager tokenManager;
 
-    private String generatedPassword;
-    private String tokenForExchange;
-
     public String createToken(JwtRequestModel request) throws Exception {
-        try {
-            var auth = authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(request.getUsername(),
-                            request.getPassword()));
-
-            if (auth.isAuthenticated()) {
-                final UserDetails userDetails = userDetailsService.loadUserByUsername(request.getUsername());
-                final String jwtToken = tokenManager.generateJwtToken(userDetails);
-                String generatedString = RandomString.make(15);
-                tokenForExchange = jwtToken;
-                emailSendingService.sendmail(generatedString);
-                generatedPassword = generatedString;
-                SecurityContextHolder.getContext().setAuthentication(auth);
-                request.setPassword(generatedString);
-                return "Your code has been sent to your email: " + emailSendingService.getEmailAddress();
-            }
-        } catch (DisabledException | BadCredentialsException e) {
-
+        if (userDetailsService.findAllAdmins().size() == 0 ){
+            Admin superAdmin = new Admin();
+            superAdmin.setEmail(request.getEmailAddress());
+            userDetailsService.saveAdmin(superAdmin);
         }
-        return null;
-    }
+          try {
+              final UserDetails userDetails = userDetailsService.loadUserByUsername(request.getEmailAddress());
+              final String generatedString = RandomString.make(15);
+              emailSendingService.sendmail(request.getEmailAddress(), generatedString);
+              Admin result = userDetailsService.findAdmin(userDetails.getUsername());
+              result.setGeneratedString(generatedString);
+              userDetailsService.saveAdmin(result);
+              return "Your code has been sent to your email: " + request.getEmailAddress();
+          } catch (DisabledException | BadCredentialsException | UsernameNotFoundException e) {
+              throw new NoSuchAdminException();
+          }
+       }
 
-    public String getToken(String password) throws WrongPasswordException {
-        if (!password.equals(generatedPassword)) {
-            throw new WrongPasswordException();
-        }   generatedPassword = null;
-            return tokenForExchange;
+    public String getJwtToken(String token) throws WrongPasswordException {
+        Admin admin = userDetailsService.getAdminByToken(token);
+            if (admin == null) {
+                throw new WrongPasswordException();
+            }
+            admin.setGeneratedString(null);
+            userDetailsService.saveAdmin(admin);
+        final UserDetails userDetails = userDetailsService.loadUserByUsername(admin.getEmail());
+        return tokenManager.generateJwtToken(userDetails);
     }
 }
 

@@ -55,7 +55,7 @@ const VendorsByMarketPage = () => {
       return (
         <>
           <div className="marketLoading" />
-          <VendorlistUploadInProgress title="Betöltés..." />
+          <VendorlistUploadInProgress />
         </>
       );
     }
@@ -77,6 +77,7 @@ const VendorsByMarketPage = () => {
       ) : (
         <div style={{ height: "90%" }} />
       )}
+      {renderVendorList()}
       {error && <Redirect to="/" />}
     </>
   );

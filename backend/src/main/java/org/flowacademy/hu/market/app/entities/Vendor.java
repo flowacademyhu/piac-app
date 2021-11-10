@@ -61,56 +61,63 @@ public class Vendor {
         return id;
     }
 
-    public void setId(Long id) {
+    public Vendor setId(Long id) {
         this.id = id;
+        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public Vendor setName(String name) {
         this.name = name;
+        return this;
     }
 
     public String getProfilePic() {
         return profilePic;
     }
 
-    public void setProfilePic(String profilePic) {
+    public Vendor setProfilePic(String profilePic) {
         this.profilePic = profilePic;
+        return this;
     }
 
     public String getIntro() {
         return intro;
     }
 
-    public void setIntro(String intro) {
+    public Vendor setIntro(String intro) {
         this.intro = intro;
+        return this;
     }
 
     public boolean getCardPayment() {
         return cardPayment;
     }
 
-    public void setCardPayment(boolean cardPayment) {
+    public Vendor setCardPayment(boolean cardPayment) {
         this.cardPayment = cardPayment;
+        return this;
     }
 
     public Set<String> getProducts() {
         return products;
     }
 
-    public void setProducts(Set<String> products) {
+    public Vendor setProducts(Set<String> products) {
         this.products = products;
+        return this;
     }
 
     public String getIntroductionLong() {
         return introductionLong;
     }
 
-    public void setIntroductionLong(String introductionLong) {
+    public Vendor setIntroductionLong(String introductionLong) {
         this.introductionLong = introductionLong;
+        return this;
     }
 
     @JsonIgnore
@@ -119,8 +126,9 @@ public class Vendor {
         return markets;
     }
 
-    public void setMarkets(Set<Market> markets) {
+    public Vendor setMarkets(Set<Market> markets) {
         this.markets = markets;
+        return this;
     }
 
     public String getEmail() {

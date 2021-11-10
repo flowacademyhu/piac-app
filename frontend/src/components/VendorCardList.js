@@ -5,10 +5,12 @@ import VendorCard from "./VendorCard";
 import { Link } from "react-router-dom";
 import SearchArea from "./SearchArea";
 const filteredArrayByKeyword = require("../functions/filteredArrayByKeyword");
+import ErrorBody from "./ErrorBody";
 
 const VendorCardList = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [vendors, setVendors] = useState([]);
+  const [error, setError] = useState(null);
 
   const getVendors = async () => {
     const result = await fetchVendors();
@@ -16,7 +18,7 @@ const VendorCardList = () => {
   };
 
   useLayoutEffect(() => {
-    getVendors();
+    getVendors().catch((err) => setError(err.message));
   }, []);
 
   return (
@@ -27,8 +29,11 @@ const VendorCardList = () => {
         }}
         placeHolder="Keress termékre vagy árusra..."
       />
-      <div className="card-list">
-        {filteredArrayByKeyword(vendors, searchTerm).map((vendor) => {
+    <div className="card-list">
+      {error ? (
+        <ErrorBody error={error} />
+      ) : (
+        filteredArrayByKeyword(vendors, searchTerm).map((vendor) => {
           return (
             <div key={vendor.id}>
               <Link
@@ -43,9 +48,9 @@ const VendorCardList = () => {
               </Link>
             </div>
           );
-        })}
-      </div>
-    </>
+        })
+      )}
+    </div>
   );
 };
 
