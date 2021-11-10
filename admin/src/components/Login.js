@@ -7,17 +7,6 @@ import "./login.css";
 const LoginPage = () => {
   const [token, setToken] = useState([]);
 
-  const axios = require("axios");
-
-  async function getMail() {
-    try {
-      const response = await axios.get("/v1/api/login");
-      console.log(response);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
   return (
     <div>
       <div className="text">E-mail</div>
@@ -28,7 +17,7 @@ const LoginPage = () => {
         onChange={(e) => setToken(e.target.value)}
       />
       <div className="login">
-        <Button variant="outline-dark">Belépés</Button>
+        <Button variant="outline-dark">Küldés</Button>
       </div>
     </div>
   );

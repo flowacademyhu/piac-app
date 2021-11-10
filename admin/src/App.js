@@ -13,7 +13,11 @@ function App() {
         <Menu />
         <Routes>
           <Route exact path="/" element={<LoginPage />} />
-          <Route exact path="/token" element={<TokenExchange />} />
+          <Route
+            exact
+            path="/token/:tokenparameter"
+            element={<TokenExchange />}
+          />
           <Route exact path="/piac" element={<MarketTablePage />} />
           <Route exact path="/arus" element={<VendorTablePage />} />
           <Route exact path="/arus/uj" element={<VendorDetails />} />
