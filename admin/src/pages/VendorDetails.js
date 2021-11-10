@@ -54,6 +54,19 @@ const VendorDetails = () => {
           }
         />
       </Form.Group>
+      <Form.Group className="mb-3" controlId="formCardPaymentCheckbox">
+        <Form.Check
+          type="checkbox"
+          label="Bankkártyás fizetés"
+          checked={updatedVendor.cardPayment}
+          onChange={(e) =>
+            setUpdatedVendor({
+              ...updatedVendor,
+              cardPayment: e.target.checked,
+            })
+          }
+        />
+      </Form.Group>
       <Row>
         <Col>
           <Button variant="primary" type="submit" className="mr-3">
