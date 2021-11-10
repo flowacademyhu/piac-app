@@ -1,16 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
-import { Link, Navigate } from "react-router-dom";
+import { useParams, Link, Navigate } from "react-router-dom";
 import ReactTagInput from "@pathofdev/react-tag-input";
 import "@pathofdev/react-tag-input/build/index.css";
 import axios from "axios";
+import { fetchVendorById } from "./../components/Service";
 
 const VendorDetails = () => {
-  const [updatedVendor, setUpdatedVendor] = useState(vendor);
+  const id = useParams().id;
+
+  useEffect(() => {
+    const fetchVendor = async (id) => {
+      const response = await fetchVendorById(id);
+      setUpdatedVendor(response);
+    };
+    if (id) {
+      fetchVendor(id);
+    }
+  }, []);
+
+  const [updatedVendor, setUpdatedVendor] = useState({});
   const [hasError, setHasError] = useState(false);
   const [success, setSuccess] = useState(false);
-  const title = vendor.id ? "Árus módosítása" : "Új árus hozzáadása";
-  const submitButtonLabel = vendor.id ? "Módosítás" : "Hozzáadás";
+  const title = id ? "Árus módosítása" : "Új árus hozzáadása";
+  const submitButtonLabel = id ? "Módosítás" : "Hozzáadás";
   const vendorApi = "/v1/api/admin/vendor";
   const tokenConfig = {
     headers: {
@@ -48,8 +61,8 @@ const VendorDetails = () => {
     <Form
       className="container mb-3"
       onSubmit={(e) => {
-        if (vendor.id) {
-          updateVendor(updatedVendor, vendor.id);
+        if (id) {
+          updateVendor(updatedVendor, id);
         } else {
           addVendor(updatedVendor);
         }
