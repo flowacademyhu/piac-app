@@ -51,6 +51,7 @@ const VendorTable = () => {
                     isMarket={isMarket}
                     vendorName={vendor.name}
                     handleDeleteVendor={handleDeleteVendor}
+                    vendorId={vendor.id}
                   >
                     Töröl
                   </DeleteEntity>
