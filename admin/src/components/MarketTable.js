@@ -71,6 +71,7 @@ const MarketTable = () => {
                     isMarket={isMarket}
                     marketName={market.name}
                     handleDeleteMarket={handleDeleteMarket}
+                    marketId={market.id}
                   >
                     Töröl
                   </DeleteEntity>
