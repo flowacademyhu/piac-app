@@ -4,8 +4,8 @@ import { fetchVendors } from "./Service";
 import VendorCard from "./VendorCard";
 import { Link } from "react-router-dom";
 import SearchArea from "./SearchArea";
-const filteredArrayByKeyword = require("../functions/filteredArrayByKeyword");
 import ErrorBody from "./ErrorBody";
+const filteredArrayByKeyword = require("../functions/filteredArrayByKeyword");
 
 const VendorCardList = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -29,28 +29,29 @@ const VendorCardList = () => {
         }}
         placeHolder="Keress termékre vagy árusra..."
       />
-    <div className="card-list">
-      {error ? (
-        <ErrorBody error={error} />
-      ) : (
-        filteredArrayByKeyword(vendors, searchTerm).map((vendor) => {
-          return (
-            <div key={vendor.id}>
-              <Link
-                to={`/arusok/${vendor.id}`}
-                style={{ textDecoration: "none" }}
-              >
-                <VendorCard
-                  imageLogo={vendor.profilePic}
-                  vendor={vendor.name}
-                  vendorDesc={vendor.intro}
-                />
-              </Link>
-            </div>
-          );
-        })
-      )}
-    </div>
+      <div className="card-list">
+        {error ? (
+          <ErrorBody error={error} />
+        ) : (
+          filteredArrayByKeyword(vendors, searchTerm).map((vendor) => {
+            return (
+              <div key={vendor.id}>
+                <Link
+                  to={`/arusok/${vendor.id}`}
+                  style={{ textDecoration: "none" }}
+                >
+                  <VendorCard
+                    imageLogo={vendor.profilePic}
+                    vendor={vendor.name}
+                    vendorDesc={vendor.intro}
+                  />
+                </Link>
+              </div>
+            );
+          })
+        )}
+      </div>
+    </>
   );
 };
 
