@@ -66,6 +66,7 @@ public class ErrorController {
     public ErrorModel handleBadCredentials(){
         return new ErrorModel(MessagesConstants.INVALID_CREDENTIALS);
     }
+
     @ExceptionHandler({NoSuchAdminException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorModel handleNoSuchAdmin(){

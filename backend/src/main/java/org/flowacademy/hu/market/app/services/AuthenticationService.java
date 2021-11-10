@@ -50,7 +50,7 @@ public class AuthenticationService {
                               request.getPassword()));
               final UserDetails userDetails = userDetailsService.loadUserByUsername(request.getEmailAddress());
 
-              String generatedString = RandomString.make(15);
+              final String generatedString = RandomString.make(15);
               emailSendingService.sendmail(request.getEmailAddress(), generatedString);
               SecurityContextHolder.getContext().setAuthentication(auth);
               Admin result = userDetailsService.findAdmin(userDetails.getUsername());
