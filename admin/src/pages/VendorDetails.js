@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { useLocation, Link } from "react-router-dom";
+import ReactTagInput from "@pathofdev/react-tag-input";
+import "@pathofdev/react-tag-input/build/index.css";
 
 const VendorDetails = () => {
   const vendor = useLocation().state || {};
@@ -97,6 +99,18 @@ const VendorDetails = () => {
           }
         />
       </Form.Group>
+      <Row className="mb-3">
+        <Col>
+          <p className="mb-2">Termékek</p>
+          <ReactTagInput
+            placeholder="Írd be a termék nevét és nyomj enter-t"
+            tags={updatedVendor.products || []}
+            onChange={(products) =>
+              setUpdatedVendor({ ...updatedVendor, products: products })
+            }
+          />
+        </Col>
+      </Row>
       <Row>
         <Col>
           <Button variant="primary" type="submit" className="mr-3">
