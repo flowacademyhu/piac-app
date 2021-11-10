@@ -7,21 +7,6 @@ import axios from "axios";
 
 const VendorDetails = () => {
   const vendor = useLocation().state || {};
-  if (!vendor) {
-    vendor = {
-      name: "",
-      intro: "",
-      profilePic: "",
-      cardPayment: false,
-      email: "",
-      facebook: "",
-      instagram: "",
-      introductionLong: "",
-      phone: "",
-      products: [],
-      webSite: "",
-    };
-  }
   const [updatedVendor, setUpdatedVendor] = useState(vendor);
   const [hasError, setHasError] = useState(false);
   const [success, setSuccess] = useState(false);
