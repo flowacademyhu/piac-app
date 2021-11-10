@@ -144,6 +144,17 @@ const VendorDetails = () => {
           }
         />
       </Form.Group>
+      <Form.Group className="mb-3" controlId="formVendorInstagram">
+        <Form.Label>Árus instagram linkje</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Árus instagram linkje..."
+          value={updatedVendor.instagram || ""}
+          onChange={(e) =>
+            setUpdatedVendor({ ...updatedVendor, instagram: e.target.value })
+          }
+        />
+      </Form.Group>
       <Row>
         <Col>
           <Button variant="primary" type="submit" className="mr-3">
