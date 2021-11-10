@@ -21,7 +21,7 @@ public class LoginController {
     }
 
     @GetMapping("/token/{token}")
-    public String getToken (@PathVariable @RequestBody @Valid String token) throws Exception {
+    public String getToken (@PathVariable @Valid String token) throws Exception {
         return authenticationService.getJwtToken(token);
     }
 }
