@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Button, Table } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { fetchMarkets } from "./Service";
+import { fetchMarkets, deleteMarketById } from "./Service";
+import DeleteEntity from "./DeleteEntity";
 
 const MarketTable = () => {
   const [allMarkets, setAllMarkets] = useState([]);
+  const isMarket = true;
 
   const getAllMarkets = async () => {
     const result = await fetchMarkets();
@@ -14,6 +16,11 @@ const MarketTable = () => {
   useEffect(() => {
     getAllMarkets();
   }, []);
+
+  const handleDeleteMarket = async (id) => {
+    await deleteMarketById(id);
+    getAllMarkets();
+  };
 
   const timeConverter = (epochSeconds) => {
     const dateFormatter = {
@@ -60,7 +67,13 @@ const MarketTable = () => {
                   <Button>Szerkeszt</Button>
                 </td>
                 <td className="text-center">
-                  <Button>Töröl</Button>
+                  <DeleteEntity
+                    isMarket={isMarket}
+                    marketName={market.name}
+                    handleDeleteMarket={handleDeleteMarket}
+                  >
+                    Töröl
+                  </DeleteEntity>
                 </td>
               </tr>
             );
