@@ -22,7 +22,6 @@ const VendorDetails = () => {
   const [updatedVendor, setUpdatedVendor] = useState(vendor);
   const title = vendor.id ? "Árus módosítása" : "Új árus hozzáadása";
   const submitButtonLabel = vendor.id ? "Módosítás" : "Hozzáadás";
-  console.log(vendor);
   return (
     <Form
       className="container"
