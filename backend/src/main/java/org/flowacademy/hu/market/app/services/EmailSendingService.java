@@ -31,7 +31,7 @@ public class EmailSendingService {
         Email from = new Email(emailAddress);
         String subject = "Sending with SendGrid is Fun";
         Email to = new Email(emailAddress);
-        Content content = new Content("text/plain", siteUrl + ":8081/v1/api/token/" + generatedString);
+        Content content = new Content("text/plain", siteUrl + "/token/" + generatedString);
         Mail mail = new Mail(from, subject, to, content);
         SendGrid sg = new SendGrid(sendGridApiKey);
         Request request = new Request();

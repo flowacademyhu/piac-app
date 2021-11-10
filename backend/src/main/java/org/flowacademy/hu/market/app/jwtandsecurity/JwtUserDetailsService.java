@@ -29,43 +29,31 @@ public class JwtUserDetailsService implements UserDetailsService {
 
     public Admin findAdmin(String emailAddress) throws NoSuchAdminException {
         Admin admin = adminRepository.getAdminByEmail(emailAddress);
-        if(admin != null ){
+        if (admin != null) {
             return admin;
         }
         throw new NoSuchAdminException();
     }
 
-    public List<Admin> findAllAdmins(){
+    public List<Admin> findAllAdmins() {
         return adminRepository.findAll();
     }
 
-    public void saveAdmin(Admin admin){
+    public void saveAdmin(Admin admin) {
         adminRepository.saveAndFlush(admin);
     }
 
-    public Admin getAdminByToken(String token){
-     try{
-         adminRepository.getAdminByGeneratedString(token);
-     }
-     catch(NullPointerException e){
-         e.printStackTrace();
-     }
-        return adminRepository.getAdminByGeneratedString(token);
+    public Admin getAdminByToken(String token) {
+       return adminRepository.getAdminByGeneratedString(token);
     }
-
 
     @Override
     public UserDetails loadUserByUsername(String emailAddress) {
-        Admin admin = null;
         try {
-            admin = findAdmin(emailAddress);
-        } catch (NoSuchAdminException e) {
-            e.printStackTrace();
-        }
-        if (admin.getEmail().equals(emailAddress)) {
+           Admin admin = findAdmin(emailAddress);
             var authorities = Collections.singletonList(new SimpleGrantedAuthority("ROLE_ADMIN"));
             return new User(admin.getEmail(), password, authorities);
-        } else {
+        } catch (NoSuchAdminException e) {
             throw new UsernameNotFoundException("User not found with emailAddress: " + emailAddress);
         }
     }
