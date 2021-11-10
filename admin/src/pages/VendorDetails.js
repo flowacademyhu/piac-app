@@ -112,7 +112,7 @@ const VendorDetails = () => {
         <Form.Check
           type="checkbox"
           label="Bankkártyás fizetés"
-          checked={updatedVendor.cardPayment}
+          checked={updatedVendor.cardPayment || false}
           onChange={(e) =>
             setUpdatedVendor({
               ...updatedVendor,
