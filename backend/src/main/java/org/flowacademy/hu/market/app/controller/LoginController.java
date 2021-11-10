@@ -1,18 +1,14 @@
 package org.flowacademy.hu.market.app.controller;
 
-import org.flowacademy.hu.market.app.exceptions.WrongPasswordException;
-import org.flowacademy.hu.market.app.model.AdminRequest;
 import org.flowacademy.hu.market.app.model.JwtRequestModel;
 import org.flowacademy.hu.market.app.services.AuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
 @RestController
+@RequestMapping("/v1/api")
 @CrossOrigin
 public class LoginController {
 
@@ -24,8 +20,8 @@ public class LoginController {
        return authenticationService.createToken(request);
     }
 
-    @PostMapping("/token")
-    public String getToken (@RequestBody @Valid AdminRequest adminRequest) throws WrongPasswordException {
-        return authenticationService.getToken(adminRequest.getPassword());
+    @GetMapping("/token/{token}")
+    public String getToken (@PathVariable @Valid String token) throws Exception {
+        return authenticationService.getJwtToken(token);
     }
 }

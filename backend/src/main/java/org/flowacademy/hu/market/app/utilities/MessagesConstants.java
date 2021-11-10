@@ -8,5 +8,6 @@ public enum MessagesConstants {
      WRONG_PASSWORD,
      JWT_EXPIRED,
      USER_DISABLED,
-     INVALID_CREDENTIALS
+     INVALID_CREDENTIALS,
+     NO_SUCH_ADMIN
 }
