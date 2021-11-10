@@ -54,6 +54,19 @@ const VendorDetails = () => {
           }
         />
       </Form.Group>
+      <Form.Group className="mb-3" controlId="formVendorShortIntro">
+        <Form.Label>Rövid bemutatkozás</Form.Label>
+        <Form.Control
+          as="textarea"
+          rows={2}
+          placeholder="Árus rövid bemutatkozása..."
+          required
+          value={updatedVendor.intro}
+          onChange={(e) =>
+            setUpdatedVendor({ ...updatedVendor, intro: e.target.value })
+          }
+        />
+      </Form.Group>
       <Form.Group className="mb-3" controlId="formCardPaymentCheckbox">
         <Form.Check
           type="checkbox"
