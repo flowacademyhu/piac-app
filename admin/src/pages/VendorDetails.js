@@ -155,6 +155,17 @@ const VendorDetails = () => {
           }
         />
       </Form.Group>
+      <Form.Group className="mb-3" controlId="formVendorWeb">
+        <Form.Label>Árus honlap címe</Form.Label>
+        <Form.Control
+          type="url"
+          placeholder="Árus honlap címe..."
+          value={updatedVendor.webSite || ""}
+          onChange={(e) =>
+            setUpdatedVendor({ ...updatedVendor, webSite: e.target.value })
+          }
+        />
+      </Form.Group>
       <Row>
         <Col>
           <Button variant="primary" type="submit" className="mr-3">
