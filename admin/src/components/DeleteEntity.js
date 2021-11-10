@@ -2,15 +2,7 @@ import { Button, Modal } from "react-bootstrap";
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const DeleteEntity = ({
-  isMarket,
-  marketName,
-  vendorName,
-  handleDeleteMarket,
-  handleDeleteVendor,
-  marketId,
-  vendorId,
-}) => {
+const DeleteEntity = ({ question, handleDelete, ID }) => {
   const [appear, setAppear] = useState(false);
   const handleClose = () => setAppear(false);
   const handleAppear = () => setAppear(true);
@@ -21,11 +13,7 @@ const DeleteEntity = ({
         Töröl
       </Button>
       <Modal show={appear} onHide={handleClose}>
-        <Modal.Body>
-          {isMarket
-            ? `Biztosan kitörlöd a következő piacot? ${marketName}`
-            : `Biztosan kitörlöd a következő árust? ${vendorName}`}
-        </Modal.Body>
+        <Modal.Body>{question}</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Mégse
@@ -34,9 +22,7 @@ const DeleteEntity = ({
             variant="danger"
             onClick={() => {
               handleClose();
-              isMarket
-                ? handleDeleteMarket(marketId)
-                : handleDeleteVendor(vendorId);
+              handleDelete(ID);
             }}
           >
             Törlés
