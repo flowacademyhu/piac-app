@@ -47,13 +47,10 @@ const VendorTable = () => {
                 </td>
                 <td className="text-center">
                   <DeleteEntity
-                    isMarket={false}
-                    vendorName={vendor.name}
-                    handleDeleteVendor={handleDeleteVendor}
-                    vendorId={vendor.id}
-                  >
-                    Töröl
-                  </DeleteEntity>
+                    question={`Biztosan kitörlöd a következő árust? ${vendor.name}`}
+                    handleDelete={handleDeleteVendor}
+                    ID={vendor.id}
+                  />
                 </td>
               </tr>
             );
