@@ -26,7 +26,7 @@ test("given a long text, when the search term is 'lor', then returns true", () =
   expect(
     textIsIncludesKeyword(
       "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
-      "market"
+      "lor"
     )
-  ).toBe(false);
+  ).toBe(true);
 });
