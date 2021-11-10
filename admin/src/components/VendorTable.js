@@ -6,7 +6,6 @@ import DeleteEntity from "./DeleteEntity";
 
 const VendorTable = () => {
   const [allVendors, setAllVendors] = useState([]);
-  const isMarket = false;
 
   const getAllVendors = async () => {
     const result = await fetchVendors();
@@ -48,7 +47,7 @@ const VendorTable = () => {
                 </td>
                 <td className="text-center">
                   <DeleteEntity
-                    isMarket={isMarket}
+                    isMarket={false}
                     vendorName={vendor.name}
                     handleDeleteVendor={handleDeleteVendor}
                     vendorId={vendor.id}
