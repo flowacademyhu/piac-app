@@ -1,5 +1,15 @@
-const ignoreAccents = require("./ignoreAccents");
+const ignoreAccents = require("../functions/ignoreAccents");
 
-test("given an array with two object, when the search term is an empty string, then returns the full array", () => {
-  expect(ignoreAccents("Crème Brulée")).toStrictEqual("Crème Brulée");
+test("given a string, when includes characters with accent then returns the string without accented characters", () => {
+  expect(ignoreAccents("Crème Brulée")).toStrictEqual("Creme Brulee");
+});
+
+test("given a string, when includes accented characters, then returns the string without accented characters", () => {
+  expect(ignoreAccents("Ça été Mičić. ÀÉÏÓÛ")).toStrictEqual(
+    "Ca ete Micic. AEIOU"
+  );
+});
+
+test("given a string, when doesnt include accented character then returns the given string", () => {
+  expect(ignoreAccents("kiskutya")).toStrictEqual("kiskutya");
 });
