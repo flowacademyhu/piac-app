@@ -1,7 +1,6 @@
 import MarketInfo from "./MarketInfo";
 import "../styles/MarketCard.css";
 
-
 const HeaderWithMarket = ({
   profilePic,
   marketName,
