@@ -13,7 +13,7 @@ function App() {
           <Route exact path="/piac" element={<MarketTablePage />} />
           <Route exact path="/arus" element={<VendorTablePage />} />
           <Route exact path="/arus/uj" element={<VendorDetails />} />
-          <Route exact path="/arus/szerkeszt" element={<VendorDetails />} />
+          <Route exact path="/arus/szerkeszt/:id" element={<VendorDetails />} />
         </Routes>
       </Router>
     </>
