@@ -9,6 +9,7 @@ import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 const VendorsByMarketPage = () => {
   const [market, setMarket] = useState({});
   const [error, hasError] = useState(false);
+
   const marketId = useParams().id;
 
   useEffect(() => {
@@ -37,7 +38,7 @@ const VendorsByMarketPage = () => {
       return (
         <>
           <div className="marketLoading" />
-          <VendorlistUploadInProgress title="Betöltés..." />
+          <VendorlistUploadInProgress />
         </>
       );
     }
@@ -59,6 +60,7 @@ const VendorsByMarketPage = () => {
       ) : (
         <div style={{ height: "90%" }} />
       )}
+      {renderVendorList()}
       {error && <Redirect to="/" />}
     </>
   );

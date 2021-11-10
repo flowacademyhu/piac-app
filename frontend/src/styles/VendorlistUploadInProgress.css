@@ -1,33 +1,27 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap");
 
 .uploadScreen {
   background-color: #f7f5f2;
   width: 100%;
 }
 
-.inProgressText {
-  justify-content: center;
-  flex-direction: row;
-}
-
-.uploadTexts {
-  font-family: "Open Sans", sans-serif;
-  position: absolute;
-  display: flex;
-  text-align: center;
+.intro {
+  font-family: "Amatic SC", sans-serif;
+  font-size: 40px;
+  color: #705a4f;
+  padding-bottom: 40px;
 }
 
 .topInfoText {
-  font-size: 20px;
+  font-family: "Open Sans", sans-serif;
   font-weight: bold;
-  top: 50%;
-  transform: translateY(-50%);
+  font-size: 20px;
+  padding-bottom: 20px;
 }
 
 .bottomInfoText {
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
   font-size: 12px;
-  top: 90%;
-  transform: translateY(-50%);
-  width: 200px;
-  padding-bottom: 40px;
 }

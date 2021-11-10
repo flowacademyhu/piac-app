@@ -3,6 +3,7 @@ import "../styles/VendorlistUploadInProgress.css";
 const VendorlistUploadInProgress = ({ title, body }) => {
   return (
     <div className="card-list inProgressText">
+      <div className="intro">Kikkel találkozhatsz?</div>
       <div className="uploadTexts topInfoText">
         <div>{title}</div>
       </div>
