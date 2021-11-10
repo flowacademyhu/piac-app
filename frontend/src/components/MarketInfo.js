@@ -9,7 +9,6 @@ const MarketInfo = ({
   header,
 }) => {
   const marketOpeningDateFormatter = {
-    year: "numeric",
     month: "long",
     day: "numeric",
   };
