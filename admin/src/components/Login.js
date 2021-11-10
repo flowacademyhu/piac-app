@@ -6,20 +6,41 @@ import "./login.css";
 
 const LoginPage = () => {
   const [token, setToken] = useState([]);
+  const [email, setEmail] = useState("");
+
+  const axios = require("axios");
+
+  async function getMail(email) {
+    try {
+      const response = await axios.post("/v1/login", {
+        email: email,
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
-    <div>
+    <Form
+      onSubmit={(e) => {
+        getMail(email);
+        e.preventDefault();
+      }}
+    >
       <div className="text">E-mail</div>
       <Form.Control
         className="form"
+        value={email}
         placeHolder="E-mail"
         type="text"
-        onChange={(e) => setToken(e.target.value)}
+        onChange={(e) => setEmail(e.target.value)}
       />
       <div className="login">
-        <Button variant="outline-dark">Küldés</Button>
+        <Button variant="outline-dark" type="submit">
+          Küldés
+        </Button>
       </div>
-    </div>
+    </Form>
   );
 };
 export default LoginPage;
