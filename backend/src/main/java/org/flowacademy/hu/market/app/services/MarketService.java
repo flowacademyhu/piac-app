@@ -2,6 +2,7 @@ package org.flowacademy.hu.market.app.services;
 
 import lombok.AllArgsConstructor;
 import org.flowacademy.hu.market.app.entities.Vendor;
+import org.flowacademy.hu.market.app.jwtandsecurity.JwtUserDetailsService;
 import org.flowacademy.hu.market.app.model.MarketDTO;
 import org.flowacademy.hu.market.app.entities.Market;
 import org.flowacademy.hu.market.app.exceptions.NoSuchMarketException;
@@ -29,7 +30,6 @@ public class MarketService {
     private final MarketRepository marketRepository;
     private final VendorRepository vendorRepository;
     private final VendorService vendorService;
-
 
     public MarketDTO addMarket(MarketDTO marketDTO) throws ParseException {
         marketRepository.save(marketDTOToEntity(marketDTO));

@@ -5,30 +5,21 @@ import java.io.Serializable;
 public class JwtRequestModel implements Serializable {
 
     private static final long serialVersionUID = 2636936156391265891L;
-    private String username;
-    private String password;
+    private String emailAddress;
 
     public JwtRequestModel() {
     }
 
-    public JwtRequestModel(String username, String password) {
+    public JwtRequestModel(String username) {
         super();
-        this.username = username; this.password = password;
+        this.emailAddress = username;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmailAddress() {
+        return emailAddress;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setEmailAddress(String username) {
+        this.emailAddress = username;
     }
 }
