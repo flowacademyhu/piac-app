@@ -6,10 +6,14 @@ const filteredArrayByKeyword = (objectArray, keyword) => {
     : objectArray.filter(
         (object) =>
           textIsIncludesKeyword(object.name, keyword) ||
-          textIsIncludesKeyword(object.products.join(" "), keyword) ||
+          object.products.some((product) =>
+            textIsIncludesKeyword(product, keyword)
+          ) ||
           textIsIncludesKeyword(object.intro, keyword) ||
           textIsIncludesKeyword(object.introductionLong, keyword)
       );
 };
 
 module.exports = filteredArrayByKeyword;
+
+// textIsIncludesKeyword(object.products.join(" "), keyword)

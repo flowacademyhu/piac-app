@@ -1,9 +1,9 @@
-const ignoreAccents = require("./ignoreAccents");
+const matchFormat = require("./matchFormat");
 
 const textIsIncludesKeyword = (text, keyword) => {
-  return ignoreAccents(text)
+  return matchFormat(text)
     .toLowerCase()
-    .includes(ignoreAccents(keyword).toLowerCase());
+    .includes(matchFormat(keyword).toLowerCase());
 };
 
 module.exports = textIsIncludesKeyword;
