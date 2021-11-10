@@ -67,7 +67,7 @@ const MarketTable = () => {
                 </td>
                 <td className="text-center">
                   <DeleteEntity
-                    question={`Biztosan kitörlöd a következő piacot? ${market.name}`}
+                    confirmationQuestion={`Biztosan kitörlöd a következő piacot? ${market.name}`}
                     handleDelete={handleDeleteMarket}
                     ID={market.id}
                   />
