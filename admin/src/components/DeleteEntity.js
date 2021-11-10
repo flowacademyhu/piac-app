@@ -8,6 +8,8 @@ const DeleteEntity = ({
   vendorName,
   handleDeleteMarket,
   handleDeleteVendor,
+  marketId,
+  vendorId,
 }) => {
   const [appear, setAppear] = useState(false);
   const handleClose = () => setAppear(false);
@@ -32,7 +34,9 @@ const DeleteEntity = ({
             variant="danger"
             onClick={() => {
               handleClose();
-              isMarket ? handleDeleteMarket() : handleDeleteVendor();
+              isMarket
+                ? handleDeleteMarket(marketId)
+                : handleDeleteVendor(vendorId);
             }}
           >
             Törlés
