@@ -30,12 +30,3 @@ test("given a long text, when the search term is 'lor', then returns true", () =
     )
   ).toBe(false);
 });
-
-test("given a long text, when the search term is 'rocket', then returns false", () => {
-  expect(
-    textIsIncludesKeyword(
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vitae.",
-      "rocket"
-    )
-  ).toBe(false);
-});
