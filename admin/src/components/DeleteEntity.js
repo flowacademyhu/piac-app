@@ -5,11 +5,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 const DeleteMarket = ({ isMarket }) => {
   const [appear, setAppear] = useState(false);
   const handleClose = () => setAppear(false);
-  const handleShow = () => setAppear(true);
+  const handleAppear = () => setAppear(true);
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="primary" onClick={handleAppear}>
         {isMarket ? "Piac" : "Árus"} törlése
       </Button>
 
