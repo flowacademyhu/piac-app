@@ -41,11 +41,7 @@ const VendorTable = () => {
               <tr key={vendor.id}>
                 <td>{vendor.name}</td>
                 <td className="text-center">
-                  <Link
-                    to={`/arus/szerkeszt/${vendor.id}`}
-                    component={<VendorDetails />}
-                    state={vendor}
-                  >
+                  <Link to={`/arus/szerkeszt/${vendor.id}`} state={vendor}>
                     <Button>Szerkeszt</Button>
                   </Link>
                 </td>
