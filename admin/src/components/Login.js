@@ -12,8 +12,8 @@ const LoginPage = () => {
 
   async function getMail(email) {
     try {
-      const response = await axios.post("/v1/login", {
-        email: email,
+      const response = await axios.post("/v1/api/login", {
+        emailAddress: email,
       });
     } catch (error) {
       console.error(error);
