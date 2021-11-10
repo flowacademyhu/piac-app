@@ -26,7 +26,7 @@ const VendorDetails = () => {
   const submitButtonLabel = vendor.id ? "Módosítás" : "Hozzáadás";
   return (
     <Form
-      className="container"
+      className="container mb-3"
       onSubmit={(e) => {
         e.preventDefault();
       }}
