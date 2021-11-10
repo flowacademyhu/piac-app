@@ -37,13 +37,13 @@ test("given an array with two object, when the search term is an empty string, t
 });
 
 test("given an array with two object, when the search term is 'király', then returns the first object of the array", () => {
-  expect(filteredArrayByKeyword(objectArray, "szoszok")).toStrictEqual([
+  expect(filteredArrayByKeyword(objectArray, "csipös szoszok")).toStrictEqual([
     objectArray[0],
   ]);
 });
 
 test("given an array with two objects, when the search term is 'zacskók', returns the second object of the array", () => {
-  expect(filteredArrayByKeyword(objectArray, "zacsko")).toStrictEqual([
+  expect(filteredArrayByKeyword(objectArray, "lebomlozacsko")).toStrictEqual([
     objectArray[1],
   ]);
 });
