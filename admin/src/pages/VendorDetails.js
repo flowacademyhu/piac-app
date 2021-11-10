@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Form, Button } from "react-bootstrap";
-import { useLocation } from "react-router-dom";
+import { Form, Button, Row, Col } from "react-bootstrap";
+import { useLocation, Link } from "react-router-dom";
 
 const VendorDetails = () => {
   const vendor = useLocation().state || {};
@@ -42,9 +42,16 @@ const VendorDetails = () => {
           }
         />
       </Form.Group>
-      <Button variant="primary" type="submit">
-        {submitButtonLabel}
-      </Button>
+      <Row>
+        <Col>
+          <Button variant="primary" type="submit" className="mr-3">
+            {submitButtonLabel}
+          </Button>
+          <Link to="/arus">
+            <Button variant="warning">Mégsem</Button>
+          </Link>
+        </Col>
+      </Row>
     </Form>
   );
 };
