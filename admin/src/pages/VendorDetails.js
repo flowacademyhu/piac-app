@@ -48,7 +48,7 @@ const VendorDetails = () => {
         <Form.Control
           type="url"
           placeholder="Árus logója..."
-          value={updatedVendor.profilePic}
+          value={updatedVendor.profilePic || ""}
           required
           onChange={(e) =>
             setUpdatedVendor({ ...updatedVendor, profilePic: e.target.value })
