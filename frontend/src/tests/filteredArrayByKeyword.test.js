@@ -57,3 +57,7 @@ test("given an array with two objects, when the search term is 'krem', then retu
     objectArray[0],
   ]);
 });
+
+test("given an array with two objects, when the search term is 'le', then returns the fully array", () => {
+  expect(filteredArrayByKeyword(objectArray, "le")).toStrictEqual(objectArray);
+});
