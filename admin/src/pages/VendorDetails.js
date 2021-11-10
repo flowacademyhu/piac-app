@@ -22,6 +22,7 @@ const VendorDetails = () => {
   const [updatedVendor, setUpdatedVendor] = useState(vendor);
   const title = vendor.id ? "Árus módosítása" : "Új árus hozzáadása";
   const submitButtonLabel = vendor.id ? "Módosítás" : "Hozzáadás";
+  console.log(vendor);
   return (
     <Form
       className="container"
@@ -39,6 +40,18 @@ const VendorDetails = () => {
           required
           onChange={(e) =>
             setUpdatedVendor({ ...updatedVendor, name: e.target.value })
+          }
+        />
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="formVendorLogo">
+        <Form.Label>Árus logója</Form.Label>
+        <Form.Control
+          type="url"
+          placeholder="Árus logója..."
+          value={updatedVendor.profilePic}
+          required
+          onChange={(e) =>
+            setUpdatedVendor({ ...updatedVendor, profilePic: e.target.value })
           }
         />
       </Form.Group>
