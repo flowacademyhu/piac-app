@@ -30,11 +30,30 @@ const VendorDetails = () => {
     }
   };
 
+  const updateVendor = async (vendor, id) => {
+    try {
+      const response = await axios.put(
+        vendorApi + "/" + id,
+        updatedVendor,
+        tokenConfig
+      );
+      if (response.status === 200) {
+        setSuccess(true);
+      }
+    } catch (error) {
+      setHasError(true);
+    }
+  };
+
   return (
     <Form
       className="container mb-3"
       onSubmit={(e) => {
-        addVendor(updatedVendor);
+        if (vendor.id) {
+          updateVendor(updatedVendor, vendor.id);
+        } else {
+          addVendor(updatedVendor);
+        }
         e.preventDefault();
       }}
     >
