@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import net.bytebuddy.utility.RandomString;
 
 import org.flowacademy.hu.market.app.entities.Admin;
+import org.flowacademy.hu.market.app.exceptions.NoSuchAdminException;
 import org.flowacademy.hu.market.app.exceptions.WrongPasswordException;
 import org.flowacademy.hu.market.app.model.JwtRequestModel;
 import org.flowacademy.hu.market.app.jwtandsecurity.JwtUserDetailsService;
@@ -34,26 +35,33 @@ public class AuthenticationService {
     private TokenManager tokenManager;
 
     public String createToken(JwtRequestModel request) throws Exception {
-        try {
-            var auth = authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(request.getEmailAddress(),
-                            request.getPassword()));
-                final UserDetails userDetails = userDetailsService.loadUserByUsername(request.getEmailAddress());
-                final String jwtToken = tokenManager.generateJwtToken(userDetails);
-                String generatedString = RandomString.make(15);
-                emailSendingService.sendmail(request.getEmailAddress(), generatedString);
-                SecurityContextHolder.getContext().setAuthentication(auth);
-                 Admin result =  userDetailsService.findAdmin(userDetails.getUsername());
-                 result.setGeneratedString(generatedString);
-                 result.setJwtToken(jwtToken);
-                 userDetailsService.saveAdmin(result);
-                return "Your code has been sent to your email: " + request.getEmailAddress();
-
-        } catch (DisabledException | BadCredentialsException e) {
-            e.printStackTrace();
-                return "Failed in catch";
+        if (userDetailsService.findAllAdmins().size() == 0 ){
+            Admin superAdmin = new Admin();
+            superAdmin.setEmail(request.getEmailAddress());
+            userDetailsService.saveAdmin(superAdmin);
         }
-    }
+        Admin admin = userDetailsService.findAdmin(request.getEmailAddress());
+        if (admin == null && userDetailsService.findAllAdmins().size() > 0 ) {
+          throw new NoSuchAdminException();
+      }
+          try {
+              var auth = authenticationManager.authenticate(
+                      new UsernamePasswordAuthenticationToken(request.getEmailAddress(),
+                              request.getPassword()));
+              final UserDetails userDetails = userDetailsService.loadUserByUsername(request.getEmailAddress());
+
+              String generatedString = RandomString.make(15);
+              emailSendingService.sendmail(request.getEmailAddress(), generatedString);
+              SecurityContextHolder.getContext().setAuthentication(auth);
+              Admin result = userDetailsService.findAdmin(userDetails.getUsername());
+              result.setGeneratedString(generatedString);
+              userDetailsService.saveAdmin(result);
+              return "Your code has been sent to your email: " + request.getEmailAddress();
+          } catch (DisabledException | BadCredentialsException e) {
+              e.printStackTrace();
+              return "Failed in catch";
+          }
+       }
 
     public String getJwtToken(String token) throws WrongPasswordException {
         Admin admin = userDetailsService.getAdminByToken(token);
@@ -66,7 +74,8 @@ public class AuthenticationService {
         }catch ( WrongPasswordException | NullPointerException e){
             throw new WrongPasswordException();
         }
-        return admin.getJwtToken();
+        final UserDetails userDetails = userDetailsService.loadUserByUsername(admin.getEmail());
+        return tokenManager.generateJwtToken(userDetails);
     }
 }
 

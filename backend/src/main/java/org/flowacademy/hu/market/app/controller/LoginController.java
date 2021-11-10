@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
+@RequestMapping("/v1/api")
 @CrossOrigin
 public class LoginController {
 
@@ -19,7 +20,7 @@ public class LoginController {
        return authenticationService.createToken(request);
     }
 
-    @GetMapping("/{token}")
+    @GetMapping("/token/{token}")
     public String getToken (@PathVariable @RequestBody @Valid String token) throws Exception {
         return authenticationService.getJwtToken(token);
     }

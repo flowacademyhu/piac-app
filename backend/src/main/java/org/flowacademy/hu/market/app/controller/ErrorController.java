@@ -1,6 +1,7 @@
 package org.flowacademy.hu.market.app.controller;
 
 import io.jsonwebtoken.ExpiredJwtException;
+import org.flowacademy.hu.market.app.exceptions.NoSuchAdminException;
 import org.flowacademy.hu.market.app.exceptions.NoSuchMarketException;
 import org.flowacademy.hu.market.app.exceptions.NoSuchVendorException;
 import org.flowacademy.hu.market.app.exceptions.WrongPasswordException;
@@ -64,5 +65,10 @@ public class ErrorController {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorModel handleBadCredentials(){
         return new ErrorModel(MessagesConstants.INVALID_CREDENTIALS);
+    }
+    @ExceptionHandler({NoSuchAdminException.class})
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorModel handleNoSuchAdmin(){
+        return new ErrorModel(MessagesConstants.NO_SUCH_ADMIN);
     }
 }

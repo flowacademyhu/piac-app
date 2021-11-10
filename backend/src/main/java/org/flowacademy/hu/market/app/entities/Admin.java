@@ -21,8 +21,6 @@ public class Admin {
     @Column(unique = true)
     private String email;
     private String generatedString;
-    private String jwtToken;
-
 
     public String getEmail() {
         return email;
@@ -37,17 +35,8 @@ public class Admin {
         return generatedString;
     }
 
-    public Admin setGeneratedString(String token) {
-        this.generatedString = token;
-        return this;
-    }
-
-    public String getJwtToken() {
-        return jwtToken;
-    }
-
-    public Admin setJwtToken(String jwtToken) {
-        this.jwtToken = jwtToken;
+    public Admin setGeneratedString(String generatedString) {
+        this.generatedString = generatedString;
         return this;
     }
 }

@@ -24,12 +24,14 @@ public class EmailSendingService {
 
     @Value("${my.sendgrid.apikey}")
     private  String sendGridApiKey;
+    @Value("${site.url}")
+    private String siteUrl;
 
     public void sendmail( String emailAddress, String generatedString) throws Exception {
         Email from = new Email(emailAddress);
         String subject = "Sending with SendGrid is Fun";
         Email to = new Email(emailAddress);
-        Content content = new Content("text/plain", "http://localhost:8081/" + generatedString);
+        Content content = new Content("text/plain", siteUrl + ":8081/v1/api/token/" + generatedString);
         Mail mail = new Mail(from, subject, to, content);
         SendGrid sg = new SendGrid(sendGridApiKey);
         Request request = new Request();
@@ -39,7 +41,7 @@ public class EmailSendingService {
             request.setBody(mail.build());
             Response response = sg.api(request);
         } catch (IOException ex) {
-            throw ex;
+            ex.printStackTrace();
         }
     }
 }
