@@ -1,5 +1,9 @@
+const ignoreAccents = require("./ignoreAccents");
+
 const textIsIncludesKeyword = (text, keyword) => {
-  return text.toLowerCase().includes(keyword.toLowerCase());
+  return ignoreAccents(text)
+    .toLowerCase()
+    .includes(ignoreAccents(keyword).toLowerCase());
 };
 
 module.exports = textIsIncludesKeyword;

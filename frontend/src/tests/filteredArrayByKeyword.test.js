@@ -37,44 +37,23 @@ test("given an array with two object, when the search term is an empty string, t
 });
 
 test("given an array with two object, when the search term is 'király', then returns the first object of the array", () => {
-  expect(filteredArrayByKeyword(objectArray, "király")).toStrictEqual([
-    {
-      cardPayment: true,
-      email: "chiliking@flow.hu",
-      facebook: "Chiliking-Facebook",
-      id: 1,
-      instagram: null,
-      intro: "Chilizz belünk, Magyarország legjobb chilijeivel...",
-      introductionLong: "Chilizz belünk, Magyarország legjobb chilijeivel...",
-      name: "Chilikirály",
-      phone: "+36302345678",
-      products: ["chilik", "paprikakrémek", "csípős szószok"],
-      profilePic: null,
-      webSite: null,
-    },
+  expect(filteredArrayByKeyword(objectArray, "szoszok")).toStrictEqual([
+    objectArray[0],
   ]);
 });
 
 test("given an array with two objects, when the search term is 'zacskók', returns the second object of the array", () => {
-  expect(filteredArrayByKeyword(objectArray, "zacskó")).toStrictEqual([
-    {
-      id: 2,
-      name: "Just incase",
-      intro: "Praktikus termékek, környezettudatos ajándékcsomagok....",
-      profilePic: null,
-      products: ["lebomló zacskók", "kézműves szappanok", "papírdobozok"],
-      cardPayment: true,
-      email: "csakugy@flow.hu",
-      facebook: "JustInCase-Facebook",
-      instagram: "justInCase.insta",
-      phone: "+36308765432",
-      webSite: "www.justincase.com",
-      introductionLong:
-        "Praktikus termékek, környezettudatos ajándékcsomagok....",
-    },
+  expect(filteredArrayByKeyword(objectArray, "zacsko")).toStrictEqual([
+    objectArray[1],
   ]);
 });
 
 test("given an array with two objects, when the search term is 'tacocat', then returns an empty array", () => {
   expect(filteredArrayByKeyword(objectArray, "tacocat")).toStrictEqual([]);
+});
+
+test("given an array with two objects, when the search term is 'krem', then returns the first object of the array", () => {
+  expect(filteredArrayByKeyword(objectArray, "krem")).toStrictEqual([
+    objectArray[0],
+  ]);
 });
