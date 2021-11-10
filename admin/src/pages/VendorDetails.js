@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, Navigate } from "react-router-dom";
 import ReactTagInput from "@pathofdev/react-tag-input";
 import "@pathofdev/react-tag-input/build/index.css";
+import axios from "axios";
 
 const VendorDetails = () => {
   const vendor = useLocation().state || {};
@@ -22,12 +23,33 @@ const VendorDetails = () => {
     };
   }
   const [updatedVendor, setUpdatedVendor] = useState(vendor);
+  const [hasError, setHasError] = useState(false);
+  const [success, setSuccess] = useState(false);
   const title = vendor.id ? "Árus módosítása" : "Új árus hozzáadása";
   const submitButtonLabel = vendor.id ? "Módosítás" : "Hozzáadás";
+  const vendorApi = "/v1/api/admin/vendor";
+  const tokenConfig = {
+    headers: {
+      Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+    },
+  };
+
+  const addVendor = async (vendor) => {
+    try {
+      const response = await axios.post(vendorApi, updatedVendor, tokenConfig);
+      if (response.status === 200) {
+        setSuccess(true);
+      }
+    } catch (error) {
+      setHasError(true);
+    }
+  };
+
   return (
     <Form
       className="container mb-3"
       onSubmit={(e) => {
+        addVendor(updatedVendor);
         e.preventDefault();
       }}
     >
@@ -176,6 +198,10 @@ const VendorDetails = () => {
           </Link>
         </Col>
       </Row>
+      {hasError && (
+        <p className="text-danger mt-3">Hiba történt a beküldés során!</p>
+      )}
+      {success && <Navigate to="/arus" />}
     </Form>
   );
 };
