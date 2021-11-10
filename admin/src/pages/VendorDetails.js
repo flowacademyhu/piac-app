@@ -89,6 +89,7 @@ const VendorDetails = () => {
           rows={2}
           placeholder="Árus rövid bemutatkozása..."
           required
+          maxLength={100}
           value={updatedVendor.intro || ""}
           onChange={(e) =>
             setUpdatedVendor({ ...updatedVendor, intro: e.target.value })
