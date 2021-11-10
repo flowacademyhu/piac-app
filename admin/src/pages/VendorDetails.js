@@ -17,7 +17,7 @@ const VendorDetails = () => {
     if (id) {
       fetchVendor(id);
     }
-  }, []);
+  }, [id]);
 
   const [updatedVendor, setUpdatedVendor] = useState({});
   const [hasError, setHasError] = useState(false);
