@@ -6,6 +6,7 @@ import VendorlistUploadInProgress from "../components/VendorlistUploadInProgress
 import { fetchMarketById } from "../components/Service";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import SearchArea from "../components/SearchArea";
+const filteredArrayByKeyword = require("../functions/filteredArrayByKeyword");
 
 const VendorsByMarketPage = () => {
   const [market, setMarket] = useState({});
@@ -25,20 +26,10 @@ const VendorsByMarketPage = () => {
     fetchMarket(marketId);
   }, [marketId]);
 
-  const comparingWithKeywords = (obj) => {
-    return obj.toLowerCase().includes(searchTerm.toLowerCase());
-  };
-
-  const filteredVendorArray =
-    searchTerm.length === 0
-      ? market.vendors
-      : market.vendors.filter(
-          (vendor) =>
-            comparingWithKeywords(vendor.name) ||
-            comparingWithKeywords(vendor.products.join(" ")) ||
-            comparingWithKeywords(vendor.intro) ||
-            comparingWithKeywords(vendor.introductionLong)
-        );
+  const filteredVendorArray = filteredArrayByKeyword(
+    market.vendors,
+    searchTerm
+  );
 
   const renderVendorList = () => {
     if (market.vendors && market.vendors.length > 0) {

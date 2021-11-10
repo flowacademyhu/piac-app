@@ -4,6 +4,7 @@ import { fetchVendors } from "./Service";
 import VendorCard from "./VendorCard";
 import { Link } from "react-router-dom";
 import SearchArea from "./SearchArea";
+const filteredArrayByKeyword = require("../functions/filteredArrayByKeyword");
 
 const VendorCardList = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -18,21 +19,6 @@ const VendorCardList = () => {
     getVendors();
   }, []);
 
-  const comparingWithKeywords = (obj) => {
-    return obj.toLowerCase().includes(searchTerm.toLowerCase());
-  };
-
-  const filteredVendorArray =
-    searchTerm.length === 0
-      ? vendors
-      : vendors.filter(
-          (vendor) =>
-            comparingWithKeywords(vendor.name) ||
-            comparingWithKeywords(vendor.products.join(" ")) ||
-            comparingWithKeywords(vendor.intro) ||
-            comparingWithKeywords(vendor.introductionLong)
-        );
-
   return (
     <>
       <SearchArea
@@ -42,7 +28,7 @@ const VendorCardList = () => {
         placeHolder="Keress termékre vagy árusra..."
       />
       <div className="card-list">
-        {filteredVendorArray.map((vendor) => {
+        {filteredArrayByKeyword(vendors, searchTerm).map((vendor) => {
           return (
             <div key={vendor.id}>
               <Link
