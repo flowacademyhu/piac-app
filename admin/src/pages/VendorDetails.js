@@ -67,6 +67,23 @@ const VendorDetails = () => {
           }
         />
       </Form.Group>
+      <Form.Group className="mb-3" controlId="formVendorLongIntro">
+        <Form.Label>Hosszú leírás</Form.Label>
+        <Form.Control
+          as="textarea"
+          rows={5}
+          placeholder="Árus hosszú leírása..."
+          required
+          maxLength={2500}
+          value={updatedVendor.introductionLong}
+          onChange={(e) =>
+            setUpdatedVendor({
+              ...updatedVendor,
+              introductionLong: e.target.value,
+            })
+          }
+        />
+      </Form.Group>
       <Form.Group className="mb-3" controlId="formCardPaymentCheckbox">
         <Form.Check
           type="checkbox"
