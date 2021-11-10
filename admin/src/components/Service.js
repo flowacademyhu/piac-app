@@ -25,3 +25,29 @@ export const fetchVendors = async () => {
     console.warn("Failed to load vendors");
   }
 };
+
+const adminMarketAPI = "/v1/api/admin/market";
+
+export const deleteMarketById = async (id) => {
+  const url = adminMarketAPI + "/" + id;
+  try {
+    const response = await axios.delete(url);
+    const data = response.data;
+    return data;
+  } catch (error) {
+    console.warn("Failed to delete market");
+  }
+};
+
+const adminVendorAPI = "/v1/api/admin/vendor";
+
+export const deleteVendorById = async (id) => {
+  const url = adminVendorAPI + "/" + id;
+  try {
+    const response = await axios.delete(url);
+    const data = response.data;
+    return data;
+  } catch (error) {
+    console.warn("Failed to delete vendor");
+  }
+};
