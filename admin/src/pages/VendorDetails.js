@@ -133,6 +133,17 @@ const VendorDetails = () => {
           }
         />
       </Form.Group>
+      <Form.Group className="mb-3" controlId="formVendorFacebook">
+        <Form.Label>Árus facebook linkje</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Árus facebook linkje..."
+          value={updatedVendor.facebook || ""}
+          onChange={(e) =>
+            setUpdatedVendor({ ...updatedVendor, facebook: e.target.value })
+          }
+        />
+      </Form.Group>
       <Row>
         <Col>
           <Button variant="primary" type="submit" className="mr-3">
