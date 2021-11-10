@@ -63,7 +63,7 @@ const VendorDetails = () => {
           rows={2}
           placeholder="Árus rövid bemutatkozása..."
           required
-          value={updatedVendor.intro}
+          value={updatedVendor.intro || ""}
           onChange={(e) =>
             setUpdatedVendor({ ...updatedVendor, intro: e.target.value })
           }
@@ -77,7 +77,7 @@ const VendorDetails = () => {
           placeholder="Árus hosszú leírása..."
           required
           maxLength={2500}
-          value={updatedVendor.introductionLong}
+          value={updatedVendor.introductionLong || ""}
           onChange={(e) =>
             setUpdatedVendor({
               ...updatedVendor,
