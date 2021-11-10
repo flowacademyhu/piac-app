@@ -15,5 +15,3 @@ const filteredArrayByKeyword = (objectArray, keyword) => {
 };
 
 module.exports = filteredArrayByKeyword;
-
-// textIsIncludesKeyword(object.products.join(" "), keyword)
