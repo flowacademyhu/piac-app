@@ -111,6 +111,17 @@ const VendorDetails = () => {
           />
         </Col>
       </Row>
+      <Form.Group className="mb-3" controlId="formVendorTel">
+        <Form.Label>Árus telefonszáma</Form.Label>
+        <Form.Control
+          type="tel"
+          placeholder="Árus telefonszáma..."
+          value={updatedVendor.phone || ""}
+          onChange={(e) =>
+            setUpdatedVendor({ ...updatedVendor, phone: e.target.value })
+          }
+        />
+      </Form.Group>
       <Row>
         <Col>
           <Button variant="primary" type="submit" className="mr-3">
