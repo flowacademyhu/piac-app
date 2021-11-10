@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Button, Table } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { fetchVendors } from "./Service";
+import { fetchVendors, deleteVendorById } from "./Service";
+import DeleteEntity from "./DeleteEntity";
 
 const VendorTable = () => {
   const [allVendors, setAllVendors] = useState([]);
+  const isMarket = false;
 
   const getAllVendors = async () => {
     const result = await fetchVendors();
@@ -14,6 +16,11 @@ const VendorTable = () => {
   useEffect(() => {
     getAllVendors();
   }, []);
+
+  const handleDeleteVendor = async (id) => {
+    await deleteVendorById(id);
+    getAllVendors();
+  };
 
   return (
     <div>
@@ -40,7 +47,13 @@ const VendorTable = () => {
                   <Button>Szerkeszt</Button>
                 </td>
                 <td className="text-center">
-                  <Button>Töröl</Button>
+                  <DeleteEntity
+                    isMarket={isMarket}
+                    vendorName={vendor.name}
+                    handleDeleteVendor={handleDeleteVendor}
+                  >
+                    Töröl
+                  </DeleteEntity>
                 </td>
               </tr>
             );
