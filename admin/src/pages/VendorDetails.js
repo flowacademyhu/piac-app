@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { Form } from "react-bootstrap";
+import { useLocation } from "react-router-dom";
 
-const VendorDetails = ({ vendor }) => {
+const VendorDetails = () => {
+  const vendor = useLocation().state || {};
   if (!vendor) {
     vendor = {
       name: "",

@@ -3,6 +3,7 @@ import { Button, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { fetchVendors } from "./Service";
+import VendorDetails from "../pages/VendorDetails";
 
 const VendorTable = () => {
   const [allVendors, setAllVendors] = useState([]);
@@ -40,7 +41,13 @@ const VendorTable = () => {
               <tr key={vendor.id}>
                 <td>{vendor.name}</td>
                 <td className="text-center">
-                  <Button>Szerkeszt</Button>
+                  <Link
+                    to="/arus/szerkeszt"
+                    component={<VendorDetails />}
+                    state={vendor}
+                  >
+                    <Button>Szerkeszt</Button>
+                  </Link>
                 </td>
                 <td className="text-center">
                   <Button>Töröl</Button>
