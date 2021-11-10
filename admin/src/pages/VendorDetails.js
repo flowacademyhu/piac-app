@@ -59,7 +59,7 @@ const VendorDetails = () => {
         <Form.Control
           type="text"
           placeholder="Árus neve..."
-          value={updatedVendor.name}
+          value={updatedVendor.name || ""}
           required
           onChange={(e) =>
             setUpdatedVendor({ ...updatedVendor, name: e.target.value })
