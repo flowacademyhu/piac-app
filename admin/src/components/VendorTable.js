@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button, Table } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { fetchVendors } from "./Service";
 
@@ -19,9 +20,11 @@ const VendorTable = () => {
     <div>
       <div className="text-center">
         <p className="font-weight-bold">ÁRUSOK</p>
-        <Button style={{ marginTop: "20px", marginBottom: "20px" }}>
-          ÚJ ÁRUS FELVÉTELE
-        </Button>
+        <Link to="/arus/uj">
+          <Button style={{ marginTop: "20px", marginBottom: "20px" }}>
+            ÚJ ÁRUS FELVÉTELE
+          </Button>
+        </Link>
       </div>
       <Table striped bordered hover>
         <thead>
