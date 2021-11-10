@@ -67,13 +67,10 @@ const MarketTable = () => {
                 </td>
                 <td className="text-center">
                   <DeleteEntity
-                    isMarket={true}
-                    marketName={market.name}
-                    handleDeleteMarket={handleDeleteMarket}
-                    marketId={market.id}
-                  >
-                    Töröl
-                  </DeleteEntity>
+                    question={`Biztosan kitörlöd a következő piacot? ${market.name}`}
+                    handleDelete={handleDeleteMarket}
+                    ID={market.id}
+                  />
                 </td>
               </tr>
             );
