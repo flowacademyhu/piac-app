@@ -2,7 +2,13 @@ import { Button, Modal } from "react-bootstrap";
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const DeleteMarket = ({ isMarket }) => {
+const DeleteEntity = ({
+  isMarket,
+  marketName,
+  vendorName,
+  handleDeleteMarket,
+  handleDeleteVendor,
+}) => {
   const [appear, setAppear] = useState(false);
   const handleClose = () => setAppear(false);
   const handleAppear = () => setAppear(true);
@@ -10,18 +16,25 @@ const DeleteMarket = ({ isMarket }) => {
   return (
     <>
       <Button variant="primary" onClick={handleAppear}>
-        {isMarket ? "Piac" : "Árus"} törlése
+        Töröl
       </Button>
-
       <Modal show={appear} onHide={handleClose}>
         <Modal.Body>
-          Biztosan törlöd a kijelölt {isMarket ? "piacot" : "árust"} ?
+          {isMarket
+            ? `Biztosan kitörlöd a következő piacot? ${marketName}`
+            : `Biztosan kitörlöd a következő árust? ${vendorName}`}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Mégse
           </Button>
-          <Button variant="danger" onClick={handleClose}>
+          <Button
+            variant="danger"
+            onClick={() => {
+              handleClose();
+              isMarket ? handleDeleteMarket() : handleDeleteVendor();
+            }}
+          >
             Törlés
           </Button>
         </Modal.Footer>
@@ -30,4 +43,4 @@ const DeleteMarket = ({ isMarket }) => {
   );
 };
 
-export default DeleteMarket;
+export default DeleteEntity;
