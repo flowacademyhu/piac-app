@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
-import { useLocation, Link, Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import ReactTagInput from "@pathofdev/react-tag-input";
 import "@pathofdev/react-tag-input/build/index.css";
 import axios from "axios";
 
 const VendorDetails = () => {
-  const vendor = useLocation().state || {};
   const [updatedVendor, setUpdatedVendor] = useState(vendor);
   const [hasError, setHasError] = useState(false);
   const [success, setSuccess] = useState(false);
