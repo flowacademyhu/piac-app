@@ -122,6 +122,17 @@ const VendorDetails = () => {
           }
         />
       </Form.Group>
+      <Form.Group className="mb-3" controlId="formVendorEmail">
+        <Form.Label>Árus e-mail címe</Form.Label>
+        <Form.Control
+          type="email"
+          placeholder="Árus e-mail címe..."
+          value={updatedVendor.email || ""}
+          onChange={(e) =>
+            setUpdatedVendor({ ...updatedVendor, email: e.target.value })
+          }
+        />
+      </Form.Group>
       <Row>
         <Col>
           <Button variant="primary" type="submit" className="mr-3">
