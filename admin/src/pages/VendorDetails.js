@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Form } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 
 const VendorDetails = () => {
@@ -21,8 +21,14 @@ const VendorDetails = () => {
   }
   const [updatedVendor, setUpdatedVendor] = useState(vendor);
   const title = vendor.id ? "Árus módosítása" : "Új árus hozzáadása";
+  const submitButtonLabel = vendor ? "Módosítás" : "Hozzáadás";
   return (
-    <Form className="container">
+    <Form
+      className="container"
+      onSubmit={(e) => {
+        e.preventDefault();
+      }}
+    >
       <h1 className="my-3">{title}</h1>
       <Form.Group className="mb-3" controlId="formVendorName">
         <Form.Label>Árus neve</Form.Label>
@@ -36,6 +42,9 @@ const VendorDetails = () => {
           }
         />
       </Form.Group>
+      <Button variant="primary" type="submit">
+        {submitButtonLabel}
+      </Button>
     </Form>
   );
 };
