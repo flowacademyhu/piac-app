@@ -1,8 +1,12 @@
-const matchFormat = require("../functions/matchFormat");
-
 const sortByName = function (a, b) {
-  const nameA = matchFormat(a.name);
-  const nameB = matchFormat(b.name);
+  const nameA = a.name
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+  const nameB = b.name
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
   return nameA < nameB ? -1 : nameA > nameB ? 1 : 0;
 };
 
