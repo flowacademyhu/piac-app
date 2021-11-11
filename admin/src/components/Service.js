@@ -1,8 +1,9 @@
 import axios from "axios";
+import { getToken } from "./AuthService";
 
 const tokenConfig = {
   headers: {
-    Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+    Authorization: `Bearer ${getToken()}`,
   },
 };
 
