@@ -7,7 +7,7 @@ import LoginPage from "./components/Login";
 import TokenExchange from "./pages/TokenExchange";
 
 function App() {
-  return (
+  return window.localStorage.getItem("token") ? (
     <>
       <Router>
         <Menu />
@@ -25,6 +25,12 @@ function App() {
         </Routes>
       </Router>
     </>
+  ) : (
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<LoginPage />} />
+      </Routes>
+    </Router>
   );
 }
 

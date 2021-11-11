@@ -17,7 +17,7 @@ const TokenExchange = () => {
         window.localStorage.setItem("token", response.data);
         console.log(response);
       } catch (error) {
-        console.error(error);
+        console.error("Hiba történt a kérés során!");
       }
     }
   }, []);

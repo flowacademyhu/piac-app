@@ -16,7 +16,7 @@ const LoginPage = () => {
         emailAddress: email,
       });
     } catch (error) {
-      console.error(error);
+      console.error("Hiba történt a kérés során!");
     }
   }
 
