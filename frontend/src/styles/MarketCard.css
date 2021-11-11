@@ -64,7 +64,6 @@
 .topMarketInfo {
   grid-column: 2;
   grid-row: 1;
-  padding-left: 10px;
   position: "relative";
   overflow: hidden;
 }
@@ -105,6 +104,7 @@
 .parallelDateAndHour {
   display: flex;
   align-items: baseline;
+  justify-content: center;
 }
 
 .startAndEndHours {
