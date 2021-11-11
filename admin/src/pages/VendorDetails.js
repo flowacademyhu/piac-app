@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { useParams, Link, Navigate } from "react-router-dom";
-import ReactTagInput from "@pathofdev/react-tag-input";
 import "@pathofdev/react-tag-input/build/index.css";
 import axios from "axios";
 import { fetchVendorById } from "./../components/Service";
