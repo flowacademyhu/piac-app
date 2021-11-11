@@ -30,7 +30,9 @@ const VendorProfileMarkets = ({ upcomingMarkets }) => {
             );
           })
         ) : (
-          <p className="empty-page-message">Nincs megjeleníthető piac</p>
+          <p className="empty-page-message">
+            A közeljövőben egy piacon sem lesz jelen
+          </p>
         )}
       </div>
     </div>
