@@ -19,7 +19,7 @@ const NavBar = () => {
           </Link>
         </Nav>
         <Button
-          variant="secondary"
+          variant="Light"
           onClick={() => {
             logOut();
             navigate("/");
