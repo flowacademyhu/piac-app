@@ -19,11 +19,13 @@ const VendorDetails = () => {
   const navigate = useNavigate();
 
   const [success, setSuccess] = useState(false);
+
+  const fetchVendor = async (id) => {
+    const response = await fetchVendorById(id);
+    setUpdatedVendor(response);
+  };
+
   useEffect(() => {
-    const fetchVendor = async (id) => {
-      const response = await fetchVendorById(id);
-      setUpdatedVendor(response);
-    };
     if (success) {
       navigate("/arus");
       return;
