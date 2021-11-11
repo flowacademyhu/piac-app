@@ -149,17 +149,13 @@ const VendorDetails = () => {
         setter={setUpdatedVendor}
         type="tel"
       />
-      <Form.Group className="mb-3" controlId="formVendorEmail">
-        <Form.Label>Árus e-mail címe</Form.Label>
-        <Form.Control
-          type="email"
-          placeholder="Árus e-mail címe..."
-          value={updatedVendor.email || ""}
-          onChange={(e) =>
-            setUpdatedVendor({ ...updatedVendor, email: e.target.value })
-          }
-        />
-      </Form.Group>
+      <FormTextInput
+        label="Árus e-mail címe"
+        dataObject={updatedVendor}
+        dataObjectKey="email"
+        setter={setUpdatedVendor}
+        type="email"
+      />
       <Form.Group className="mb-3" controlId="formVendorFacebook">
         <Form.Label>Árus facebook linkje</Form.Label>
         <Form.Control
