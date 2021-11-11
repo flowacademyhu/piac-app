@@ -15,7 +15,7 @@ const VendorProfileInfo = ({
 }) => {
   return (
     <div className="profile-components">
-      {products.length === 0 ? null : <Products products={products} />}
+      {products.length > 0 && <Products products={products} />}
       <Payment cardPayment={cardPayment} />
       <VendorContacts
         facebook={facebook}
