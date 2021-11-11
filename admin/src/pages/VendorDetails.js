@@ -6,6 +6,7 @@ import "@pathofdev/react-tag-input/build/index.css";
 import axios from "axios";
 import { fetchVendorById } from "./../components/Service";
 import FormTextInput from "../components/FormTextInput";
+import FormTextAreaInput from "../components/FormTextAreaInput";
 
 const VendorDetails = () => {
   const id = useParams().id;
@@ -86,20 +87,14 @@ const VendorDetails = () => {
         required={true}
         type="url"
       />
-      <Form.Group className="mb-3" controlId="formVendorShortIntro">
-        <Form.Label>Rövid bemutatkozás</Form.Label>
-        <Form.Control
-          as="textarea"
-          rows={2}
-          placeholder="Árus rövid bemutatkozása..."
-          required
-          maxLength={100}
-          value={updatedVendor.intro || ""}
-          onChange={(e) =>
-            setUpdatedVendor({ ...updatedVendor, intro: e.target.value })
-          }
-        />
-      </Form.Group>
+      <FormTextAreaInput
+        label="Árus rövid bemutatkozása"
+        dataObject={updatedVendor}
+        dataObjectKey="intro"
+        setter={setUpdatedVendor}
+        rows={2}
+        maxLength={100}
+      />
       <Form.Group className="mb-3" controlId="formVendorLongIntro">
         <Form.Label>Hosszú leírás</Form.Label>
         <Form.Control
