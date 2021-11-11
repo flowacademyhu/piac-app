@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Form } from "react-bootstrap";
-import { useParams, Navigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import "@pathofdev/react-tag-input/build/index.css";
 import {
   fetchVendorById,
@@ -12,9 +12,11 @@ import FormTextAreaInput from "../components/FormTextAreaInput";
 import VendorCardPaymentCheckbox from "../components/VendorCardPaymentCheckbox";
 import VendorProductsInput from "../components/VendorProductsInput";
 import VendorDetailsButtons from "../components/VendorDetailsButtons";
+import { useNavigate } from "react-router-dom";
 
 const VendorDetails = () => {
   const id = useParams().id;
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchVendor = async (id) => {
@@ -26,9 +28,15 @@ const VendorDetails = () => {
     }
   }, [id]);
 
+  const [success, setSuccess] = useState(false);
+  useEffect(() => {
+    if (success) {
+      navigate("/arus");
+    }
+  }, [success]);
+
   const [updatedVendor, setUpdatedVendor] = useState({});
   const [hasError, setHasError] = useState(false);
-  const [success, setSuccess] = useState(false);
   const title = id ? "Árus módosítása" : "Új árus hozzáadása";
   const submitButtonLabel = id ? "Módosítás" : "Hozzáadás";
 
@@ -121,7 +129,6 @@ const VendorDetails = () => {
       {hasError && (
         <p className="text-danger mt-3">Hiba történt a beküldés során!</p>
       )}
-      {success && <Navigate to="/arus" />}
     </Form>
   );
 };
