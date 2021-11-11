@@ -8,6 +8,7 @@ import { fetchVendorById } from "./../components/Service";
 import FormTextInput from "../components/FormTextInput";
 import FormTextAreaInput from "../components/FormTextAreaInput";
 import VendorCardPaymentCheckbox from "../components/VendorCardPaymentCheckbox";
+import VendorProductsInput from "../components/VendorProductsInput";
 
 const VendorDetails = () => {
   const id = useParams().id;
@@ -108,18 +109,10 @@ const VendorDetails = () => {
         dataObject={updatedVendor}
         setter={setUpdatedVendor}
       />
-      <Row className="mb-3">
-        <Col>
-          <p className="mb-2">Termékek</p>
-          <ReactTagInput
-            placeholder="Írd be a termék nevét és nyomj enter-t"
-            tags={updatedVendor.products || []}
-            onChange={(products) =>
-              setUpdatedVendor({ ...updatedVendor, products: products })
-            }
-          />
-        </Col>
-      </Row>
+      <VendorProductsInput
+        dataObject={updatedVendor}
+        setter={setUpdatedVendor}
+      />
       <FormTextInput
         label="Árus telefonszáma"
         dataObject={updatedVendor}
