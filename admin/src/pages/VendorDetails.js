@@ -162,17 +162,12 @@ const VendorDetails = () => {
         dataObjectKey="facebook"
         setter={setUpdatedVendor}
       />
-      <Form.Group className="mb-3" controlId="formVendorInstagram">
-        <Form.Label>Árus instagram linkje</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder="Árus instagram linkje..."
-          value={updatedVendor.instagram || ""}
-          onChange={(e) =>
-            setUpdatedVendor({ ...updatedVendor, instagram: e.target.value })
-          }
-        />
-      </Form.Group>
+      <FormTextInput
+        label="Árus instagram linkje"
+        dataObject={updatedVendor}
+        dataObjectKey="instagram"
+        setter={setUpdatedVendor}
+      />
       <Form.Group className="mb-3" controlId="formVendorWeb">
         <Form.Label>Árus honlap címe</Form.Label>
         <Form.Control
