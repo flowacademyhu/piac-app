@@ -77,18 +77,14 @@ const VendorDetails = () => {
         dataObjectKey="name"
         setter={setUpdatedVendor}
       />
-      <Form.Group className="mb-3" controlId="formVendorLogo">
-        <Form.Label>Árus logója</Form.Label>
-        <Form.Control
-          type="url"
-          placeholder="Árus logója..."
-          value={updatedVendor.profilePic || ""}
-          required
-          onChange={(e) =>
-            setUpdatedVendor({ ...updatedVendor, profilePic: e.target.value })
-          }
-        />
-      </Form.Group>
+      <FormTextInput
+        label="Árus logója"
+        dataObject={updatedVendor}
+        dataObjectKey="profilePic"
+        setter={setUpdatedVendor}
+        required={true}
+        type="url"
+      />
       <Form.Group className="mb-3" controlId="formVendorShortIntro">
         <Form.Label>Rövid bemutatkozás</Form.Label>
         <Form.Control
