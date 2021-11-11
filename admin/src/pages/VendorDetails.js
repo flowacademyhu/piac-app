@@ -2,8 +2,11 @@ import { useState, useEffect } from "react";
 import { Form } from "react-bootstrap";
 import { useParams, Navigate } from "react-router-dom";
 import "@pathofdev/react-tag-input/build/index.css";
-import axios from "axios";
-import { fetchVendorById } from "./../components/Service";
+import {
+  fetchVendorById,
+  addVendor,
+  updateVendor,
+} from "./../components/Service";
 import FormTextInput from "../components/FormTextInput";
 import FormTextAreaInput from "../components/FormTextAreaInput";
 import VendorCardPaymentCheckbox from "../components/VendorCardPaymentCheckbox";
@@ -28,47 +31,15 @@ const VendorDetails = () => {
   const [success, setSuccess] = useState(false);
   const title = id ? "Árus módosítása" : "Új árus hozzáadása";
   const submitButtonLabel = id ? "Módosítás" : "Hozzáadás";
-  const vendorApi = "/v1/api/admin/vendor";
-  const tokenConfig = {
-    headers: {
-      Authorization: `Bearer ${window.localStorage.getItem("token")}`,
-    },
-  };
-
-  const addVendor = async (vendor) => {
-    try {
-      const response = await axios.post(vendorApi, updatedVendor, tokenConfig);
-      if (response.status === 200) {
-        setSuccess(true);
-      }
-    } catch (error) {
-      setHasError(true);
-    }
-  };
-
-  const updateVendor = async (vendor, id) => {
-    try {
-      const response = await axios.put(
-        vendorApi + "/" + id,
-        updatedVendor,
-        tokenConfig
-      );
-      if (response.status === 200) {
-        setSuccess(true);
-      }
-    } catch (error) {
-      setHasError(true);
-    }
-  };
 
   return (
     <Form
       className="container mb-3"
       onSubmit={(e) => {
         if (id) {
-          updateVendor(updatedVendor, id);
+          updateVendor(updatedVendor, id, setSuccess, setHasError);
         } else {
-          addVendor(updatedVendor);
+          addVendor(updatedVendor, setSuccess, setHasError);
         }
         e.preventDefault();
       }}

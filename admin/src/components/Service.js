@@ -1,5 +1,12 @@
 import axios from "axios";
 
+const tokenConfig = {
+  headers: {
+    Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+  },
+};
+
+const VendorAdminAPI = "/v1/api/admin/vendor";
 const MarketAPI = "/v1/api/market";
 
 export const fetchMarkets = async () => {
@@ -34,5 +41,31 @@ export const fetchVendorById = async (id) => {
     return data;
   } catch (error) {
     console.warn("Failed to load vendor");
+  }
+};
+
+export const addVendor = async (vendor, setSuccess, setHasError) => {
+  try {
+    const response = await axios.post(VendorAdminAPI, vendor, tokenConfig);
+    if (response.status === 200) {
+      setSuccess(true);
+    }
+  } catch (error) {
+    setHasError(true);
+  }
+};
+
+export const updateVendor = async (vendor, id, setSuccess, setHasError) => {
+  try {
+    const response = await axios.put(
+      VendorAdminAPI + "/" + id,
+      vendor,
+      tokenConfig
+    );
+    if (response.status === 200) {
+      setSuccess(true);
+    }
+  } catch (error) {
+    setHasError(true);
   }
 };
