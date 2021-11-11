@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import VendorCard from "../components/VendorCard";
+import VendorCard from "./VendorCard";
 import sortByName from "./SortByName";
 
 const VendorListOfOneMarket = ({ vendors }) => {

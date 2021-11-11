@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/vendor-header.css";
-import defaultVendorImage from "../img/defaultVendorImage.png";
+import defaultVendorImage from "../icons/navigation/defaultVendorImage.png";
 
 const VendorHeader = (props) => {
   const { profilePic, name, intro } = props;
