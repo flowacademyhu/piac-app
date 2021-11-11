@@ -22,7 +22,7 @@ const NavBar = () => {
             Árusok
           </Link>
         </Nav>
-        <div style={{ color: "white", fontSize: "14px" }}>
+        <div style={{ color: "white", fontSize: "14px", paddingRight: "20px" }}>
           Üdvözöljük : {decoded.sub}
         </div>
         <Button
