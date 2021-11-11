@@ -5,6 +5,7 @@ import ReactTagInput from "@pathofdev/react-tag-input";
 import "@pathofdev/react-tag-input/build/index.css";
 import axios from "axios";
 import { fetchVendorById } from "./../components/Service";
+import FormTextInput from "../components/FormTextInput";
 
 const VendorDetails = () => {
   const id = useParams().id;
@@ -70,18 +71,12 @@ const VendorDetails = () => {
       }}
     >
       <h1 className="my-3">{title}</h1>
-      <Form.Group className="mb-3" controlId="formVendorName">
-        <Form.Label>Árus neve</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder="Árus neve..."
-          value={updatedVendor.name || ""}
-          required
-          onChange={(e) =>
-            setUpdatedVendor({ ...updatedVendor, name: e.target.value })
-          }
-        />
-      </Form.Group>
+      <FormTextInput
+        label="Árus neve"
+        dataObject={updatedVendor}
+        dataObjectKey="name"
+        setter={setUpdatedVendor}
+      />
       <Form.Group className="mb-3" controlId="formVendorLogo">
         <Form.Label>Árus logója</Form.Label>
         <Form.Control
