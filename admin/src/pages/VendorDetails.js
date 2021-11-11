@@ -18,22 +18,20 @@ const VendorDetails = () => {
   const id = useParams().id;
   const navigate = useNavigate();
 
+  const [success, setSuccess] = useState(false);
   useEffect(() => {
     const fetchVendor = async (id) => {
       const response = await fetchVendorById(id);
       setUpdatedVendor(response);
     };
+    if (success) {
+      navigate("/arus");
+      return;
+    }
     if (id) {
       fetchVendor(id);
     }
-  }, [id]);
-
-  const [success, setSuccess] = useState(false);
-  useEffect(() => {
-    if (success) {
-      navigate("/arus");
-    }
-  }, [success]);
+  }, [id, success]);
 
   const [updatedVendor, setUpdatedVendor] = useState({});
   const [hasError, setHasError] = useState(false);
