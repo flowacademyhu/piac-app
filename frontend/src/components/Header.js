@@ -1,8 +1,4 @@
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom/cjs/react-router-dom.min";
+import { Switch, Route } from "react-router-dom/cjs/react-router-dom.min";
 import MarketLogo from "../icons/navigation/calendar-dark-gray.svg";
 import VendorLogo from "../icons/navigation/vendor-dark-gray.svg";
 import "../styles/Header.css";
