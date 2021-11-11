@@ -3,7 +3,7 @@ import VendorTable from "../components/VendorTable";
 import { Navigate } from "react-router-dom";
 
 const VendotTablePage = () => {
-  return window.localStorage.getItem("token") ? (
+  return (
     <Container>
       <Row>
         <Col>
@@ -11,8 +11,6 @@ const VendotTablePage = () => {
         </Col>
       </Row>
     </Container>
-  ) : (
-    <Navigate to="/" />
   );
 };
 

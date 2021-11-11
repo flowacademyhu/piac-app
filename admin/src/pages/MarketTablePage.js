@@ -1,9 +1,8 @@
 import { Col, Container, Row } from "react-bootstrap";
 import MarketTable from "../components/MarketTable";
-import { Navigate } from "react-router-dom";
 
 const MarketTablePage = () => {
-  return window.localStorage.getItem("token") ? (
+  return (
     <Container>
       <Row>
         <Col>
@@ -11,8 +10,6 @@ const MarketTablePage = () => {
         </Col>
       </Row>
     </Container>
-  ) : (
-    <Navigate to="/" />
   );
 };
 
