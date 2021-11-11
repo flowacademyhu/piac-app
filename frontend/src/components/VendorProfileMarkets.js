@@ -4,7 +4,7 @@ import MarketCard from "./MarketCard";
 const VendorProfileMarkets = ({ upcomingMarkets }) => {
   return (
     <div>
-      <h2 className="vendor-profile-markets-title">
+      <h2 className="vendor-profile-markets-title vendor-padding">
         Melyik piacon találod legközelebb?
       </h2>
       <div className="card-list">
