@@ -42,18 +42,17 @@ const VendorDetails = () => {
   const title = id ? "Árus módosítása" : "Új árus hozzáadása";
   const submitButtonLabel = id ? "Módosítás" : "Hozzáadás";
 
+  const submitForm = (e) => {
+    if (id) {
+      updateVendor(updatedVendor, id, setSuccess, setHasError);
+    } else {
+      addVendor(updatedVendor, setSuccess, setHasError);
+    }
+    e.preventDefault();
+  };
+
   return (
-    <Form
-      className="container mb-3"
-      onSubmit={(e) => {
-        if (id) {
-          updateVendor(updatedVendor, id, setSuccess, setHasError);
-        } else {
-          addVendor(updatedVendor, setSuccess, setHasError);
-        }
-        e.preventDefault();
-      }}
-    >
+    <Form className="container mb-3" onSubmit={submitForm}>
       <h1 className="my-3">{title}</h1>
       <FormTextInput
         label="Árus neve"
