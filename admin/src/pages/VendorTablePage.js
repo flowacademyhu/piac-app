@@ -1,8 +1,9 @@
 import { Col, Container, Row } from "react-bootstrap";
 import VendorTable from "../components/VendorTable";
+import { Navigate } from "react-router-dom";
 
 const VendotTablePage = () => {
-  return (
+  return window.localStorage.getItem("token") ? (
     <Container>
       <Row>
         <Col>
@@ -10,6 +11,8 @@ const VendotTablePage = () => {
         </Col>
       </Row>
     </Container>
+  ) : (
+    <Navigate to="/" />
   );
 };
 
