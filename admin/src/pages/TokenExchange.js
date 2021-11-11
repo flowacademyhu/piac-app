@@ -1,31 +1,33 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "../components/login.css";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const TokenExchange = () => {
-  const tokenParam = useParams().tokenparameter;
+  const { token } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const axios = require("axios");
 
     async function getMail() {
       try {
-        const response = await axios.get("/token/" + tokenParam);
+        const response = await axios.get("/v1/api/token/" + token);
         window.localStorage.setItem("token", response.data);
-        console.log(response);
+        window.location.reload();
       } catch (error) {
         console.error("Hiba történt a kérés során!");
       }
     }
-  }, []);
+    getMail();
+  }, [token]);
 
   return (
     <div>
       <div className="text">Token</div>
-      <Form.Control className="form" placeHolder="Token" type="text" />
+      <Form.Control className="form" placeholder="Token" type="text" />
       <div className="login">
         <Button variant="outline-dark">Belépés</Button>
       </div>

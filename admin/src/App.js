@@ -7,26 +7,25 @@ import LoginPage from "./components/Login";
 import TokenExchange from "./pages/TokenExchange";
 
 function App() {
-  return window.localStorage.getItem("token") ? (
-    <>
-      <Router>
-        <Menu />
+  return (
+    <Router>
+      {window.localStorage.getItem("token") ? (
+        <>
+          <Menu />
+          <Routes>
+            <Route index path="/piac" element={<MarketTablePage />} />
+            <Route path="/arus" element={<VendorTablePage />} />
+            <Route path="/arus/uj" element={<VendorDetails />} />
+            <Route path="/arus/szerkeszt" element={<VendorDetails />} />
+          </Routes>
+        </>
+      ) : (
         <Routes>
-          <Route exact path="/" element={<LoginPage />} />
-          <Route
-            exact
-            path="/token/:tokenparameter"
-            element={<TokenExchange />}
-          />
-          <Route exact path="/piac" element={<MarketTablePage />} />
-          <Route exact path="/arus" element={<VendorTablePage />} />
-          <Route exact path="/arus/uj" element={<VendorDetails />} />
-          <Route exact path="/arus/szerkeszt" element={<VendorDetails />} />
+          <Route path="/token/:token" element={<TokenExchange />} />
+          <Route path="/" element={<LoginPage />} />
         </Routes>
-      </Router>
-    </>
-  ) : (
-    <LoginPage />
+      )}
+    </Router>
   );
 }
 

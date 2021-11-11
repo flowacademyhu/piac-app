@@ -5,14 +5,13 @@ import Button from "react-bootstrap/Button";
 import "./login.css";
 
 const LoginPage = () => {
-  const [token, setToken] = useState([]);
   const [email, setEmail] = useState("");
 
   const axios = require("axios");
 
   async function getMail(email) {
     try {
-      const response = await axios.post("/v1/api/login", {
+      await axios.post("/v1/api/login", {
         emailAddress: email,
       });
     } catch (error) {
