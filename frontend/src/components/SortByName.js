@@ -1,6 +1,8 @@
+const matchFormat = require("../functions/matchFormat");
+
 const sortByName = function (a, b) {
-  const nameA = a.name.toUpperCase();
-  const nameB = b.name.toUpperCase();
+  const nameA = matchFormat(a.name);
+  const nameB = matchFormat(b.name);
   return nameA < nameB ? -1 : nameA > nameB ? 1 : 0;
 };
 
