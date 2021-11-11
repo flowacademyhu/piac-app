@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { Form, Button, Row, Col } from "react-bootstrap";
-import { useParams, Link, Navigate } from "react-router-dom";
+import { Form } from "react-bootstrap";
+import { useParams, Navigate } from "react-router-dom";
 import "@pathofdev/react-tag-input/build/index.css";
 import axios from "axios";
 import { fetchVendorById } from "./../components/Service";
@@ -8,6 +8,7 @@ import FormTextInput from "../components/FormTextInput";
 import FormTextAreaInput from "../components/FormTextAreaInput";
 import VendorCardPaymentCheckbox from "../components/VendorCardPaymentCheckbox";
 import VendorProductsInput from "../components/VendorProductsInput";
+import VendorDetailsButtons from "../components/VendorDetailsButtons";
 
 const VendorDetails = () => {
   const id = useParams().id;
@@ -145,16 +146,7 @@ const VendorDetails = () => {
         setter={setUpdatedVendor}
         type="url"
       />
-      <Row>
-        <Col>
-          <Button variant="primary" type="submit" className="mr-3">
-            {submitButtonLabel}
-          </Button>
-          <Link to="/arus">
-            <Button variant="warning">Mégsem</Button>
-          </Link>
-        </Col>
-      </Row>
+      <VendorDetailsButtons submitButtonLabel={submitButtonLabel} />
       {hasError && (
         <p className="text-danger mt-3">Hiba történt a beküldés során!</p>
       )}
