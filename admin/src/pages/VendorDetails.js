@@ -7,6 +7,7 @@ import axios from "axios";
 import { fetchVendorById } from "./../components/Service";
 import FormTextInput from "../components/FormTextInput";
 import FormTextAreaInput from "../components/FormTextAreaInput";
+import VendorCardPaymentCheckbox from "../components/VendorCardPaymentCheckbox";
 
 const VendorDetails = () => {
   const id = useParams().id;
@@ -103,19 +104,10 @@ const VendorDetails = () => {
         rows={5}
         maxLength={2500}
       />
-      <Form.Group className="mb-3" controlId="formCardPaymentCheckbox">
-        <Form.Check
-          type="checkbox"
-          label="Bankkártyás fizetés"
-          checked={updatedVendor.cardPayment || false}
-          onChange={(e) =>
-            setUpdatedVendor({
-              ...updatedVendor,
-              cardPayment: e.target.checked,
-            })
-          }
-        />
-      </Form.Group>
+      <VendorCardPaymentCheckbox
+        dataObject={updatedVendor}
+        setter={setUpdatedVendor}
+      />
       <Row className="mb-3">
         <Col>
           <p className="mb-2">Termékek</p>
