@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import "../components/login.css";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router";
+import { setToken } from "../components/AuthService";
 
 const TokenExchange = () => {
   const { token } = useParams();
@@ -16,11 +17,12 @@ const TokenExchange = () => {
     async function getMail() {
       try {
         const response = await axios.get("/v1/api/token/" + token);
+
         window.localStorage.setItem("token", response.data);
         navigate("/piac");
         window.location.reload();
       } catch (error) {
-        console.error("Hiba történt a kérés során!");
+        alert("Hiba történt! Próbálja újra!");
       }
     }
     getMail();

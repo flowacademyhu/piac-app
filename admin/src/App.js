@@ -5,11 +5,12 @@ import Menu from "./components/Menu";
 import VendorDetails from "./pages/VendorDetails";
 import LoginPage from "./components/Login";
 import TokenExchange from "./pages/TokenExchange";
+import { getToken } from "./components/AuthService";
 
 function App() {
   return (
     <Router>
-      {window.localStorage.getItem("token") ? (
+      {getToken() ? (
         <>
           <Menu />
           <Routes>
