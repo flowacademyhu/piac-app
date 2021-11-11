@@ -70,7 +70,10 @@ public class VendorService {
                 .setIntro(vendor.getIntro())
                 .setName(vendor.getName())
                 .setProfilePic(vendor.getProfilePic())
-                .setId(vendor.getId());
+                .setId(vendor.getId())
+                .setProducts(vendor.getProducts())
+                .setIntroductionLong(vendor.getIntroductionLong())
+                ;
     }
 
     public List<DetailVendorDTO> allVendors() {

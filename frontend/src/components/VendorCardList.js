@@ -3,9 +3,12 @@ import "../styles/MarketCardList.css";
 import { fetchVendors } from "./Service";
 import VendorCard from "./VendorCard";
 import { Link } from "react-router-dom";
+import SearchArea from "./SearchArea";
 import ErrorBody from "./ErrorBody";
+const filteredArrayByKeyword = require("../functions/filteredArrayByKeyword");
 
 const VendorCardList = () => {
+  const [searchTerm, setSearchTerm] = useState("");
   const [vendors, setVendors] = useState([]);
   const [error, setError] = useState(null);
 
@@ -19,28 +22,36 @@ const VendorCardList = () => {
   }, []);
 
   return (
-    <div className="card-list">
-      {error ? (
-        <ErrorBody error={error} />
-      ) : (
-        vendors.map((vendor) => {
-          return (
-            <div key={vendor.id}>
-              <Link
-                to={`/arusok/${vendor.id}`}
-                style={{ textDecoration: "none" }}
-              >
-                <VendorCard
-                  imageLogo={vendor.profilePic}
-                  vendor={vendor.name}
-                  vendorDesc={vendor.intro}
-                />
-              </Link>
-            </div>
-          );
-        })
-      )}
-    </div>
+    <>
+      <SearchArea
+        onChange={(e) => {
+          setSearchTerm(e.target.value);
+        }}
+        placeHolder="Keress termékre vagy árusra..."
+      />
+      <div className="card-list">
+        {error ? (
+          <ErrorBody error={error} />
+        ) : (
+          filteredArrayByKeyword(vendors, searchTerm).map((vendor) => {
+            return (
+              <div key={vendor.id}>
+                <Link
+                  to={`/arusok/${vendor.id}`}
+                  style={{ textDecoration: "none" }}
+                >
+                  <VendorCard
+                    imageLogo={vendor.profilePic}
+                    vendor={vendor.name}
+                    vendorDesc={vendor.intro}
+                  />
+                </Link>
+              </div>
+            );
+          })
+        )}
+      </div>
+    </>
   );
 };
 
