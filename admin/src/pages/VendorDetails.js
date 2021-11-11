@@ -168,17 +168,13 @@ const VendorDetails = () => {
         dataObjectKey="instagram"
         setter={setUpdatedVendor}
       />
-      <Form.Group className="mb-3" controlId="formVendorWeb">
-        <Form.Label>Árus honlap címe</Form.Label>
-        <Form.Control
-          type="url"
-          placeholder="Árus honlap címe..."
-          value={updatedVendor.webSite || ""}
-          onChange={(e) =>
-            setUpdatedVendor({ ...updatedVendor, webSite: e.target.value })
-          }
-        />
-      </Form.Group>
+      <FormTextInput
+        label="Árus honlap címe"
+        dataObject={updatedVendor}
+        dataObjectKey="webSite"
+        setter={setUpdatedVendor}
+        type="url"
+      />
       <Row>
         <Col>
           <Button variant="primary" type="submit" className="mr-3">
