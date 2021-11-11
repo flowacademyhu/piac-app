@@ -1,7 +1,12 @@
 import { Container, Navbar, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
+import { logOut } from "./AuthService";
+import { useNavigate } from "react-router";
 
 const NavBar = () => {
+  const navigate = useNavigate();
+
   return (
     <Navbar bg="primary" variant="dark">
       <Container>
@@ -13,6 +18,17 @@ const NavBar = () => {
             Árusok
           </Link>
         </Nav>
+        <Button
+          variant="secondary"
+          onClick={() => {
+            logOut();
+            navigate("/");
+            window.location.reload();
+            alert("Sikeresen kijelentkeztél!");
+          }}
+        >
+          Kijelentkezés
+        </Button>
       </Container>
     </Navbar>
   );
