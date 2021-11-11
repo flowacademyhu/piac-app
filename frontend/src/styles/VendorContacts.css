@@ -7,7 +7,8 @@ body {
 }
 
 .contact-container {
-  padding: 20px;
+  padding-left: 20px;
+  margin-bottom: 20px;
 }
 
 .contact-title {
@@ -24,7 +25,7 @@ body {
 .contact-info {
   text-align: left;
   align-content: center;
-  padding-bottom: 15px;
+  margin-bottom: 20px;
   display: flex;
 }
 

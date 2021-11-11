@@ -21,7 +21,7 @@
 }
 
 .vendorLogo {
-  min-height: 100px;
+  height: 100px;
   min-width: 100px;
   border-radius: 50%;
   border-style: solid;
@@ -29,7 +29,7 @@
   border-color: #705a4f;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
 }
 
 .vendorName {
