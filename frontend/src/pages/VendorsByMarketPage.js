@@ -64,16 +64,13 @@ const VendorsByMarketPage = () => {
   return (
     <>
       {!error && market.id ? (
-        <>
-          <HeaderWithMarket
-            profilePic={market.profilePic}
-            marketName={market.name}
-            marketLocation={market.place}
-            marketOpeningDate={market.openingDate}
-            marketClosingDate={market.closingDate}
-          />
-          {renderVendorList()}
-        </>
+        <HeaderWithMarket
+          profilePic={market.profilePic}
+          marketName={market.name}
+          marketLocation={market.place}
+          marketOpeningDate={market.openingDate}
+          marketClosingDate={market.closingDate}
+        />
       ) : (
         <div style={{ height: "90%" }} />
       )}
