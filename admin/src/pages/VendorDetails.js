@@ -76,6 +76,7 @@ const VendorDetails = () => {
         dataObject={updatedVendor}
         dataObjectKey="name"
         setter={setUpdatedVendor}
+        required={true}
       />
       <FormTextInput
         label="Árus logója"
