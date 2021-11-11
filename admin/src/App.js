@@ -26,16 +26,6 @@ function App() {
       </Router>
     </>
   ) : (
-    /**(
-    <Router>
-      <Routes>
-        <Route exact path="/" element={<LoginPage />} />
-      </Routes>
-    </Router>
-    
-  );
-  */
-
     <LoginPage />
   );
 }
