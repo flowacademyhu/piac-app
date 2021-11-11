@@ -3,11 +3,12 @@ import React, { useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "../components/login.css";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 const TokenExchange = () => {
   const { token } = useParams();
-  const navigate = useNavigate();
+  let navigate = useNavigate();
 
   useEffect(() => {
     const axios = require("axios");
@@ -16,6 +17,7 @@ const TokenExchange = () => {
       try {
         const response = await axios.get("/v1/api/token/" + token);
         window.localStorage.setItem("token", response.data);
+        navigate("/piac");
         window.location.reload();
       } catch (error) {
         console.error("Hiba történt a kérés során!");

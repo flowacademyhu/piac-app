@@ -23,6 +23,9 @@ const LoginPage = () => {
     <Form
       onSubmit={(e) => {
         getMail(email);
+        alert(
+          "E-mail küldése megtörtént! A csatolt linkre kattintva bejelentkezhet!"
+        );
         e.preventDefault();
       }}
     >
