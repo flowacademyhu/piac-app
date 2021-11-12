@@ -1,0 +1,23 @@
+.text {
+  padding-top: 20px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.form {
+  display: flex;
+  margin: 0 auto;
+  max-width: 320px;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding-top: 20px;
+}
+
+.vendorButton {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

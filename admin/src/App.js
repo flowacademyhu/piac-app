@@ -3,20 +3,30 @@ import MarketTablePage from "./pages/MarketTablePage";
 import VendorTablePage from "./pages/VendorTablePage";
 import Menu from "./components/Menu";
 import VendorDetails from "./pages/VendorDetails";
+import LoginPage from "./components/Login";
+import TokenExchange from "./pages/TokenExchange";
+import { getToken } from "./components/AuthService";
 
 function App() {
   return (
-    <>
-      <Router>
-        <Menu />
+    <Router>
+      {getToken() ? (
+        <>
+          <Menu />
+          <Routes>
+            <Route index path="/piac" element={<MarketTablePage />} />
+            <Route path="/arus" element={<VendorTablePage />} />
+            <Route path="/arus/uj" element={<VendorDetails />} />
+            <Route path="/arus/szerkeszt" element={<VendorDetails />} />
+          </Routes>
+        </>
+      ) : (
         <Routes>
-          <Route exact path="/piac" element={<MarketTablePage />} />
-          <Route exact path="/arus" element={<VendorTablePage />} />
-          <Route exact path="/arus/uj" element={<VendorDetails />} />
-          <Route exact path="/arus/szerkeszt/:id" element={<VendorDetails />} />
+          <Route path="/token/:token" element={<TokenExchange />} />
+          <Route path="/" element={<LoginPage />} />
         </Routes>
-      </Router>
-    </>
+      )}
+    </Router>
   );
 }
 
