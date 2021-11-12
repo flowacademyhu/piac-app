@@ -7,7 +7,6 @@ import LoginPage from "./components/Login";
 import TokenExchange from "./pages/TokenExchange";
 import { getToken } from "./components/AuthService";
 
-
 function App() {
   return (
     <Router>
