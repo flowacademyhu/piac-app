@@ -41,6 +41,7 @@
 .profile-components {
   height: var(--profile-components-height);
   overflow-y: auto;
+  margin-bottom: 20px;
 }
 
 .empty-page-message {
@@ -54,5 +55,4 @@
   font-family: "Amatic SC", sans-serif;
   font-size: 32px;
   font-weight: 700;
-  padding: 20px;
 }

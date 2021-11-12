@@ -6,10 +6,6 @@ body {
   background-color: #f7f5f2;
 }
 
-.contact-container {
-  padding: 20px;
-}
-
 .contact-title {
   font-family: "Amatic SC", sans-serif;
   font-size: 32px;
@@ -24,7 +20,7 @@ body {
 .contact-info {
   text-align: left;
   align-content: center;
-  padding-bottom: 15px;
+  margin-bottom: 20px;
   display: flex;
 }
 
@@ -34,6 +30,8 @@ body {
   font-family: "Open Sans", sans-serif;
   font-weight: bold;
   font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .contact-links:hover {

@@ -57,3 +57,8 @@
   display: -webkit-box;
   -webkit-line-clamp: 3;
 }
+
+.vendor-padding {
+  padding: 0 20px;
+  margin-bottom: 20px;
+}

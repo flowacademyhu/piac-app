@@ -37,7 +37,7 @@ const VendorContacts = (props) => {
   ];
 
   return (
-    <div className="contact-container">
+    <div className="vendor-padding">
       <h1 className="contact-title">Elérhetőségek</h1>
       {contacts.map((contact, index) => {
         return (

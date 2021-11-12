@@ -7,7 +7,7 @@ const Payment = ({ cardPayment }) => {
     cardPayment ? "Bankkártyával is fizethetsz" : "Csak készpénzzel fizethetsz";
 
   return (
-    <div className="vendor-payment">
+    <div className="vendor-payment vendor-padding">
       <img
         className="payment-icon"
         src={cardPayment ? cardIcon : cashIcon}
