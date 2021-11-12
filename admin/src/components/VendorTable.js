@@ -3,8 +3,9 @@ import { Button, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./login.css";
-import { fetchVendors } from "./Service";
 import VendorDetails from "../pages/VendorDetails";
+import { fetchVendors, deleteVendorById } from "./Service";
+import DeleteEntity from "./DeleteEntity";
 
 const VendorTable = () => {
   const [allVendors, setAllVendors] = useState([]);
@@ -17,6 +18,11 @@ const VendorTable = () => {
   useEffect(() => {
     getAllVendors();
   }, []);
+
+  const handleDeleteVendor = async (id) => {
+    await deleteVendorById(id);
+    getAllVendors();
+  };
 
   return (
     <div>
@@ -45,7 +51,11 @@ const VendorTable = () => {
                   </Link>
                 </td>
                 <td className="text-center">
-                  <Button>Töröl</Button>
+                  <DeleteEntity
+                    confirmationQuestion={`Biztosan kitörlöd a következő árust? ${vendor.name}`}
+                    handleDelete={handleDeleteVendor}
+                    ID={vendor.id}
+                  />
                 </td>
               </tr>
             );
