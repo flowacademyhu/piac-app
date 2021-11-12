@@ -1,4 +1,4 @@
-import "./Footer.css";
+import "../styles/Footer.css";
 import { Container, Row } from "react-bootstrap";
 import FooterButton from "./FooterButton";
 

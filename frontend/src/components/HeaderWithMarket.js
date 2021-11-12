@@ -1,5 +1,5 @@
 import MarketInfo from "./MarketInfo";
-import "../styles/HeaderWithMarket.css";
+import "../styles/MarketCard.css";
 
 const HeaderWithMarket = ({
   profilePic,

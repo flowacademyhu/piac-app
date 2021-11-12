@@ -23,7 +23,7 @@ const VendorTable = () => {
       <div className="text-center">
         <p className="font-weight-bold">ÁRUSOK</p>
         <Link to="/arus/uj">
-          <Button className="vendorButton">ÚJ ÁRUS FELVÉTELE</Button>
+          <Button className="my-3">ÚJ ÁRUS FELVÉTELE</Button>
         </Link>
       </div>
       <Table striped bordered hover>
@@ -40,11 +40,7 @@ const VendorTable = () => {
               <tr key={vendor.id}>
                 <td>{vendor.name}</td>
                 <td className="text-center">
-                  <Link
-                    to="/arus/szerkeszt"
-                    component={<VendorDetails />}
-                    state={vendor}
-                  >
+                  <Link to={`/arus/szerkeszt/${vendor.id}`}>
                     <Button>Szerkeszt</Button>
                   </Link>
                 </td>

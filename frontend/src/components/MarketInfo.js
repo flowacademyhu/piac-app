@@ -1,4 +1,4 @@
-import defaultMarketImage from "../img/defaultMarketImage.png";
+import defaultMarketImage from "../icons/navigation/defaultMarketImage.png";
 
 const MarketInfo = ({
   profilePic,
@@ -9,7 +9,6 @@ const MarketInfo = ({
   header,
 }) => {
   const marketOpeningDateFormatter = {
-    year: "numeric",
     month: "long",
     day: "numeric",
   };

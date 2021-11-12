@@ -41,11 +41,13 @@
 .profile-components {
   height: var(--profile-components-height);
   overflow-y: auto;
+  margin-bottom: 20px;
 }
 
 .empty-page-message {
-  text-align: center;
-  padding-top: 20px;
+  text-align: left;
+  font-size: 12px;
+  font-family: "Open Sans", sans-serif;
 }
 
 .vendor-profile-markets-title {
@@ -53,5 +55,4 @@
   font-family: "Amatic SC", sans-serif;
   font-size: 32px;
   font-weight: 700;
-  padding: 20px;
 }

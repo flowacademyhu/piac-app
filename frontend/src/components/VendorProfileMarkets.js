@@ -4,7 +4,7 @@ import MarketCard from "./MarketCard";
 const VendorProfileMarkets = ({ upcomingMarkets }) => {
   return (
     <div>
-      <h2 className="vendor-profile-markets-title">
+      <h2 className="vendor-profile-markets-title vendor-padding">
         Melyik piacon találod legközelebb?
       </h2>
       <div className="card-list">
@@ -30,7 +30,9 @@ const VendorProfileMarkets = ({ upcomingMarkets }) => {
             );
           })
         ) : (
-          <p className="empty-page-message">Nincs megjeleníthető piac</p>
+          <p className="empty-page-message">
+            A közeljövőben egy piacon sem lesz jelen.
+          </p>
         )}
       </div>
     </div>
