@@ -57,9 +57,9 @@ export const deleteVendorById = async (id) => {
     return data;
   } catch (error) {
     console.warn("Failed to delete vendor");
-   }
+  }
 };
-    
+
 export const fetchVendorById = async (id) => {
   const url = VendorAPI + "/" + id;
   try {
