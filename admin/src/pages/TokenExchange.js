@@ -6,14 +6,13 @@ import "../components/login.css";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router";
 import { setToken } from "../components/AuthService";
+import axios from "axios";
 
 const TokenExchange = () => {
   const { token } = useParams();
   let navigate = useNavigate();
 
   useEffect(() => {
-    const axios = require("axios");
-
     async function getMail() {
       try {
         const response = await axios.get("/v1/api/token/" + token);
