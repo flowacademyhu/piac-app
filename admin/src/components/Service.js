@@ -34,6 +34,32 @@ export const fetchVendors = async () => {
   }
 };
 
+const adminMarketAPI = "/v1/api/admin/market";
+
+export const deleteMarketById = async (id) => {
+  const url = adminMarketAPI + "/" + id;
+  try {
+    const response = await axios.delete(url, tokenConfig);
+    const data = response.data;
+    return data;
+  } catch (error) {
+    console.warn("Failed to delete market");
+  }
+};
+
+const adminVendorAPI = "/v1/api/admin/vendor";
+
+export const deleteVendorById = async (id) => {
+  const url = adminVendorAPI + "/" + id;
+  try {
+    const response = await axios.delete(url, tokenConfig);
+    const data = response.data;
+    return data;
+  } catch (error) {
+    console.warn("Failed to delete vendor");
+  }
+};
+
 export const fetchVendorById = async (id) => {
   const url = VendorAPI + "/" + id;
   try {
