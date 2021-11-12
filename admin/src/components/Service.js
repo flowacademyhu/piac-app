@@ -1,4 +1,11 @@
 import axios from "axios";
+import { getToken } from "./AuthService";
+
+const tokenConfig = {
+  headers: {
+    Authorization: `Bearer ${getToken()}`,
+  },
+};
 
 const MarketAPI = "/v1/api/market";
 
@@ -31,7 +38,7 @@ const adminMarketAPI = "/v1/api/admin/market";
 export const deleteMarketById = async (id) => {
   const url = adminMarketAPI + "/" + id;
   try {
-    const response = await axios.delete(url);
+    const response = await axios.delete(url, tokenConfig);
     const data = response.data;
     return data;
   } catch (error) {
@@ -44,7 +51,7 @@ const adminVendorAPI = "/v1/api/admin/vendor";
 export const deleteVendorById = async (id) => {
   const url = adminVendorAPI + "/" + id;
   try {
-    const response = await axios.delete(url);
+    const response = await axios.delete(url, tokenConfig);
     const data = response.data;
     return data;
   } catch (error) {
