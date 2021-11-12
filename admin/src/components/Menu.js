@@ -1,15 +1,10 @@
-import { Container, Navbar, Nav } from "react-bootstrap";
+import { Container, Navbar, Nav, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
-import { getToken, logOut } from "./AuthService";
+import { logOut, getUsername } from "./AuthService";
 import { useNavigate } from "react-router";
-import jwtDecode from "jwt-decode";
 
 const NavBar = () => {
   const navigate = useNavigate();
-
-  var token = getToken();
-  var decoded = jwtDecode(token);
 
   return (
     <Navbar bg="primary" variant="dark">
@@ -23,7 +18,7 @@ const NavBar = () => {
           </Link>
         </Nav>
         <div style={{ color: "white", fontSize: "14px", paddingRight: "20px" }}>
-          Üdvözöljük : {decoded.sub}
+          Üdvözöljük : {getUsername()}
         </div>
         <Button
           variant="Light"
@@ -31,7 +26,6 @@ const NavBar = () => {
             logOut();
             navigate("/");
             window.location.reload();
-            alert("Sikeresen kijelentkeztél!");
           }}
         >
           Kijelentkezés

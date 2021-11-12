@@ -17,8 +17,7 @@ const TokenExchange = () => {
     async function getMail() {
       try {
         const response = await axios.get("/v1/api/token/" + token);
-
-        window.localStorage.setItem("token", response.data);
+        setToken(response.data);
         navigate("/piac");
         window.location.reload();
       } catch (error) {

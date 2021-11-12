@@ -2,18 +2,21 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import axios from "axios";
 import "./login.css";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
-
-  const axios = require("axios");
+  const [success, setSuccess] = useState(false);
 
   async function getMail(email) {
     try {
-      await axios.post("/v1/api/login", {
+      const response = await axios.post("/v1/api/login", {
         emailAddress: email,
       });
+      if (response.status === 200) {
+        setSuccess(true);
+      }
     } catch (error) {
       console.error("Hiba történt a kérés során!");
     }
@@ -23,9 +26,6 @@ const LoginPage = () => {
     <Form
       onSubmit={(e) => {
         getMail(email);
-        alert(
-          "E-mail küldése megtörtént! A csatolt linkre kattintva bejelentkezhet!"
-        );
         e.preventDefault();
       }}
     >
@@ -42,6 +42,11 @@ const LoginPage = () => {
           Küldés
         </Button>
       </div>
+      {success && (
+        <div style={{ textAlign: "center", paddingTop: "50px" }}>
+          E-mail küldése megtörtént! A csatolt linkre kattintva bejelentkezhet!
+        </div>
+      )}
     </Form>
   );
 };
