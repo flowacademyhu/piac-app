@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
-import VendorCard from "../components/VendorCard";
+import VendorCard from "./VendorCard";
 import sortByName from "./SortByName";
 
-const VendorListOfOneMarket = ({ market }) => {
-  market.vendors.sort(sortByName);
+const VendorListOfOneMarket = ({ vendors }) => {
+  vendors.sort(sortByName);
 
   return (
     <div className="card-list">
-      {market.vendors &&
-        market.vendors.map((vendor) => {
+      {vendors &&
+        vendors.map((vendor) => {
           return (
             <div key={vendor.id}>
               <Link

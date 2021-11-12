@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button, Table } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { fetchVendors, deleteVendorById } from "./Service";
 import DeleteEntity from "./DeleteEntity";
@@ -25,9 +26,9 @@ const VendorTable = () => {
     <div>
       <div className="text-center">
         <p className="font-weight-bold">ÁRUSOK</p>
-        <Button style={{ marginTop: "20px", marginBottom: "20px" }}>
-          ÚJ ÁRUS FELVÉTELE
-        </Button>
+        <Link to="/arus/uj">
+          <Button className="my-3">ÚJ ÁRUS FELVÉTELE</Button>
+        </Link>
       </div>
       <Table striped bordered hover>
         <thead>
@@ -43,7 +44,9 @@ const VendorTable = () => {
               <tr key={vendor.id}>
                 <td>{vendor.name}</td>
                 <td className="text-center">
-                  <Button>Szerkeszt</Button>
+                  <Link to={`/arus/szerkeszt/${vendor.id}`}>
+                    <Button>Szerkeszt</Button>
+                  </Link>
                 </td>
                 <td className="text-center">
                   <DeleteEntity

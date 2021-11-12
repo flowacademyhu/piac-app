@@ -5,11 +5,13 @@ import VendorListOfOneMarket from "../components/VendorListOfOneMarket";
 import VendorlistUploadInProgress from "../components/VendorlistUploadInProgress";
 import { fetchMarketById } from "../components/Service";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+import SearchArea from "../components/SearchArea";
+const filteredArrayByKeyword = require("../functions/filteredArrayByKeyword");
 
 const VendorsByMarketPage = () => {
   const [market, setMarket] = useState({});
   const [error, hasError] = useState(false);
-
+  const [searchTerm, setSearchTerm] = useState("");
   const marketId = useParams().id;
 
   useEffect(() => {
@@ -24,9 +26,24 @@ const VendorsByMarketPage = () => {
     fetchMarket(marketId);
   }, [marketId]);
 
+  const filteredVendorArray = filteredArrayByKeyword(
+    market.vendors,
+    searchTerm
+  );
+
   const renderVendorList = () => {
     if (market.vendors && market.vendors.length > 0) {
-      return <VendorListOfOneMarket market={market} />;
+      return (
+        <>
+          <SearchArea
+            onChange={(e) => {
+              setSearchTerm(e.target.value);
+            }}
+            placeHolder="Keress termékre vagy árusra..."
+          />
+          <VendorListOfOneMarket vendors={filteredVendorArray} />
+        </>
+      );
     } else if (market.id) {
       return (
         <VendorlistUploadInProgress
@@ -55,7 +72,7 @@ const VendorsByMarketPage = () => {
             marketOpeningDate={market.openingDate}
             marketClosingDate={market.closingDate}
           />
-          {renderVendorList()}
+          <div className="intro">Kikkel találkozhatsz?</div>
         </>
       ) : (
         <div style={{ height: "90%" }} />

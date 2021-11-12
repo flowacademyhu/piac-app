@@ -1,6 +1,6 @@
 import "../styles/App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import "./Header.css";
+import "../styles/Header.css";
 import MainPage from "../pages/MainPage";
 import VendorPage from "../pages/VendorPage";
 import VendorProfilePage from "../pages/VendorProfilePage";

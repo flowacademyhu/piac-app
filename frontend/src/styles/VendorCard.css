@@ -21,15 +21,12 @@
 }
 
 .vendorLogo {
-  min-height: 100px;
+  height: 100px;
   min-width: 100px;
   border-radius: 50%;
-  border-style: solid;
-  border-width: 1px;
-  border-color: #705a4f;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
 }
 
 .vendorName {
@@ -59,4 +56,9 @@
   -webkit-box-orient: vertical;
   display: -webkit-box;
   -webkit-line-clamp: 3;
+}
+
+.vendor-padding {
+  padding: 0 20px;
+  margin-bottom: 20px;
 }

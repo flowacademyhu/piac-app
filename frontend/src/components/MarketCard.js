@@ -1,5 +1,5 @@
-import "../styles/MarketCard.css";
-import MarketInfo from "./MarketInfo";
+import "../styles/MarketInfoList.css";
+import MarketInfoList from "./MarketInfoList";
 
 const body = document.body;
 body.style.background = "#F7F5F2";
@@ -14,16 +14,14 @@ const MarketCard = ({
 }) => {
   return (
     <div className="marketCard">
-      <MarketInfo
+      <MarketInfoList
         profilePic={profilePic}
         marketName={marketName}
         marketLocation={marketLocation}
         marketOpeningDate={marketOpeningDate}
         marketClosingDate={marketClosingDate}
+        vendorsAmount={vendorsAmount}
       />
-      <div className="vendorNumber">
-        {vendorsAmount === 0 ? "Szervezés alatt..." : `${vendorsAmount} árus`}
-      </div>
     </div>
   );
 };

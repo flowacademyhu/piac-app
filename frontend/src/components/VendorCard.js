@@ -1,5 +1,5 @@
 import "../styles/VendorCard.css";
-import defaultVendorImage from "../img/defaultVendorImage.png";
+import defaultVendorImage from "../icons/navigation/defaultVendorImage.png";
 
 const body = document.body;
 body.style.background = "#F7F5F2";
