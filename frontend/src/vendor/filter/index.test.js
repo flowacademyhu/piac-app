@@ -1,4 +1,4 @@
-import filteredArrayByKeyword from "./filteredArrayByKeyword";
+import filteredArrayByKeyword from "./index";
 
 const objectArray = [
   {
