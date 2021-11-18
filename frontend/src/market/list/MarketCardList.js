@@ -1,9 +1,9 @@
-import MarketCard from "./MarketCard";
+import MarketCard from "../MarketCard";
 import React, { useState, useLayoutEffect } from "react";
-import "../styles/MarketCardList.css";
-import { fetchUpcomingMarkets } from "../api/Service";
+import "../../styles/MarketCardList.css";
+import { fetchUpcomingMarkets } from "../../api/Service";
 import { Link } from "react-router-dom";
-import ErrorBody from "./ErrorBody";
+import ErrorBody from "../../components/ErrorBody";
 
 const MarketCardList = () => {
   const [upcomingMarkets, setUpcomingMarkets] = useState([]);

@@ -7,7 +7,7 @@ import {
 } from "../../api/Service";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import VendorProfileInfo from "../../components/VendorProfileInfo";
-import VendorProfileMarkets from "../../components/VendorProfileMarkets";
+import VendorProfileMarkets from "./VendorProfileMarkets";
 import "../../styles/VendorInfoNav.css";
 
 const VendorProfilePage = () => {
