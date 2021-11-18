@@ -1,4 +1,4 @@
-import "../styles/Search.css";
+import "./SearchArea.css";
 
 const SearchArea = ({ onChange, placeHolder }) => {
   return (
