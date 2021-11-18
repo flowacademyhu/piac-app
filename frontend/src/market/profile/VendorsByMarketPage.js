@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import HeaderWithMarket from "./HeaderWithMarket";
-import VendorListOfOneMarket from "../../components/VendorListOfOneMarket";
+import VendorListOfOneMarket from "./VendorListOfOneMarket";
 import VendorlistUploadInProgress from "../../components/VendorlistUploadInProgress";
 import { fetchMarketById } from "../../api/Service";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";

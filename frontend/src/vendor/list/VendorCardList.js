@@ -1,7 +1,7 @@
 import React, { useState, useLayoutEffect } from "react";
 import "../../styles/MarketCardList.css";
 import { fetchVendors } from "../../api/Service";
-import VendorCard from "../../components/VendorCard";
+import VendorCard from "../VendorCard";
 import { Link } from "react-router-dom";
 import SearchArea from "../../components/SearchArea";
 import ErrorBody from "../../components/ErrorBody";
