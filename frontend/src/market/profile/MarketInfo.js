@@ -1,4 +1,4 @@
-import defaultMarketImage from "../icons/navigation/defaultMarketImage.png";
+import defaultMarketImage from "../defaultMarketImage.png";
 
 const MarketInfo = ({
   profilePic,
