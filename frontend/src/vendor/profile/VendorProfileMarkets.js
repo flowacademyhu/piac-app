@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import MarketCard from "./MarketCard";
+import MarketCard from "../../market/MarketCard";
 
 const VendorProfileMarkets = ({ upcomingMarkets }) => {
   return (
