@@ -8,7 +8,7 @@ import {
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import VendorProfileInfo from "./VendorProfileInfo";
 import VendorProfileMarkets from "./VendorProfileMarkets";
-import "../../styles/VendorInfoNav.css";
+import "./VendorInfoNav.css";
 
 const VendorProfilePage = () => {
   const [vendor, setVendor] = useState({});
