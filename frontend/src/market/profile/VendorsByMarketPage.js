@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import HeaderWithMarket from "../../components/HeaderWithMarket";
 import VendorListOfOneMarket from "../../components/VendorListOfOneMarket";
 import VendorlistUploadInProgress from "../../components/VendorlistUploadInProgress";
-import { fetchMarketById } from "../../components/Service";
+import { fetchMarketById } from "../../api/Service";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import SearchArea from "../../components/SearchArea";
 const filteredArrayByKeyword = require("../../functions/filteredArrayByKeyword");
