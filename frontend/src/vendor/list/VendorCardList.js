@@ -1,12 +1,12 @@
 import React, { useState, useLayoutEffect } from "react";
-import "../styles/MarketCardList.css";
-import { fetchVendors } from "../api/Service";
-import VendorCard from "./VendorCard";
+import "../../styles/MarketCardList.css";
+import { fetchVendors } from "../../api/Service";
+import VendorCard from "../../components/VendorCard";
 import { Link } from "react-router-dom";
-import SearchArea from "./SearchArea";
-import ErrorBody from "./ErrorBody";
-import sortByName from "./SortByName";
-import filteredArrayByKeyword from "../functions/filteredArrayByKeyword";
+import SearchArea from "../../components/SearchArea";
+import ErrorBody from "../../components/ErrorBody";
+import sortByName from "../../components/SortByName";
+import filteredArrayByKeyword from "../../functions/filteredArrayByKeyword";
 
 const VendorCardList = () => {
   const [searchTerm, setSearchTerm] = useState("");
