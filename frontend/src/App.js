@@ -4,7 +4,7 @@ import MainPage from "./market/list/MainPage";
 import VendorsByMarketPage from "./market/profile/VendorsByMarketPage";
 import VendorPage from "./vendor/list/VendorPage";
 import VendorProfilePage from "./vendor/profile/VendorProfilePage";
-import Footer from "./components/Footer";
+import Footer from "./footer/Footer";
 import "delayed-scroll-restoration-polyfill/index";
 
 const App = () => {

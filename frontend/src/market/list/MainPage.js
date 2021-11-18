@@ -1,4 +1,4 @@
-import Header from "../../components/Header";
+import Header from "../../header/Header";
 import MarketCardList from "./MarketCardList";
 
 const MainPage = () => {
