@@ -1,4 +1,4 @@
-import "../styles/MarketInfoList.css";
+import "./MarketInfoList.css";
 import MarketInfoList from "./MarketInfoList";
 
 const body = document.body;
