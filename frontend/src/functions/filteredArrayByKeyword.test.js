@@ -1,4 +1,4 @@
-import filteredArrayByKeyword from "../functions/filteredArrayByKeyword";
+import filteredArrayByKeyword from "./filteredArrayByKeyword";
 
 const objectArray = [
   {
