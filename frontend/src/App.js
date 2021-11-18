@@ -1,12 +1,12 @@
-import "../styles/App.css";
+import "./styles/App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import "../styles/Header.css";
-import MainPage from "../pages/MainPage";
-import VendorPage from "../pages/VendorPage";
-import VendorProfilePage from "../pages/VendorProfilePage";
-import VendorsByMarketPage from "../pages/VendorsByMarketPage";
-import Footer from "./Footer";
-import "../../node_modules/delayed-scroll-restoration-polyfill/index";
+import "./styles/Header.css";
+import MainPage from "./market/list/MainPage";
+import VendorsByMarketPage from "./market/profile/VendorsByMarketPage";
+import VendorPage from "./vendor/list/VendorPage";
+import VendorProfilePage from "./vendor/profile/VendorProfilePage";
+import Footer from "./components/Footer";
+import "delayed-scroll-restoration-polyfill/index";
 
 const App = () => {
   return (

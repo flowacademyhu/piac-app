@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import HeaderWithMarket from "../components/HeaderWithMarket";
-import VendorListOfOneMarket from "../components/VendorListOfOneMarket";
-import VendorlistUploadInProgress from "../components/VendorlistUploadInProgress";
-import { fetchMarketById } from "../components/Service";
+import HeaderWithMarket from "../../components/HeaderWithMarket";
+import VendorListOfOneMarket from "../../components/VendorListOfOneMarket";
+import VendorlistUploadInProgress from "../../components/VendorlistUploadInProgress";
+import { fetchMarketById } from "../../components/Service";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
-import SearchArea from "../components/SearchArea";
-const filteredArrayByKeyword = require("../functions/filteredArrayByKeyword");
+import SearchArea from "../../components/SearchArea";
+const filteredArrayByKeyword = require("../../functions/filteredArrayByKeyword");
 
 const VendorsByMarketPage = () => {
   const [market, setMarket] = useState({});
