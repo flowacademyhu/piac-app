@@ -1,4 +1,4 @@
-const matchFormat = require("./matchFormat");
+import matchFormat from "./matchFormat";
 
 const textIsIncludesKeyword = (text, keyword) => {
   return text !== null
@@ -8,4 +8,4 @@ const textIsIncludesKeyword = (text, keyword) => {
     : false;
 };
 
-module.exports = textIsIncludesKeyword;
+export default textIsIncludesKeyword;

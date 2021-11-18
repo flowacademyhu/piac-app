@@ -1,4 +1,4 @@
-const textIsIncludesKeyword = require("../functions/textIsIncludesKeyword");
+import textIsIncludesKeyword from "../functions/textIsIncludesKeyword";
 
 test("given a long text, when the search term is an empty string, then returns true", () => {
   expect(

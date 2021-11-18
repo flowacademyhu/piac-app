@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import SearchArea from "./SearchArea";
 import ErrorBody from "./ErrorBody";
 import sortByName from "./SortByName";
-const filteredArrayByKeyword = require("../functions/filteredArrayByKeyword");
+import filteredArrayByKeyword from "../functions/filteredArrayByKeyword";
 
 const VendorCardList = () => {
   const [searchTerm, setSearchTerm] = useState("");
