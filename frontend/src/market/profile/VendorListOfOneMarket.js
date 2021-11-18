@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import VendorCard from "../../vendor/VendorCard";
-import sortByName from "../../components/SortByName";
+import sortByName from "../../functions/sortByName";
 
 const VendorListOfOneMarket = ({ vendors }) => {
   vendors.sort(sortByName);

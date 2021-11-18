@@ -1,4 +1,4 @@
-import sortByName from "../components/SortByName";
+import sortByName from "../functions/sortByName";
 
 const listOneNotSorted = [
   {
