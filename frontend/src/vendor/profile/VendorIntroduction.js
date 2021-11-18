@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles/vendor-introduction.css";
+import "./VendorIntroduction.css";
 
 const VendorIntroduction = ({ introductionLong }) => {
   return (
