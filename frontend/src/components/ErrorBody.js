@@ -1,4 +1,4 @@
-import "../styles/Error.css";
+import "./ErrorBody.css";
 
 const ErrorBody = ({ error }) => {
   return (
