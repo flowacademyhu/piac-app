@@ -1,4 +1,4 @@
-import VendorCardList from "../../components/VendorCardList";
+import VendorCardList from "./VendorCardList";
 import Header from "../../components/Header";
 
 const VendorPage = () => {
