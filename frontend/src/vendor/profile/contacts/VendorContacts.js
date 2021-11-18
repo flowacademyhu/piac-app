@@ -3,7 +3,7 @@ import facebookLogo from "./facebook.svg";
 import instagramLogo from "./instagram.svg";
 import phoneLogo from "./phone.svg";
 import webLogo from "./web.svg";
-import "../../../styles/VendorContacts.css";
+import "./VendorContacts.css";
 import { v4 } from "uuid";
 
 const VendorContacts = (props) => {
