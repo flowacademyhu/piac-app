@@ -1,4 +1,4 @@
-import "../../styles/VendorlistUploadInProgress.css";
+import "./VendorlistUploadInProgress.css";
 
 const VendorlistUploadInProgress = ({ title, body }) => {
   return (
