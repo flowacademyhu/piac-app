@@ -1,7 +1,7 @@
 import MarketCard from "./MarketCard";
 import React, { useState, useLayoutEffect } from "react";
 import "../styles/MarketCardList.css";
-import { fetchUpcomingMarkets } from "./Service";
+import { fetchUpcomingMarkets } from "../api/Service";
 import { Link } from "react-router-dom";
 import ErrorBody from "./ErrorBody";
 
