@@ -1,4 +1,4 @@
-import "../../../styles/payment.css";
+import "./payment.css";
 import cardIcon from "./card.svg";
 import cashIcon from "./cash.svg";
 
