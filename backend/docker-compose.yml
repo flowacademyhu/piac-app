@@ -1,24 +1,23 @@
-version: '2'
+version: "2"
 services:
-
-  spring-boot-skeleton:
-    image: spring-boot-skeleton
+  piac-backend:
+    image: piac-backend
     build: .
     restart: always
     environment:
-      MYSQL_URL: jdbc:mysql://mysql_example:3306/skeleton
+      MYSQL_URL: jdbc:mysql://db:3306/piac-dev
     ports:
       - 8081:8081
     depends_on:
-      - mysql_example
+      - db
 
-  mysql_example:
+  db:
     platform: x86_64
     image: mysql
     command: --default-authentication-plugin=mysql_native_password
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: example
-      MYSQL_DATABASE: skeleton
+      MYSQL_DATABASE: piac-dev
     ports:
       - 3306:3306
