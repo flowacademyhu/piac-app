@@ -1,4 +1,4 @@
-import "../styles/VendorCard.css";
+import "./VendorCard.css";
 import defaultVendorImage from "./defaultVendorImage.png";
 
 const body = document.body;
