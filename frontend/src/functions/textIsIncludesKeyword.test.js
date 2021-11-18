@@ -1,4 +1,4 @@
-import textIsIncludesKeyword from "../functions/textIsIncludesKeyword";
+import textIsIncludesKeyword from "./textIsIncludesKeyword";
 
 test("given a long text, when the search term is an empty string, then returns true", () => {
   expect(
