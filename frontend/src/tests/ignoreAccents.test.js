@@ -1,4 +1,4 @@
-const matchFormat = require("../functions/matchFormat");
+import matchFormat from "../functions/matchFormat";
 
 test("given a string, when includes characters with accent then returns the string without accented characters", () => {
   expect(matchFormat("Crème Brulée-Valami")).toStrictEqual("CremeBruleeValami");

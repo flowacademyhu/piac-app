@@ -5,4 +5,4 @@ const matchFormat = (text) => {
     .replace(/ |-/g, "");
 };
 
-module.exports = matchFormat;
+export default matchFormat;

@@ -1,4 +1,4 @@
-const textIsIncludesKeyword = require("./textIsIncludesKeyword");
+import textIsIncludesKeyword from "./textIsIncludesKeyword";
 
 const filteredArrayByKeyword = (objectArray, keyword) => {
   return keyword.length === 0
@@ -14,4 +14,4 @@ const filteredArrayByKeyword = (objectArray, keyword) => {
       );
 };
 
-module.exports = filteredArrayByKeyword;
+export default filteredArrayByKeyword;

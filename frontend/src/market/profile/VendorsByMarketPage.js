@@ -6,7 +6,7 @@ import VendorlistUploadInProgress from "../../components/VendorlistUploadInProgr
 import { fetchMarketById } from "../../api/Service";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import SearchArea from "../../components/SearchArea";
-const filteredArrayByKeyword = require("../../functions/filteredArrayByKeyword");
+import filteredArrayByKeyword from "../../functions/filteredArrayByKeyword";
 
 const VendorsByMarketPage = () => {
   const [market, setMarket] = useState({});

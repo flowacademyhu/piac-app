@@ -1,4 +1,4 @@
-const filteredArrayByKeyword = require("../functions/filteredArrayByKeyword");
+import filteredArrayByKeyword from "../functions/filteredArrayByKeyword";
 
 const objectArray = [
   {
