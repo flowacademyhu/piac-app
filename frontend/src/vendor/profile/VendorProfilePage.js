@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import VendorHeader from "../components/VendorHeader";
+import VendorHeader from "../../components/VendorHeader";
 import {
   fetchVendorById,
   fetchUpcomingMarketsByVendorId,
-} from "../components/Service";
+} from "../../components/Service";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
-import VendorProfileInfo from "../components/VendorProfileInfo";
-import VendorProfileMarkets from "../components/VendorProfileMarkets";
-import "../styles/VendorInfoNav.css";
+import VendorProfileInfo from "../../components/VendorProfileInfo";
+import VendorProfileMarkets from "../../components/VendorProfileMarkets";
+import "../../styles/VendorInfoNav.css";
 
 const VendorProfilePage = () => {
   const [vendor, setVendor] = useState({});

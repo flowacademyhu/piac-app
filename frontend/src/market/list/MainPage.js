@@ -1,5 +1,5 @@
-import Header from "../components/Header";
-import MarketCardList from "../components/MarketCardList";
+import Header from "../../components/Header";
+import MarketCardList from "../../components/MarketCardList";
 
 const MainPage = () => {
   return (
