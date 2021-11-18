@@ -1,6 +1,6 @@
-import "../styles/payment.css";
-import cashIcon from "../icons/payment/cash.svg";
-import cardIcon from "../icons/payment/card.svg";
+import "../../../styles/payment.css";
+import cardIcon from "./card.svg";
+import cashIcon from "./cash.svg";
 
 const Payment = ({ cardPayment }) => {
   const paymentText = (cardPayment) =>

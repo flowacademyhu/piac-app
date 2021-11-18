@@ -1,9 +1,9 @@
-import emailLogo from "../icons/social/email.svg";
-import facebookLogo from "../icons/social/facebook.svg";
-import instagramLogo from "../icons/social/instagram.svg";
-import phoneLogo from "../icons/social/phone.svg";
-import webLogo from "../icons/social/web.svg";
-import "../styles/VendorContacts.css";
+import emailLogo from "./email.svg";
+import facebookLogo from "./facebook.svg";
+import instagramLogo from "./instagram.svg";
+import phoneLogo from "./phone.svg";
+import webLogo from "./web.svg";
+import "../../../styles/VendorContacts.css";
 import { v4 } from "uuid";
 
 const VendorContacts = (props) => {

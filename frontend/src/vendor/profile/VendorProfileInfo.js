@@ -1,7 +1,7 @@
-import Products from "./Products";
-import VendorContacts from "./VendorContacts";
+import Products from "./products/Products";
+import VendorContacts from "./contacts/VendorContacts";
 import VendorIntroduction from "./VendorIntroduction";
-import Payment from "./Payment";
+import Payment from "./payment/Payment";
 
 const VendorProfileInfo = ({
   products,
