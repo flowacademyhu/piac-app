@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles/vendor-header.css";
+import "./VendorHeader.css";
 import defaultVendorImage from "../defaultVendorImage.png";
 
 const VendorHeader = (props) => {
