@@ -5,8 +5,8 @@ import VendorCard from "../VendorCard";
 import { Link } from "react-router-dom";
 import SearchArea from "../../components/SearchArea";
 import ErrorBody from "../../components/ErrorBody";
-import sortByName from "../../functions/sortByName";
-import filteredArrayByKeyword from "../../functions/filteredArrayByKeyword";
+import sortByName from "../sort/sortByName";
+import filteredArrayByKeyword from "../filter";
 
 const VendorCardList = () => {
   const [searchTerm, setSearchTerm] = useState("");
