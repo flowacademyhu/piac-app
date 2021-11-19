@@ -6,10 +6,18 @@ import ErrorBody from "../../components/ErrorBody";
 import styled from "styled-components";
 
 const CardList = styled.div`
-  display: flex;
-  flex-direction: column;
-  row-gap: 20px;
-  padding: 20px 20px 110px;
+  & {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    padding: 20px 20px 110px;
+  }
+  & a {
+    color: #33221a;
+  }
+  &a:hover {
+    color: inherit;
+  }
 `;
 
 const MarketCardList = () => {
