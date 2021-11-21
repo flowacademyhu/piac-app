@@ -12,10 +12,10 @@ const CardList = styled.div`
     row-gap: 20px;
     padding: 20px 20px 110px;
   }
-  & a {
+  a {
     color: #33221a;
   }
-  &a:hover {
+  a:hover {
     color: inherit;
   }
 `;
