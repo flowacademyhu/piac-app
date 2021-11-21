@@ -46,7 +46,7 @@ const Header = () => {
             <LogoContainer>
               <Logo src={MarketLogo} alt="Logo" />
             </LogoContainer>
-            <div className="Markets">Piacok</div>
+            <div>Piacok</div>
           </HeaderContainer>
         </Route>
       </Switch>
@@ -56,7 +56,7 @@ const Header = () => {
             <LogoContainer>
               <Logo src={VendorLogo} alt="Logo" />
             </LogoContainer>
-            <div className="Vendors">Árusok</div>
+            <div>Árusok</div>
           </HeaderContainer>
         </Route>
       </Switch>
