@@ -29,6 +29,22 @@ const TopMarketInfo = styled.div`
   overflow: hidden;
 `;
 
+const MarketName = styled.div`
+  font-family: "Open Sans", sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  overflow: hidden;
+  width: 100%;
+  max-height: 60px;
+  white-space: normal;
+  word-break: break-word;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  padding-top: 20px;
+`;
+
 const MarketInfo = ({
   profilePic,
   marketName,
@@ -81,7 +97,7 @@ const MarketInfo = ({
         }
       />
       <TopMarketInfo>
-        <div className="marketName">{marketName}</div>
+        <MarketName>{marketName}</MarketName>
         <div className="marketLocationAndDate">
           <div>{marketLocation}</div>
           <div className="parallelDateAndHour">
