@@ -16,6 +16,13 @@ const Intro = styled.div`
   padding: 10px 0px 0px 20px;
 `;
 
+const MarketLoading = styled.div`
+  background-color: #f7f5f2;
+  width: 100%;
+  position: relative;
+  height: 100px;
+`;
+
 const VendorsByMarketPage = () => {
   const [market, setMarket] = useState({});
   const [error, hasError] = useState(false);
@@ -62,7 +69,7 @@ const VendorsByMarketPage = () => {
     } else {
       return (
         <>
-          <div className="marketLoading" />
+          <MarketLoading />
           <VendorlistUploadInProgress />
         </>
       );
