@@ -16,6 +16,12 @@ const DateContainer = styled.div`
   padding-bottom: 2px;
 `;
 
+const DateFirstRow = styled.div`
+  font-size: 14px;
+  line-height: 14px;
+  text-transform: uppercase;
+`;
+
 const MarketInfoList = ({
   profilePic,
   marketName,
@@ -72,7 +78,7 @@ const MarketInfoList = ({
   return (
     <>
       <DateContainer>
-        <div className="date-firstRow">{formattedMonth}</div>
+        <DateFirstRow>{formattedMonth}</DateFirstRow>
         <div className="date-secondRow">{formattedDayDigits}</div>
         <div className="date-thirdRow">{formattedWeekdays}</div>
       </DateContainer>
