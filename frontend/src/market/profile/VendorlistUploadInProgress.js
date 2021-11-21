@@ -1,5 +1,6 @@
 import "./VendorlistUploadInProgress.css";
 import styled from "styled-components";
+import CardList from "../../styles/CardListStyled";
 
 const TopInfoText = styled.div`
   font-family: "Open Sans", sans-serif;
@@ -16,14 +17,14 @@ const BottomInfoText = styled.div`
 
 const VendorlistUploadInProgress = ({ title, body }) => {
   return (
-    <div className="card-list">
+    <CardList>
       <TopInfoText>
         <div>{title}</div>
       </TopInfoText>
       <BottomInfoText>
         <div>{body}</div>
       </BottomInfoText>
-    </div>
+    </CardList>
   );
 };
 
