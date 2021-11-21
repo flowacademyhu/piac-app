@@ -1,4 +1,26 @@
 import defaultMarketImage from "../defaultMarketImage.png";
+import styled from "styled-components";
+
+const MarketLogo = styled.div`
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  grid-column: 1;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+`;
+
+const HeaderLogo = styled(MarketLogo)`
+  height: 80px;
+  width: 80px;
+`;
+
+const CardLogo = styled(MarketLogo)`
+  height: 110px;
+`;
 
 const MarketInfo = ({
   profilePic,
@@ -17,6 +39,8 @@ const MarketInfo = ({
     hour: "2-digit",
     minute: "numeric",
   };
+
+  const HeaderLogoOrCardLogo = header ? HeaderLogo : CardLogo;
 
   const formattedYearMonthAndDay = new Intl.DateTimeFormat(
     "hu-HU",
@@ -38,8 +62,7 @@ const MarketInfo = ({
 
   return (
     <>
-      <div
-        className={header ? "marketLogo headerLogo" : "marketLogo cardLogo"}
+      <HeaderLogoOrCardLogo
         style={
           profilePic
             ? {
