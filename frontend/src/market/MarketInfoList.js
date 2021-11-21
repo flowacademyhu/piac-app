@@ -1,4 +1,20 @@
 import defaultMarketImage from "./defaultMarketImage.png";
+import styled from "styled-components";
+
+const DateContainer = styled.div`
+  height: 60px;
+  width: 70px;
+  border-radius: 5px;
+  grid-column: 1;
+  grid-row: 1;
+  background-color: #ccbeb8;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  text-align: center;
+  padding-top: 2px;
+  padding-bottom: 2px;
+`;
 
 const MarketInfoList = ({
   profilePic,
@@ -55,11 +71,11 @@ const MarketInfoList = ({
 
   return (
     <>
-      <div className="date">
+      <DateContainer>
         <div className="date-firstRow">{formattedMonth}</div>
         <div className="date-secondRow">{formattedDayDigits}</div>
         <div className="date-thirdRow">{formattedWeekdays}</div>
-      </div>
+      </DateContainer>
       <div className="marketList-hours">{formattedOpeningAndClosingHour}</div>
       <div
         className={
