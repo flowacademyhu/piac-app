@@ -51,6 +51,12 @@ const MarketLocationAndDate = styled.div`
   overflow-wrap: break-word;
 `;
 
+const ParallelDateAndHour = styled.div`
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+`;
+
 const MarketInfo = ({
   profilePic,
   marketName,
@@ -106,12 +112,12 @@ const MarketInfo = ({
         <MarketName>{marketName}</MarketName>
         <MarketLocationAndDate>
           <div>{marketLocation}</div>
-          <div className="parallelDateAndHour">
+          <ParallelDateAndHour>
             <div>{formattedYearMonthAndDay}</div>
             <div className="startAndEndHours">
               {formattedOpeningAndClosingHour}
             </div>
-          </div>
+          </ParallelDateAndHour>
         </MarketLocationAndDate>
       </TopMarketInfo>
     </>
