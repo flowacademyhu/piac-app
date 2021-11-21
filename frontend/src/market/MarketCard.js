@@ -1,5 +1,20 @@
 import "./MarketInfoList.css";
 import MarketInfoList from "./MarketInfoList";
+import styled from "styled-components";
+
+const MarketCardContainer = styled.div`
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 1f auto;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 10px;
+  padding: 10px;
+  background-color: #fffdfc;
+  width: 100%;
+  position: relative;
+`;
 
 const body = document.body;
 body.style.background = "#F7F5F2";
@@ -13,7 +28,7 @@ const MarketCard = ({
   profilePic,
 }) => {
   return (
-    <div className="marketCard">
+    <MarketCardContainer>
       <MarketInfoList
         profilePic={profilePic}
         marketName={marketName}
@@ -22,7 +37,7 @@ const MarketCard = ({
         marketClosingDate={marketClosingDate}
         vendorsAmount={vendorsAmount}
       />
-    </div>
+    </MarketCardContainer>
   );
 };
 
