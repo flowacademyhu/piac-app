@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import MarketCard from "../../market/MarketCard";
+import CardList from "../../styles/CardListStyled";
 
 const VendorProfileMarkets = ({ upcomingMarkets }) => {
   return (
@@ -7,7 +8,7 @@ const VendorProfileMarkets = ({ upcomingMarkets }) => {
       <h2 className="vendor-profile-markets-title vendor-padding">
         Melyik piacon találod legközelebb?
       </h2>
-      <div className="card-list">
+      <CardList>
         {upcomingMarkets.length > 0 ? (
           upcomingMarkets.map((market) => {
             return (
@@ -34,7 +35,7 @@ const VendorProfileMarkets = ({ upcomingMarkets }) => {
             A közeljövőben egy piacon sem lesz jelen.
           </p>
         )}
-      </div>
+      </CardList>
     </div>
   );
 };
