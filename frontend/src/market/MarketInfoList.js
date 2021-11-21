@@ -22,6 +22,12 @@ const DateFirstRow = styled.div`
   text-transform: uppercase;
 `;
 
+const DateSecondRow = styled.div`
+  font-size: 32px;
+  line-height: 32px;
+  font-weight: bold;
+`;
+
 const MarketInfoList = ({
   profilePic,
   marketName,
@@ -79,7 +85,7 @@ const MarketInfoList = ({
     <>
       <DateContainer>
         <DateFirstRow>{formattedMonth}</DateFirstRow>
-        <div className="date-secondRow">{formattedDayDigits}</div>
+        <DateSecondRow>{formattedDayDigits}</DateSecondRow>
         <div className="date-thirdRow">{formattedWeekdays}</div>
       </DateContainer>
       <div className="marketList-hours">{formattedOpeningAndClosingHour}</div>
