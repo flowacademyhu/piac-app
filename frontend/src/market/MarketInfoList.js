@@ -60,6 +60,12 @@ const MarketListCardLogo = styled(MarketListLogo)`
   height: 110px;
 `;
 
+const MarketListNameAndLocation = styled.div`
+  grid-row: 1;
+  grid-column: 2;
+  padding-left: 10px;
+`;
+
 const MarketInfoList = ({
   profilePic,
   marketName,
@@ -136,10 +142,10 @@ const MarketInfoList = ({
               }
         }
       />
-      <div className="marketList-nameAndLocation">
+      <MarketListNameAndLocation>
         <div className="marketList-name">{marketName}</div>
         <div className="marketList-location">{marketLocation}</div>
-      </div>
+      </MarketListNameAndLocation>
       <div className="marketList-vendorNumber">
         {vendorsAmount === 0 ? "Szervezés alatt..." : `${vendorsAmount} árus`}
       </div>
