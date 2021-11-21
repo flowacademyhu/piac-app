@@ -22,6 +22,13 @@ const CardLogo = styled(MarketLogo)`
   height: 110px;
 `;
 
+const TopMarketInfo = styled.div`
+  grid-column: 2;
+  grid-row: 1;
+  position: "relative";
+  overflow: hidden;
+`;
+
 const MarketInfo = ({
   profilePic,
   marketName,
@@ -73,7 +80,7 @@ const MarketInfo = ({
               }
         }
       />
-      <div className="topMarketInfo">
+      <TopMarketInfo>
         <div className="marketName">{marketName}</div>
         <div className="marketLocationAndDate">
           <div>{marketLocation}</div>
@@ -84,7 +91,7 @@ const MarketInfo = ({
             </div>
           </div>
         </div>
-      </div>
+      </TopMarketInfo>
     </>
   );
 };
