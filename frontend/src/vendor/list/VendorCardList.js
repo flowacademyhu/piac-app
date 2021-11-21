@@ -7,6 +7,7 @@ import SearchArea from "../../components/SearchArea";
 import ErrorBody from "../../components/ErrorBody";
 import sortByName from "../sort/sortByName";
 import filteredArrayByKeyword from "../filter";
+import CardList from "../../styles/CardListStyled";
 
 const VendorCardList = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -32,7 +33,7 @@ const VendorCardList = () => {
         }}
         placeHolder="Keress termékre vagy árusra..."
       />
-      <div className="card-list">
+      <CardList>
         {error ? (
           <ErrorBody error={error} />
         ) : (
@@ -53,7 +54,7 @@ const VendorCardList = () => {
             );
           })
         )}
-      </div>
+      </CardList>
     </>
   );
 };
