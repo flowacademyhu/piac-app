@@ -66,6 +66,20 @@ const MarketListNameAndLocation = styled.div`
   padding-left: 10px;
 `;
 
+const MarketListName = styled.div`
+  font-size: 16px;
+  font-weight: bold;
+  overflow: hidden;
+  width: 100%;
+  max-height: 60px;
+  white-space: normal;
+  word-break: break-word;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+`;
+
 const MarketInfoList = ({
   profilePic,
   marketName,
@@ -143,7 +157,7 @@ const MarketInfoList = ({
         }
       />
       <MarketListNameAndLocation>
-        <div className="marketList-name">{marketName}</div>
+        <MarketListName>{marketName}</MarketListName>
         <div className="marketList-location">{marketLocation}</div>
       </MarketListNameAndLocation>
       <div className="marketList-vendorNumber">
