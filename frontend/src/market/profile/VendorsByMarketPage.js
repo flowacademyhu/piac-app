@@ -7,6 +7,14 @@ import { fetchMarketById } from "../../api/Service";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import SearchArea from "../../components/SearchArea";
 import filteredArrayByKeyword from "../../vendor/filter";
+import styled from "styled-components";
+
+const Intro = styled.div`
+  font-family: "Amatic SC", sans-serif;
+  font-size: 40px;
+  color: #705a4f;
+  padding: 10px 0px 0px 20px;
+`;
 
 const VendorsByMarketPage = () => {
   const [market, setMarket] = useState({});
@@ -72,7 +80,7 @@ const VendorsByMarketPage = () => {
             marketOpeningDate={market.openingDate}
             marketClosingDate={market.closingDate}
           />
-          <div className="intro">Kikkel találkozhatsz?</div>
+          <Intro>Kikkel találkozhatsz?</Intro>
         </>
       ) : (
         <div style={{ height: "90%" }} />
