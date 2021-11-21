@@ -80,6 +80,11 @@ const MarketListName = styled.div`
   -webkit-line-clamp: 2;
 `;
 
+const MarketListLocation = styled.div`
+  font-size: 12px;
+  overflow-wrap: break-word;
+`;
+
 const MarketInfoList = ({
   profilePic,
   marketName,
@@ -158,7 +163,7 @@ const MarketInfoList = ({
       />
       <MarketListNameAndLocation>
         <MarketListName>{marketName}</MarketListName>
-        <div className="marketList-location">{marketLocation}</div>
+        <MarketListLocation>{marketLocation}</MarketListLocation>
       </MarketListNameAndLocation>
       <div className="marketList-vendorNumber">
         {vendorsAmount === 0 ? "Szervezés alatt..." : `${vendorsAmount} árus`}
