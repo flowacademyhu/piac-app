@@ -24,6 +24,27 @@ const VendorLogo = styled.div`
   background-size: cover;
 `;
 
+const VendorInfo = styled.div`
+  display: flex;
+  flex-flow: column wrap;
+  align-content: flex-start;
+`;
+
+const VendorName = styled.div`
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  overflow: hidden;
+  padding-left: 10px;
+  padding-bottom: 5px;
+  white-space: normal;
+  word-break: break-word;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+`;
+
 const VendorCard = ({ vendor, vendorDesc, imageLogo }) => {
   return (
     <VendorCardContainer>
@@ -38,10 +59,10 @@ const VendorCard = ({ vendor, vendorDesc, imageLogo }) => {
               }
         }
       ></VendorLogo>
-      <div className="vendorInfo">
-        <div className="vendorName">{vendor}</div>
+      <VendorInfo>
+        <VendorName>{vendor}</VendorName>
         <div className="vendorDescription">{vendorDesc}</div>
-      </div>
+      </VendorInfo>
     </VendorCardContainer>
   );
 };
