@@ -1,4 +1,3 @@
-import "./MarketInfoList.css";
 import MarketInfoList from "./MarketInfoList";
 import styled from "styled-components";
 
@@ -15,9 +14,6 @@ const MarketCardContainer = styled.div`
   width: 100%;
   position: relative;
 `;
-
-const body = document.body;
-body.style.background = "#F7F5F2";
 
 const MarketCard = ({
   marketName,
