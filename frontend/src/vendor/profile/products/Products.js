@@ -1,6 +1,5 @@
 import React from "react";
 import ProductList from "./ProductList";
-// import "./Products.css";
 import styled from "styled-components";
 
 const Product = styled.div`
