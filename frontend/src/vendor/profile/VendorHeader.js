@@ -1,5 +1,4 @@
 import React from "react";
-import "./VendorHeader.css";
 import defaultVendorImage from "../defaultVendorImage.png";
 import styled from "styled-components";
 
