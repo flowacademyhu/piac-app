@@ -45,6 +45,20 @@ const VendorName = styled.div`
   -webkit-line-clamp: 2;
 `;
 
+const VendorDescription = styled.div`
+  font-family: "Open Sans", sans-serif;
+  font-size: 12px;
+  overflow: hidden;
+  padding-left: 10px;
+  width: 100%;
+  white-space: normal;
+  word-break: break-word;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+`;
+
 const VendorCard = ({ vendor, vendorDesc, imageLogo }) => {
   return (
     <VendorCardContainer>
@@ -61,7 +75,7 @@ const VendorCard = ({ vendor, vendorDesc, imageLogo }) => {
       ></VendorLogo>
       <VendorInfo>
         <VendorName>{vendor}</VendorName>
-        <div className="vendorDescription">{vendorDesc}</div>
+        <VendorDescription>{vendorDesc}</VendorDescription>
       </VendorInfo>
     </VendorCardContainer>
   );
