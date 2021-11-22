@@ -1,6 +1,6 @@
 import React from "react";
 import ProductList from "./ProductList";
-import "./Products.css";
+// import "./Products.css";
 import styled from "styled-components";
 
 const Product = styled.div`
@@ -15,10 +15,11 @@ const ProductContent = styled.div`
 `;
 
 const ProductItem = styled.div`
-  text-align: center;
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 24px;
-  padding-right: 20px;
+  font-family: "Amatic SC", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-align: left;
 `;
 
 const Products = ({ products }) => {
