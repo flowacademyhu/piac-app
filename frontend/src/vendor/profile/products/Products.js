@@ -10,13 +10,17 @@ const Product = styled.div`
   margin-bottom: 20px;
 `;
 
+const ProductContent = styled.div`
+  color: #705a4f;
+`;
+
 const Products = ({ products }) => {
   return (
     <Product>
-      <div className="product-content">
+      <ProductContent>
         <div className="product-title">Mit tudsz venni nálam?</div>
         <ProductList products={products} />
-      </div>
+      </ProductContent>
     </Product>
   );
 };
