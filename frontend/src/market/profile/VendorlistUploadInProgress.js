@@ -1,4 +1,3 @@
-import "./VendorlistUploadInProgress.css";
 import styled from "styled-components";
 import CardList from "../../styles/CardListStyled";
 
