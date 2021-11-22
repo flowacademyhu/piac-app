@@ -51,15 +51,6 @@ const MarketListLogo = styled.div`
   background-size: contain;
 `;
 
-const MarketListHeaderLogo = styled(MarketListLogo)`
-  height: 80px;
-  width: 80px;
-`;
-
-const MarketListCardLogo = styled(MarketListLogo)`
-  height: 110px;
-`;
-
 const MarketListNameAndLocation = styled.div`
   grid-row: 1;
   grid-column: 2;
@@ -119,10 +110,6 @@ const MarketInfoList = ({
     weekday: "long",
   };
 
-  const MarketListHeaderLogoOrMarketListCardLogo = header
-    ? MarketListHeaderLogo
-    : MarketListCardLogo;
-
   const formattedMonth = new Intl.DateTimeFormat("hu-HU", marketMonthFormatter)
     .format(new Date(marketOpeningDate * 1000))
     .substring(0, 3);
@@ -158,7 +145,7 @@ const MarketInfoList = ({
         <DateThirdRow>{formattedWeekdays}</DateThirdRow>
       </DateContainer>
       <MarketListHours>{formattedOpeningAndClosingHour}</MarketListHours>
-      <MarketListHeaderLogoOrMarketListCardLogo
+      <MarketListLogo
         style={
           profilePic
             ? {
