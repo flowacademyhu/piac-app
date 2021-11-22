@@ -38,6 +38,9 @@ const ContactLinks = styled.a`
   font-size: 12px;
   overflow: hidden;
   text-overflow: ellipsis;
+  :hover {
+    color: #53b896;
+  }
 `;
 
 const VendorContacts = (props) => {
