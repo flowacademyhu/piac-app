@@ -6,20 +6,25 @@ import VendorPage from "./vendor/list/VendorPage";
 import VendorProfilePage from "./vendor/profile/VendorProfilePage";
 import Footer from "./footer/Footer";
 import "delayed-scroll-restoration-polyfill/index";
+import { QueryClient, QueryClientProvider } from "react-query";
+
+const queryClient = new QueryClient();
 
 const App = () => {
   return (
     <div className="App">
       <div className="container-fluid">
-        <Router>
-          <Switch>
-            <Route exact path="/" component={MainPage} />
-            <Route exact path="/piacok/:id" component={VendorsByMarketPage} />
-            <Route exact path="/arusok" component={VendorPage} />
-            <Route exact path="/arusok/:id" component={VendorProfilePage} />
-          </Switch>
-          <Footer />
-        </Router>
+        <QueryClientProvider client={queryClient}>
+          <Router>
+            <Switch>
+              <Route exact path="/" component={MainPage} />
+              <Route exact path="/piacok/:id" component={VendorsByMarketPage} />
+              <Route exact path="/arusok" component={VendorPage} />
+              <Route exact path="/arusok/:id" component={VendorProfilePage} />
+            </Switch>
+            <Footer />
+          </Router>
+        </QueryClientProvider>
       </div>
     </div>
   );

@@ -1,27 +1,22 @@
 import MarketCard from "../MarketCard";
-import React, { useState, useLayoutEffect } from "react";
 import "../../styles/CardList.css";
 import { fetchUpcomingMarkets } from "../../api/Service";
 import { Link } from "react-router-dom";
 import ErrorBody from "../../components/ErrorBody";
+import { useQuery } from "react-query";
 
 const MarketCardList = () => {
-  const [upcomingMarkets, setUpcomingMarkets] = useState([]);
-  const [error, setError] = useState(null);
+  const { data: upcomingMarkets, status } = useQuery(
+    "markets",
+    fetchUpcomingMarkets
+  );
 
-  const getUpcomingMarkets = async () => {
-    const result = await fetchUpcomingMarkets();
-    setUpcomingMarkets(result);
-  };
-
-  useLayoutEffect(() => {
-    getUpcomingMarkets().catch((err) => setError(err.message));
-  }, []);
+  if (status === "loading") return <p></p>;
 
   return (
     <div className="card-list">
-      {error ? (
-        <ErrorBody error={error} />
+      {status === "error" ? (
+        <ErrorBody />
       ) : (
         upcomingMarkets.map((market) => {
           return (
