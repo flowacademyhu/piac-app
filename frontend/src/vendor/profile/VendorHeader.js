@@ -1,12 +1,20 @@
 import React from "react";
 import "./VendorHeader.css";
 import defaultVendorImage from "../defaultVendorImage.png";
+import styled from "styled-components";
+
+const VendorProfileHeader = styled.header`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+`;
 
 const VendorHeader = (props) => {
   const { profilePic, name, intro } = props;
 
   return (
-    <header className="vendor-profile-header">
+    <VendorProfileHeader>
       <div
         className="vendor-logo-container"
         style={
@@ -21,7 +29,7 @@ const VendorHeader = (props) => {
       ></div>
       <h2 className="vendor-name">{name}</h2>
       <p className="vendor-intro">{intro}</p>
-    </header>
+    </VendorProfileHeader>
   );
 };
 
