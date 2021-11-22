@@ -1,5 +1,4 @@
 import React from "react";
-// import "./VendorIntroduction.css";
 import styled from "styled-components";
 
 const Introduction = styled.div`
