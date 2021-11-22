@@ -19,6 +19,14 @@ const VendorLogoContainer = styled.div`
   background-size: contain;
 `;
 
+const VendorName = styled.h2`
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  font-size: 24px;
+  margin: 20px 0;
+  text-align: center;
+`;
+
 const VendorHeader = (props) => {
   const { profilePic, name, intro } = props;
 
@@ -35,7 +43,7 @@ const VendorHeader = (props) => {
               }
         }
       ></VendorLogoContainer>
-      <h2 className="vendor-name">{name}</h2>
+      <VendorName>{name}</VendorName>
       <p className="vendor-intro">{intro}</p>
     </VendorProfileHeader>
   );
