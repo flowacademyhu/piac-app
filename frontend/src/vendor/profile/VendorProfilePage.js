@@ -8,7 +8,6 @@ import {
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import VendorProfileInfo from "./VendorProfileInfo";
 import VendorProfileMarkets from "./VendorProfileMarkets";
-import "./VendorInfoNav.css";
 
 const VendorProfilePage = () => {
   const [vendor, setVendor] = useState({});
@@ -42,17 +41,17 @@ const VendorProfilePage = () => {
             name={vendor.name}
             intro={vendor.intro}
           />
-          <VendorProfileInfo
-            products={vendor.products}
-            cardPayment={vendor.cardPayment}
-            facebook={vendor.facebook}
-            instagram={vendor.instagram}
-            website={vendor.webSite}
-            email={vendor.email}
-            phone={vendor.phone}
-            introductionLong={vendor.introductionLong}
-          />
-          <VendorProfileMarkets upcomingMarkets={upcomingMarkets} />
+            <VendorProfileInfo
+              products={vendor.products}
+              cardPayment={vendor.cardPayment}
+              facebook={vendor.facebook}
+              instagram={vendor.instagram}
+              website={vendor.webSite}
+              email={vendor.email}
+              phone={vendor.phone}
+              introductionLong={vendor.introductionLong}
+            />
+            <VendorProfileMarkets upcomingMarkets={upcomingMarkets} />
         </>
       ) : (
         <div style={{ height: "90%" }} />
