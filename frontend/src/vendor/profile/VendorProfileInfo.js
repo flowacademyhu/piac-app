@@ -2,6 +2,13 @@ import Products from "./products/Products";
 import VendorContacts from "./contacts/VendorContacts";
 import VendorIntroduction from "./VendorIntroduction";
 import Payment from "./payment/Payment";
+import styled from "styled-components";
+
+const ProfileComponents = styled.div`
+  height: var(--profile-components-height);
+  overflow-y: auto;
+  margin-bottom: 20px;
+`;
 
 const VendorProfileInfo = ({
   products,
@@ -14,7 +21,7 @@ const VendorProfileInfo = ({
   cardPayment,
 }) => {
   return (
-    <div className="profile-components">
+    <ProfileComponents>
       {products.length > 0 && <Products products={products} />}
       <Payment cardPayment={cardPayment} />
       <VendorContacts
@@ -25,7 +32,7 @@ const VendorProfileInfo = ({
         phone={phone}
       />
       <VendorIntroduction introductionLong={introductionLong} />
-    </div>
+    </ProfileComponents>
   );
 };
 
