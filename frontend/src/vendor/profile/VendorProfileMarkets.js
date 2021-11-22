@@ -12,6 +12,12 @@ const VendorProfileMarketsTitle = styled.h2`
   margin-bottom: 20px;
 `;
 
+const EmptyPageMessage = styled.p`
+  text-align: left;
+  font-size: 12px;
+  font-family: "Open Sans", sans-serif;
+`;
+
 const VendorProfileMarkets = ({ upcomingMarkets }) => {
   return (
     <div>
@@ -41,9 +47,9 @@ const VendorProfileMarkets = ({ upcomingMarkets }) => {
             );
           })
         ) : (
-          <p className="empty-page-message">
+          <EmptyPageMessage>
             A közeljövőben egy piacon sem lesz jelen.
-          </p>
+          </EmptyPageMessage>
         )}
       </CardList>
     </div>
