@@ -26,6 +26,10 @@ const ContactInfo = styled.div`
   display: flex;
 `;
 
+const ContactLogo = styled.img`
+  padding-right: 10px;
+`;
+
 const VendorContacts = (props) => {
   const { facebook, instagram, website, email, phone } = props;
   const contacts = [
@@ -63,7 +67,7 @@ const VendorContacts = (props) => {
         return (
           contact.title && (
             <ContactInfo key={v4()}>
-              <img src={contact.logo} className="contact-logo" alt="" />
+              <ContactLogo src={contact.logo} alt="" />
               <a
                 target="_blank"
                 rel="noopener noreferrer external"
