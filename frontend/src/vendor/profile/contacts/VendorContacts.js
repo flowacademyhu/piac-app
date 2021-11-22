@@ -12,6 +12,13 @@ const VendorPadding = styled.div`
   margin-bottom: 20px;
 `;
 
+const ContactTitle = styled.h1`
+  font-family: "Amatic SC", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #33221a;
+`;
+
 const VendorContacts = (props) => {
   const { facebook, instagram, website, email, phone } = props;
   const contacts = [
@@ -44,7 +51,7 @@ const VendorContacts = (props) => {
 
   return (
     <VendorPadding>
-      <div className="contact-title">Elérhetőségek</div>
+      <ContactTitle>Elérhetőségek</ContactTitle>
       {contacts.map((contact, index) => {
         return (
           contact.title && (
