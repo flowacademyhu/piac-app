@@ -1,4 +1,3 @@
-// import "./VendorCard.css";
 import defaultVendorImage from "./defaultVendorImage.png";
 import styled from "styled-components";
 
