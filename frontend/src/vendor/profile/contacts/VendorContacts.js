@@ -19,6 +19,13 @@ const ContactTitle = styled.h1`
   color: #33221a;
 `;
 
+const ContactInfo = styled.div`
+  text-align: left;
+  align-content: center;
+  margin-bottom: 20px;
+  display: flex;
+`;
+
 const VendorContacts = (props) => {
   const { facebook, instagram, website, email, phone } = props;
   const contacts = [
@@ -55,7 +62,7 @@ const VendorContacts = (props) => {
       {contacts.map((contact, index) => {
         return (
           contact.title && (
-            <div key={v4()} className="contact-info">
+            <ContactInfo key={v4()}>
               <img src={contact.logo} className="contact-logo" alt="" />
               <a
                 target="_blank"
@@ -65,7 +72,7 @@ const VendorContacts = (props) => {
               >
                 {contact.title}
               </a>
-            </div>
+            </ContactInfo>
           )
         );
       })}
