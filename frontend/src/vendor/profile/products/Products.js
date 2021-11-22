@@ -14,11 +14,18 @@ const ProductContent = styled.div`
   color: #705a4f;
 `;
 
+const ProductItem = styled.div`
+  text-align: center;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 24px;
+  padding-right: 20px;
+`;
+
 const Products = ({ products }) => {
   return (
     <Product>
       <ProductContent>
-        <div className="product-title">Mit tudsz venni nálam?</div>
+        <ProductItem>Mit tudsz venni nálam?</ProductItem>
         <ProductList products={products} />
       </ProductContent>
     </Product>
