@@ -3,7 +3,6 @@ import facebookLogo from "./facebook.svg";
 import instagramLogo from "./instagram.svg";
 import phoneLogo from "./phone.svg";
 import webLogo from "./web.svg";
-import "./VendorContacts.css";
 import { v4 } from "uuid";
 import styled from "styled-components";
 
