@@ -5,6 +5,12 @@ import phoneLogo from "./phone.svg";
 import webLogo from "./web.svg";
 import "./VendorContacts.css";
 import { v4 } from "uuid";
+import styled from "styled-components";
+
+const VendorPadding = styled.div`
+  padding: 0 20px;
+  margin-bottom: 20px;
+`;
 
 const VendorContacts = (props) => {
   const { facebook, instagram, website, email, phone } = props;
@@ -37,8 +43,8 @@ const VendorContacts = (props) => {
   ];
 
   return (
-    <div className="vendor-padding">
-      <h1 className="contact-title">Elérhetőségek</h1>
+    <VendorPadding>
+      <div className="contact-title">Elérhetőségek</div>
       {contacts.map((contact, index) => {
         return (
           contact.title && (
@@ -56,7 +62,7 @@ const VendorContacts = (props) => {
           )
         );
       })}
-    </div>
+    </VendorPadding>
   );
 };
 
