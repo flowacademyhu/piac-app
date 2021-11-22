@@ -41,17 +41,17 @@ const VendorProfilePage = () => {
             name={vendor.name}
             intro={vendor.intro}
           />
-            <VendorProfileInfo
-              products={vendor.products}
-              cardPayment={vendor.cardPayment}
-              facebook={vendor.facebook}
-              instagram={vendor.instagram}
-              website={vendor.webSite}
-              email={vendor.email}
-              phone={vendor.phone}
-              introductionLong={vendor.introductionLong}
-            />
-            <VendorProfileMarkets upcomingMarkets={upcomingMarkets} />
+          <VendorProfileInfo
+            products={vendor.products}
+            cardPayment={vendor.cardPayment}
+            facebook={vendor.facebook}
+            instagram={vendor.instagram}
+            website={vendor.webSite}
+            email={vendor.email}
+            phone={vendor.phone}
+            introductionLong={vendor.introductionLong}
+          />
+          <VendorProfileMarkets upcomingMarkets={upcomingMarkets} />
         </>
       ) : (
         <div style={{ height: "90%" }} />
