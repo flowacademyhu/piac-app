@@ -13,6 +13,11 @@ const ProductTag = styled.img`
   padding-right: 4px;
 `;
 
+const ProductListStyled = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`;
+
 const ProductList = ({ products }) => {
   const productList = products
     ? products.map((product, index) => (
@@ -22,6 +27,6 @@ const ProductList = ({ products }) => {
         </ProductItem>
       ))
     : [];
-  return <div className="product-list">{productList}</div>;
+  return <ProductListStyled>{productList}</ProductListStyled>;
 };
 export default ProductList;
