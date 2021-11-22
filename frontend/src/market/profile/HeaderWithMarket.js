@@ -1,5 +1,4 @@
 import MarketInfo from "./MarketInfo";
-import "./MarketCard.css";
 import styled from "styled-components";
 
 const MarketHeader = styled.div`
