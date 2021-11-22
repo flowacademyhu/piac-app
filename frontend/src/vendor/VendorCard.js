@@ -15,11 +15,19 @@ const VendorCardContainer = styled.div`
   position: relative;
 `;
 
+const VendorLogo = styled.div`
+  height: 100px;
+  min-width: 100px;
+  border-radius: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+`;
+
 const VendorCard = ({ vendor, vendorDesc, imageLogo }) => {
   return (
     <VendorCardContainer>
-      <div
-        className="vendorLogo"
+      <VendorLogo
         style={
           imageLogo
             ? {
@@ -29,7 +37,7 @@ const VendorCard = ({ vendor, vendorDesc, imageLogo }) => {
                 backgroundImage: `url(${defaultVendorImage})`,
               }
         }
-      ></div>
+      ></VendorLogo>
       <div className="vendorInfo">
         <div className="vendorName">{vendor}</div>
         <div className="vendorDescription">{vendorDesc}</div>
