@@ -12,13 +12,12 @@ const MarketCardList = () => {
     isError,
   } = useQuery("markets", fetchUpcomingMarkets);
 
-  if (isLoading) return <p></p>;
-
   return (
     <div className="card-list">
       {isError ? (
         <ErrorBody />
       ) : (
+        !isLoading &&
         upcomingMarkets.map((market) => {
           return (
             <div key={market.id}>
