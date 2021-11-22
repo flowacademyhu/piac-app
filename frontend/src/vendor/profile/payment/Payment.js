@@ -12,17 +12,17 @@ const VendorPayment = styled.div`
   margin-bottom: 20px;
 `;
 
+const PaymentIcon = styled.img`
+  margin-right: 5px;
+`;
+
 const Payment = ({ cardPayment }) => {
   const paymentText = (cardPayment) =>
     cardPayment ? "Bankkártyával is fizethetsz" : "Csak készpénzzel fizethetsz";
 
   return (
     <VendorPayment>
-      <img
-        className="payment-icon"
-        src={cardPayment ? cardIcon : cashIcon}
-        alt=""
-      />
+      <PaymentIcon src={cardPayment ? cardIcon : cashIcon} alt="" />
       <span className="payment-text">{paymentText(cardPayment)}</span>
     </VendorPayment>
   );
