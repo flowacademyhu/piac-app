@@ -30,6 +30,16 @@ const ContactLogo = styled.img`
   padding-right: 10px;
 `;
 
+const ContactLinks = styled.a`
+  color: #53b896;
+  text-decoration: none;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
 const VendorContacts = (props) => {
   const { facebook, instagram, website, email, phone } = props;
   const contacts = [
@@ -68,14 +78,13 @@ const VendorContacts = (props) => {
           contact.title && (
             <ContactInfo key={v4()}>
               <ContactLogo src={contact.logo} alt="" />
-              <a
+              <ContactLinks
                 target="_blank"
                 rel="noopener noreferrer external"
-                className="contact-links"
                 href={contact.link + contact.title}
               >
                 {contact.title}
-              </a>
+              </ContactLinks>
             </ContactInfo>
           )
         );
