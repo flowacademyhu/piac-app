@@ -6,16 +6,17 @@ import ErrorBody from "../../components/ErrorBody";
 import { useQuery } from "react-query";
 
 const MarketCardList = () => {
-  const { data: upcomingMarkets, status } = useQuery(
-    "markets",
-    fetchUpcomingMarkets
-  );
+  const {
+    data: upcomingMarkets,
+    isLoading,
+    isError,
+  } = useQuery("markets", fetchUpcomingMarkets);
 
-  if (status === "loading") return <p></p>;
+  if (isLoading) return <p></p>;
 
   return (
     <div className="card-list">
-      {status === "error" ? (
+      {isError ? (
         <ErrorBody />
       ) : (
         upcomingMarkets.map((market) => {
