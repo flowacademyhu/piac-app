@@ -1,4 +1,3 @@
-import "./payment.css";
 import cardIcon from "./card.svg";
 import cashIcon from "./cash.svg";
 import styled from "styled-components";
