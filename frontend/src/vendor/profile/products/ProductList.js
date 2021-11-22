@@ -9,11 +9,15 @@ const ProductItem = styled.div`
   padding-right: 20px;
 `;
 
+const ProductTag = styled.img`
+  padding-right: 4px;
+`;
+
 const ProductList = ({ products }) => {
   const productList = products
     ? products.map((product, index) => (
         <ProductItem key={index}>
-          <img className="product-tag" src={tag_Icon} alt="tag" />
+          <ProductTag src={tag_Icon} alt="tag" />
           {product}
         </ProductItem>
       ))
