@@ -1,5 +1,4 @@
 import React, { useState, useLayoutEffect } from "react";
-import "../../styles/CardList.css";
 import { fetchVendors } from "../../api/Service";
 import VendorCard from "../VendorCard";
 import { Link } from "react-router-dom";
