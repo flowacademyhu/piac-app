@@ -9,6 +9,7 @@ import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import VendorProfileInfo from "./VendorProfileInfo";
 import VendorProfileMarkets from "./VendorProfileMarkets";
 import "./VendorInfoNav.css";
+import { Helmet } from "react-helmet";
 
 const VendorProfilePage = () => {
   const [vendor, setVendor] = useState({});
@@ -35,6 +36,11 @@ const VendorProfilePage = () => {
 
   return (
     <>
+      <Helmet>
+        <title>
+          {vendor.name}, {vendor.intro}
+        </title>
+      </Helmet>
       {!error && vendor.id ? (
         <>
           <VendorHeader
