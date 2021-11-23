@@ -75,7 +75,7 @@ const VendorContacts = (props) => {
     return (
       <VendorPadding>
         <ContactTitle>Elérhetőségek</ContactTitle>
-        {contacts.map((contact, index) => {
+        {contacts.map((contact) => {
           return (
             contact.title && (
               <ContactInfo key={v4()}>
