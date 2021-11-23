@@ -38,7 +38,7 @@ const VendorProfilePage = () => {
     <>
       <Helmet>
         <title>{vendor.name}</title>
-        <meta name="description" content="{vendor.intro}" />
+        <meta name="description" content={vendor.intro} />
       </Helmet>
       {!error && vendor.id ? (
         <>
