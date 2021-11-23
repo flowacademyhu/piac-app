@@ -5,7 +5,6 @@ import Payment from "./payment/Payment";
 import styled from "styled-components";
 
 const ProfileComponents = styled.div`
-  height: var(--profile-components-height);
   overflow-y: auto;
   margin-bottom: 20px;
 `;
