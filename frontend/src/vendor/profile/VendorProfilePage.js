@@ -9,33 +9,27 @@ import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import VendorProfileInfo from "./VendorProfileInfo";
 import VendorProfileMarkets from "./VendorProfileMarkets";
 import "./VendorInfoNav.css";
+import { useQuery } from "react-query";
 
 const VendorProfilePage = () => {
-  const [vendor, setVendor] = useState({});
-  const [error, hasError] = useState(false);
+  // const [vendor, setVendor] = useState({});
   const vendorId = useParams().id;
-  const [upcomingMarkets, setUpcomingMarkets] = useState([]);
+  // const [upcomingMarkets, setUpcomingMarkets] = useState([]);
 
-  useEffect(() => {
-    const fetchVendor = async (id) => {
-      const response = await fetchVendorById(id);
-      if (!response) {
-        hasError(true);
-      } else {
-        setVendor(response);
-      }
-    };
-    const fetchUpcomingMarkets = async (id) => {
-      const response = await fetchUpcomingMarketsByVendorId(id);
-      setUpcomingMarkets(response);
-    };
-    fetchUpcomingMarkets(vendorId);
-    fetchVendor(vendorId);
-  }, [vendorId]);
+  const {
+    data: vendor,
+    isLoading,
+    isError,
+    isSuccess,
+  } = useQuery(["vendor", vendorId], () => fetchVendorById(vendorId));
+
+  const { data: upcomingMarkets } = useQuery(["market", vendorId], () =>
+    fetchUpcomingMarketsByVendorId(vendorId)
+  );
 
   return (
     <>
-      {!error && vendor.id ? (
+      {!isLoading && !isError && vendor.id ? (
         <>
           <VendorHeader
             profilePic={vendor.profilePic}
@@ -57,7 +51,7 @@ const VendorProfilePage = () => {
       ) : (
         <div style={{ height: "90%" }} />
       )}
-      {error && <Redirect to="/arusok" />}
+      {!isSuccess && <Redirect to="/arusok" />}
     </>
   );
 };
