@@ -8,6 +8,7 @@ import {
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import VendorProfileInfo from "./VendorProfileInfo";
 import VendorProfileMarkets from "./VendorProfileMarkets";
+import { Helmet } from "react-helmet";
 
 const VendorProfilePage = () => {
   const [vendor, setVendor] = useState({});
@@ -34,6 +35,10 @@ const VendorProfilePage = () => {
 
   return (
     <>
+      <Helmet>
+        <title>{vendor.name}</title>
+        <meta name="description" content={vendor.intro} />
+      </Helmet>
       {!error && vendor.id ? (
         <>
           <VendorHeader

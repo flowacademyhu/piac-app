@@ -1,4 +1,5 @@
 import defaultMarketImage from "../defaultMarketImage.png";
+import { Helmet } from "react-helmet";
 import styled from "styled-components";
 
 const MarketLogo = styled.div`
@@ -102,6 +103,13 @@ const MarketInfo = ({
 
   return (
     <>
+      <Helmet>
+        <title>Félpénzzel - {marketName}</title>
+        <meta
+          name="description"
+          content={`${marketLocation} - ${formattedYearMonthAndDay} ${formattedOpeningAndClosingHour}`}
+        ></meta>
+      </Helmet>
       <HeaderLogoOrCardLogo
         style={
           profilePic
