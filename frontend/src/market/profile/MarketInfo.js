@@ -40,10 +40,11 @@ const MarketInfo = ({
   return (
     <>
       <Helmet>
-        <title>
-          {marketName}, {marketLocation} - {formattedYearMonthAndDay}{" "}
-          {formattedOpeningAndClosingHour}
-        </title>
+        <title>Félpénzzel - {marketName}</title>
+        <meta
+          name="description"
+          content="{marketLocation} - {formattedYearMonthAndDay} {formattedOpeningAndClosingHour}"
+        ></meta>
       </Helmet>
       <div
         className={header ? "marketLogo headerLogo" : "marketLogo cardLogo"}
