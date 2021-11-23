@@ -71,27 +71,31 @@ const VendorContacts = (props) => {
     },
   ];
 
-  return (
-    <VendorPadding>
-      <ContactTitle>Elérhetőségek</ContactTitle>
-      {contacts.map((contact, index) => {
-        return (
-          contact.title && (
-            <ContactInfo key={v4()}>
-              <ContactLogo src={contact.logo} alt="" />
-              <ContactLinks
-                target="_blank"
-                rel="noopener noreferrer external"
-                href={contact.link + contact.title}
-              >
-                {contact.title}
-              </ContactLinks>
-            </ContactInfo>
-          )
-        );
-      })}
-    </VendorPadding>
-  );
+  if (contacts.some((contact) => contact.title)) {
+    return (
+      <VendorPadding>
+        <ContactTitle>Elérhetőségek</ContactTitle>
+        {contacts.map((contact, index) => {
+          return (
+            contact.title && (
+              <ContactInfo key={v4()}>
+                <ContactLogo src={contact.logo} alt="" />
+                <ContactLinks
+                  target="_blank"
+                  rel="noopener noreferrer external"
+                  href={contact.link + contact.title}
+                >
+                  {contact.title}
+                </ContactLinks>
+              </ContactInfo>
+            )
+          );
+        })}
+      </VendorPadding>
+    );
+  } else {
+    return null;
+  }
 };
 
 export default VendorContacts;
