@@ -71,7 +71,9 @@ const VendorContacts = (props) => {
     },
   ];
 
-  if (contacts.some((contact) => contact.title)) {
+  const hasContact = contacts.some((contact) => contact.title);
+
+  if (hasContact) {
     return (
       <VendorPadding>
         <ContactTitle>Elérhetőségek</ContactTitle>
