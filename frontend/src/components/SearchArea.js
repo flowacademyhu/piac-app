@@ -9,22 +9,20 @@ const SearchAreaField = styled.div`
 `;
 
 const SearchBar = styled.input`
-  & {
-    border: 0;
-    outline: none;
-    background-color: #fffdfc;
-    border-radius: 5px;
-    min-height: 30px;
-    width: 100%;
-    margin: 0;
-    height: 100%;
-    padding: 0px 10px 0px 10px;
-    box-sizing: border-box;
-    font-weight: bold;
-    font-size: 14px;
-    color: #705a4f;
-  }
-  &::placeholder {
+  border: 0;
+  outline: none;
+  background-color: #fffdfc;
+  border-radius: 5px;
+  min-height: 30px;
+  width: 100%;
+  margin: 0;
+  height: 100%;
+  padding: 0px 10px 0px 10px;
+  box-sizing: border-box;
+  font-weight: bold;
+  font-size: 14px;
+  color: #705a4f;
+  ::placeholder {
     color: #ccb8ad;
     font-style: italic;
     font-weight: normal;
