@@ -20,14 +20,12 @@ const SearchBar = styled.input`
     height: 100%;
     padding: 0px 10px 0px 10px;
     box-sizing: border-box;
-    font-family: "Open Sans";
     font-weight: bold;
     font-size: 14px;
     color: #705a4f;
   }
   &::placeholder {
     color: #ccb8ad;
-    font-family: "Open Sans";
     font-style: italic;
     font-weight: normal;
     font-size: 14px;

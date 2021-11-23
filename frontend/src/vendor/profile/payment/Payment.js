@@ -4,7 +4,6 @@ import styled from "styled-components";
 
 const VendorPayment = styled.div`
   display: flex;
-  font-family: "Open Sans", sans-serif;
   font-weight: 400;
   font-size: 10px;
   padding: 0 20px;

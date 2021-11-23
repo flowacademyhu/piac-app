@@ -31,7 +31,6 @@ const TopMarketInfo = styled.div`
 `;
 
 const MarketName = styled.div`
-  font-family: "Open Sans", sans-serif;
   font-size: 24px;
   font-weight: bold;
   overflow: hidden;
@@ -47,7 +46,6 @@ const MarketName = styled.div`
 `;
 
 const MarketLocationAndDate = styled.div`
-  font-family: "Open Sans", sans-serif;
   font-size: 18px;
   overflow-wrap: break-word;
 `;

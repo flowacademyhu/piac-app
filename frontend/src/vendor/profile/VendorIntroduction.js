@@ -11,7 +11,6 @@ const Introduction = styled.div`
     margin-top: 0;
   }
   p {
-    font-family: "Open Sans", sans-serif;
     font-size: 12px;
     white-space: pre-wrap;
   }

@@ -16,7 +16,6 @@ const VendorProfileMarketsTitle = styled.h2`
 const EmptyPageMessage = styled.p`
   text-align: left;
   font-size: 12px;
-  font-family: "Open Sans", sans-serif;
 `;
 
 const VendorProfileMarkets = ({ upcomingMarkets }) => {

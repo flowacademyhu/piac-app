@@ -19,7 +19,6 @@ const VendorLogoContainer = styled.div`
 `;
 
 const VendorName = styled.h2`
-  font-family: "Open Sans", sans-serif;
   font-weight: bold;
   font-size: 24px;
   margin: 20px 0;
@@ -27,7 +26,6 @@ const VendorName = styled.h2`
 `;
 
 const VendorIntro = styled.p`
-  font-family: "Open Sans", sans-serif;
   font-weight: normal;
   font-size: 14px;
   text-align: center;

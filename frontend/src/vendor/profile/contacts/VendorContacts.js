@@ -32,7 +32,6 @@ const ContactLogo = styled.img`
 const ContactLinks = styled.a`
   color: #53b896;
   text-decoration: none;
-  font-family: "Open Sans", sans-serif;
   font-weight: bold;
   font-size: 12px;
   overflow: hidden;

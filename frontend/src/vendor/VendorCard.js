@@ -30,7 +30,6 @@ const VendorInfo = styled.div`
 `;
 
 const VendorName = styled.div`
-  font-family: "Open Sans", sans-serif;
   font-size: 16px;
   font-weight: bold;
   overflow: hidden;
@@ -45,7 +44,6 @@ const VendorName = styled.div`
 `;
 
 const VendorDescription = styled.div`
-  font-family: "Open Sans", sans-serif;
   font-size: 12px;
   overflow: hidden;
   padding-left: 10px;

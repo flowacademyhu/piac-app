@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 const ErrorContainer = styled.div`
   font-size: 20px;
-  font-family: "Open Sans", sans-serif;
   font-weight: bold;
   display: flex;
   text-align: center;
@@ -11,7 +10,6 @@ const ErrorContainer = styled.div`
 `;
 
 const ErrorMessage = styled.div`
-  font-family: "Open Sans", sans-serif;
   position: absolute;
   padding: auto;
   text-align: center;
