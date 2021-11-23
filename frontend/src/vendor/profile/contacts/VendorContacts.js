@@ -73,8 +73,8 @@ const VendorContacts = (props) => {
 
   const hasContact = contacts.some((contact) => contact.title);
 
-  if (hasContact) {
-    return (
+  return (
+    hasContact && (
       <VendorPadding>
         <ContactTitle>Elérhetőségek</ContactTitle>
         {contacts.map((contact) => {
@@ -94,10 +94,8 @@ const VendorContacts = (props) => {
           );
         })}
       </VendorPadding>
-    );
-  } else {
-    return null;
-  }
+    )
+  );
 };
 
 export default VendorContacts;
