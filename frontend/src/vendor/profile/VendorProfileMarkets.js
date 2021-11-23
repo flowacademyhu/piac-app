@@ -1,7 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import MarketCard from "../../market/MarketCard";
+import { useQuery } from "react-query";
+import { fetchUpcomingMarketsByVendorId } from "../../api/Service";
 
-const VendorProfileMarkets = ({ upcomingMarkets }) => {
+const VendorProfileMarkets = () => {
+  const vendorId = useParams().id;
+
+  const { data: upcomingMarkets } = useQuery(["market", vendorId], () =>
+    fetchUpcomingMarketsByVendorId(vendorId)
+  );
+
   return (
     <div>
       <h2 className="vendor-profile-markets-title vendor-padding">

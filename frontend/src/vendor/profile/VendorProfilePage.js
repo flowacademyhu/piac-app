@@ -11,9 +11,7 @@ import "./VendorInfoNav.css";
 import { useQuery } from "react-query";
 
 const VendorProfilePage = () => {
-  // const [vendor, setVendor] = useState({});
   const vendorId = useParams().id;
-  // const [upcomingMarkets, setUpcomingMarkets] = useState([]);
 
   const {
     data: vendor,
@@ -21,10 +19,6 @@ const VendorProfilePage = () => {
     isError,
     isSuccess,
   } = useQuery(["vendor", vendorId], () => fetchVendorById(vendorId));
-
-  const { data: upcomingMarkets } = useQuery(["market", vendorId], () =>
-    fetchUpcomingMarketsByVendorId(vendorId)
-  );
 
   return (
     <>
@@ -45,7 +39,7 @@ const VendorProfilePage = () => {
             phone={vendor.phone}
             introductionLong={vendor.introductionLong}
           />
-          <VendorProfileMarkets upcomingMarkets={upcomingMarkets} />
+          <VendorProfileMarkets />
         </>
       ) : (
         <div style={{ height: "90%" }} />
