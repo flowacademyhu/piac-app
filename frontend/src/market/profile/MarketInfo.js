@@ -43,7 +43,7 @@ const MarketInfo = ({
         <title>Félpénzzel - {marketName}</title>
         <meta
           name="description"
-          content="{marketLocation} - {formattedYearMonthAndDay} {formattedOpeningAndClosingHour}"
+          content={`${marketLocation} - ${formattedYearMonthAndDay} ${formattedOpeningAndClosingHour}`}
         ></meta>
       </Helmet>
       <div
