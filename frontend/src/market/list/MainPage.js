@@ -7,7 +7,7 @@ const MainPage = () => {
     <>
       <Header />
       <MarketCardList />
-      <EmailContact />
+      <EmailContact isMarket />
     </>
   );
 };
