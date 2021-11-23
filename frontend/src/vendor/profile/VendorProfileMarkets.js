@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import EmailContact from "../../components/EmailContact";
 import MarketCard from "../../market/MarketCard";
 
 const VendorProfileMarkets = ({ upcomingMarkets }) => {
@@ -35,6 +36,7 @@ const VendorProfileMarkets = ({ upcomingMarkets }) => {
           </p>
         )}
       </div>
+      {upcomingMarkets.length > 0 && <EmailContact isMarket />}
     </div>
   );
 };
