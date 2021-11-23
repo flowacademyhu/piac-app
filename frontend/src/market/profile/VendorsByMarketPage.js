@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import HeaderWithMarket from "./HeaderWithMarket";
 import VendorListOfOneMarket from "./VendorListOfOneMarket";
@@ -7,29 +7,18 @@ import { fetchMarketById } from "../../api/Service";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import SearchArea from "../../components/SearchArea";
 import filteredArrayByKeyword from "../../vendor/filter";
+import { useQuery } from "react-query";
 
 const VendorsByMarketPage = () => {
-  const [market, setMarket] = useState({});
-  const [error, hasError] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const marketId = useParams().id;
 
-  useEffect(() => {
-    const fetchMarket = async (id) => {
-      const response = await fetchMarketById(id);
-      if (!response) {
-        hasError(true);
-      } else {
-        setMarket(response);
-      }
-    };
-    fetchMarket(marketId);
-  }, [marketId]);
-
-  const filteredVendorArray = filteredArrayByKeyword(
-    market.vendors,
-    searchTerm
-  );
+  const {
+    data: market,
+    isLoading,
+    isError,
+    isSuccess,
+  } = useQuery(["market", marketId], () => fetchMarketById(marketId));
 
   const renderVendorList = () => {
     if (market.vendors && market.vendors.length > 0) {
@@ -41,7 +30,9 @@ const VendorsByMarketPage = () => {
             }}
             placeHolder="Keress termékre vagy árusra..."
           />
-          <VendorListOfOneMarket vendors={filteredVendorArray} />
+          <VendorListOfOneMarket
+            vendors={filteredArrayByKeyword(market.vendors, searchTerm)}
+          />
         </>
       );
     } else if (market.id) {
@@ -63,7 +54,7 @@ const VendorsByMarketPage = () => {
 
   return (
     <>
-      {!error && market.id ? (
+      {!isLoading && !isError && market.id ? (
         <>
           <HeaderWithMarket
             profilePic={market.profilePic}
@@ -77,8 +68,8 @@ const VendorsByMarketPage = () => {
       ) : (
         <div style={{ height: "90%" }} />
       )}
-      {renderVendorList()}
-      {error && <Redirect to="/" />}
+      {!isLoading && renderVendorList()}
+      {!isSuccess && <Redirect to="/" />}
     </>
   );
 };
