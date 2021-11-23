@@ -6,8 +6,9 @@ import { fetchUpcomingMarketsByVendorId } from "../../api/Service";
 const VendorProfileMarkets = () => {
   const vendorId = useParams().id;
 
-  const { data: upcomingMarkets } = useQuery(["market", vendorId], () =>
-    fetchUpcomingMarketsByVendorId(vendorId)
+  const { data: upcomingMarkets, isLoading } = useQuery(
+    ["market", vendorId],
+    () => fetchUpcomingMarketsByVendorId(vendorId)
   );
 
   return (
@@ -16,7 +17,7 @@ const VendorProfileMarkets = () => {
         Melyik piacon találod legközelebb?
       </h2>
       <div className="card-list">
-        {upcomingMarkets.length > 0 ? (
+        {!isLoading && upcomingMarkets.length > 0 ? (
           upcomingMarkets.map((market) => {
             return (
               <div key={market.id}>
