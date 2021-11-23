@@ -7,6 +7,7 @@ import { fetchMarketById } from "../../api/Service";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import SearchArea from "../../components/SearchArea";
 import filteredArrayByKeyword from "../../vendor/filter";
+import EmailContact from "../../components/EmailContact";
 
 const VendorsByMarketPage = () => {
   const [market, setMarket] = useState({});
@@ -42,6 +43,7 @@ const VendorsByMarketPage = () => {
             placeHolder="Keress termékre vagy árusra..."
           />
           <VendorListOfOneMarket vendors={filteredVendorArray} />
+          <EmailContact />
         </>
       );
     } else if (market.id) {

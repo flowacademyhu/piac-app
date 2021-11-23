@@ -1,5 +1,6 @@
 import VendorCardList from "./VendorCardList";
 import Header from "../../header/Header";
+import EmailContact from "../../components/EmailContact";
 import { Helmet } from "react-helmet";
 
 const VendorPage = () => {
@@ -11,6 +12,7 @@ const VendorPage = () => {
       </Helmet>
       <Header />
       <VendorCardList />
+      <EmailContact />
     </>
   );
 };
