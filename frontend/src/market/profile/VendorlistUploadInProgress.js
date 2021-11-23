@@ -1,15 +1,27 @@
-import "./VendorlistUploadInProgress.css";
+import styled from "styled-components";
+import CardList from "../../styles/CardListStyled";
+
+const TopInfoText = styled.div`
+  font-weight: bold;
+  font-size: 20px;
+  padding-bottom: 20px;
+`;
+
+const BottomInfoText = styled.div`
+  font-style: normal;
+  font-size: 12px;
+`;
 
 const VendorlistUploadInProgress = ({ title, body }) => {
   return (
-    <div className="card-list inProgressText">
-      <div className="uploadTexts topInfoText">
+    <CardList>
+      <TopInfoText>
         <div>{title}</div>
-      </div>
-      <div className="uploadTexts bottomInfoText">
+      </TopInfoText>
+      <BottomInfoText>
         <div>{body}</div>
-      </div>
-    </div>
+      </BottomInfoText>
+    </CardList>
   );
 };
 

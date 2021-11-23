@@ -8,7 +8,6 @@ import {
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import VendorProfileInfo from "./VendorProfileInfo";
 import VendorProfileMarkets from "./VendorProfileMarkets";
-import "./VendorInfoNav.css";
 import { Helmet } from "react-helmet";
 
 const VendorProfilePage = () => {

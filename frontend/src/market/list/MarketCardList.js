@@ -1,9 +1,9 @@
 import MarketCard from "../MarketCard";
 import React, { useState, useLayoutEffect } from "react";
-import "../../styles/CardList.css";
 import { fetchUpcomingMarkets } from "../../api/Service";
 import { Link } from "react-router-dom";
 import ErrorBody from "../../components/ErrorBody";
+import CardList from "../../styles/CardListStyled.js";
 
 const MarketCardList = () => {
   const [upcomingMarkets, setUpcomingMarkets] = useState([]);
@@ -19,7 +19,7 @@ const MarketCardList = () => {
   }, []);
 
   return (
-    <div className="card-list">
+    <CardList>
       {error ? (
         <ErrorBody error={error} />
       ) : (
@@ -44,7 +44,7 @@ const MarketCardList = () => {
           );
         })
       )}
-    </div>
+    </CardList>
   );
 };
 

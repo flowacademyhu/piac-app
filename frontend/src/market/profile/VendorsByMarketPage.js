@@ -8,6 +8,21 @@ import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import SearchArea from "../../components/SearchArea";
 import filteredArrayByKeyword from "../../vendor/filter";
 import EmailContact from "../../components/EmailContact";
+import styled from "styled-components";
+
+const Intro = styled.div`
+  font-family: "Amatic SC", sans-serif;
+  font-size: 40px;
+  color: #705a4f;
+  padding: 10px 0px 0px 20px;
+`;
+
+const MarketLoading = styled.div`
+  background-color: #f7f5f2;
+  width: 100%;
+  position: relative;
+  height: 100px;
+`;
 
 const VendorsByMarketPage = () => {
   const [market, setMarket] = useState({});
@@ -56,7 +71,7 @@ const VendorsByMarketPage = () => {
     } else {
       return (
         <>
-          <div className="marketLoading" />
+          <MarketLoading />
           <VendorlistUploadInProgress />
         </>
       );
@@ -74,7 +89,7 @@ const VendorsByMarketPage = () => {
             marketOpeningDate={market.openingDate}
             marketClosingDate={market.closingDate}
           />
-          <div className="intro">Kikkel találkozhatsz?</div>
+          <Intro>Kikkel találkozhatsz?</Intro>
         </>
       ) : (
         <div style={{ height: "90%" }} />

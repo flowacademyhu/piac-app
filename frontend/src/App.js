@@ -1,4 +1,4 @@
-import "./App.css";
+import AppStyled from "./styles/AppStyled";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import MainPage from "./market/list/MainPage";
 import VendorsByMarketPage from "./market/profile/VendorsByMarketPage";
@@ -9,7 +9,8 @@ import "delayed-scroll-restoration-polyfill/index";
 
 const App = () => {
   return (
-    <div className="App">
+    <>
+      <AppStyled />
       <div className="container-fluid">
         <Router>
           <Switch>
@@ -21,7 +22,7 @@ const App = () => {
           <Footer />
         </Router>
       </div>
-    </div>
+    </>
   );
 };
 
