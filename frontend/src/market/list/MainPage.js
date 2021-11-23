@@ -1,3 +1,4 @@
+import EmailContact from "../../components/EmailContact";
 import Header from "../../header/Header";
 import MarketCardList from "./MarketCardList";
 
@@ -6,6 +7,7 @@ const MainPage = () => {
     <>
       <Header />
       <MarketCardList />
+      <EmailContact isMarket />
     </>
   );
 };

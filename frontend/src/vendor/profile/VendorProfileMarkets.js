@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import EmailContact from "../../components/EmailContact";
 import MarketCard from "../../market/MarketCard";
 import CardList from "../../styles/CardListStyled";
 import styled from "styled-components";
@@ -52,6 +53,7 @@ const VendorProfileMarkets = ({ upcomingMarkets }) => {
           </EmptyPageMessage>
         )}
       </CardList>
+      {upcomingMarkets.length > 0 && <EmailContact isMarket />}
     </div>
   );
 };
