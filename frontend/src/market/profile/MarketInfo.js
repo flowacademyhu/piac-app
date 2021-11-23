@@ -3,8 +3,8 @@ import { Helmet } from "react-helmet";
 import styled from "styled-components";
 
 const MarketLogo = styled.div`
-  height: 100px;
-  width: 100px;
+  height: 80px;
+  width: 80px;
   border-radius: 50%;
   grid-column: 1;
   grid-row-start: 1;
@@ -12,15 +12,6 @@ const MarketLogo = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-`;
-
-const HeaderLogo = styled(MarketLogo)`
-  height: 80px;
-  width: 80px;
-`;
-
-const CardLogo = styled(MarketLogo)`
-  height: 110px;
 `;
 
 const TopMarketInfo = styled.div`
@@ -79,8 +70,6 @@ const MarketInfo = ({
     minute: "numeric",
   };
 
-  const HeaderLogoOrCardLogo = header ? HeaderLogo : CardLogo;
-
   const formattedYearMonthAndDay = new Intl.DateTimeFormat(
     "hu-HU",
     marketOpeningDateFormatter
@@ -108,7 +97,7 @@ const MarketInfo = ({
           content={`${marketLocation} - ${formattedYearMonthAndDay} ${formattedOpeningAndClosingHour}`}
         ></meta>
       </Helmet>
-      <HeaderLogoOrCardLogo
+      <MarketLogo
         style={
           profilePic
             ? {
