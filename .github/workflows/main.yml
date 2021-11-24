@@ -149,8 +149,19 @@ jobs:
           path: frontend/node_modules
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('frontend/yarn.lock') }}
 
+      - name: Cache Cypress
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-cypress
+        with:
+          path: /home/runner/.cache/Cypress
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('frontend/yarn.lock') }}
+
       - name: Install dependencies
         run: yarn
+
+      - name: Install Cypress
+        run: yarn cypress install
 
       - name: Run Cypress tests
         run: yarn e2e-test:run
