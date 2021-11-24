@@ -31,7 +31,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "e2e-test": "cypress open",
-    "e2e-test:run": "cypress run",
+    "e2e-test:run": "cypress run --reporter junit --reporter-options \"mochaFile=results/suite-[hash].xml,toConsole=true\"",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
