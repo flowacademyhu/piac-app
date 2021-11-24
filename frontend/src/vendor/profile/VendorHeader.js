@@ -25,7 +25,7 @@ const VendorName = styled.h1`
   text-align: center;
 `;
 
-const VendorIntro = styled.p`
+const VendorIntro = styled.h2`
   font-weight: normal;
   font-size: 14px;
   text-align: center;
