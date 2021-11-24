@@ -11,11 +11,14 @@ import CardList from "../../styles/CardListStyled";
 
 const VendorCardList = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [error, setError] = useState(null);
   const {
     data: vendors,
     isLoading,
     isError,
-  } = useQuery("vendors", fetchVendors);
+  } = useQuery("vendors", fetchVendors, {
+    onError: (err) => setError(err.message),
+  });
 
   !isLoading && vendors.sort(sortByName);
 
@@ -29,7 +32,7 @@ const VendorCardList = () => {
       />
       <CardList>
         {isError ? (
-          <ErrorBody />
+          <ErrorBody error={error} />
         ) : (
           !isLoading &&
           filteredArrayByKeyword(vendors, searchTerm).map((vendor) => {
