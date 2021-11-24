@@ -133,7 +133,7 @@ jobs:
     services:
       site:
         image: registry.gitlab.com/6uliver/piac/frontend:${{ github.sha }}
-        ports: [80]
+        ports: [80:80]
         credentials:
           username: ${{ secrets.GITLAB_USERNAME }}
           password: ${{ secrets.GITLAB_PASSWORD }}
