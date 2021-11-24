@@ -16,33 +16,36 @@ const VendorProfilePage = () => {
 
   return (
     <>
-      {!isLoading && vendor ? (
-        <>
-          <Helmet>
-            <title>{vendor.name}</title>
-            <meta name="description" content={vendor.intro} />
-          </Helmet>
-          <VendorHeader
-            profilePic={vendor.profilePic}
-            name={vendor.name}
-            intro={vendor.intro}
-          />
-          <VendorProfileInfo
-            products={vendor.products}
-            cardPayment={vendor.cardPayment}
-            facebook={vendor.facebook}
-            instagram={vendor.instagram}
-            website={vendor.webSite}
-            email={vendor.email}
-            phone={vendor.phone}
-            introductionLong={vendor.introductionLong}
-          />
-          <VendorProfileMarkets />
-        </>
-      ) : (
-        <div style={{ height: "90%" }} />
-      )}
-      {!isLoading && !vendor && <Redirect to="/arusok" />}
+      {!isLoading &&
+        (vendor ? (
+          <>
+            <Helmet>
+              <title>{vendor.name}</title>
+              <meta name="description" content={vendor.intro} />
+            </Helmet>
+            <VendorHeader
+              profilePic={vendor.profilePic}
+              name={vendor.name}
+              intro={vendor.intro}
+            />
+            <VendorProfileInfo
+              products={vendor.products}
+              cardPayment={vendor.cardPayment}
+              facebook={vendor.facebook}
+              instagram={vendor.instagram}
+              website={vendor.webSite}
+              email={vendor.email}
+              phone={vendor.phone}
+              introductionLong={vendor.introductionLong}
+            />
+            <VendorProfileMarkets />
+          </>
+        ) : (
+          <>
+            <div style={{ height: "90%" }} />
+            <Redirect to="/arusok" />
+          </>
+        ))}
     </>
   );
 };
