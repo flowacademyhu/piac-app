@@ -4,7 +4,7 @@ import styled from "styled-components";
 const Introduction = styled.div`
   padding: 0 20px;
   margin-bottom: 20px;
-  h2 {
+  h3 {
     font-family: "Amatic SC", sans-serif;
     font-size: 32px;
     font-weight: 700;
@@ -21,7 +21,7 @@ const VendorIntroduction = ({ introductionLong }) => {
     <>
       {introductionLong && (
         <Introduction>
-          <h2>Bemutatkozás</h2>
+          <h3>Bemutatkozás</h3>
           <p>{introductionLong}</p>
         </Introduction>
       )}
