@@ -13,7 +13,7 @@ const ProductContent = styled.div`
   color: #705a4f;
 `;
 
-const ProductItem = styled.div`
+const ProductItem = styled.h3`
   font-family: "Amatic SC", sans-serif;
   font-size: 32px;
   font-weight: 700;

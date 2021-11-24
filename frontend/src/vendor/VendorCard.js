@@ -29,7 +29,7 @@ const VendorInfo = styled.div`
   align-content: flex-start;
 `;
 
-const VendorName = styled.div`
+const VendorName = styled.h4`
   font-size: 16px;
   font-weight: bold;
   overflow: hidden;
@@ -41,6 +41,7 @@ const VendorName = styled.div`
   -webkit-box-orient: vertical;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  margin-bottom: 0;
 `;
 
 const VendorDescription = styled.div`

@@ -21,7 +21,7 @@ const TopMarketInfo = styled.div`
   overflow: hidden;
 `;
 
-const MarketName = styled.div`
+const MarketName = styled.h1`
   font-size: 24px;
   font-weight: bold;
   overflow: hidden;
@@ -34,11 +34,13 @@ const MarketName = styled.div`
   display: -webkit-box;
   -webkit-line-clamp: 2;
   padding-top: 20px;
+  margin-bottom: 0;
 `;
 
-const MarketLocationAndDate = styled.div`
+const MarketLocationAndDate = styled.h2`
   font-size: 18px;
   overflow-wrap: break-word;
+  line-height: 30px;
 `;
 
 const ParallelDateAndHour = styled.div`

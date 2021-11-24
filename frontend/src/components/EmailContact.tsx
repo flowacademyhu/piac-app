@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const ContactContainer = styled.div`
-  margin: -80px 20px 80px;
+  margin: 0px 20px;
   font-family: "Open Sans", sans-serif;
   font-size: 12px;
   font-weight: bold;
@@ -19,7 +19,11 @@ const ContactLink = styled.a`
   }
 `;
 
-const EmailContact = ({ isMarket }) => {
+interface EmailContactProps {
+  isMarket: boolean;
+}
+
+const EmailContact = ({ isMarket }: EmailContactProps) => {
   const contactLabel = `Hiányolsz egy ${isMarket ? "piacot" : "árust"}?`;
   const emailAddress = "felpenzzel.hu@gmail.com";
   const linkText = "Írj nekünk emailt!";

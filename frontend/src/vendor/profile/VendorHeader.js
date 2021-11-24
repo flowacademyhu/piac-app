@@ -18,14 +18,14 @@ const VendorLogoContainer = styled.div`
   background-size: contain;
 `;
 
-const VendorName = styled.h2`
+const VendorName = styled.h1`
   font-weight: bold;
   font-size: 24px;
   margin: 20px 0;
   text-align: center;
 `;
 
-const VendorIntro = styled.p`
+const VendorIntro = styled.h2`
   font-weight: normal;
   font-size: 14px;
   text-align: center;

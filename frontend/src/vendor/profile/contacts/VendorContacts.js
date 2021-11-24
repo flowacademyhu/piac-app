@@ -11,7 +11,7 @@ const VendorPadding = styled.div`
   margin-bottom: 20px;
 `;
 
-const ContactTitle = styled.h1`
+const ContactTitle = styled.h3`
   font-family: "Amatic SC", sans-serif;
   font-size: 32px;
   font-weight: 700;
@@ -71,26 +71,30 @@ const VendorContacts = (props) => {
     },
   ];
 
+  const hasContact = contacts.some((contact) => contact.title);
+
   return (
-    <VendorPadding>
-      <ContactTitle>Elérhetőségek</ContactTitle>
-      {contacts.map((contact, index) => {
-        return (
-          contact.title && (
-            <ContactInfo key={v4()}>
-              <ContactLogo src={contact.logo} alt="" />
-              <ContactLinks
-                target="_blank"
-                rel="noopener noreferrer external"
-                href={contact.link + contact.title}
-              >
-                {contact.title}
-              </ContactLinks>
-            </ContactInfo>
-          )
-        );
-      })}
-    </VendorPadding>
+    hasContact && (
+      <VendorPadding>
+        <ContactTitle>Elérhetőségek</ContactTitle>
+        {contacts.map((contact) => {
+          return (
+            contact.title && (
+              <ContactInfo key={v4()}>
+                <ContactLogo src={contact.logo} alt="" />
+                <ContactLinks
+                  target="_blank"
+                  rel="noopener noreferrer external"
+                  href={contact.link + contact.title}
+                >
+                  {contact.title}
+                </ContactLinks>
+              </ContactInfo>
+            )
+          );
+        })}
+      </VendorPadding>
+    )
   );
 };
 

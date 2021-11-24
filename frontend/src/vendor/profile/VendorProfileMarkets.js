@@ -6,7 +6,7 @@ import EmailContact from "../../components/EmailContact";
 import CardList from "../../styles/CardListStyled";
 import styled from "styled-components";
 
-const VendorProfileMarketsTitle = styled.h2`
+const VendorProfileMarketsTitle = styled.h3`
   color: #33221a;
   font-family: "Amatic SC", sans-serif;
   font-size: 32px;

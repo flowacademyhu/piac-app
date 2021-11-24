@@ -37,6 +37,13 @@ const LogoContainer = styled.div`
   background-color: #ffffff;
 `;
 
+const HeaderText = styled.h1`
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 1.5;
+  margin-bottom: 0;
+`;
+
 const Header = () => {
   return (
     <div>
@@ -46,7 +53,7 @@ const Header = () => {
             <LogoContainer>
               <Logo src={MarketLogo} alt="Logo" />
             </LogoContainer>
-            <div>Piacok</div>
+            <HeaderText>Piacok</HeaderText>
           </HeaderContainer>
         </Route>
       </Switch>
@@ -56,7 +63,7 @@ const Header = () => {
             <LogoContainer>
               <Logo src={VendorLogo} alt="Logo" />
             </LogoContainer>
-            <div>Árusok</div>
+            <HeaderText>Árusok</HeaderText>
           </HeaderContainer>
         </Route>
       </Switch>

@@ -7,8 +7,13 @@ import VendorProfilePage from "./vendor/profile/VendorProfilePage";
 import Footer from "./footer/Footer";
 import "delayed-scroll-restoration-polyfill/index";
 import { QueryClient, QueryClientProvider } from "react-query";
+import styled from "styled-components";
 
 const queryClient = new QueryClient();
+
+const BodyContent = styled("div")`
+  padding-bottom: 80px;
+`;
 
 const App = () => {
   return (
@@ -17,12 +22,18 @@ const App = () => {
       <div className="container-fluid">
         <QueryClientProvider client={queryClient}>
           <Router>
-            <Switch>
-              <Route exact path="/" component={MainPage} />
-              <Route exact path="/piacok/:id" component={VendorsByMarketPage} />
-              <Route exact path="/arusok" component={VendorPage} />
-              <Route exact path="/arusok/:id" component={VendorProfilePage} />
-            </Switch>
+            <BodyContent>
+              <Switch>
+                <Route exact path="/" component={MainPage} />
+                <Route
+                  exact
+                  path="/piacok/:id"
+                  component={VendorsByMarketPage}
+                />
+                <Route exact path="/arusok" component={VendorPage} />
+                <Route exact path="/arusok/:id" component={VendorProfilePage} />
+              </Switch>
+            </BodyContent>
             <Footer />
           </Router>
         </QueryClientProvider>
