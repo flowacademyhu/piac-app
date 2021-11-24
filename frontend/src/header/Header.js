@@ -19,6 +19,11 @@ const HeaderContainer = styled.div`
   z-index: 1;
   padding-top: 20px;
   padding-bottom: 20px;
+  h1 {
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 1.5;
+  }
 `;
 
 const Logo = styled.img`
