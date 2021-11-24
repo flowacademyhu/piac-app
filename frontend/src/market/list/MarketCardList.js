@@ -16,7 +16,7 @@ const MarketCardList = () => {
   return (
     <CardList>
       {isError ? (
-        <ErrorBody error={error} />
+        <ErrorBody error={error.message} />
       ) : (
         !isLoading &&
         upcomingMarkets.map((market) => {

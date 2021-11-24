@@ -25,7 +25,7 @@ const VendorCardList = () => {
       />
       <CardList>
         {isError ? (
-          <ErrorBody error={error} />
+          <ErrorBody error={error.message} />
         ) : (
           filteredArrayByKeyword(vendors, searchTerm)?.map((vendor) => {
             return (
