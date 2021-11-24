@@ -10,11 +10,12 @@ import filteredArrayByKeyword from "../../vendor/filter";
 import EmailContact from "../../components/EmailContact";
 import styled from "styled-components";
 
-const Intro = styled.div`
+const Intro = styled.h3`
   font-family: "Amatic SC", sans-serif;
   font-size: 40px;
   color: #705a4f;
   padding: 10px 0px 0px 20px;
+  margin-bottom: 0;
 `;
 
 const MarketLoading = styled.div`
