@@ -35,11 +35,11 @@ const MarketCard = ({
   return (
     <MarketCardContainer data-test="market-card">
       <MarketInfoList
-        profilePic={profilePic}
-        marketName={marketName}
-        marketLocation={marketLocation}
-        marketOpeningDate={marketOpeningDate}
-        marketClosingDate={marketClosingDate}
+        picture={profilePic}
+        name={marketName}
+        location={marketLocation}
+        openingDate={marketOpeningDate}
+        closingDate={marketClosingDate}
         vendorsAmount={vendorsAmount}
       />
     </MarketCardContainer>

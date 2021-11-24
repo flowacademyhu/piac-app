@@ -104,37 +104,31 @@ const minuteFormat = new Intl.DateTimeFormat("hu-HU", {
 });
 
 interface MarketInfoListProps {
-  profilePic?: string;
-  marketName: string;
-  marketLocation: string;
-  marketOpeningDate: number;
-  marketClosingDate: number;
+  picture?: string;
+  name: string;
+  location: string;
+  openingDate: number;
+  closingDate: number;
   vendorsAmount: number;
 }
 
 const MarketInfoList = ({
-  profilePic,
-  marketName,
-  marketLocation,
-  marketOpeningDate,
-  marketClosingDate,
+  picture,
+  name,
+  location,
+  openingDate,
+  closingDate,
   vendorsAmount,
 }: MarketInfoListProps) => {
-  const formattedMonth = monthFormat
-    .format(marketOpeningDate * 1000)
-    .substring(0, 3);
+  const formattedMonth = monthFormat.format(openingDate * 1000).substring(0, 3);
 
-  const formattedDayDigits = dayDigitsFormat.format(marketOpeningDate * 1000);
+  const formattedDayDigits = dayDigitsFormat.format(openingDate * 1000);
 
-  const formattedWeekdays = weekdayFormat.format(marketOpeningDate * 1000);
+  const formattedWeekdays = weekdayFormat.format(openingDate * 1000);
 
-  const formattedOpeningHourAndMinute = minuteFormat.format(
-    marketOpeningDate * 1000
-  );
+  const formattedOpeningHourAndMinute = minuteFormat.format(openingDate * 1000);
 
-  const formattedClosingHourAndMinute = minuteFormat.format(
-    marketClosingDate * 1000
-  );
+  const formattedClosingHourAndMinute = minuteFormat.format(closingDate * 1000);
 
   const formattedOpeningAndClosingHour =
     formattedOpeningHourAndMinute + " - " + formattedClosingHourAndMinute;
@@ -149,9 +143,9 @@ const MarketInfoList = ({
       <MarketListHours>{formattedOpeningAndClosingHour}</MarketListHours>
       <MarketListLogo
         style={
-          profilePic
+          picture
             ? {
-                backgroundImage: `url(${profilePic})`,
+                backgroundImage: `url(${picture})`,
               }
             : {
                 backgroundImage: `url(${defaultMarketImage})`,
@@ -159,8 +153,8 @@ const MarketInfoList = ({
         }
       />
       <MarketListNameAndLocation>
-        <MarketListName>{marketName}</MarketListName>
-        <MarketListLocation>{marketLocation}</MarketListLocation>
+        <MarketListName>{name}</MarketListName>
+        <MarketListLocation>{location}</MarketListLocation>
       </MarketListNameAndLocation>
       <MarketListVendorNumber>
         {vendorsAmount === 0 ? "Szervezés alatt..." : `${vendorsAmount} árus`}
