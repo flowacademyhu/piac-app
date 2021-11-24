@@ -46,7 +46,7 @@ const VendorsByMarketPage = () => {
           <VendorListOfOneMarket
             vendors={filteredArrayByKeyword(market.vendors, searchTerm)}
           />
-         <EmailContact />
+          <EmailContact />
         </>
       );
     } else if (market.id) {
@@ -77,8 +77,6 @@ const VendorsByMarketPage = () => {
             marketOpeningDate={market.openingDate}
             marketClosingDate={market.closingDate}
           />
-          <div className="intro">Kikkel találkozhatsz?</div>
-          {renderVendorList()}
           <Intro>Kikkel találkozhatsz?</Intro>
           {renderVendorList()}
         </>
