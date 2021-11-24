@@ -11,7 +11,7 @@ const VendorPadding = styled.div`
   margin-bottom: 20px;
 `;
 
-const ContactTitle = styled.h1`
+const ContactTitle = styled.h3`
   font-family: "Amatic SC", sans-serif;
   font-size: 32px;
   font-weight: 700;
