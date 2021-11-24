@@ -23,6 +23,7 @@ const HeaderContainer = styled.div`
     font-weight: 600;
     font-size: 40px;
     line-height: 1.5;
+    margin-bottom: 0;
   }
 `;
 
