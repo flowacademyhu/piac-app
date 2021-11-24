@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import HeaderWithMarket from "./HeaderWithMarket";
 import VendorListOfOneMarket from "./VendorListOfOneMarket";
@@ -7,6 +7,7 @@ import { fetchMarketById } from "../../api/Service";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import SearchArea from "../../components/SearchArea";
 import filteredArrayByKeyword from "../../vendor/filter";
+import { useQuery } from "react-query";
 import EmailContact from "../../components/EmailContact";
 import styled from "styled-components";
 
@@ -26,26 +27,11 @@ const MarketLoading = styled.div`
 `;
 
 const VendorsByMarketPage = () => {
-  const [market, setMarket] = useState({});
-  const [error, hasError] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const marketId = useParams().id;
 
-  useEffect(() => {
-    const fetchMarket = async (id) => {
-      const response = await fetchMarketById(id);
-      if (!response) {
-        hasError(true);
-      } else {
-        setMarket(response);
-      }
-    };
-    fetchMarket(marketId);
-  }, [marketId]);
-
-  const filteredVendorArray = filteredArrayByKeyword(
-    market.vendors,
-    searchTerm
+  const { data: market, isLoading } = useQuery(["market", marketId], () =>
+    fetchMarketById(marketId)
   );
 
   const renderVendorList = () => {
@@ -58,7 +44,9 @@ const VendorsByMarketPage = () => {
             }}
             placeHolder="Keress termékre vagy árusra..."
           />
-          <VendorListOfOneMarket vendors={filteredVendorArray} />
+          <VendorListOfOneMarket
+            vendors={filteredArrayByKeyword(market.vendors, searchTerm)}
+          />
           <EmailContact />
         </>
       );
@@ -81,7 +69,7 @@ const VendorsByMarketPage = () => {
 
   return (
     <>
-      {!error && market.id ? (
+      {!isLoading && market ? (
         <>
           <HeaderWithMarket
             profilePic={market.profilePic}
@@ -91,12 +79,12 @@ const VendorsByMarketPage = () => {
             marketClosingDate={market.closingDate}
           />
           <Intro>Kikkel találkozhatsz?</Intro>
+          {renderVendorList()}
         </>
       ) : (
         <div style={{ height: "90%" }} />
       )}
-      {renderVendorList()}
-      {error && <Redirect to="/" />}
+      {!isLoading && !market && <Redirect to="/" />}
     </>
   );
 };

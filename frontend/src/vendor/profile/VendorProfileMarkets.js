@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom";
-import EmailContact from "../../components/EmailContact";
+import { Link, useParams } from "react-router-dom";
 import MarketCard from "../../market/MarketCard";
+import { useQuery } from "react-query";
+import { fetchUpcomingMarketsByVendorId } from "../../api/Service";
+import EmailContact from "../../components/EmailContact";
 import CardList from "../../styles/CardListStyled";
 import styled from "styled-components";
 
@@ -18,14 +20,21 @@ const EmptyPageMessage = styled.p`
   font-size: 12px;
 `;
 
-const VendorProfileMarkets = ({ upcomingMarkets }) => {
+const VendorProfileMarkets = () => {
+  const vendorId = useParams().id;
+
+  const { data: upcomingMarkets, isLoading } = useQuery(
+    ["market", vendorId],
+    () => fetchUpcomingMarketsByVendorId(vendorId)
+  );
+
   return (
     <div>
       <VendorProfileMarketsTitle>
         Melyik piacon találod legközelebb?
       </VendorProfileMarketsTitle>
       <CardList>
-        {upcomingMarkets.length > 0 ? (
+        {!isLoading && upcomingMarkets.length > 0 ? (
           upcomingMarkets.map((market) => {
             return (
               <div key={market.id}>
@@ -52,7 +61,7 @@ const VendorProfileMarkets = ({ upcomingMarkets }) => {
           </EmptyPageMessage>
         )}
       </CardList>
-      {upcomingMarkets.length > 0 && <EmailContact isMarket />}
+      {!isLoading && upcomingMarkets.length > 0 && <EmailContact isMarket />}
     </div>
   );
 };
