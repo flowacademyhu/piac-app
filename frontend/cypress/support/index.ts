@@ -18,3 +18,12 @@ import "./commands";
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+beforeEach(() => {
+  cy.intercept("/v1/api/**", {
+    statusCode: 501,
+  });
+
+  cy.intercept("/v1/api/market/upcoming", {
+    fixture: "upcoming-markets.json",
+  });
+});
