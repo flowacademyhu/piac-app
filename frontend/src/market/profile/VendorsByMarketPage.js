@@ -13,11 +13,9 @@ const VendorsByMarketPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const marketId = useParams().id;
 
-  const {
-    data: market,
-    isLoading,
-    isError,
-  } = useQuery(["market", marketId], () => fetchMarketById(marketId));
+  const { data: market, isLoading } = useQuery(["market", marketId], () =>
+    fetchMarketById(marketId)
+  );
 
   const renderVendorList = () => {
     if (market.vendors && market.vendors.length > 0) {
@@ -53,7 +51,7 @@ const VendorsByMarketPage = () => {
 
   return (
     <>
-      {!isLoading && !isError && market ? (
+      {!isLoading && market ? (
         <>
           <HeaderWithMarket
             profilePic={market.profilePic}
@@ -63,11 +61,11 @@ const VendorsByMarketPage = () => {
             marketClosingDate={market.closingDate}
           />
           <div className="intro">Kikkel találkozhatsz?</div>
+          {renderVendorList()}
         </>
       ) : (
         <div style={{ height: "90%" }} />
       )}
-      {!isLoading && market && renderVendorList()}
       {!isLoading && !market && <Redirect to="/" />}
     </>
   );
