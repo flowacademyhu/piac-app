@@ -12,11 +12,7 @@ import CardList from "../../styles/CardListStyled";
 const VendorCardList = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [error, setError] = useState(null);
-  const {
-    data: vendors,
-    isLoading,
-    isError,
-  } = useQuery("vendors", fetchVendors, {
+  const { data: vendors, isError } = useQuery("vendors", fetchVendors, {
     onError: (err) => setError(err.message),
   });
 
@@ -34,7 +30,6 @@ const VendorCardList = () => {
         {isError ? (
           <ErrorBody error={error} />
         ) : (
-          !isLoading &&
           filteredArrayByKeyword(vendors, searchTerm)?.map((vendor) => {
             return (
               <div key={vendor.id}>
