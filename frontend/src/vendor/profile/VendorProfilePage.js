@@ -4,7 +4,6 @@ import { fetchVendorById } from "../../api/Service";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import VendorProfileInfo from "./VendorProfileInfo";
 import VendorProfileMarkets from "./VendorProfileMarkets";
-import "./VendorInfoNav.css";
 import { useQuery } from "react-query";
 import { Helmet } from "react-helmet";
 
@@ -17,12 +16,12 @@ const VendorProfilePage = () => {
 
   return (
     <>
-      <Helmet>
-        <title>{vendor.name}</title>
-        <meta name="description" content={vendor.intro} />
-      </Helmet>
       {!isLoading && vendor ? (
         <>
+          <Helmet>
+            <title>{vendor.name}</title>
+            <meta name="description" content={vendor.intro} />
+          </Helmet>
           <VendorHeader
             profilePic={vendor.profilePic}
             name={vendor.name}
