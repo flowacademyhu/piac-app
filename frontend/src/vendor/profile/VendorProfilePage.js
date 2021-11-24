@@ -1,9 +1,6 @@
 import { useParams } from "react-router-dom";
 import VendorHeader from "./VendorHeader";
-import {
-  fetchVendorById,
-  fetchUpcomingMarketsByVendorId,
-} from "../../api/Service";
+import { fetchVendorById } from "../../api/Service";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import VendorProfileInfo from "./VendorProfileInfo";
 import VendorProfileMarkets from "./VendorProfileMarkets";
@@ -13,16 +10,13 @@ import { useQuery } from "react-query";
 const VendorProfilePage = () => {
   const vendorId = useParams().id;
 
-  const {
-    data: vendor,
-    isLoading,
-    isError,
-    isSuccess,
-  } = useQuery(["vendor", vendorId], () => fetchVendorById(vendorId));
+  const { data: vendor, isLoading } = useQuery(["vendor", vendorId], () =>
+    fetchVendorById(vendorId)
+  );
 
   return (
     <>
-      {!isLoading && !isError && vendor.id ? (
+      {!isLoading && vendor ? (
         <>
           <VendorHeader
             profilePic={vendor.profilePic}
@@ -44,7 +38,7 @@ const VendorProfilePage = () => {
       ) : (
         <div style={{ height: "90%" }} />
       )}
-      {!isSuccess && <Redirect to="/arusok" />}
+      {!isLoading && !vendor && <Redirect to="/arusok" />}
     </>
   );
 };
