@@ -6,6 +6,7 @@ import VendorPage from "./vendor/list/VendorPage";
 import VendorProfilePage from "./vendor/profile/VendorProfilePage";
 import Footer from "./footer/Footer";
 import "delayed-scroll-restoration-polyfill/index";
+import BodyPadding from "./styles/BodyPadding";
 
 const App = () => {
   return (
@@ -13,12 +14,14 @@ const App = () => {
       <AppStyled />
       <div className="container-fluid">
         <Router>
-          <Switch>
-            <Route exact path="/" component={MainPage} />
-            <Route exact path="/piacok/:id" component={VendorsByMarketPage} />
-            <Route exact path="/arusok" component={VendorPage} />
-            <Route exact path="/arusok/:id" component={VendorProfilePage} />
-          </Switch>
+          <BodyPadding>
+            <Switch>
+              <Route exact path="/" component={MainPage} />
+              <Route exact path="/piacok/:id" component={VendorsByMarketPage} />
+              <Route exact path="/arusok" component={VendorPage} />
+              <Route exact path="/arusok/:id" component={VendorProfilePage} />
+            </Switch>
+          </BodyPadding>
           <Footer />
         </Router>
       </div>
