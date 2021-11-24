@@ -39,9 +39,10 @@ const MarketName = styled.h1`
   padding-top: 20px;
 `;
 
-const MarketLocationAndDate = styled.div`
+const MarketLocationAndDate = styled.h2`
   font-size: 18px;
   overflow-wrap: break-word;
+  line-height: 30px;
 `;
 
 const ParallelDateAndHour = styled.div`
