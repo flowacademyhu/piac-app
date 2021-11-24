@@ -17,7 +17,6 @@ const VendorsByMarketPage = () => {
     data: market,
     isLoading,
     isError,
-    isSuccess,
   } = useQuery(["market", marketId], () => fetchMarketById(marketId));
 
   const renderVendorList = () => {
@@ -54,7 +53,7 @@ const VendorsByMarketPage = () => {
 
   return (
     <>
-      {!isLoading && !isError && market.id ? (
+      {!isLoading && !isError && market ? (
         <>
           <HeaderWithMarket
             profilePic={market.profilePic}
@@ -68,8 +67,8 @@ const VendorsByMarketPage = () => {
       ) : (
         <div style={{ height: "90%" }} />
       )}
-      {!isLoading && renderVendorList()}
-      {!isSuccess && <Redirect to="/" />}
+      {!isLoading && market && renderVendorList()}
+      {!isLoading && !market && <Redirect to="/" />}
     </>
   );
 };
