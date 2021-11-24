@@ -18,7 +18,7 @@ const VendorLogoContainer = styled.div`
   background-size: contain;
 `;
 
-const VendorName = styled.h2`
+const VendorName = styled.h1`
   font-weight: bold;
   font-size: 24px;
   margin: 20px 0;
