@@ -20,7 +20,7 @@ const VendorCardList = () => {
     onError: (err) => setError(err.message),
   });
 
-  !isLoading && vendors.sort(sortByName);
+  vendors?.sort(sortByName);
 
   return (
     <>
@@ -35,7 +35,7 @@ const VendorCardList = () => {
           <ErrorBody error={error} />
         ) : (
           !isLoading &&
-          filteredArrayByKeyword(vendors, searchTerm).map((vendor) => {
+          filteredArrayByKeyword(vendors, searchTerm)?.map((vendor) => {
             return (
               <div key={vendor.id}>
                 <Link
