@@ -86,55 +86,55 @@ const MarketListVendorNumber = styled.div`
   padding: 10px 0px 0px 10px;
 `;
 
+const monthFormat = new Intl.DateTimeFormat("hu-HU", {
+  month: "short",
+});
+
+const dayDigitsFormat = new Intl.DateTimeFormat("hu-HU", {
+  day: "2-digit",
+});
+
+const weekdayFormat = new Intl.DateTimeFormat("hu-HU", {
+  weekday: "long",
+});
+
+const minuteFormat = new Intl.DateTimeFormat("hu-HU", {
+  hour: "2-digit",
+  minute: "numeric",
+});
+
+interface MarketInfoListProps {
+  profilePic?: string;
+  marketName: string;
+  marketLocation: string;
+  marketOpeningDate: number;
+  marketClosingDate: number;
+  vendorsAmount: number;
+}
+
 const MarketInfoList = ({
   profilePic,
   marketName,
   marketLocation,
   marketOpeningDate,
   marketClosingDate,
-  header,
   vendorsAmount,
-}) => {
-  const marketMonthFormatter = {
-    month: "short",
-  };
-
-  const marketDayDigitsFormatter = {
-    day: "2-digit",
-  };
-
-  const marketMinuteFormatter = {
-    hour: "2-digit",
-    minute: "numeric",
-  };
-
-  const marketWeekdayFormatter = {
-    weekday: "long",
-  };
-
-  const formattedMonth = new Intl.DateTimeFormat("hu-HU", marketMonthFormatter)
-    .format(new Date(marketOpeningDate * 1000))
+}: MarketInfoListProps) => {
+  const formattedMonth = monthFormat
+    .format(marketOpeningDate * 1000)
     .substring(0, 3);
 
-  const formattedDayDigits = new Intl.DateTimeFormat(
-    "hu-HU",
-    marketDayDigitsFormatter
-  ).format(new Date(marketOpeningDate * 1000));
+  const formattedDayDigits = dayDigitsFormat.format(marketOpeningDate * 1000);
 
-  const formattedWeekdays = new Intl.DateTimeFormat(
-    "hu-HU",
-    marketWeekdayFormatter
-  ).format(new Date(marketOpeningDate * 1000));
+  const formattedWeekdays = weekdayFormat.format(marketOpeningDate * 1000);
 
-  const formattedOpeningHourAndMinute = new Intl.DateTimeFormat(
-    "hu-HU",
-    marketMinuteFormatter
-  ).format(new Date(marketOpeningDate * 1000));
+  const formattedOpeningHourAndMinute = minuteFormat.format(
+    marketOpeningDate * 1000
+  );
 
-  const formattedClosingHourAndMinute = new Intl.DateTimeFormat(
-    "hu-HU",
-    marketMinuteFormatter
-  ).format(new Date(marketClosingDate * 1000));
+  const formattedClosingHourAndMinute = minuteFormat.format(
+    marketClosingDate * 1000
+  );
 
   const formattedOpeningAndClosingHour =
     formattedOpeningHourAndMinute + " - " + formattedClosingHourAndMinute;
