@@ -3,8 +3,43 @@ import facebookLogo from "./facebook.svg";
 import instagramLogo from "./instagram.svg";
 import phoneLogo from "./phone.svg";
 import webLogo from "./web.svg";
-import "./VendorContacts.css";
 import { v4 } from "uuid";
+import styled from "styled-components";
+
+const VendorPadding = styled.div`
+  padding: 0 20px;
+  margin-bottom: 20px;
+`;
+
+const ContactTitle = styled.h1`
+  font-family: "Amatic SC", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #33221a;
+`;
+
+const ContactInfo = styled.div`
+  text-align: left;
+  align-content: center;
+  margin-bottom: 20px;
+  display: flex;
+`;
+
+const ContactLogo = styled.img`
+  padding-right: 10px;
+`;
+
+const ContactLinks = styled.a`
+  color: #53b896;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  :hover {
+    color: #53b896;
+  }
+`;
 
 const VendorContacts = (props) => {
   const { facebook, instagram, website, email, phone } = props;
@@ -37,26 +72,25 @@ const VendorContacts = (props) => {
   ];
 
   return (
-    <div className="vendor-padding">
-      <h1 className="contact-title">Elérhetőségek</h1>
+    <VendorPadding>
+      <ContactTitle>Elérhetőségek</ContactTitle>
       {contacts.map((contact, index) => {
         return (
           contact.title && (
-            <div key={v4()} className="contact-info">
-              <img src={contact.logo} className="contact-logo" alt="" />
-              <a
+            <ContactInfo key={v4()}>
+              <ContactLogo src={contact.logo} alt="" />
+              <ContactLinks
                 target="_blank"
                 rel="noopener noreferrer external"
-                className="contact-links"
                 href={contact.link + contact.title}
               >
                 {contact.title}
-              </a>
-            </div>
+              </ContactLinks>
+            </ContactInfo>
           )
         );
       })}
-    </div>
+    </VendorPadding>
   );
 };
 

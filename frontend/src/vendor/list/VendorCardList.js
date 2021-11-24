@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "../../styles/CardList.css";
 import { fetchVendors } from "../../api/Service";
 import VendorCard from "../VendorCard";
 import { Link } from "react-router-dom";
@@ -8,6 +7,7 @@ import ErrorBody from "../../components/ErrorBody";
 import sortByName from "../sort/sortByName";
 import filteredArrayByKeyword from "../filter";
 import { useQuery } from "react-query";
+import CardList from "../../styles/CardListStyled";
 
 const VendorCardList = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -27,7 +27,7 @@ const VendorCardList = () => {
         }}
         placeHolder="Keress termékre vagy árusra..."
       />
-      <div className="card-list">
+      <CardList>
         {isError ? (
           <ErrorBody />
         ) : (
@@ -49,7 +49,7 @@ const VendorCardList = () => {
             );
           })
         )}
-      </div>
+      </CardList>
     </>
   );
 };

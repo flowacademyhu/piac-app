@@ -1,5 +1,4 @@
 import MarketCard from "../MarketCard";
-import "../../styles/CardList.css";
 import { fetchUpcomingMarkets } from "../../api/Service";
 import { Link } from "react-router-dom";
 import ErrorBody from "../../components/ErrorBody";
@@ -13,7 +12,7 @@ const MarketCardList = () => {
   } = useQuery("markets", fetchUpcomingMarkets);
 
   return (
-    <div className="card-list">
+    <CardList>
       {isError ? (
         <ErrorBody />
       ) : (
@@ -39,7 +38,7 @@ const MarketCardList = () => {
           );
         })
       )}
-    </div>
+    </CardList>
   );
 };
 

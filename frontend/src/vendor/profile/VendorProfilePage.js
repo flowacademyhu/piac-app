@@ -6,6 +6,7 @@ import VendorProfileInfo from "./VendorProfileInfo";
 import VendorProfileMarkets from "./VendorProfileMarkets";
 import "./VendorInfoNav.css";
 import { useQuery } from "react-query";
+import { Helmet } from "react-helmet";
 
 const VendorProfilePage = () => {
   const vendorId = useParams().id;
@@ -16,6 +17,10 @@ const VendorProfilePage = () => {
 
   return (
     <>
+      <Helmet>
+        <title>{vendor.name}</title>
+        <meta name="description" content={vendor.intro} />
+      </Helmet>
       {!isLoading && vendor ? (
         <>
           <VendorHeader

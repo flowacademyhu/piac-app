@@ -1,10 +1,30 @@
-import "./ErrorBody.css";
+import styled from "styled-components";
+
+const ErrorContainer = styled.div`
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: row;
+`;
+
+const ErrorMessage = styled.div`
+  position: absolute;
+  padding: auto;
+  text-align: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bold;
+  top: 50%;
+  transform: translateY(-50%);
+`;
 
 const ErrorBody = ({ error }) => {
   return (
-    <div className="error-body">
-      {error && <div className="error-message">{error}</div>}
-    </div>
+    <ErrorContainer>
+      {error && <ErrorMessage>{error}</ErrorMessage>}
+    </ErrorContainer>
   );
 };
 

@@ -8,6 +8,22 @@ import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import SearchArea from "../../components/SearchArea";
 import filteredArrayByKeyword from "../../vendor/filter";
 import { useQuery } from "react-query";
+import EmailContact from "../../components/EmailContact";
+import styled from "styled-components";
+
+const Intro = styled.div`
+  font-family: "Amatic SC", sans-serif;
+  font-size: 40px;
+  color: #705a4f;
+  padding: 10px 0px 0px 20px;
+`;
+
+const MarketLoading = styled.div`
+  background-color: #f7f5f2;
+  width: 100%;
+  position: relative;
+  height: 100px;
+`;
 
 const VendorsByMarketPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -30,6 +46,7 @@ const VendorsByMarketPage = () => {
           <VendorListOfOneMarket
             vendors={filteredArrayByKeyword(market.vendors, searchTerm)}
           />
+         <EmailContact />
         </>
       );
     } else if (market.id) {
@@ -42,7 +59,7 @@ const VendorsByMarketPage = () => {
     } else {
       return (
         <>
-          <div className="marketLoading" />
+          <MarketLoading />
           <VendorlistUploadInProgress />
         </>
       );
@@ -61,6 +78,8 @@ const VendorsByMarketPage = () => {
             marketClosingDate={market.closingDate}
           />
           <div className="intro">Kikkel találkozhatsz?</div>
+          {renderVendorList()}
+          <Intro>Kikkel találkozhatsz?</Intro>
           {renderVendorList()}
         </>
       ) : (

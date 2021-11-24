@@ -1,4 +1,4 @@
-import "./App.css";
+import AppStyled from "./styles/AppStyled";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import MainPage from "./market/list/MainPage";
 import VendorsByMarketPage from "./market/profile/VendorsByMarketPage";
@@ -12,7 +12,8 @@ const queryClient = new QueryClient();
 
 const App = () => {
   return (
-    <div className="App">
+    <>
+      <AppStyled />
       <div className="container-fluid">
         <QueryClientProvider client={queryClient}>
           <Router>
@@ -26,7 +27,7 @@ const App = () => {
           </Router>
         </QueryClientProvider>
       </div>
-    </div>
+    </>
   );
 };
 

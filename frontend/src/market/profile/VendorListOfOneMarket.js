@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
 import VendorCard from "../../vendor/VendorCard";
 import sortByName from "../../vendor/sort/sortByName";
+import CardList from "../../styles/CardListStyled";
 
 const VendorListOfOneMarket = ({ vendors }) => {
   vendors.sort(sortByName);
 
   return (
-    <div className="card-list">
+    <CardList>
       {vendors &&
         vendors.map((vendor) => {
           return (
@@ -24,7 +25,7 @@ const VendorListOfOneMarket = ({ vendors }) => {
             </div>
           );
         })}
-    </div>
+    </CardList>
   );
 };
 
