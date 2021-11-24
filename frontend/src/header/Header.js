@@ -19,12 +19,6 @@ const HeaderContainer = styled.div`
   z-index: 1;
   padding-top: 20px;
   padding-bottom: 20px;
-  h1 {
-    font-weight: 600;
-    font-size: 40px;
-    line-height: 1.5;
-    margin-bottom: 0;
-  }
 `;
 
 const Logo = styled.img`
@@ -43,6 +37,13 @@ const LogoContainer = styled.div`
   background-color: #ffffff;
 `;
 
+const HeaderText = styled.h1`
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 1.5;
+  margin-bottom: 0;
+`;
+
 const Header = () => {
   return (
     <div>
@@ -52,7 +53,7 @@ const Header = () => {
             <LogoContainer>
               <Logo src={MarketLogo} alt="Logo" />
             </LogoContainer>
-            <h1>Piacok</h1>
+            <HeaderText>Piacok</HeaderText>
           </HeaderContainer>
         </Route>
       </Switch>
@@ -62,7 +63,7 @@ const Header = () => {
             <LogoContainer>
               <Logo src={VendorLogo} alt="Logo" />
             </LogoContainer>
-            <h1>Árusok</h1>
+            <HeaderText>Árusok</HeaderText>
           </HeaderContainer>
         </Route>
       </Switch>
