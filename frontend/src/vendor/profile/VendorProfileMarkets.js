@@ -2,9 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import MarketCard from "../../market/MarketCard";
 import { useQuery } from "react-query";
 import { fetchUpcomingMarketsByVendorId } from "../../api/Service";
-import { Link } from "react-router-dom";
 import EmailContact from "../../components/EmailContact";
-import MarketCard from "../../market/MarketCard";
 import CardList from "../../styles/CardListStyled";
 import styled from "styled-components";
 
@@ -36,7 +34,7 @@ const VendorProfileMarkets = () => {
         Melyik piacon találod legközelebb?
       </VendorProfileMarketsTitle>
       <CardList>
-       {!isLoading && upcomingMarkets.length > 0 ? (
+        {!isLoading && upcomingMarkets.length > 0 ? (
           upcomingMarkets.map((market) => {
             return (
               <div key={market.id}>
@@ -63,7 +61,7 @@ const VendorProfileMarkets = () => {
           </EmptyPageMessage>
         )}
       </CardList>
-      {upcomingMarkets.length > 0 && <EmailContact isMarket />}
+      {!isLoading && upcomingMarkets.length > 0 && <EmailContact isMarket />}
     </div>
   );
 };
