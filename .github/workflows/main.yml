@@ -124,6 +124,10 @@ jobs:
     name: Run site tests
     runs-on: ubuntu-latest
     needs: [build-frontend]
+    defaults:
+      run:
+        shell: bash
+        working-directory: frontend
     env:
       CYPRESS_BASE_URL: http://site
     services:
