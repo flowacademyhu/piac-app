@@ -3,6 +3,7 @@ import { fetchUpcomingMarkets } from "../../api/Service";
 import { Link } from "react-router-dom";
 import ErrorBody from "../../components/ErrorBody";
 import { useQuery } from "react-query";
+import CardList from "../../styles/CardListStyled.js";
 
 const MarketCardList = () => {
   const {
