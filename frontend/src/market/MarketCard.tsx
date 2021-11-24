@@ -15,6 +15,15 @@ const MarketCardContainer = styled.div`
   position: relative;
 `;
 
+interface MarketCardProps {
+  marketName: string;
+  marketLocation: string;
+  marketOpeningDate: number;
+  marketClosingDate: number;
+  vendorsAmount: number;
+  profilePic?: string;
+}
+
 const MarketCard = ({
   marketName,
   marketLocation,
@@ -22,7 +31,7 @@ const MarketCard = ({
   marketClosingDate,
   vendorsAmount,
   profilePic,
-}) => {
+}: MarketCardProps) => {
   return (
     <MarketCardContainer data-test="market-card">
       <MarketInfoList
