@@ -2,7 +2,17 @@ import { Button, Modal } from "react-bootstrap";
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const DeleteEntity = ({ confirmationQuestion, handleDelete, ID }) => {
+interface DeleteEntityProps {
+  confirmationQuestion: string;
+  handleDelete: (id: string) => void;
+  ID: string;
+}
+
+const DeleteEntity = ({
+  confirmationQuestion,
+  handleDelete,
+  ID,
+}: DeleteEntityProps) => {
   const [appear, setAppear] = useState(false);
   const handleClose = () => setAppear(false);
   const handleAppear = () => setAppear(true);
