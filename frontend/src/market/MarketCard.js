@@ -24,7 +24,7 @@ const MarketCard = ({
   profilePic,
 }) => {
   return (
-    <MarketCardContainer>
+    <MarketCardContainer data-test="market-card">
       <MarketInfoList
         profilePic={profilePic}
         marketName={marketName}
