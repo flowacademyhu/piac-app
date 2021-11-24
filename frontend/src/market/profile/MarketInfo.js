@@ -19,9 +19,6 @@ const TopMarketInfo = styled.div`
   grid-row: 1;
   position: "relative";
   overflow: hidden;
-  h1 {
-    margin-bottom: 0;
-  }
 `;
 
 const MarketName = styled.h1`
@@ -37,6 +34,7 @@ const MarketName = styled.h1`
   display: -webkit-box;
   -webkit-line-clamp: 2;
   padding-top: 20px;
+  margin-bottom: 0;
 `;
 
 const MarketLocationAndDate = styled.h2`
