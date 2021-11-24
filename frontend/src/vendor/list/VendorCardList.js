@@ -11,10 +11,7 @@ import CardList from "../../styles/CardListStyled";
 
 const VendorCardList = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [error, setError] = useState(null);
-  const { data: vendors, isError } = useQuery("vendors", fetchVendors, {
-    onError: (err) => setError(err.message),
-  });
+  const { data: vendors, isError, error } = useQuery("vendors", fetchVendors);
 
   vendors?.sort(sortByName);
 

@@ -4,18 +4,14 @@ import { Link } from "react-router-dom";
 import ErrorBody from "../../components/ErrorBody";
 import { useQuery } from "react-query";
 import CardList from "../../styles/CardListStyled.js";
-import { useState } from "react";
 
 const MarketCardList = () => {
-  const [error, setError] = useState(null);
-
   const {
     data: upcomingMarkets,
     isLoading,
     isError,
-  } = useQuery("markets", fetchUpcomingMarkets, {
-    onError: (err) => setError(err.message),
-  });
+    error,
+  } = useQuery("markets", fetchUpcomingMarkets);
 
   return (
     <CardList>
