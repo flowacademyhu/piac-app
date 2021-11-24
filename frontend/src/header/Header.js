@@ -56,7 +56,7 @@ const Header = () => {
             <LogoContainer>
               <Logo src={VendorLogo} alt="Logo" />
             </LogoContainer>
-            <div>Árusok</div>
+            <h1>Árusok</h1>
           </HeaderContainer>
         </Route>
       </Switch>
