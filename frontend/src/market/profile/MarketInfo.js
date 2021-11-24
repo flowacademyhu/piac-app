@@ -19,9 +19,12 @@ const TopMarketInfo = styled.div`
   grid-row: 1;
   position: "relative";
   overflow: hidden;
+  h1 {
+    margin-bottom: 0;
+  }
 `;
 
-const MarketName = styled.div`
+const MarketName = styled.h1`
   font-size: 24px;
   font-weight: bold;
   overflow: hidden;
