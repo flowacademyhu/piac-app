@@ -55,9 +55,12 @@ const MarketListNameAndLocation = styled.div`
   grid-row: 1;
   grid-column: 2;
   padding-left: 10px;
+  h4 {
+    margin-bottom: 0;
+  }
 `;
 
-const MarketListName = styled.div`
+const MarketListName = styled.h4`
   font-size: 16px;
   font-weight: bold;
   overflow: hidden;
