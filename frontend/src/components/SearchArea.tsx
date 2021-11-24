@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 
 const SearchAreaField = styled.div`
@@ -32,13 +33,12 @@ const SearchBar = styled.input`
   }
 `;
 
-const SearchArea = ({
-  onChange,
-  placeHolder,
-}: {
-  onChange: any;
-  placeHolder: any;
-}) => {
+interface SearchAreaProps {
+  onChange: React.ChangeEventHandler<HTMLInputElement>;
+  placeHolder: string;
+}
+
+const SearchArea = ({ onChange, placeHolder }: SearchAreaProps) => {
   return (
     <SearchAreaField>
       <SearchBar placeholder={placeHolder} onChange={onChange} />
