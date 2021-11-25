@@ -3,7 +3,7 @@ import MarketTablePage from "./pages/MarketTablePage";
 import VendorTablePage from "./pages/VendorTablePage";
 import Menu from "./components/Menu";
 import VendorDetails from "./pages/VendorDetails";
-import LoginPage from "./components/Login";
+import LoginPage from "./components/LoginPage";
 import TokenExchange from "./pages/TokenExchange";
 import { getToken } from "./components/AuthService";
 
