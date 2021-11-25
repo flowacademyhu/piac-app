@@ -8,10 +8,10 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [success, setSuccess] = useState(false);
 
-  async function getMail(emailType: string) {
+  async function getMail(email: string) {
     try {
       const response = await axios.post("/v1/api/login", {
-        emailAddress: emailType,
+        emailAddress: email,
       });
       if (response.status === 200) {
         setSuccess(true);
