@@ -1,5 +1,8 @@
 FROM node:14 as build-stage
 WORKDIR /app
+
+COPY tsconfig.json ./
+
 COPY package.json yarn.lock ./
 
 COPY node_modules ./node_modules
