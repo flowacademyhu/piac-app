@@ -13,7 +13,6 @@ const MainPage = () => {
           content="Kézműves és termelői piacok a közeljövőben"
         />
       </Helmet>
-      <Header />
       <MarketCardList />
       <EmailContact isMarket />
     </>
