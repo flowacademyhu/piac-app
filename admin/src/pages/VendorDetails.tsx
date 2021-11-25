@@ -28,13 +28,13 @@ const VendorDetails = () => {
     if (id) {
       fetchVendor(id);
     }
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     if (success) {
       navigate("/arus");
     }
-  }, [success]);
+  }, [success, navigate]);
 
   const [updatedVendor, setUpdatedVendor] = useState({});
   const [hasError, setHasError] = useState(false);
