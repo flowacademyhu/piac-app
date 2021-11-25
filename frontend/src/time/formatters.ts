@@ -1,32 +1,33 @@
-export const dateFormat = new Intl.DateTimeFormat("hu-HU", {
+function createFormat(options: Intl.DateTimeFormatOptions) {
+  return new Intl.DateTimeFormat("hu-HU", {
+    timeZone: "Europe/Budapest",
+    ...options,
+  });
+}
+
+export const dateFormat = createFormat({
   month: "long",
   day: "numeric",
-  timeZone: "Europe/Budapest",
 });
 
-export const timeFormat = new Intl.DateTimeFormat("hu-HU", {
+export const timeFormat = createFormat({
   hour: "2-digit",
   minute: "numeric",
-  timeZone: "Europe/Budapest",
 });
 
-export const monthFormat = new Intl.DateTimeFormat("hu-HU", {
+export const monthFormat = createFormat({
   month: "short",
-  timeZone: "Europe/Budapest",
 });
 
-export const dayDigitsFormat = new Intl.DateTimeFormat("hu-HU", {
+export const dayDigitsFormat = createFormat({
   day: "2-digit",
-  timeZone: "Europe/Budapest",
 });
 
-export const weekdayFormat = new Intl.DateTimeFormat("hu-HU", {
+export const weekdayFormat = createFormat({
   weekday: "long",
-  timeZone: "Europe/Budapest",
 });
 
-export const minuteFormat = new Intl.DateTimeFormat("hu-HU", {
+export const minuteFormat = createFormat({
   hour: "2-digit",
   minute: "numeric",
-  timeZone: "Europe/Budapest",
 });
