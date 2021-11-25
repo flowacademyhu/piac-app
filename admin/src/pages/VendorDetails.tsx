@@ -19,8 +19,8 @@ const VendorDetails = () => {
 
   const [success, setSuccess] = useState(false);
 
-  const fetchVendor = async (idType: string) => {
-    const response = await fetchVendorById(idType);
+  const fetchVendor = async (id: string) => {
+    const response = await fetchVendorById(id);
     setUpdatedVendor(response);
   };
 
