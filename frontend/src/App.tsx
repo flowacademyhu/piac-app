@@ -16,19 +16,17 @@ const App = () => {
   return (
     <>
       <AppStyled />
-      <div className="container-fluid">
-        <Router>
-          <BodyContent>
-            <Switch>
-              <Route exact path="/" component={MainPage} />
-              <Route exact path="/piacok/:id" component={VendorsByMarketPage} />
-              <Route exact path="/arusok" component={VendorPage} />
-              <Route exact path="/arusok/:id" component={VendorProfilePage} />
-            </Switch>
-          </BodyContent>
-          <Footer />
-        </Router>
-      </div>
+      <Router>
+        <BodyContent>
+          <Switch>
+            <Route exact path="/" component={MainPage} />
+            <Route exact path="/piacok/:id" component={VendorsByMarketPage} />
+            <Route exact path="/arusok" component={VendorPage} />
+            <Route exact path="/arusok/:id" component={VendorProfilePage} />
+          </Switch>
+        </BodyContent>
+        <Footer />
+      </Router>
     </>
   );
 };
