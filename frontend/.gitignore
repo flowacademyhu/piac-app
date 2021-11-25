@@ -4,3 +4,4 @@ build
 cypress/screenshots
 cypress/videos
 results
+junit.xml
