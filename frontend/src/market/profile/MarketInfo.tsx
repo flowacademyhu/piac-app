@@ -70,14 +70,13 @@ const MarketInfo = ({
   marketOpeningDate,
   marketClosingDate,
 }: MarketInfoProps) => {
-  const formattedYearMonthAndDay = getDate(marketOpeningDate);
+  const date = getDate(marketOpeningDate);
 
-  const formattedOpeningHourAndMinute = getTime(marketOpeningDate);
+  const openingTime = getTime(marketOpeningDate);
 
-  const formattedClosingHourAndMinute = getTime(marketClosingDate);
+  const closingTime = getTime(marketClosingDate);
 
-  const formattedOpeningAndClosingHour =
-    formattedOpeningHourAndMinute + " - " + formattedClosingHourAndMinute;
+  const openingAndClosingTime = openingTime + " - " + closingTime;
 
   return (
     <>
@@ -85,7 +84,7 @@ const MarketInfo = ({
         <title>Félpénzzel - {marketName}</title>
         <meta
           name="description"
-          content={`${marketLocation} - ${formattedYearMonthAndDay} ${formattedOpeningAndClosingHour}`}
+          content={`${marketLocation} - ${date} ${openingAndClosingTime}`}
         ></meta>
       </Helmet>
       <MarketLogo
@@ -104,10 +103,8 @@ const MarketInfo = ({
         <MarketLocationAndDate>
           <div>{marketLocation}</div>
           <ParallelDateAndHour>
-            <div>{formattedYearMonthAndDay}</div>
-            <StartAndEndHours>
-              {formattedOpeningAndClosingHour}
-            </StartAndEndHours>
+            <div>{date}</div>
+            <StartAndEndHours>{openingAndClosingTime}</StartAndEndHours>
           </ParallelDateAndHour>
         </MarketLocationAndDate>
       </TopMarketInfo>

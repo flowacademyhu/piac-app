@@ -108,27 +108,20 @@ const MarketInfoList = ({
   closingDate,
   vendorsAmount,
 }: MarketInfoListProps) => {
-  const formattedMonth = getMonth(openingDate);
+  const openingTime = getTime(openingDate);
 
-  const formattedDayDigits = getDayDigits(openingDate);
+  const closingTime = getTime(closingDate);
 
-  const formattedWeekdays = getWeekday(openingDate);
-
-  const formattedOpeningHourAndMinute = getTime(openingDate);
-
-  const formattedClosingHourAndMinute = getTime(closingDate);
-
-  const formattedOpeningAndClosingHour =
-    formattedOpeningHourAndMinute + " - " + formattedClosingHourAndMinute;
+  const openingAndClosingTime = openingTime + " - " + closingTime;
 
   return (
     <>
       <DateContainer>
-        <DateFirstRow>{formattedMonth}</DateFirstRow>
-        <DateSecondRow>{formattedDayDigits}</DateSecondRow>
-        <DateThirdRow>{formattedWeekdays}</DateThirdRow>
+        <DateFirstRow>{getMonth(openingDate)}</DateFirstRow>
+        <DateSecondRow>{getDayDigits(openingDate)}</DateSecondRow>
+        <DateThirdRow>{getWeekday(openingDate)}</DateThirdRow>
       </DateContainer>
-      <MarketListHours>{formattedOpeningAndClosingHour}</MarketListHours>
+      <MarketListHours>{openingAndClosingTime}</MarketListHours>
       <MarketListLogo
         style={
           picture
