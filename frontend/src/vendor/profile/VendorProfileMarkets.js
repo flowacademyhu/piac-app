@@ -61,7 +61,7 @@ const VendorProfileMarkets = () => {
           </EmptyPageMessage>
         )}
       </CardList>
-      {!isLoading && upcomingMarkets.length > 0 && <EmailContact isMarket />}
+      {!isLoading && <EmailContact isMarket />}
     </div>
   );
 };
