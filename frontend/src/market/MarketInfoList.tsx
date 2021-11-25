@@ -2,9 +2,9 @@ import defaultMarketImage from "./defaultMarketImage.png";
 import styled from "styled-components";
 import {
   getDayDigits,
-  getTime,
   getMonth,
   getWeekday,
+  getTimeRange,
 } from "../time/formatters";
 
 const DateContainer = styled.div`
@@ -108,12 +108,6 @@ const MarketInfoList = ({
   closingDate,
   vendorsAmount,
 }: MarketInfoListProps) => {
-  const openingTime = getTime(openingDate);
-
-  const closingTime = getTime(closingDate);
-
-  const openingAndClosingTime = openingTime + " - " + closingTime;
-
   return (
     <>
       <DateContainer>
@@ -121,7 +115,9 @@ const MarketInfoList = ({
         <DateSecondRow>{getDayDigits(openingDate)}</DateSecondRow>
         <DateThirdRow>{getWeekday(openingDate)}</DateThirdRow>
       </DateContainer>
-      <MarketListHours>{openingAndClosingTime}</MarketListHours>
+      <MarketListHours>
+        {getTimeRange(openingDate, closingDate)}
+      </MarketListHours>
       <MarketListLogo
         style={
           picture
