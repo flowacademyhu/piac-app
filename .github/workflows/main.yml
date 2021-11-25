@@ -164,7 +164,7 @@ jobs:
         run: yarn cypress install
 
       - name: Run Cypress tests
-        run: yarn e2e-test:run
+        run: curl http://localhost && curl http://site && yarn e2e-test:run
 
       - name: Publish Unit Test Results
         uses: EnricoMi/publish-unit-test-result-action@v1
