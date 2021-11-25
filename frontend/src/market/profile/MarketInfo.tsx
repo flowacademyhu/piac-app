@@ -54,40 +54,44 @@ const StartAndEndHours = styled.div`
   padding-left: 5px;
 `;
 
+const dateFormat = new Intl.DateTimeFormat("hu-HU", {
+  month: "long",
+  day: "numeric",
+  timeZone: "Europe/Budapest",
+});
+
+const timeFormat = new Intl.DateTimeFormat("hu-HU", {
+  hour: "2-digit",
+  minute: "numeric",
+  timeZone: "Europe/Budapest",
+});
+
+interface MarketInfoProps {
+  profilePic: string;
+  marketName: string;
+  marketLocation: string;
+  marketOpeningDate: number;
+  marketClosingDate: number;
+}
+
 const MarketInfo = ({
   profilePic,
   marketName,
   marketLocation,
   marketOpeningDate,
   marketClosingDate,
-  header,
-}) => {
-  const marketOpeningDateFormatter = {
-    month: "long",
-    day: "numeric",
-    timeZone: "Europe/Budapest",
-  };
+}: MarketInfoProps) => {
+  const formattedYearMonthAndDay = dateFormat.format(
+    new Date(marketOpeningDate * 1000)
+  );
 
-  const marketMinuteFormatter = {
-    hour: "2-digit",
-    minute: "numeric",
-    timeZone: "Europe/Budapest",
-  };
+  const formattedOpeningHourAndMinute = timeFormat.format(
+    new Date(marketOpeningDate * 1000)
+  );
 
-  const formattedYearMonthAndDay = new Intl.DateTimeFormat(
-    "hu-HU",
-    marketOpeningDateFormatter
-  ).format(new Date(marketOpeningDate * 1000));
-
-  const formattedOpeningHourAndMinute = new Intl.DateTimeFormat(
-    "hu-HU",
-    marketMinuteFormatter
-  ).format(new Date(marketOpeningDate * 1000));
-
-  const formattedClosingHourAndMinute = new Intl.DateTimeFormat(
-    "hu-HU",
-    marketMinuteFormatter
-  ).format(new Date(marketClosingDate * 1000));
+  const formattedClosingHourAndMinute = timeFormat.format(
+    new Date(marketClosingDate * 1000)
+  );
 
   const formattedOpeningAndClosingHour =
     formattedOpeningHourAndMinute + " - " + formattedClosingHourAndMinute;
