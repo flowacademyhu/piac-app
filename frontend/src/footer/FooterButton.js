@@ -4,7 +4,6 @@ import MarketLogo from "../icons/navigation/calendar-gray.svg";
 import MarketLogoHighlight from "../icons/navigation/calendar-primary.svg";
 import VendorLogo from "../icons/navigation/vendor-gray.svg";
 import VendorLogoHighlight from "../icons/navigation/vendor-primary.svg";
-import "./Footer.css";
 import styled from "styled-components";
 
 const FooterButton = ({ requestParam, appelation, logo }) => {
