@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Form } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "@pathofdev/react-tag-input/build/index.css";
 import {
   fetchVendorById,
@@ -12,7 +12,6 @@ import FormTextAreaInput from "../components/FormTextAreaInput";
 import VendorCardPaymentCheckbox from "../components/VendorCardPaymentCheckbox";
 import VendorProductsInput from "../components/VendorProductsInput";
 import VendorDetailsButtons from "../components/VendorDetailsButtons";
-import { useNavigate } from "react-router-dom";
 
 const VendorDetails = () => {
   const id = useParams().id;
