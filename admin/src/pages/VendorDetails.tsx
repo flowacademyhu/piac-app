@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Form } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router-dom";
 import "@pathofdev/react-tag-input/build/index.css";
@@ -19,8 +19,8 @@ const VendorDetails = () => {
 
   const [success, setSuccess] = useState(false);
 
-  const fetchVendor = async (id) => {
-    const response = await fetchVendorById(id);
+  const fetchVendor = async (idType: string) => {
+    const response = await fetchVendorById(idType);
     setUpdatedVendor(response);
   };
 
@@ -41,7 +41,7 @@ const VendorDetails = () => {
   const title = id ? "Árus módosítása" : "Új árus hozzáadása";
   const submitButtonLabel = id ? "Módosítás" : "Hozzáadás";
 
-  const submitForm = (e) => {
+  const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
     if (id) {
       updateVendor(updatedVendor, id, setSuccess, setHasError);
     } else {
