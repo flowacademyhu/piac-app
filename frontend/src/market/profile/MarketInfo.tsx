@@ -84,9 +84,7 @@ const MarketInfo = ({
       </Helmet>
       <MarketLogo
         style={{
-          backgroundImage: profilePic
-            ? `url(${profilePic})`
-            : `url(${defaultMarketImage})`,
+          backgroundImage: `url(${profilePic ?? defaultMarketImage})`,
         }}
       />
       <TopMarketInfo>
