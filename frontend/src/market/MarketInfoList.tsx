@@ -1,5 +1,11 @@
 import defaultMarketImage from "./defaultMarketImage.png";
 import styled from "styled-components";
+import {
+  monthFormat,
+  dayDigitsFormat,
+  weekdayFormat,
+  minuteFormat,
+} from "../time/formatters";
 
 const DateContainer = styled.div`
   height: 60px;
@@ -85,28 +91,6 @@ const MarketListVendorNumber = styled.div`
   overflow-wrap: break-word;
   padding: 10px 0px 0px 10px;
 `;
-
-const monthFormat = new Intl.DateTimeFormat("hu-HU", {
-  month: "short",
-  timeZone: "Europe/Budapest",
-});
-
-const dayDigitsFormat = new Intl.DateTimeFormat("hu-HU", {
-  day: "2-digit",
-  timeZone: "Europe/Budapest",
-});
-
-const weekdayFormat = new Intl.DateTimeFormat("hu-HU", {
-  weekday: "long",
-  timeZone: "Europe/Budapest",
-});
-
-const minuteFormat = new Intl.DateTimeFormat("hu-HU", {
-  hour: "2-digit",
-  minute: "numeric",
-  timeZone: "Europe/Budapest",
-});
-
 interface MarketInfoListProps {
   picture?: string;
   name: string;

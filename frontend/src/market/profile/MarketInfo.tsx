@@ -1,6 +1,7 @@
 import defaultMarketImage from "../defaultMarketImage.png";
 import { Helmet } from "react-helmet";
 import styled from "styled-components";
+import { dateFormat, timeFormat } from "../../time/formatters";
 
 const MarketLogo = styled.div`
   height: 80px;
@@ -53,18 +54,6 @@ const StartAndEndHours = styled.div`
   font-size: 18px;
   padding-left: 5px;
 `;
-
-const dateFormat = new Intl.DateTimeFormat("hu-HU", {
-  month: "long",
-  day: "numeric",
-  timeZone: "Europe/Budapest",
-});
-
-const timeFormat = new Intl.DateTimeFormat("hu-HU", {
-  hour: "2-digit",
-  minute: "numeric",
-  timeZone: "Europe/Budapest",
-});
 
 interface MarketInfoProps {
   profilePic: string;
