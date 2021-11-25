@@ -52,7 +52,7 @@ const VendorTable = () => {
                 </td>
                 <td className="text-center">
                   <DeleteEntity
-                    confirmationQuestion={`Biztosan kitörlöd a következő árust? ${vendor.id}`}
+                    confirmationQuestion={`Biztosan kitörlöd a következő árust? ${vendor.name}`}
                     handleDelete={handleDeleteVendor}
                     ID={vendor.id}
                   />
