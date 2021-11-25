@@ -5,29 +5,37 @@ function createFormat(options: Intl.DateTimeFormatOptions) {
   });
 }
 
-export const dateFormat = createFormat({
+function createFormatters(
+  options: Intl.DateTimeFormatOptions,
+  postProcessor: (result: string) => string = (result) => result
+) {
+  const format = createFormat(options);
+
+  return (timestampSeconds: number) =>
+    postProcessor(format.format(timestampSeconds * 1000));
+}
+
+export const getDate = createFormatters({
   month: "long",
   day: "numeric",
 });
 
-export const timeFormat = createFormat({
+export const getTime = createFormatters({
   hour: "2-digit",
   minute: "numeric",
 });
 
-export const monthFormat = createFormat({
-  month: "short",
-});
+export const getMonth = createFormatters(
+  {
+    month: "short",
+  },
+  (month) => month.substring(0, 3)
+);
 
-export const dayDigitsFormat = createFormat({
+export const getDayDigits = createFormatters({
   day: "2-digit",
 });
 
-export const weekdayFormat = createFormat({
+export const getWeekday = createFormatters({
   weekday: "long",
-});
-
-export const minuteFormat = createFormat({
-  hour: "2-digit",
-  minute: "numeric",
 });
