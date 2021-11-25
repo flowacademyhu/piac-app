@@ -28,7 +28,11 @@ const FooterButton = ({ requestParam, appelation, logo }) => {
     location.pathname === requestParam ? FooterLabelActive : FooterLabel;
 
   return (
-    <Link className="footer-link" to={requestParam}>
+    <Link
+      className="footer-link"
+      to={requestParam}
+      style={{ textDecoration: "none", textAlign: "center" }}
+    >
       <img
         className="footer-logo"
         src={
