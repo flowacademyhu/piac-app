@@ -65,11 +65,13 @@ const MarketInfo = ({
   const marketOpeningDateFormatter = {
     month: "long",
     day: "numeric",
+    timeZone: "Europe/Budapest",
   };
 
   const marketMinuteFormatter = {
     hour: "2-digit",
     minute: "numeric",
+    timeZone: "Europe/Budapest",
   };
 
   const formattedYearMonthAndDay = new Intl.DateTimeFormat(
