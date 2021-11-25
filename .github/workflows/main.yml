@@ -161,6 +161,7 @@ jobs:
         uses: EnricoMi/publish-unit-test-result-action@v1
         if: always()
         with:
+          check_name: Cypress test results - frontend
           files: frontend/results/**/*.xml
 
       - name: Archive video
