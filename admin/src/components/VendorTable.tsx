@@ -18,7 +18,7 @@ const VendorTable = () => {
     getAllVendors();
   }, []);
 
-  const handleDeleteVendor = async (id) => {
+  const handleDeleteVendor = async (id: string) => {
     await deleteVendorById(id);
     getAllVendors();
   };
@@ -42,18 +42,18 @@ const VendorTable = () => {
         <tbody>
           {allVendors.map((vendor) => {
             return (
-              <tr key={vendor.id}>
-                <td>{vendor.name}</td>
+              <tr key={vendor["id"]}>
+                <td>{vendor["name"]}</td>
                 <td className="text-center">
-                  <Link to={`/arus/szerkeszt/${vendor.id}`}>
+                  <Link to={`/arus/szerkeszt/${vendor["id"]}`}>
                     <Button>Szerkeszt</Button>
                   </Link>
                 </td>
                 <td className="text-center">
                   <DeleteEntity
-                    confirmationQuestion={`Biztosan kitörlöd a következő árust? ${vendor.name}`}
+                    confirmationQuestion={`Biztosan kitörlöd a következő árust? ${vendor["name"]}`}
                     handleDelete={handleDeleteVendor}
-                    ID={vendor.id}
+                    ID={vendor["id"]}
                   />
                 </td>
               </tr>
