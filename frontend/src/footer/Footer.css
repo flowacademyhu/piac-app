@@ -1,17 +1,3 @@
-.footer-label {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 18px;
-  color: #ccbeb8;
-  text-decoration: none;
-  outline-style: none;
-  display: flex;
-  justify-content: center;
-}
-
-.active {
-  color: #53b896;
-}
-
 .footer-link {
   text-decoration: none;
   text-align: center;
