@@ -24,6 +24,14 @@ const FooterButton = ({ requestParam, appelation, logo }) => {
     color: #53b896;
   `;
 
+  const FooterLogo = styled.div`
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+  `;
+
   const IsActive =
     location.pathname === requestParam ? FooterLabelActive : FooterLabel;
 
@@ -33,19 +41,20 @@ const FooterButton = ({ requestParam, appelation, logo }) => {
       to={requestParam}
       style={{ textDecoration: "none", textAlign: "center" }}
     >
-      <img
-        className="footer-logo"
-        src={
-          location.pathname === requestParam
-            ? logo === "market"
-              ? MarketLogoHighlight
-              : VendorLogoHighlight
-            : logo === "market"
-            ? MarketLogo
-            : VendorLogo
-        }
-        alt="Icon"
-      />
+      <FooterLogo>
+        <img
+          src={
+            location.pathname === requestParam
+              ? logo === "market"
+                ? MarketLogoHighlight
+                : VendorLogoHighlight
+              : logo === "market"
+              ? MarketLogo
+              : VendorLogo
+          }
+          alt="Icon"
+        />
+      </FooterLogo>
       <IsActive style={{ cursor: "default" }}>{appelation}</IsActive>
     </Link>
   );
