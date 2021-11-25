@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./login.css";
 import { fetchVendors, deleteVendorById } from "./Service";
 import DeleteEntity from "./DeleteEntity";
-import { VendorInterface } from "../interfaces/VendorInterface";
+import { VendorInterface } from "../vendor/Vendor";
 
 const VendorTable = () => {
   const [allVendors, setAllVendors] = useState<VendorInterface[]>([]);
