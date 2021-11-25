@@ -1,7 +1,7 @@
 import defaultMarketImage from "../defaultMarketImage.png";
 import { Helmet } from "react-helmet";
 import styled from "styled-components";
-import { dateFormat, timeFormat } from "../../time/formatters";
+import { getDate, getTime } from "../../time/formatters";
 
 const MarketLogo = styled.div`
   height: 80px;
@@ -70,17 +70,11 @@ const MarketInfo = ({
   marketOpeningDate,
   marketClosingDate,
 }: MarketInfoProps) => {
-  const formattedYearMonthAndDay = dateFormat.format(
-    new Date(marketOpeningDate * 1000)
-  );
+  const formattedYearMonthAndDay = getDate(marketOpeningDate);
 
-  const formattedOpeningHourAndMinute = timeFormat.format(
-    new Date(marketOpeningDate * 1000)
-  );
+  const formattedOpeningHourAndMinute = getTime(marketOpeningDate);
 
-  const formattedClosingHourAndMinute = timeFormat.format(
-    new Date(marketClosingDate * 1000)
-  );
+  const formattedClosingHourAndMinute = getTime(marketClosingDate);
 
   const formattedOpeningAndClosingHour =
     formattedOpeningHourAndMinute + " - " + formattedClosingHourAndMinute;

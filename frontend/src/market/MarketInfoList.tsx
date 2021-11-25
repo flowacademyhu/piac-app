@@ -1,10 +1,10 @@
 import defaultMarketImage from "./defaultMarketImage.png";
 import styled from "styled-components";
 import {
-  monthFormat,
-  dayDigitsFormat,
-  weekdayFormat,
-  minuteFormat,
+  getDayDigits,
+  getTime,
+  getMonth,
+  getWeekday,
 } from "../time/formatters";
 
 const DateContainer = styled.div`
@@ -108,15 +108,15 @@ const MarketInfoList = ({
   closingDate,
   vendorsAmount,
 }: MarketInfoListProps) => {
-  const formattedMonth = monthFormat.format(openingDate * 1000).substring(0, 3);
+  const formattedMonth = getMonth(openingDate);
 
-  const formattedDayDigits = dayDigitsFormat.format(openingDate * 1000);
+  const formattedDayDigits = getDayDigits(openingDate);
 
-  const formattedWeekdays = weekdayFormat.format(openingDate * 1000);
+  const formattedWeekdays = getWeekday(openingDate);
 
-  const formattedOpeningHourAndMinute = minuteFormat.format(openingDate * 1000);
+  const formattedOpeningHourAndMinute = getTime(openingDate);
 
-  const formattedClosingHourAndMinute = minuteFormat.format(closingDate * 1000);
+  const formattedClosingHourAndMinute = getTime(closingDate);
 
   const formattedOpeningAndClosingHour =
     formattedOpeningHourAndMinute + " - " + formattedClosingHourAndMinute;
