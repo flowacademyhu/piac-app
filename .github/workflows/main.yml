@@ -163,6 +163,20 @@ jobs:
         with:
           files: frontend/results/**/*.xml
 
+      - name: Archive video
+        uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: videos
+          path: frontend/cypress/videos
+
+      - name: Archive screenshots
+        uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: screenshots
+          path: frontend/cypress/screenshots
+
   deploy-staging:
     name: Deploy to staging
     runs-on: ubuntu-latest
