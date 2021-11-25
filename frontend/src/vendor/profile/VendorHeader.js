@@ -1,4 +1,3 @@
-import React from "react";
 import defaultVendorImage from "../defaultVendorImage.png";
 import styled from "styled-components";
 
