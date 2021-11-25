@@ -1,7 +1,7 @@
 import defaultMarketImage from "../defaultMarketImage.png";
 import { Helmet } from "react-helmet";
 import styled from "styled-components";
-import { getDate, getTime } from "../../time/formatters";
+import { getDate, getTimeRange } from "../../time/formatters";
 
 const MarketLogo = styled.div`
   height: 80px;
@@ -71,12 +71,7 @@ const MarketInfo = ({
   marketClosingDate,
 }: MarketInfoProps) => {
   const date = getDate(marketOpeningDate);
-
-  const openingTime = getTime(marketOpeningDate);
-
-  const closingTime = getTime(marketClosingDate);
-
-  const openingAndClosingTime = openingTime + " - " + closingTime;
+  const openTimeRange = getTimeRange(marketOpeningDate, marketClosingDate);
 
   return (
     <>
@@ -84,7 +79,7 @@ const MarketInfo = ({
         <title>Félpénzzel - {marketName}</title>
         <meta
           name="description"
-          content={`${marketLocation} - ${date} ${openingAndClosingTime}`}
+          content={`${marketLocation} - ${date} ${openTimeRange}`}
         ></meta>
       </Helmet>
       <MarketLogo
@@ -104,7 +99,7 @@ const MarketInfo = ({
           <div>{marketLocation}</div>
           <ParallelDateAndHour>
             <div>{date}</div>
-            <StartAndEndHours>{openingAndClosingTime}</StartAndEndHours>
+            <StartAndEndHours>{openTimeRange}</StartAndEndHours>
           </ParallelDateAndHour>
         </MarketLocationAndDate>
       </TopMarketInfo>

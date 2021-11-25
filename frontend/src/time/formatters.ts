@@ -39,3 +39,6 @@ export const getDayDigits = createFormatters({
 export const getWeekday = createFormatters({
   weekday: "long",
 });
+
+export const getTimeRange = (opening: number, closing: number) =>
+  `${getTime(opening)} - ${getTime(closing)}`;

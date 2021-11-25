@@ -3,6 +3,7 @@ import {
   getDayDigits,
   getMonth,
   getTime,
+  getTimeRange,
   getWeekday,
 } from "./formatters";
 
@@ -24,4 +25,8 @@ test("getDayDigits should return like 28", () => {
 
 test("getWeekday should return like vasárnap", () => {
   expect(getWeekday(1638086400)).toBe("vasárnap");
+});
+
+test("getTimeRange should return like 09:00 - 14:00", () => {
+  expect(getTimeRange(1638086400, 1638104400)).toBe("09:00 - 14:00");
 });
