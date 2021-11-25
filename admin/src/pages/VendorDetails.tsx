@@ -6,7 +6,7 @@ import {
   fetchVendorById,
   addVendor,
   updateVendor,
-} from "./../components/Service";
+} from "../components/Service";
 import FormTextInput from "../components/FormTextInput";
 import FormTextAreaInput from "../components/FormTextAreaInput";
 import VendorCardPaymentCheckbox from "../components/VendorCardPaymentCheckbox";
