@@ -57,6 +57,7 @@ const VendorsByMarketPage = () => {
             title="Szervezés alatt..."
             body="Itt fogod megtalálni az árusokat, akik ezen a piacon jelen lesznek."
           />
+          <EmailContact />
         </>
       );
     } else {
