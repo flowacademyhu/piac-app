@@ -5,10 +5,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./login.css";
 import { fetchVendors, deleteVendorById } from "./Service";
 import DeleteEntity from "./DeleteEntity";
-import { VendorInterface } from "../vendor/Vendor";
+import { Vendor } from "../vendor/Vendor";
 
 const VendorTable = () => {
-  const [allVendors, setAllVendors] = useState<VendorInterface[]>([]);
+  const [allVendors, setAllVendors] = useState<Vendor[]>([]);
 
   const getAllVendors = async () => {
     const result = await fetchVendors();
