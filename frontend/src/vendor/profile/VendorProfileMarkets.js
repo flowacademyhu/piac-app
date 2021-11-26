@@ -18,6 +18,7 @@ const VendorProfileMarketsTitle = styled.h3`
 const EmptyPageMessage = styled.p`
   text-align: left;
   font-size: 12px;
+  margin: 0;
 `;
 
 const VendorProfileMarkets = () => {
