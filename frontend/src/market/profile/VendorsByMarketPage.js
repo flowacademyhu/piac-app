@@ -52,10 +52,12 @@ const VendorsByMarketPage = () => {
       );
     } else if (market.id) {
       return (
-        <VendorlistUploadInProgress
-          title="Szervezés alatt..."
-          body="Itt fogod megtalálni az árusokat, akik ezen a piacon jelen lesznek."
-        />
+        <>
+          <VendorlistUploadInProgress
+            title="Szervezés alatt..."
+            body="Itt fogod megtalálni az árusokat, akik ezen a piacon jelen lesznek."
+          />
+        </>
       );
     } else {
       return (
