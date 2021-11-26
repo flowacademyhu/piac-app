@@ -26,4 +26,8 @@ beforeEach(() => {
   cy.intercept("/v1/api/market/upcoming", {
     fixture: "upcoming-markets.json",
   });
+
+  cy.intercept("/v1/api/market/15", {
+    fixture: "market-15.json",
+  });
 });

@@ -50,11 +50,6 @@ const ParallelDateAndHour = styled.div`
   justify-content: center;
 `;
 
-const StartAndEndHours = styled.div`
-  font-size: 18px;
-  padding-left: 5px;
-`;
-
 interface MarketInfoProps {
   profilePic: string;
   marketName: string;
@@ -83,6 +78,7 @@ const MarketInfo = ({
         ></meta>
       </Helmet>
       <MarketLogo
+        data-test="market-image"
         style={{
           backgroundImage: `url(${profilePic ?? defaultMarketImage})`,
         }}
@@ -91,9 +87,10 @@ const MarketInfo = ({
         <MarketName>{marketName}</MarketName>
         <MarketLocationAndDate>
           <div>{marketLocation}</div>
-          <ParallelDateAndHour>
-            <div>{date}</div>
-            <StartAndEndHours>{openTimeRange}</StartAndEndHours>
+          <ParallelDateAndHour data-test="market-date">
+            <div>
+              {date} {openTimeRange}
+            </div>
           </ParallelDateAndHour>
         </MarketLocationAndDate>
       </TopMarketInfo>
