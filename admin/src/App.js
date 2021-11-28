@@ -6,6 +6,7 @@ import VendorDetails from "./pages/VendorDetails";
 import LoginPage from "./pages/LoginPage";
 import TokenExchange from "./pages/TokenExchange";
 import { getToken } from "./components/AuthService";
+import MarketDetails from "./pages/MarketDetails";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 const queryClient = new QueryClient();
@@ -19,6 +20,7 @@ function App() {
             <Menu />
             <Routes>
               <Route index path="/piac" element={<MarketTablePage />} />
+              <Route path="/piac/uj" element={<MarketDetails />} />
               <Route path="/arus" element={<VendorTablePage />} />
               <Route path="/arus/uj" element={<VendorDetails />} />
               <Route path="/arus/szerkeszt" element={<VendorDetails />} />
