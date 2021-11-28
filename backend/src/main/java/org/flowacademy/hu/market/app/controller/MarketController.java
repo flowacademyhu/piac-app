@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 
 import org.flowacademy.hu.market.app.exceptions.NoSuchMarketException;
 import org.flowacademy.hu.market.app.model.MarketDTO;
+import org.flowacademy.hu.market.app.model.SimpleMarketDTO;
 import org.flowacademy.hu.market.app.model.SimpleVendorDTO;
 import org.flowacademy.hu.market.app.services.MarketService;
 import org.springframework.http.ResponseEntity;
@@ -21,12 +22,12 @@ public class MarketController {
     private final MarketService marketService;
 
     @GetMapping
-    public ResponseEntity<List<MarketDTO>> allMarkets() throws ParseException{
+    public ResponseEntity<List<SimpleMarketDTO>> allMarkets() throws ParseException{
         return ResponseEntity.ok(marketService.allMarkets());
     }
 
     @GetMapping("/upcoming")
-    public ResponseEntity<List<MarketDTO>> findAllUpcomingMarkets() {
+    public ResponseEntity<List<SimpleMarketDTO>> findAllUpcomingMarkets() {
         return ResponseEntity.ok(marketService.findAllUpcomingMarkets());
     }
 
