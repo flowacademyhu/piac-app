@@ -22,6 +22,7 @@ interface MarketCardProps {
   marketClosingDate: number;
   vendorsAmount: number;
   profilePic?: string;
+  style: React.CSSProperties;
 }
 
 const MarketCard = ({
