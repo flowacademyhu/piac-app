@@ -3,6 +3,7 @@ import { Button, Table } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { fetchMarkets, deleteMarketById } from "./Service";
 import DeleteEntity from "./DeleteEntity";
+import { Link } from "react-router-dom";
 
 const MarketTable = () => {
   const [allMarkets, setAllMarkets] = useState([]);
@@ -39,9 +40,11 @@ const MarketTable = () => {
     <div>
       <div className="text-center">
         <p className="font-weight-bold">PIACOK</p>
-        <Button style={{ marginTop: "20px", marginBottom: "20px" }}>
-          ÚJ PIAC FELVÉTELE
-        </Button>
+        <Link to="/piac/uj">
+          <Button style={{ marginTop: "20px", marginBottom: "20px" }}>
+            ÚJ PIAC FELVÉTELE
+          </Button>
+        </Link>
       </div>
       <Table striped bordered hover>
         <thead>

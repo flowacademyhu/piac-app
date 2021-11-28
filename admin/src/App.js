@@ -6,6 +6,7 @@ import VendorDetails from "./pages/VendorDetails";
 import LoginPage from "./components/LoginPage";
 import TokenExchange from "./pages/TokenExchange";
 import { getToken } from "./components/AuthService";
+import MarketDetails from "./pages/MarketDetails";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route index path="/piac" element={<MarketTablePage />} />
             <Route path="/arus" element={<VendorTablePage />} />
             <Route path="/arus/uj" element={<VendorDetails />} />
+            <Route path="/piac/uj" element={<MarketDetails />} />
             <Route path="/arus/szerkeszt" element={<VendorDetails />} />
           </Routes>
         </>

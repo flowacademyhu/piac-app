@@ -9,6 +9,7 @@ const tokenConfig = {
 
 const VendorAdminAPI = "/v1/api/admin/vendor";
 const MarketAPI = "/v1/api/market";
+const adminMarketAPI = "/v1/api/admin/market";
 
 export const fetchMarkets = async () => {
   const url = MarketAPI;
@@ -18,6 +19,32 @@ export const fetchMarkets = async () => {
     return data;
   } catch (error) {
     console.warn("Failed to load markets");
+  }
+};
+
+export const fetchMarketById = async (id) => {
+  const url = adminMarketAPI + "/" + id;
+  try {
+    const response = await axios.get(url);
+    const data = response.data;
+    return data;
+  } catch (error) {
+    console.warn("Failed to load market");
+  }
+};
+
+export const updateMarket = async (market, id, setSuccess, setHasError) => {
+  try {
+    const response = await axios.put(
+      adminMarketAPI + "/" + id,
+      market,
+      tokenConfig
+    );
+    if (response.status === 200) {
+      setSuccess(true);
+    }
+  } catch (error) {
+    setHasError(true);
   }
 };
 
@@ -33,8 +60,6 @@ export const fetchVendors = async () => {
     console.warn("Failed to load vendors");
   }
 };
-
-const adminMarketAPI = "/v1/api/admin/market";
 
 export const deleteMarketById = async (id) => {
   const url = adminMarketAPI + "/" + id;
