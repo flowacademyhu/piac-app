@@ -171,8 +171,8 @@ public class MarketService {
                 VendorDTO vendorDTO1 = new VendorDTO();
                 vendorDTO1.setName("Chilikirály");
                 vendorDTO1.setIntro("Chilizz belünk, Magyarország legjobb chilijeivel...");
-                MarketDTO market = findMarketByName("Bödön Piac");
-                vendorDTO1.setMarketId(market.getId());
+                Set<Long> marketIdsSet1 = Set.of(1L, 2L);
+                vendorDTO1.setMarketIds(marketIdsSet1);
                 Set<String> newSet = Set.of("chilik","paprikakrémek","csípős szószok");
                 vendorDTO1.setProducts(newSet);
                 vendorDTO1.setEmail("chiliking@flow.hu");
@@ -184,8 +184,8 @@ public class MarketService {
                 VendorDTO vendorDTO2 = new VendorDTO();
                 vendorDTO2.setName("Just incase");
                 vendorDTO2.setIntro("Praktikus termékek, környezettudatos ajándékcsomagok....");
-                MarketDTO market2 = findMarketByName("Bödön Piac");
-                vendorDTO2.setMarketId(market.getId());
+                Set<Long> marketIdsSet2 = Set.of(3L, 4L);
+                vendorDTO1.setMarketIds(marketIdsSet2);
                 Set<String> newSet2 = Set.of("lebomló zacskók","papírdobozok","kézműves szappanok");
                 vendorDTO2.setProducts(newSet2);
                 vendorDTO2.setEmail("csakugy@flow.hu");
