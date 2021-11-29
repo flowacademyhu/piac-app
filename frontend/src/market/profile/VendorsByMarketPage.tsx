@@ -4,7 +4,7 @@ import HeaderWithMarket from "./HeaderWithMarket";
 import VendorListOfOneMarket from "./VendorListOfOneMarket";
 import VendorlistUploadInProgress from "./VendorlistUploadInProgress";
 import { fetchMarketById } from "../../api/Service";
-import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+import { Redirect } from "react-router";
 import SearchArea from "../../components/SearchArea";
 import filteredArrayByKeyword from "../../vendor/filter";
 import { useQuery } from "react-query";
@@ -28,9 +28,12 @@ const MarketLoading = styled.div`
 
 const VendorsByMarketPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const marketId = useParams().id;
+  interface urlParam {
+    id: string;
+  }
+  const marketId = useParams<urlParam>().id;
 
-  const { data: market, isLoading } = useQuery(["market", marketId], () =>
+  const { data: market, isLoading } = useQuery<any>(["market", marketId], () =>
     fetchMarketById(marketId)
   );
 
