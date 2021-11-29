@@ -22,13 +22,25 @@ const EmptyPageMessage = styled.p`
 `;
 
 const VendorProfileMarkets = () => {
-  const vendorId = useParams().id;
+  interface urlParam {
+    id: string;
+  }
+  const vendorId = useParams<urlParam>().id;
 
-  const { data: upcomingMarkets, isLoading } = useQuery(
+  const { data: upcomingMarkets, isLoading } = useQuery<any>(
     ["market", vendorId],
     () => fetchUpcomingMarketsByVendorId(vendorId)
   );
 
+  interface marketProps {
+    id: string;
+    profilePic: string;
+    name: string;
+    place: string;
+    openingDate: number;
+    closingDate: number;
+    numberOfVendors: number;
+  }
   return (
     <div>
       <VendorProfileMarketsTitle>
@@ -36,7 +48,7 @@ const VendorProfileMarkets = () => {
       </VendorProfileMarketsTitle>
       <CardList>
         {!isLoading && upcomingMarkets.length > 0 ? (
-          upcomingMarkets.map((market) => {
+          upcomingMarkets.map((market: marketProps) => {
             return (
               <div key={market.id}>
                 <Link
