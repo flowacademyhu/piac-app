@@ -27,6 +27,8 @@ describe("Vendors", () => {
 
       cy.contains("Hozzáadás").click();
 
+      cy.contains("ÚJ ÁRUS FELVÉTELE");
+
       cy.contains("Cypress példa");
     });
   });
