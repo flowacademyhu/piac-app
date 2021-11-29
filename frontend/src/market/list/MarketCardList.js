@@ -14,33 +14,35 @@ const MarketCardList = () => {
   } = useQuery("markets", fetchUpcomingMarkets);
 
   return (
-    <CardList>
-      {isError ? (
-        <ErrorBody error={error.message} />
-      ) : (
-        !isLoading &&
-        upcomingMarkets.map((market) => {
-          return (
-            <div key={market.id}>
-              <Link
-                to={`/piacok/${market.id}`}
-                style={{ textDecoration: "none" }}
-              >
-                <MarketCard
+    <>
+      <CardList>
+        {isError ? (
+          <ErrorBody error={error.message} />
+        ) : (
+          !isLoading &&
+          upcomingMarkets.map((market) => {
+            return (
+              <div key={market.id}>
+                <Link
+                  to={`/piacok/${market.id}`}
                   style={{ textDecoration: "none" }}
-                  profilePic={market.profilePic}
-                  marketName={market.name}
-                  marketLocation={market.place}
-                  marketOpeningDate={market.openingDate}
-                  marketClosingDate={market.closingDate}
-                  vendorsAmount={market.numberOfVendors}
-                />
-              </Link>
-            </div>
-          );
-        })
-      )}
-    </CardList>
+                >
+                  <MarketCard
+                    style={{ textDecoration: "none" }}
+                    profilePic={market.profilePic}
+                    marketName={market.name}
+                    marketLocation={market.place}
+                    marketOpeningDate={market.openingDate}
+                    marketClosingDate={market.closingDate}
+                    vendorsAmount={market.numberOfVendors}
+                  />
+                </Link>
+              </div>
+            );
+          })
+        )}
+      </CardList>
+    </>
   );
 };
 
