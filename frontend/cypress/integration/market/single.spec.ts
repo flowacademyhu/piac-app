@@ -18,4 +18,12 @@ describe("Market single", () => {
       "november 28. 09:00 - 14:00"
     );
   });
+
+  it("should have a contact section", () => {
+    cy.contains("Hiányolsz egy árust?");
+
+    cy.get("a")
+      .contains("Írj nekünk emailt!")
+      .should("have.attr", "href", "mailto:felpenzzel.hu@gmail.com");
+  });
 });
