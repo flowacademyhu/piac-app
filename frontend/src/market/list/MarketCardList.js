@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import ErrorBody from "../../components/ErrorBody";
 import { useQuery } from "react-query";
 import CardList from "../../styles/CardListStyled.js";
+import EmailContact from "../../components/EmailContact";
 
 const MarketCardList = () => {
   const {
@@ -42,6 +43,7 @@ const MarketCardList = () => {
           })
         )}
       </CardList>
+      {!isLoading && !isError && <EmailContact isMarket />}
     </>
   );
 };
