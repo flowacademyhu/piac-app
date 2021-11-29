@@ -41,25 +41,26 @@ const VendorTable = () => {
           </tr>
         </thead>
         <tbody>
-          {allVendors.map((vendor) => {
-            return (
-              <tr key={vendor.id}>
-                <td>{vendor.name}</td>
-                <td className="text-center">
-                  <Link to={`/arus/szerkeszt/${vendor.id}`}>
-                    <Button>Szerkeszt</Button>
-                  </Link>
-                </td>
-                <td className="text-center">
-                  <DeleteEntity
-                    confirmationQuestion={`Biztosan kitörlöd a következő árust? ${vendor.name}`}
-                    handleDelete={handleDeleteVendor}
-                    ID={vendor.id}
-                  />
-                </td>
-              </tr>
-            );
-          })}
+          {allVendors &&
+            allVendors.map((vendor) => {
+              return (
+                <tr key={vendor.id}>
+                  <td>{vendor.name}</td>
+                  <td className="text-center">
+                    <Link to={`/arus/szerkeszt/${vendor.id}`}>
+                      <Button>Szerkeszt</Button>
+                    </Link>
+                  </td>
+                  <td className="text-center">
+                    <DeleteEntity
+                      confirmationQuestion={`Biztosan kitörlöd a következő árust? ${vendor.name}`}
+                      handleDelete={handleDeleteVendor}
+                      ID={vendor.id}
+                    />
+                  </td>
+                </tr>
+              );
+            })}
         </tbody>
       </Table>
     </div>
