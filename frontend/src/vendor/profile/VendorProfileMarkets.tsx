@@ -5,6 +5,7 @@ import { fetchUpcomingMarketsByVendorId } from "../../api/Service";
 import EmailContact from "../../components/EmailContact";
 import CardList from "../../styles/CardListStyled";
 import styled from "styled-components";
+import Market from "./Market";
 
 const VendorProfileMarketsTitle = styled.h3`
   color: #33221a;
@@ -49,7 +50,7 @@ const VendorProfileMarkets = () => {
       </VendorProfileMarketsTitle>
       <CardList>
         {!isLoading && upcomingMarkets.length > 0 ? (
-          upcomingMarkets.map((market: marketProps) => {
+          upcomingMarkets.map((market: Market) => {
             return (
               <div key={market.id}>
                 <Link
