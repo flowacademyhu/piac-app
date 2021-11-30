@@ -22,4 +22,5 @@ beforeEach(() => {
   cy.intercept("/v1/api/**", {
     statusCode: 501,
   });
+  cy.intercept("/v1/api/vendor", { fixture: "vendors.json" });
 });
