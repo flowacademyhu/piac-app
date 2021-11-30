@@ -12,7 +12,7 @@ const VendorTable = () => {
 
   const getAllVendors = async () => {
     const result = await fetchVendors();
-    setAllVendors(result);
+    setAllVendors(JSON.parse(result));
   };
 
   useEffect(() => {
