@@ -3,8 +3,6 @@ describe("Vendors", () => {
     beforeEach(() => {
       cy.login("john@example.com");
 
-      cy.intercept("/v1/api/vendor", { fixture: "vendors.json" });
-
       cy.visit("/arus");
     });
 
