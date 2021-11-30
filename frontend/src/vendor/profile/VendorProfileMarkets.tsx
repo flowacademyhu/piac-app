@@ -21,10 +21,11 @@ const EmptyPageMessage = styled.p`
   margin: 0;
 `;
 
+interface urlParam {
+  id: string;
+}
+
 const VendorProfileMarkets = () => {
-  interface urlParam {
-    id: string;
-  }
   const vendorId = useParams<urlParam>().id;
 
   const { data: upcomingMarkets, isLoading } = useQuery<any>(
