@@ -1,5 +1,5 @@
 describe("Vendors", () => {
-  describe("List", () => {
+  describe("Adding new vendor", () => {
     beforeEach(() => {
       cy.login("john@example.com");
 
