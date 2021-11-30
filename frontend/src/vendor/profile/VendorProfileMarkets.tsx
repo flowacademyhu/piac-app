@@ -34,15 +34,6 @@ const VendorProfileMarkets = () => {
     () => fetchUpcomingMarketsByVendorId(vendorId)
   );
 
-  interface marketProps {
-    id: string;
-    profilePic: string;
-    name: string;
-    place: string;
-    openingDate: number;
-    closingDate: number;
-    numberOfVendors: number;
-  }
   return (
     <div>
       <VendorProfileMarketsTitle>
