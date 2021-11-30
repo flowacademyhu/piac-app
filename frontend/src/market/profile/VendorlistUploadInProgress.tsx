@@ -12,12 +12,12 @@ const BottomInfoText = styled.div`
   font-size: 12px;
 `;
 
-interface vendorListProps {
+interface VendorListProps {
   title?: string;
   body?: string;
 }
 
-const VendorlistUploadInProgress = ({ title, body }: vendorListProps) => {
+const VendorlistUploadInProgress = ({ title, body }: VendorListProps) => {
   return (
     <CardList>
       <TopInfoText>
