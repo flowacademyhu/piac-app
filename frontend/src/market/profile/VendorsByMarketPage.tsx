@@ -26,14 +26,14 @@ const MarketLoading = styled.div`
   height: 100px;
 `;
 
-interface urlParam {
+interface UrlParam {
   id: string;
 }
 
 const VendorsByMarketPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const marketId = useParams<urlParam>().id;
+  const marketId = useParams<UrlParam>().id;
 
   const { data: market, isLoading } = useQuery<any>(["market", marketId], () =>
     fetchMarketById(marketId)
