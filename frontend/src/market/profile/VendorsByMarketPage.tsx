@@ -32,12 +32,12 @@ const VendorsByMarketPage = () => {
 
   const marketId = useParams<IdPrameter>().id;
 
-  const { data: market, isLoading } = useQuery<any>(["market", marketId], () =>
+  const { data: market, isLoading } = useQuery(["market", marketId], () =>
     fetchMarketById(marketId)
   );
 
   const renderVendorList = () => {
-    if (market.vendors && market.vendors.length > 0) {
+    if (market && market.vendors && market.vendors.length > 0) {
       return (
         <>
           <SearchArea
@@ -52,7 +52,7 @@ const VendorsByMarketPage = () => {
           <EmailContact />
         </>
       );
-    } else if (market.id) {
+    } else if (market && market.id) {
       return (
         <>
           <VendorlistUploadInProgress
