@@ -6,4 +6,5 @@ export default interface Market {
   openingDate: number;
   closingDate: number;
   numberOfVendors: number;
+  vendors: [];
 }
