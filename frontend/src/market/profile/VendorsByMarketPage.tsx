@@ -10,6 +10,7 @@ import filteredArrayByKeyword from "../../vendor/filter";
 import { useQuery } from "react-query";
 import EmailContact from "../../components/EmailContact";
 import styled from "styled-components";
+import IdPrameter from "../../types/IdParameter";
 
 const Intro = styled.h3`
   font-family: "Amatic SC", sans-serif;
@@ -33,7 +34,7 @@ interface UrlParam {
 const VendorsByMarketPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const marketId = useParams<UrlParam>().id;
+  const marketId = useParams<IdPrameter>().id;
 
   const { data: market, isLoading } = useQuery<any>(["market", marketId], () =>
     fetchMarketById(marketId)
