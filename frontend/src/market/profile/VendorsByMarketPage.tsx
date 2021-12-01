@@ -27,10 +27,6 @@ const MarketLoading = styled.div`
   height: 100px;
 `;
 
-interface UrlParam {
-  id: string;
-}
-
 const VendorsByMarketPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
 

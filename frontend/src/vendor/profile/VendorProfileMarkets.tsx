@@ -23,10 +23,6 @@ const EmptyPageMessage = styled.p`
   margin: 0;
 `;
 
-interface UrlParam {
-  id: string;
-}
-
 const VendorProfileMarkets = () => {
   const vendorId = useParams<IdPrameter>().id;
 
