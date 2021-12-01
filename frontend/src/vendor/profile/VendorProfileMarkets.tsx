@@ -26,7 +26,7 @@ const EmptyPageMessage = styled.p`
 const VendorProfileMarkets = () => {
   const vendorId = useParams<IdPrameter>().id;
 
-  const { data: upcomingMarkets, isLoading } = useQuery<any>(
+  const { data: upcomingMarkets, isLoading } = useQuery(
     ["market", vendorId],
     () => fetchUpcomingMarketsByVendorId(vendorId)
   );
@@ -37,7 +37,9 @@ const VendorProfileMarkets = () => {
         Melyik piacon találod legközelebb?
       </VendorProfileMarketsTitle>
       <CardList>
-        {!isLoading && upcomingMarkets.length > 0 ? (
+        {!isLoading &&
+        Array.isArray(upcomingMarkets) &&
+        upcomingMarkets.length > 0 ? (
           upcomingMarkets.map((market: Market) => {
             return (
               <div key={market.id}>
