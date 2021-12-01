@@ -71,7 +71,7 @@ export const fetchVendorById = async (id: string) => {
 export const fetchUpcomingMarketsByVendorId = async (vendorId: string) => {
   const url = VendorAPI + "/" + vendorId + "/upcoming";
   try {
-    const response = await axios.get(url);
+    const response: AxiosResponse<Market[] | undefined> = await axios.get(url);
     const data = response.data;
     return data;
   } catch (error) {
