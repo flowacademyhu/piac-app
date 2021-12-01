@@ -12,6 +12,6 @@ import java.util.Optional;
 public interface MarketRepository extends JpaRepository<Market, Long> {
     Optional<Market> findByName(String name);
 
-    @Query("SELECT markets FROM Market markets WHERE markets.closingDate > unix_timestamp(date_format(UTC_TIMESTAMP(),'%Y-%m-%d'))+3600")
+    @Query("SELECT markets FROM Market markets WHERE markets.closingDate > unix_timestamp(date_format(UTC_TIMESTAMP(),'%Y-%m-%d'))+90000")
     List<Market> findAllUpcomingMarkets();
 }
