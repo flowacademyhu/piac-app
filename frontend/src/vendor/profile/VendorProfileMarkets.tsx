@@ -6,6 +6,7 @@ import EmailContact from "../../components/EmailContact";
 import CardList from "../../styles/CardListStyled";
 import styled from "styled-components";
 import Market from "./Market";
+import IdPrameter from "../../types/IdParameter";
 
 const VendorProfileMarketsTitle = styled.h3`
   color: #33221a;
@@ -27,7 +28,7 @@ interface UrlParam {
 }
 
 const VendorProfileMarkets = () => {
-  const vendorId = useParams<UrlParam>().id;
+  const vendorId = useParams<IdPrameter>().id;
 
   const { data: upcomingMarkets, isLoading } = useQuery<any>(
     ["market", vendorId],
