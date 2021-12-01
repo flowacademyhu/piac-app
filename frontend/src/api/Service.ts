@@ -1,4 +1,5 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
+import Market from "../vendor/profile/Market";
 
 const MarketAPI = "/v1/api/market";
 
@@ -48,7 +49,7 @@ export const fetchUpcomingMarkets = async () => {
 export const fetchMarketById = async (id: string) => {
   const url = MarketAPI + "/" + id;
   try {
-    const response = await axios.get(url);
+    const response: AxiosResponse<Market | undefined> = await axios.get(url);
     const data = response.data;
     return data;
   } catch (error) {
