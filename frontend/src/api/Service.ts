@@ -45,7 +45,7 @@ export const fetchUpcomingMarkets = async () => {
   }
 };
 
-export const fetchMarketById = async (id) => {
+export const fetchMarketById = async (id: string) => {
   const url = MarketAPI + "/" + id;
   try {
     const response = await axios.get(url);
@@ -56,7 +56,7 @@ export const fetchMarketById = async (id) => {
   }
 };
 
-export const fetchVendorById = async (id) => {
+export const fetchVendorById = async (id: string) => {
   const url = VendorAPI + "/" + id;
   try {
     const response = await axios.get(url);
@@ -67,7 +67,7 @@ export const fetchVendorById = async (id) => {
   }
 };
 
-export const fetchUpcomingMarketsByVendorId = async (vendorId) => {
+export const fetchUpcomingMarketsByVendorId = async (vendorId: string) => {
   const url = VendorAPI + "/" + vendorId + "/upcoming";
   try {
     const response = await axios.get(url);
