@@ -62,8 +62,17 @@ jobs:
       run:
         shell: bash
         working-directory: backend
+    services:
+      db:
+        image: mysql
+        ports: ["3306:3306"]
+        env:
+          MYSQL_ROOT_PASSWORD: test
+          MYSQL_DATABASE: piac-test
     env:
       IMAGE_NAME: registry.gitlab.com/6uliver/piac/backend:${{ github.sha }}
+      MYSQL_URL: jdbc:mysql://db:3306/piac-test
+      spring.datasource.password: test
     steps:
       - uses: actions/checkout@v2
 
@@ -73,6 +82,9 @@ jobs:
           registry: registry.gitlab.com
           username: ${{ secrets.GITLAB_USERNAME }}
           password: ${{ secrets.GITLAB_PASSWORD }}
+
+      - name: Run tests
+        run: mvn test
 
       - name: Build Docker image
         run: docker build . -t $IMAGE_NAME
