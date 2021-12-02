@@ -1,3 +1,5 @@
+import { VendorSummary } from "vendor/Vendor";
+
 export default interface Market {
   id: string;
   profilePic: string;
@@ -6,5 +8,5 @@ export default interface Market {
   openingDate: number;
   closingDate: number;
   numberOfVendors: number;
-  vendors: [];
+  vendors: VendorSummary[];
 }
