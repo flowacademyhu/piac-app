@@ -1,4 +1,3 @@
-import EmailContact from "../../components/EmailContact";
 import Header from "../../header/Header";
 import MarketCardList from "./MarketCardList";
 import { Helmet } from "react-helmet";
@@ -15,7 +14,6 @@ const MainPage = () => {
       </Helmet>
       <Header />
       <MarketCardList />
-      <EmailContact isMarket />
     </>
   );
 };

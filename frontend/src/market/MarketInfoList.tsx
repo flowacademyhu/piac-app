@@ -1,5 +1,11 @@
 import defaultMarketImage from "./defaultMarketImage.png";
 import styled from "styled-components";
+import {
+  getDayDigits,
+  getMonth,
+  getWeekday,
+  getTimeRange,
+} from "../time/formatters";
 
 const DateContainer = styled.div`
   height: 60px;
@@ -85,73 +91,38 @@ const MarketListVendorNumber = styled.div`
   overflow-wrap: break-word;
   padding: 10px 0px 0px 10px;
 `;
+interface MarketInfoListProps {
+  picture?: string;
+  name: string;
+  location: string;
+  openingDate: number;
+  closingDate: number;
+  vendorsAmount: number;
+}
 
 const MarketInfoList = ({
-  profilePic,
-  marketName,
-  marketLocation,
-  marketOpeningDate,
-  marketClosingDate,
-  header,
+  picture,
+  name,
+  location,
+  openingDate,
+  closingDate,
   vendorsAmount,
-}) => {
-  const marketMonthFormatter = {
-    month: "short",
-  };
-
-  const marketDayDigitsFormatter = {
-    day: "2-digit",
-  };
-
-  const marketMinuteFormatter = {
-    hour: "2-digit",
-    minute: "numeric",
-  };
-
-  const marketWeekdayFormatter = {
-    weekday: "long",
-  };
-
-  const formattedMonth = new Intl.DateTimeFormat("hu-HU", marketMonthFormatter)
-    .format(new Date(marketOpeningDate * 1000))
-    .substring(0, 3);
-
-  const formattedDayDigits = new Intl.DateTimeFormat(
-    "hu-HU",
-    marketDayDigitsFormatter
-  ).format(new Date(marketOpeningDate * 1000));
-
-  const formattedWeekdays = new Intl.DateTimeFormat(
-    "hu-HU",
-    marketWeekdayFormatter
-  ).format(new Date(marketOpeningDate * 1000));
-
-  const formattedOpeningHourAndMinute = new Intl.DateTimeFormat(
-    "hu-HU",
-    marketMinuteFormatter
-  ).format(new Date(marketOpeningDate * 1000));
-
-  const formattedClosingHourAndMinute = new Intl.DateTimeFormat(
-    "hu-HU",
-    marketMinuteFormatter
-  ).format(new Date(marketClosingDate * 1000));
-
-  const formattedOpeningAndClosingHour =
-    formattedOpeningHourAndMinute + " - " + formattedClosingHourAndMinute;
-
+}: MarketInfoListProps) => {
   return (
     <>
       <DateContainer>
-        <DateFirstRow>{formattedMonth}</DateFirstRow>
-        <DateSecondRow>{formattedDayDigits}</DateSecondRow>
-        <DateThirdRow>{formattedWeekdays}</DateThirdRow>
+        <DateFirstRow>{getMonth(openingDate)}</DateFirstRow>
+        <DateSecondRow>{getDayDigits(openingDate)}</DateSecondRow>
+        <DateThirdRow>{getWeekday(openingDate)}</DateThirdRow>
       </DateContainer>
-      <MarketListHours>{formattedOpeningAndClosingHour}</MarketListHours>
+      <MarketListHours>
+        {getTimeRange(openingDate, closingDate)}
+      </MarketListHours>
       <MarketListLogo
         style={
-          profilePic
+          picture
             ? {
-                backgroundImage: `url(${profilePic})`,
+                backgroundImage: `url(${picture})`,
               }
             : {
                 backgroundImage: `url(${defaultMarketImage})`,
@@ -159,8 +130,8 @@ const MarketInfoList = ({
         }
       />
       <MarketListNameAndLocation>
-        <MarketListName>{marketName}</MarketListName>
-        <MarketListLocation>{marketLocation}</MarketListLocation>
+        <MarketListName>{name}</MarketListName>
+        <MarketListLocation>{location}</MarketListLocation>
       </MarketListNameAndLocation>
       <MarketListVendorNumber>
         {vendorsAmount === 0 ? "Szervezés alatt..." : `${vendorsAmount} árus`}

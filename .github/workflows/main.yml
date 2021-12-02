@@ -42,6 +42,13 @@ jobs:
       - name: Run Tests
         run: yarn test
 
+      - name: Publish unit test results
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        if: always()
+        with:
+          check_name: Unit test results - frontend
+          files: frontend/junit.xml
+
       - name: Login to GitLab
         uses: docker/login-action@v1
         with:
@@ -120,12 +127,129 @@ jobs:
       - name: Push Docker image
         run: docker push $IMAGE_NAME
 
+  test-frontend:
+    name: Run site tests
+    runs-on: ubuntu-latest
+    needs: [build-frontend]
+    defaults:
+      run:
+        shell: bash
+        working-directory: frontend
+    env:
+      CYPRESS_BASE_URL: http://site
+    services:
+      site:
+        image: registry.gitlab.com/6uliver/piac/frontend:${{ github.sha }}
+        ports: ["80:80"]
+        credentials:
+          username: ${{ secrets.GITLAB_USERNAME }}
+          password: ${{ secrets.GITLAB_PASSWORD }}
+    container:
+      image: cypress/included:9.1.0
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: frontend/node_modules
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('frontend/yarn.lock') }}
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Run Cypress tests
+        run: yarn e2e-test:run
+
+      - name: Publish Cypress test results
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        if: always()
+        with:
+          check_name: Cypress test results - frontend
+          files: frontend/results/**/*.xml
+
+      - name: Archive video
+        uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: videos
+          path: frontend/cypress/videos
+
+      - name: Archive screenshots
+        uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: screenshots
+          path: frontend/cypress/screenshots
+
+  test-admin:
+    name: Run admin tests
+    runs-on: ubuntu-latest
+    needs: [build-admin]
+    defaults:
+      run:
+        shell: bash
+        working-directory: admin
+    env:
+      CYPRESS_BASE_URL: http://admin
+    services:
+      admin:
+        image: registry.gitlab.com/6uliver/piac/admin:${{ github.sha }}
+        ports: ["80:80"]
+        credentials:
+          username: ${{ secrets.GITLAB_USERNAME }}
+          password: ${{ secrets.GITLAB_PASSWORD }}
+    container:
+      image: cypress/included:9.1.0
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v2
+
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: admin/node_modules
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('admin/yarn.lock') }}
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Run Cypress tests
+        run: yarn e2e-test:run
+
+      - name: Publish Cypress test results
+        uses: EnricoMi/publish-unit-test-result-action@v1
+        if: always()
+        with:
+          check_name: Cypress test results - admin
+          files: admin/results/**/*.xml
+
+      - name: Archive video
+        uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: videos
+          path: admin/cypress/videos
+
+      - name: Archive screenshots
+        uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: screenshots
+          path: admin/cypress/screenshots
+
   deploy-staging:
     name: Deploy to staging
     runs-on: ubuntu-latest
     environment: stage
     if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
-    needs: [build-frontend, build-backend, build-admin]
+    needs:
+      [build-frontend, build-backend, build-admin, test-frontend, test-admin]
     steps:
       - name: Deploy backend
         uses: appleboy/ssh-action@master
@@ -142,7 +266,8 @@ jobs:
     runs-on: ubuntu-latest
     environment: live
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-    needs: [build-frontend, build-backend, build-admin]
+    needs:
+      [build-frontend, build-backend, build-admin, test-frontend, test-admin]
     steps:
       - name: Deploy backend
         uses: appleboy/ssh-action@master

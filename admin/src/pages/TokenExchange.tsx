@@ -12,20 +12,19 @@ const TokenExchange = () => {
   const { token } = useParams();
   let navigate = useNavigate();
 
-  async function getMail() {
-    try {
-      const response = await axios.get("/v1/api/token/" + token);
-      setToken(response.data);
-      navigate("/piac");
-      window.location.reload();
-    } catch (error) {
-      alert("Hiba történt! Próbálja újra!");
-    }
-  }
-
   useEffect(() => {
+    async function getMail() {
+      try {
+        const response = await axios.get("/v1/api/token/" + token);
+        setToken(response.data);
+        navigate("/piac");
+        window.location.reload();
+      } catch (error) {
+        alert("Hiba történt! Próbálja újra!");
+      }
+    }
     getMail();
-  }, [token]);
+  }, [token, navigate]);
 
   return (
     <div>

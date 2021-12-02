@@ -12,7 +12,15 @@ const BottomInfoText = styled.div`
   font-size: 12px;
 `;
 
-const VendorlistUploadInProgress = ({ title, body }) => {
+interface VendorListUploadInProgressProps {
+  title?: string;
+  body?: string;
+}
+
+const VendorListUploadInProgress = ({
+  title,
+  body,
+}: VendorListUploadInProgressProps) => {
   return (
     <CardList>
       <TopInfoText>
@@ -25,4 +33,4 @@ const VendorlistUploadInProgress = ({ title, body }) => {
   );
 };
 
-export default VendorlistUploadInProgress;
+export default VendorListUploadInProgress;

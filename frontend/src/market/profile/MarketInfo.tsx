@@ -1,6 +1,7 @@
 import defaultMarketImage from "../defaultMarketImage.png";
 import { Helmet } from "react-helmet";
 import styled from "styled-components";
+import { getDate, getTimeRange } from "../../time/formatters";
 
 const MarketLogo = styled.div`
   height: 80px;
@@ -49,10 +50,13 @@ const ParallelDateAndHour = styled.div`
   justify-content: center;
 `;
 
-const StartAndEndHours = styled.div`
-  font-size: 18px;
-  padding-left: 5px;
-`;
+interface MarketInfoProps {
+  profilePic: string;
+  marketName: string;
+  marketLocation: string;
+  marketOpeningDate: number;
+  marketClosingDate: number;
+}
 
 const MarketInfo = ({
   profilePic,
@@ -60,35 +64,9 @@ const MarketInfo = ({
   marketLocation,
   marketOpeningDate,
   marketClosingDate,
-  header,
-}) => {
-  const marketOpeningDateFormatter = {
-    month: "long",
-    day: "numeric",
-  };
-
-  const marketMinuteFormatter = {
-    hour: "2-digit",
-    minute: "numeric",
-  };
-
-  const formattedYearMonthAndDay = new Intl.DateTimeFormat(
-    "hu-HU",
-    marketOpeningDateFormatter
-  ).format(new Date(marketOpeningDate * 1000));
-
-  const formattedOpeningHourAndMinute = new Intl.DateTimeFormat(
-    "hu-HU",
-    marketMinuteFormatter
-  ).format(new Date(marketOpeningDate * 1000));
-
-  const formattedClosingHourAndMinute = new Intl.DateTimeFormat(
-    "hu-HU",
-    marketMinuteFormatter
-  ).format(new Date(marketClosingDate * 1000));
-
-  const formattedOpeningAndClosingHour =
-    formattedOpeningHourAndMinute + " - " + formattedClosingHourAndMinute;
+}: MarketInfoProps) => {
+  const date = getDate(marketOpeningDate);
+  const openTimeRange = getTimeRange(marketOpeningDate, marketClosingDate);
 
   return (
     <>
@@ -96,29 +74,23 @@ const MarketInfo = ({
         <title>Félpénzzel - {marketName}</title>
         <meta
           name="description"
-          content={`${marketLocation} - ${formattedYearMonthAndDay} ${formattedOpeningAndClosingHour}`}
+          content={`${marketLocation} - ${date} ${openTimeRange}`}
         ></meta>
       </Helmet>
       <MarketLogo
-        style={
-          profilePic
-            ? {
-                backgroundImage: `url(${profilePic})`,
-              }
-            : {
-                backgroundImage: `url(${defaultMarketImage})`,
-              }
-        }
+        data-test="market-image"
+        style={{
+          backgroundImage: `url(${profilePic ?? defaultMarketImage})`,
+        }}
       />
       <TopMarketInfo>
         <MarketName>{marketName}</MarketName>
         <MarketLocationAndDate>
           <div>{marketLocation}</div>
-          <ParallelDateAndHour>
-            <div>{formattedYearMonthAndDay}</div>
-            <StartAndEndHours>
-              {formattedOpeningAndClosingHour}
-            </StartAndEndHours>
+          <ParallelDateAndHour data-test="market-date">
+            <div>
+              {date} {openTimeRange}
+            </div>
           </ParallelDateAndHour>
         </MarketLocationAndDate>
       </TopMarketInfo>

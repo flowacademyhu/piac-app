@@ -6,7 +6,10 @@ import VendorPage from "./vendor/list/VendorPage";
 import VendorProfilePage from "./vendor/profile/VendorProfilePage";
 import Footer from "./footer/Footer";
 import "delayed-scroll-restoration-polyfill/index";
+import { QueryClient, QueryClientProvider } from "react-query";
 import styled from "styled-components";
+
+const queryClient = new QueryClient();
 
 const BodyContent = styled("div")`
   padding-bottom: 80px;
