@@ -6,6 +6,8 @@ const api = axios.create({
 });
 
 const MarketAPI = "market";
+const VendorAPI = "vendor";
+const UpcomingMarketAPI = "market/upcoming";
 
 export const fetchMarkets = async () => {
   const url = MarketAPI;
@@ -21,8 +23,6 @@ export const fetchMarkets = async () => {
   }
 };
 
-const VendorAPI = "vendor";
-
 export const fetchVendors = async () => {
   const url = VendorAPI;
   try {
@@ -33,8 +33,6 @@ export const fetchVendors = async () => {
     console.warn("Failed to load vendors");
   }
 };
-
-const UpcomingMarketAPI = "market/upcoming";
 
 export const fetchUpcomingMarkets = async () => {
   const url = UpcomingMarketAPI;
