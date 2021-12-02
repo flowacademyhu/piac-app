@@ -5,7 +5,7 @@ import { fetchUpcomingMarketsByVendorId } from "../../api/Service";
 import EmailContact from "../../components/EmailContact";
 import CardList from "../../styles/CardListStyled";
 import styled from "styled-components";
-import Market from "./Market";
+import Market from "../../market/Market";
 import IdPrameter from "../../types/IdParameter";
 
 const VendorProfileMarketsTitle = styled.h3`
