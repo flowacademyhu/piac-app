@@ -26,5 +26,10 @@ class MarketRepositoryTest {
     Market market = new Market();
     market.setName("Bödön Piac");
     marketRepository.save(market);
+
+    var marketList = marketRepository.findAll();
+
+    assertThat(marketList).hasSize(1);
+    assertThat(marketList.get(0).getName()).isEqualTo("Bödön Piac");
   }
 }
