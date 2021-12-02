@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, Table } from "react-bootstrap";
-import { fetchMarkets, deleteMarketById } from "./Service";
-import DeleteEntity from "./DeleteEntity";
+import { fetchMarkets, deleteMarketById } from "components/Service";
+import DeleteEntity from "components/DeleteEntity";
 import { Link } from "react-router-dom";
 
 const MarketTable = () => {
