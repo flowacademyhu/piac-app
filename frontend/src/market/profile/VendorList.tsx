@@ -1,6 +1,6 @@
 import { useState } from "react";
 import VendorListOfOneMarket from "./VendorListOfOneMarket";
-import VendorlistUploadInProgress from "./VendorlistUploadInProgress";
+import VendorListUploadInProgress from "./VendorListUploadInProgress";
 import SearchArea from "../../components/SearchArea";
 import filteredArrayByKeyword from "../../vendor/filter";
 import EmailContact from "../../components/EmailContact";
@@ -39,7 +39,7 @@ const VendorList = ({ vendors }: VendorListProps) => {
   } else {
     return (
       <>
-        <VendorlistUploadInProgress
+        <VendorListUploadInProgress
           title="Szervezés alatt..."
           body="Itt fogod megtalálni az árusokat, akik ezen a piacon jelen lesznek."
         />
