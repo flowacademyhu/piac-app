@@ -1,0 +1,27 @@
+{
+  "id": 4,
+  "profilePic": "https://felpenzzel.hu/images/piacok/bodonpiac.png",
+  "name": "Bödön Piac",
+  "place": "Szeged Pláza",
+  "openingDate": 1638086400,
+  "closingDate": 1638104400,
+  "numberOfVendors": 2,
+  "vendors": [
+    {
+      "id": 31,
+      "intro": "Egyedi,kézzel készült, kreatív ajándék tárgyak, megrendelhetőek!A termékek átvehetőek Békéscsabán és Gyulán,illetve postázunk is!Az árakról privát üzenetben lehet érdeklődni!",
+      "name": "An-Zsu Varázsládája",
+      "profilePic": "https://felpenzzel.hu/images/arusok/anzsuvarazsladaja.jpg",
+      "products": [],
+      "introductionLong": null
+    },
+    {
+      "id": 92,
+      "intro": "szappan, kozmetikum",
+      "name": "Rigóka szappanműhely",
+      "profilePic": "https://felpenzzel.hu/images/arusok/rigoka.jpg",
+      "products": [],
+      "introductionLong": null
+    }
+  ]
+}

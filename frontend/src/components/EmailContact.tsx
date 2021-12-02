@@ -20,7 +20,7 @@ const ContactLink = styled.a`
 `;
 
 interface EmailContactProps {
-  isMarket: boolean;
+  isMarket?: boolean;
 }
 
 const EmailContact = ({ isMarket }: EmailContactProps) => {

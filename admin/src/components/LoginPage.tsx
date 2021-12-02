@@ -8,7 +8,7 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [success, setSuccess] = useState(false);
 
-  async function getMail(email) {
+  async function getMail(email: string) {
     try {
       const response = await axios.post("/v1/api/login", {
         emailAddress: email,
@@ -32,7 +32,7 @@ const LoginPage = () => {
       <Form.Control
         className="form"
         value={email}
-        placeHolder="E-mail"
+        placeholder="E-mail"
         type="text"
         onChange={(e) => setEmail(e.target.value)}
       />
@@ -49,4 +49,5 @@ const LoginPage = () => {
     </Form>
   );
 };
+
 export default LoginPage;
