@@ -2,12 +2,12 @@ import axios, { AxiosResponse } from "axios";
 import Market from "../vendor/profile/Market";
 
 const api = axios.create({
-  baseURL: "/v1/api/",
+  baseURL: "/v1/api",
 });
 
-const MarketAPI = "market";
-const VendorAPI = "vendor";
-const UpcomingMarketAPI = "market/upcoming";
+const MarketAPI = "/market";
+const VendorAPI = "/vendor";
+const UpcomingMarketAPI = "/market/upcoming";
 
 export const fetchMarkets = async () => {
   const url = MarketAPI;
