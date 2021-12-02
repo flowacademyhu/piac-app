@@ -11,6 +11,7 @@ import { useQuery } from "react-query";
 import EmailContact from "../../components/EmailContact";
 import styled from "styled-components";
 import IdPrameter from "../../types/IdParameter";
+import Market from "market/Market";
 
 const Intro = styled.h3`
   font-family: "Amatic SC", sans-serif;
@@ -27,50 +28,54 @@ const MarketLoading = styled.div`
   height: 100px;
 `;
 
-const VendorsByMarketPage = () => {
+interface VendorListProps {
+  market: Market;
+}
+
+const VendorList = ({ market }: VendorListProps) => {
   const [searchTerm, setSearchTerm] = useState("");
 
+  if (market && market.vendors && market.vendors.length > 0) {
+    return (
+      <>
+        <SearchArea
+          onChange={(e) => {
+            setSearchTerm(e.target.value);
+          }}
+          placeHolder="Keress termékre vagy árusra..."
+        />
+        <VendorListOfOneMarket
+          vendors={filteredArrayByKeyword(market.vendors, searchTerm)}
+        />
+        <EmailContact />
+      </>
+    );
+  } else if (market && market.id) {
+    return (
+      <>
+        <VendorlistUploadInProgress
+          title="Szervezés alatt..."
+          body="Itt fogod megtalálni az árusokat, akik ezen a piacon jelen lesznek."
+        />
+        <EmailContact />
+      </>
+    );
+  } else {
+    return (
+      <>
+        <MarketLoading />
+        <VendorlistUploadInProgress />
+      </>
+    );
+  }
+};
+
+const VendorsByMarketPage = () => {
   const marketId = useParams<IdPrameter>().id;
 
   const { data: market, isLoading } = useQuery(["market", marketId], () =>
     fetchMarketById(marketId)
   );
-
-  const renderVendorList = () => {
-    if (market && market.vendors && market.vendors.length > 0) {
-      return (
-        <>
-          <SearchArea
-            onChange={(e) => {
-              setSearchTerm(e.target.value);
-            }}
-            placeHolder="Keress termékre vagy árusra..."
-          />
-          <VendorListOfOneMarket
-            vendors={filteredArrayByKeyword(market.vendors, searchTerm)}
-          />
-          <EmailContact />
-        </>
-      );
-    } else if (market && market.id) {
-      return (
-        <>
-          <VendorlistUploadInProgress
-            title="Szervezés alatt..."
-            body="Itt fogod megtalálni az árusokat, akik ezen a piacon jelen lesznek."
-          />
-          <EmailContact />
-        </>
-      );
-    } else {
-      return (
-        <>
-          <MarketLoading />
-          <VendorlistUploadInProgress />
-        </>
-      );
-    }
-  };
 
   return (
     <>
@@ -84,7 +89,7 @@ const VendorsByMarketPage = () => {
             marketClosingDate={market.closingDate}
           />
           <Intro>Kikkel találkozhatsz?</Intro>
-          {renderVendorList()}
+          <VendorList market={market} />
         </>
       ) : (
         <div style={{ height: "90%" }} />
