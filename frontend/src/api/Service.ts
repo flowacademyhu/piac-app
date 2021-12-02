@@ -7,8 +7,7 @@ const api = axios.create({
 
 export const fetchMarkets = async () => {
   try {
-    const response = await api.get("/market");
-    const data = response.data;
+    const { data } = await api.get("/market");
     return data;
   } catch (error) {
     console.warn("Failed to load markets");
@@ -20,8 +19,7 @@ export const fetchMarkets = async () => {
 
 export const fetchVendors = async () => {
   try {
-    const response = await api.get("/vendor");
-    const data = response.data;
+    const { data } = await api.get("/vendor");
     return data;
   } catch (error) {
     console.warn("Failed to load vendors");
@@ -30,8 +28,7 @@ export const fetchVendors = async () => {
 
 export const fetchUpcomingMarkets = async () => {
   try {
-    const response = await api.get("/market/upcoming");
-    const data = response.data;
+    const { data } = await api.get("/market/upcoming");
     return data;
   } catch (error) {
     console.warn("Failed to load upcoming markets");
@@ -43,8 +40,7 @@ export const fetchUpcomingMarkets = async () => {
 
 export const fetchMarketById = async (id: string) => {
   try {
-    const response = await api.get<Market>(`/market/${id}`);
-    const data = response.data;
+    const { data } = await api.get<Market>(`/market/${id}`);
     return data;
   } catch (error) {
     console.warn("Failed to load market");
@@ -53,8 +49,7 @@ export const fetchMarketById = async (id: string) => {
 
 export const fetchVendorById = async (id: string) => {
   try {
-    const response = await api.get(`/vendor/${id}`);
-    const data = response.data;
+    const { data } = await api.get(`/vendor/${id}`);
     return data;
   } catch (error) {
     console.warn("Failed to load vendor");
@@ -63,8 +58,7 @@ export const fetchVendorById = async (id: string) => {
 
 export const fetchUpcomingMarketsByVendorId = async (vendorId: string) => {
   try {
-    const response = await api.get<Market[]>(`/vendor/${vendorId}/upcoming`);
-    const data = response.data;
+    const { data } = await api.get<Market[]>(`/vendor/${vendorId}/upcoming`);
     return data;
   } catch (error) {
     console.warn("Failed to load markets");
