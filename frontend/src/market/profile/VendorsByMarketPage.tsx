@@ -35,7 +35,7 @@ const VendorsByMarketPage = () => {
               marketClosingDate={market.closingDate}
             />
             <Intro>Kikkel találkozhatsz?</Intro>
-            <VendorList market={market} />
+            <VendorList vendors={market.vendors} />
           </>
         ) : (
           <Redirect to="/" />
