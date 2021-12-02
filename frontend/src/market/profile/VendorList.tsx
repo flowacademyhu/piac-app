@@ -4,15 +4,7 @@ import VendorListUploadInProgress from "./VendorListUploadInProgress";
 import SearchArea from "../../components/SearchArea";
 import filteredArrayByKeyword from "../../vendor/filter";
 import EmailContact from "../../components/EmailContact";
-import styled from "styled-components";
 import { VendorSummary } from "vendor/Vendor";
-
-const MarketLoading = styled.div`
-  background-color: #f7f5f2;
-  width: 100%;
-  position: relative;
-  height: 100px;
-`;
 
 interface VendorListProps {
   vendors: VendorSummary[];
