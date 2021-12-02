@@ -42,15 +42,25 @@ class MarketRepositoryTest {
   }
 
   @Test
-  void versionTest(){
-    Market market = new Market();
-    market.setName("Bödön Piac");
-    marketRepository.save(market);
+  void canSaveAndGetMarket(){
+    Market newMarket = new Market();
+    newMarket.setName("Bödön Piac");
+    newMarket.setOpeningDate(1630742400L);
+    newMarket.setClosingDate(1630767600L);
+    newMarket.setProfilePic("https://example.com/images/bodon.png");
+    newMarket.setPlace("Valamilyen pláza");
+    
+    var savedMarket = marketRepository.save(newMarket);
 
     var marketList = marketRepository.findAll();
-
     assertThat(marketList).hasSize(1);
-    assertThat(marketList.get(0).getName()).isEqualTo("Bödön Piac");
+    var market = marketList.get(0);
+    assertThat(market.getId()).isEqualTo(savedMarket.getId());
+    assertThat(market.getName()).isEqualTo("Bödön Piac");
+    assertThat(market.getOpeningDate()).isEqualTo(1630742400L);
+    assertThat(market.getClosingDate()).isEqualTo(1630767600L);
+    assertThat(market.getProfilePic()).isEqualTo("https://example.com/images/bodon.png");
+    assertThat(market.getPlace()).isEqualTo("Valamilyen pláza");
   }
 
   @Test
