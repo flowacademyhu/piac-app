@@ -5,7 +5,7 @@ import SearchArea from "../../components/SearchArea";
 import filteredArrayByKeyword from "../../vendor/filter";
 import EmailContact from "../../components/EmailContact";
 import styled from "styled-components";
-import Market from "market/Market";
+import { VendorSummary } from "vendor/Vendor";
 
 const MarketLoading = styled.div`
   background-color: #f7f5f2;
@@ -15,13 +15,13 @@ const MarketLoading = styled.div`
 `;
 
 interface VendorListProps {
-  market: Market;
+  vendors: VendorSummary[];
 }
 
-const VendorList = ({ market }: VendorListProps) => {
+const VendorList = ({ vendors }: VendorListProps) => {
   const [searchTerm, setSearchTerm] = useState("");
 
-  if (market && market.vendors && market.vendors.length > 0) {
+  if (vendors.length > 0) {
     return (
       <>
         <SearchArea
@@ -31,17 +31,7 @@ const VendorList = ({ market }: VendorListProps) => {
           placeHolder="Keress termékre vagy árusra..."
         />
         <VendorListOfOneMarket
-          vendors={filteredArrayByKeyword(market.vendors, searchTerm)}
-        />
-        <EmailContact />
-      </>
-    );
-  } else if (market && market.id) {
-    return (
-      <>
-        <VendorlistUploadInProgress
-          title="Szervezés alatt..."
-          body="Itt fogod megtalálni az árusokat, akik ezen a piacon jelen lesznek."
+          vendors={filteredArrayByKeyword(vendors, searchTerm)}
         />
         <EmailContact />
       </>
@@ -49,8 +39,11 @@ const VendorList = ({ market }: VendorListProps) => {
   } else {
     return (
       <>
-        <MarketLoading />
-        <VendorlistUploadInProgress />
+        <VendorlistUploadInProgress
+          title="Szervezés alatt..."
+          body="Itt fogod megtalálni az árusokat, akik ezen a piacon jelen lesznek."
+        />
+        <EmailContact />
       </>
     );
   }
