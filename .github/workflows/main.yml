@@ -84,9 +84,8 @@ jobs:
           --health-retries=3
     env:
       IMAGE_NAME: registry.gitlab.com/6uliver/piac/backend:${{ github.sha }}
-      MYSQL_URL: jdbc:mysql://127.0.0.1:3306/piac-test
-      spring.datasource.username: root
-      spring.datasource.password: test
+      MYSQL_URL: jdbc:mysql://localhost:3306/piac-test
+      "spring.datasource.password": test
     steps:
       - uses: actions/checkout@v2
 
