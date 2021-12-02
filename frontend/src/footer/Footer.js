@@ -3,7 +3,6 @@ import FooterButton from "./FooterButton";
 
 const Footer = () => {
   const FooterContainer = styled.div`
-    padding-top: 5px;
     text-decoration: none;
     background-color: #fffdfc;
     position: fixed;
@@ -17,6 +16,7 @@ const Footer = () => {
     height: 60px;
     display: flex;
     justify-content: space-around;
+    align-items: center;
   `;
 
   return (
