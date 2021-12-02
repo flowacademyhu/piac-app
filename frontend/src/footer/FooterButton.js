@@ -29,17 +29,19 @@ const FooterButton = ({ requestParam, appelation, logo }) => {
     justify-content: center;
     text-align: center;
     margin: auto;
+    text-decoration: none;
+    text-align: center;
+  `;
+  const NavLink = styled(Link)`
+    text-decoration: none;
+    text-align: center;
   `;
 
   const IsActive =
     location.pathname === requestParam ? FooterLabelActive : FooterLabel;
 
   return (
-    <Link
-      className="footer-link"
-      to={requestParam}
-      style={{ textDecoration: "none", textAlign: "center" }}
-    >
+    <NavLink to={requestParam}>
       <FooterLogo>
         <img
           src={
@@ -55,7 +57,7 @@ const FooterButton = ({ requestParam, appelation, logo }) => {
         />
       </FooterLogo>
       <IsActive style={{ cursor: "default" }}>{appelation}</IsActive>
-    </Link>
+    </NavLink>
   );
 };
 
