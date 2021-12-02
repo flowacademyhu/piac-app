@@ -26,9 +26,11 @@ public class EmailSendingService {
     private  String sendGridApiKey;
     @Value("${site.url}")
     private String siteUrl;
+    @Value("${sendgrid.from-email}")
+    private String fromEmail;
 
     public void sendmail( String emailAddress, String generatedString) throws Exception {
-        Email from = new Email(emailAddress);
+        Email from = new Email(fromEmail);
         String subject = "Sending with SendGrid is Fun";
         Email to = new Email(emailAddress);
         Content content = new Content("text/plain", siteUrl + "/token/" + generatedString);

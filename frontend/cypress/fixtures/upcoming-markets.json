@@ -1,0 +1,22 @@
+[
+  {
+    "id": 4,
+    "profilePic": "https://felpenzzel.hu/images/piacok/bodonpiac.png",
+    "name": "Bödön Piac",
+    "place": "Szeged Pláza",
+    "openingDate": 1638086400,
+    "closingDate": 1638104400,
+    "numberOfVendors": 77,
+    "vendors": null
+  },
+  {
+    "id": 26,
+    "profilePic": "https://felpenzzel.hu/images/piacok/popuppiac.jpg",
+    "name": "Pop Up Piac - After Work",
+    "place": "Szálka Halászcsárda és Rendezvényház (Szeged, Közép Kikötő sor 9/A.)",
+    "openingDate": 1638968400,
+    "closingDate": 1638986400,
+    "numberOfVendors": 0,
+    "vendors": null
+  }
+]

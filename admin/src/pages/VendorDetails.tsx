@@ -1,18 +1,17 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Form } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "@pathofdev/react-tag-input/build/index.css";
 import {
   fetchVendorById,
   addVendor,
   updateVendor,
-} from "./../components/Service";
+} from "../components/Service";
 import FormTextInput from "../components/FormTextInput";
 import FormTextAreaInput from "../components/FormTextAreaInput";
 import VendorCardPaymentCheckbox from "../components/VendorCardPaymentCheckbox";
 import VendorProductsInput from "../components/VendorProductsInput";
 import VendorDetailsButtons from "../components/VendorDetailsButtons";
-import { useNavigate } from "react-router-dom";
 
 const VendorDetails = () => {
   const id = useParams().id;
@@ -20,7 +19,7 @@ const VendorDetails = () => {
 
   const [success, setSuccess] = useState(false);
 
-  const fetchVendor = async (id) => {
+  const fetchVendor = async (id: string) => {
     const response = await fetchVendorById(id);
     setUpdatedVendor(response);
   };
@@ -29,20 +28,20 @@ const VendorDetails = () => {
     if (id) {
       fetchVendor(id);
     }
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     if (success) {
       navigate("/arus");
     }
-  }, [success]);
+  }, [success, navigate]);
 
   const [updatedVendor, setUpdatedVendor] = useState({});
   const [hasError, setHasError] = useState(false);
   const title = id ? "Árus módosítása" : "Új árus hozzáadása";
   const submitButtonLabel = id ? "Módosítás" : "Hozzáadás";
 
-  const submitForm = (e) => {
+  const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
     if (id) {
       updateVendor(updatedVendor, id, setSuccess, setHasError);
     } else {

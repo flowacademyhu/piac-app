@@ -1,4 +1,4 @@
-import React, { useState, useLayoutEffect } from "react";
+import React, { useState } from "react";
 import { fetchVendors } from "../../api/Service";
 import VendorCard from "../VendorCard";
 import { Link } from "react-router-dom";
@@ -6,23 +6,14 @@ import SearchArea from "../../components/SearchArea";
 import ErrorBody from "../../components/ErrorBody";
 import sortByName from "../sort/sortByName";
 import filteredArrayByKeyword from "../filter";
+import { useQuery } from "react-query";
 import CardList from "../../styles/CardListStyled";
 
 const VendorCardList = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [vendors, setVendors] = useState([]);
-  const [error, setError] = useState(null);
+  const { data: vendors, isError, error } = useQuery("vendors", fetchVendors);
 
-  const getVendors = async () => {
-    const result = await fetchVendors();
-    setVendors(result);
-  };
-
-  useLayoutEffect(() => {
-    getVendors().catch((err) => setError(err.message));
-  }, []);
-
-  vendors.sort(sortByName);
+  vendors?.sort(sortByName);
 
   return (
     <>
@@ -33,10 +24,10 @@ const VendorCardList = () => {
         placeHolder="Keress termékre vagy árusra..."
       />
       <CardList>
-        {error ? (
-          <ErrorBody error={error} />
+        {isError ? (
+          <ErrorBody error={error.message} />
         ) : (
-          filteredArrayByKeyword(vendors, searchTerm).map((vendor) => {
+          filteredArrayByKeyword(vendors, searchTerm)?.map((vendor) => {
             return (
               <div key={vendor.id}>
                 <Link
