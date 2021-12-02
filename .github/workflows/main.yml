@@ -91,7 +91,7 @@ jobs:
       - name: Verify MySQL connection from host
         run: |
           sudo apt-get install -y mysql-client
-          mysql --host 127.0.0.1 -uroot -ptest -e "SELECT 1";
+          mysql --host 127.0.0.1 -uroot -pexample -e "SELECT 1";
 
       - name: Run tests
         run: mvn -B test
