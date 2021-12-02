@@ -5,12 +5,12 @@ const api = axios.create({
   baseURL: "/v1/api/",
 });
 
-const MarketAPI = "/v1/api/market";
+const MarketAPI = "market";
 
 export const fetchMarkets = async () => {
   const url = MarketAPI;
   try {
-    const response = await axios.get(url);
+    const response = await api.get(url);
     const data = response.data;
     return data;
   } catch (error) {
@@ -53,7 +53,7 @@ export const fetchUpcomingMarkets = async () => {
 export const fetchMarketById = async (id: string) => {
   const url = MarketAPI + "/" + id;
   try {
-    const response: AxiosResponse<Market> = await axios.get(url);
+    const response: AxiosResponse<Market> = await api.get(url);
     const data = response.data;
     return data;
   } catch (error) {
