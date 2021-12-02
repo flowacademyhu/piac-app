@@ -24,25 +24,22 @@ const VendorsByMarketPage = () => {
 
   return (
     <>
-      {!isLoading && (
-        <>
-          {market ? (
-            <>
-              <HeaderWithMarket
-                profilePic={market.profilePic}
-                marketName={market.name}
-                marketLocation={market.place}
-                marketOpeningDate={market.openingDate}
-                marketClosingDate={market.closingDate}
-              />
-              <Intro>Kikkel találkozhatsz?</Intro>
-              <VendorList market={market} />
-            </>
-          ) : (
-            <Redirect to="/" />
-          )}
-        </>
-      )}
+      {!isLoading &&
+        (market ? (
+          <>
+            <HeaderWithMarket
+              profilePic={market.profilePic}
+              marketName={market.name}
+              marketLocation={market.place}
+              marketOpeningDate={market.openingDate}
+              marketClosingDate={market.closingDate}
+            />
+            <Intro>Kikkel találkozhatsz?</Intro>
+            <VendorList market={market} />
+          </>
+        ) : (
+          <Redirect to="/" />
+        ))}
     </>
   );
 };
