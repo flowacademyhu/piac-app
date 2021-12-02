@@ -5,12 +5,8 @@ const api = axios.create({
   baseURL: "/v1/api",
 });
 
-const MarketAPI = "/market";
-const VendorAPI = "/vendor";
-const UpcomingMarketAPI = "/market/upcoming";
-
 export const fetchMarkets = async () => {
-  const url = MarketAPI;
+  const url = "/market";
   try {
     const response = await api.get(url);
     const data = response.data;
@@ -24,7 +20,7 @@ export const fetchMarkets = async () => {
 };
 
 export const fetchVendors = async () => {
-  const url = VendorAPI;
+  const url = "/vendor";
   try {
     const response = await api.get(url);
     const data = response.data;
@@ -35,7 +31,7 @@ export const fetchVendors = async () => {
 };
 
 export const fetchUpcomingMarkets = async () => {
-  const url = UpcomingMarketAPI;
+  const url = "/market/upcoming";
   try {
     const response = await api.get(url);
     const data = response.data;
@@ -49,7 +45,7 @@ export const fetchUpcomingMarkets = async () => {
 };
 
 export const fetchMarketById = async (id: string) => {
-  const url = MarketAPI + "/" + id;
+  const url = "/market" + "/" + id;
   try {
     const response = await api.get<Market>(url);
     const data = response.data;
@@ -60,7 +56,7 @@ export const fetchMarketById = async (id: string) => {
 };
 
 export const fetchVendorById = async (id: string) => {
-  const url = VendorAPI + "/" + id;
+  const url = "/vendor" + "/" + id;
   try {
     const response = await api.get(url);
     const data = response.data;
@@ -71,7 +67,7 @@ export const fetchVendorById = async (id: string) => {
 };
 
 export const fetchUpcomingMarketsByVendorId = async (vendorId: string) => {
-  const url = VendorAPI + "/" + vendorId + "/upcoming";
+  const url = "/vendor" + "/" + vendorId + "/upcoming";
   try {
     const response = await api.get<Market[]>(url);
     const data = response.data;
