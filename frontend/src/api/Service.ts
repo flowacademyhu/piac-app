@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import Market from "../vendor/profile/Market";
 
 const api = axios.create({
@@ -51,7 +51,7 @@ export const fetchUpcomingMarkets = async () => {
 export const fetchMarketById = async (id: string) => {
   const url = MarketAPI + "/" + id;
   try {
-    const response: AxiosResponse<Market> = await api.get(url);
+    const response = await api.get<Market>(url);
     const data = response.data;
     return data;
   } catch (error) {
@@ -73,7 +73,7 @@ export const fetchVendorById = async (id: string) => {
 export const fetchUpcomingMarketsByVendorId = async (vendorId: string) => {
   const url = VendorAPI + "/" + vendorId + "/upcoming";
   try {
-    const response: AxiosResponse<Market[]> = await api.get(url);
+    const response = await api.get<Market[]>(url);
     const data = response.data;
     return data;
   } catch (error) {
