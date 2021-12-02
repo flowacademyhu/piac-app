@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
 import "./login.css";
 import { fetchVendors, deleteVendorById } from "./Service";
 import DeleteEntity from "./DeleteEntity";
