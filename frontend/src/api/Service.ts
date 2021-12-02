@@ -1,5 +1,5 @@
 import axios from "axios";
-import Market from "../market/Market";
+import Market from "market/Market";
 
 const api = axios.create({
   baseURL: "/v1/api",
