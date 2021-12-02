@@ -6,9 +6,8 @@ const api = axios.create({
 });
 
 export const fetchMarkets = async () => {
-  const url = "/market";
   try {
-    const response = await api.get(url);
+    const response = await api.get("/market");
     const data = response.data;
     return data;
   } catch (error) {
@@ -20,9 +19,8 @@ export const fetchMarkets = async () => {
 };
 
 export const fetchVendors = async () => {
-  const url = "/vendor";
   try {
-    const response = await api.get(url);
+    const response = await api.get("/vendor");
     const data = response.data;
     return data;
   } catch (error) {
@@ -31,9 +29,8 @@ export const fetchVendors = async () => {
 };
 
 export const fetchUpcomingMarkets = async () => {
-  const url = "/market/upcoming";
   try {
-    const response = await api.get(url);
+    const response = await api.get("/market/upcoming");
     const data = response.data;
     return data;
   } catch (error) {
@@ -45,9 +42,8 @@ export const fetchUpcomingMarkets = async () => {
 };
 
 export const fetchMarketById = async (id: string) => {
-  const url = "/market" + "/" + id;
   try {
-    const response = await api.get<Market>(url);
+    const response = await api.get<Market>(`/market/${id}`);
     const data = response.data;
     return data;
   } catch (error) {
@@ -56,9 +52,8 @@ export const fetchMarketById = async (id: string) => {
 };
 
 export const fetchVendorById = async (id: string) => {
-  const url = "/vendor" + "/" + id;
   try {
-    const response = await api.get(url);
+    const response = await api.get(`/vendor/${id}`);
     const data = response.data;
     return data;
   } catch (error) {
@@ -67,9 +62,8 @@ export const fetchVendorById = async (id: string) => {
 };
 
 export const fetchUpcomingMarketsByVendorId = async (vendorId: string) => {
-  const url = "/vendor" + "/" + vendorId + "/upcoming";
   try {
-    const response = await api.get<Market[]>(url);
+    const response = await api.get<Market[]>(`/vendor/${vendorId}/upcoming`);
     const data = response.data;
     return data;
   } catch (error) {
