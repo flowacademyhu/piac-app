@@ -1,6 +1,6 @@
 import axios from "axios";
-import Market from "market/Market";
-import Vendor from "vendor/Vendor";
+import { Market, MarketWithId } from "market/Market";
+import { Vendor, VendorWithId } from "vendor/Vendor";
 import { getToken } from "./AuthService";
 
 const tokenConfig = {
@@ -16,7 +16,7 @@ const adminMarketAPI = "/v1/api/admin/market";
 export const fetchMarkets = async () => {
   const url = MarketAPI;
   try {
-    const response = await axios.get<Market[]>(url);
+    const response = await axios.get<MarketWithId[]>(url);
     const data = response.data;
     return data;
   } catch (error) {
@@ -27,7 +27,7 @@ export const fetchMarkets = async () => {
 export const fetchMarketById = async (id: string) => {
   const url = adminMarketAPI + "/" + id;
   try {
-    const response = await axios.get<Market>(url);
+    const response = await axios.get<MarketWithId>(url);
     const data = response.data;
     return data;
   } catch (error) {
@@ -65,7 +65,7 @@ const VendorAPI = "/v1/api/vendor";
 export const fetchVendors = async () => {
   const url = VendorAPI;
   try {
-    const response = await axios.get<Vendor[]>(url);
+    const response = await axios.get<VendorWithId[]>(url);
     const data = response.data;
     return data;
   } catch (error) {
@@ -100,7 +100,7 @@ export const deleteVendorById = async (id: string) => {
 export const fetchVendorById = async (id: string) => {
   const url = VendorAPI + "/" + id;
   try {
-    const response = await axios.get<Vendor>(url);
+    const response = await axios.get<VendorWithId>(url);
     const data = response.data;
     return data;
   } catch (error) {

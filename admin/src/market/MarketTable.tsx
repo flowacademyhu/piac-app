@@ -3,7 +3,7 @@ import { Button, Table } from "react-bootstrap";
 import { fetchMarkets, deleteMarketById } from "components/Service";
 import DeleteEntity from "components/DeleteEntity";
 import { Link } from "react-router-dom";
-import Market from "./Market";
+import { MarketWithId } from "./Market";
 
 const timeConverter = (epochSeconds: number) => {
   const dateFormatter: Intl.DateTimeFormatOptions = {
@@ -20,11 +20,13 @@ const timeConverter = (epochSeconds: number) => {
 };
 
 const MarketTable = () => {
-  const [allMarkets, setAllMarkets] = useState<Market[]>([]);
+  const [allMarkets, setAllMarkets] = useState<MarketWithId[]>([]);
 
   const getAllMarkets = async () => {
     const result = await fetchMarkets();
-    setAllMarkets(result);
+    if (result) {
+      setAllMarkets(result);
+    }
   };
 
   useEffect(() => {

@@ -12,6 +12,7 @@ import FormTextAreaInput from "../components/FormTextAreaInput";
 import VendorCardPaymentCheckbox from "../components/VendorCardPaymentCheckbox";
 import VendorProductsInput from "../components/VendorProductsInput";
 import VendorDetailsButtons from "../components/VendorDetailsButtons";
+import { Vendor } from "vendor/Vendor";
 
 const VendorDetails = () => {
   const id = useParams().id;
@@ -21,7 +22,9 @@ const VendorDetails = () => {
 
   const fetchVendor = async (id: string) => {
     const response = await fetchVendorById(id);
-    setUpdatedVendor(response);
+    if (response) {
+      setUpdatedVendor(response);
+    }
   };
 
   useEffect(() => {
@@ -36,7 +39,9 @@ const VendorDetails = () => {
     }
   }, [success, navigate]);
 
-  const [updatedVendor, setUpdatedVendor] = useState({});
+  const [updatedVendor, setUpdatedVendor] = useState<Vendor>({
+    name: "",
+  });
   const [hasError, setHasError] = useState(false);
   const title = id ? "Árus módosítása" : "Új árus hozzáadása";
   const submitButtonLabel = id ? "Módosítás" : "Hozzáadás";

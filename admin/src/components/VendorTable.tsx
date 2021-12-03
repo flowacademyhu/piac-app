@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import "./login.css";
 import { fetchVendors, deleteVendorById } from "./Service";
 import DeleteEntity from "./DeleteEntity";
-import Vendor from "../vendor/Vendor";
+import { VendorWithId } from "../vendor/Vendor";
 
 const VendorTable = () => {
-  const [allVendors, setAllVendors] = useState<Vendor[]>([]);
+  const [allVendors, setAllVendors] = useState<VendorWithId[]>([]);
 
   const getAllVendors = async () => {
     const result = await fetchVendors();
