@@ -69,13 +69,11 @@ const MarketListName = styled.h4`
   font-weight: bold;
   overflow: hidden;
   width: 100%;
-  max-height: 60px;
   white-space: normal;
   word-break: break-word;
   text-overflow: ellipsis;
   -webkit-box-orient: vertical;
   display: -webkit-box;
-  -webkit-line-clamp: 2;
   margin-bottom: 0;
 `;
 
