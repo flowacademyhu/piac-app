@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
 import { Button, Table } from "react-bootstrap";
 import { fetchMarkets, deleteMarketById } from "components/Service";
 import DeleteEntity from "components/DeleteEntity";
 import { Link } from "react-router-dom";
-import { MarketWithId } from "./Market";
+import { useQuery, useQueryClient } from "react-query";
 
 const timeConverter = (epochSeconds: number) => {
   const dateFormatter: Intl.DateTimeFormatOptions = {
@@ -20,22 +19,13 @@ const timeConverter = (epochSeconds: number) => {
 };
 
 const MarketTable = () => {
-  const [allMarkets, setAllMarkets] = useState<MarketWithId[]>([]);
+  const { data: markets } = useQuery("markets", fetchMarkets);
 
-  const getAllMarkets = async () => {
-    const result = await fetchMarkets();
-    if (result) {
-      setAllMarkets(result);
-    }
-  };
-
-  useEffect(() => {
-    getAllMarkets();
-  }, []);
+  const queryClient = useQueryClient();
 
   const handleDeleteMarket = async (id: string) => {
     await deleteMarketById(id);
-    getAllMarkets();
+    queryClient.invalidateQueries("markets");
   };
 
   return (
@@ -60,7 +50,7 @@ const MarketTable = () => {
           </tr>
         </thead>
         <tbody>
-          {allMarkets.map((market) => {
+          {markets?.map((market) => {
             return (
               <tr key={market.id}>
                 <td>{market.name}</td>
