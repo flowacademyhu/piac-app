@@ -16,7 +16,7 @@ const adminMarketAPI = "/v1/api/admin/market";
 export const fetchMarkets = async () => {
   const url = MarketAPI;
   try {
-    const response = await axios.get(url);
+    const response = await axios.get<Market[]>(url);
     const data = response.data;
     return data;
   } catch (error) {
@@ -27,12 +27,17 @@ export const fetchMarkets = async () => {
 export const fetchMarketById = async (id: string) => {
   const url = adminMarketAPI + "/" + id;
   try {
-    const response = await axios.get(url);
+    const response = await axios.get<Market>(url);
     const data = response.data;
     return data;
   } catch (error) {
     console.warn("Failed to load market");
   }
+};
+
+export const addMarket = async (market: Market) => {
+  const { data } = await axios.post(adminMarketAPI, market, tokenConfig);
+  return data;
 };
 
 export const updateMarket = async (
@@ -60,7 +65,7 @@ const VendorAPI = "/v1/api/vendor";
 export const fetchVendors = async () => {
   const url = VendorAPI;
   try {
-    const response = await axios.get(url);
+    const response = await axios.get<Vendor[]>(url);
     const data = response.data;
     return data;
   } catch (error) {
@@ -95,7 +100,7 @@ export const deleteVendorById = async (id: string) => {
 export const fetchVendorById = async (id: string) => {
   const url = VendorAPI + "/" + id;
   try {
-    const response = await axios.get(url);
+    const response = await axios.get<Vendor>(url);
     const data = response.data;
     return data;
   } catch (error) {

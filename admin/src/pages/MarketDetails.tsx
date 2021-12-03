@@ -4,13 +4,14 @@ import { useParams, useNavigate } from "react-router-dom";
 import "@pathofdev/react-tag-input/build/index.css";
 import {
   fetchMarketById,
-  addVendor,
+  addMarket,
   updateMarket,
 } from "../components/Service";
 import FormTextInput from "../components/FormTextInput";
 import FormTextAreaInput from "../components/FormTextAreaInput";
 import MarketDetailsButtons from "../components/MarketDetailsButtons";
 import TimeInput from "../components/TimeInput";
+import Market from "market/Market";
 
 const MarketDetails = () => {
   const id = useParams().id;
@@ -20,12 +21,14 @@ const MarketDetails = () => {
 
   const fetchMarket = async (id: string) => {
     const response = await fetchMarketById(id);
-    setUpdatedMarket(response);
+    if (response) {
+      setUpdatedMarket(response);
+    }
   };
 
   useEffect(() => {
     if (id) {
-      fetchMarketById(id);
+      fetchMarket(id);
     }
   }, [id]);
 
@@ -35,7 +38,12 @@ const MarketDetails = () => {
     }
   }, [success, navigate]);
 
-  const [updatedMarket, setUpdatedMarket] = useState({});
+  const [updatedMarket, setUpdatedMarket] = useState<Market>({
+    name: "",
+    place: "",
+    openingDate: 0,
+    closingDate: 0,
+  });
   const [hasError, setHasError] = useState(false);
   const title = id ? "Piac módosítása" : "Új piac hozzáadása";
   const submitButtonLabel = id ? "Módosítás" : "Hozzáadás";
@@ -44,7 +52,12 @@ const MarketDetails = () => {
     if (id) {
       updateMarket(updatedMarket, id, setSuccess, setHasError);
     } else {
-      addVendor(updatedMarket, setSuccess, setHasError);
+      try {
+        addMarket(updatedMarket);
+        setSuccess(true);
+      } catch (e) {
+        setHasError(true);
+      }
     }
     e.preventDefault();
   };

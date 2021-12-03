@@ -11,7 +11,9 @@ const VendorTable = () => {
 
   const getAllVendors = async () => {
     const result = await fetchVendors();
-    setAllVendors(result);
+    if (result) {
+      setAllVendors(result);
+    }
   };
 
   useEffect(() => {
