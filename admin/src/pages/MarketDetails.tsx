@@ -21,22 +21,19 @@ const MarketDetails = () => {
   const [success, setSuccess] = useState(false);
   const [hasError, setHasError] = useState(false);
 
-  const { register, reset, handleSubmit } = useForm<Market>();
+  const { register, reset, handleSubmit, control } = useForm<Market>();
 
-  const submitForm = (data: Market) => {
-    console.log(data);
-    return;
-
-    /*try {
+  const submitForm = (market: Market) => {
+    try {
       if (id) {
-        updateMarket(data, id);
+        updateMarket(market, id);
       } else {
-        addMarket(data);
+        addMarket(market);
       }
       setSuccess(true);
     } catch (e) {
       setHasError(true);
-    }*/
+    }
   };
 
   const fetchMarket = useCallback(
@@ -75,8 +72,8 @@ const MarketDetails = () => {
         {...register("profilePic")}
       />
       <FormTextAreaInput label="Piac helyszíne" {...register("place")} />
-      <TimeInput label="Piac kezdete" {...register("openingDate")} />
-      <TimeInput label="Piac zárása" {...register("closingDate")} />
+      <TimeInput label="Piac kezdete" name="openingDate" control={control} />
+      <TimeInput label="Piac zárása" name="closingDate" control={control} />
 
       <MarketDetailsButtons submitButtonLabel={submitButtonLabel} />
       {hasError && (

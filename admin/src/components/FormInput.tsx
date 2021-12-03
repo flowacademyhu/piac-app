@@ -3,8 +3,8 @@ import { Form, FormControlProps } from "react-bootstrap";
 import { UseFormRegisterReturn } from "react-hook-form";
 
 interface FormInputProps
-  extends Omit<UseFormRegisterReturn, "ref">,
-    Omit<FormControlProps, "onChange" | "onBlur"> {
+  extends Omit<UseFormRegisterReturn, "ref" | "onChange" | "onBlur">,
+    FormControlProps {
   label: string;
   required?: boolean;
 }
