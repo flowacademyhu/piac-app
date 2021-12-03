@@ -49,15 +49,15 @@ const MarketDetails = () => {
   const submitButtonLabel = id ? "Módosítás" : "Hozzáadás";
 
   const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
-    if (id) {
-      updateMarket(updatedMarket, id, setSuccess, setHasError);
-    } else {
-      try {
+    try {
+      if (id) {
+        updateMarket(updatedMarket, id);
+      } else {
         addMarket(updatedMarket);
-        setSuccess(true);
-      } catch (e) {
-        setHasError(true);
       }
+      setSuccess(true);
+    } catch (e) {
+      setHasError(true);
     }
     e.preventDefault();
   };
