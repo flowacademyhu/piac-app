@@ -3,9 +3,10 @@ import { Button, Table } from "react-bootstrap";
 import { fetchMarkets, deleteMarketById } from "components/Service";
 import DeleteEntity from "components/DeleteEntity";
 import { Link } from "react-router-dom";
+import Market from "./Market";
 
 const MarketTable = () => {
-  const [allMarkets, setAllMarkets] = useState([]);
+  const [allMarkets, setAllMarkets] = useState<Market[]>([]);
 
   const getAllMarkets = async () => {
     const result = await fetchMarkets();
@@ -16,13 +17,13 @@ const MarketTable = () => {
     getAllMarkets();
   }, []);
 
-  const handleDeleteMarket = async (id) => {
+  const handleDeleteMarket = async (id: string) => {
     await deleteMarketById(id);
     getAllMarkets();
   };
 
-  const timeConverter = (epochSeconds) => {
-    const dateFormatter = {
+  const timeConverter = (epochSeconds: number) => {
+    const dateFormatter: Intl.DateTimeFormatOptions = {
       year: "numeric",
       month: "long",
       day: "numeric",
