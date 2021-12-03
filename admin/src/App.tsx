@@ -15,7 +15,7 @@ function App() {
         <>
           <Menu />
           <Routes>
-            <Route index path="/piac" element={<MarketTablePage />} />
+            <Route path="/piac" element={<MarketTablePage />} />
             <Route path="/arus" element={<VendorTablePage />} />
             <Route path="/arus/uj" element={<VendorDetails />} />
             <Route path="/piac/uj" element={<MarketDetails />} />
