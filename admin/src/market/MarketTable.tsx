@@ -2,7 +2,7 @@ import { Button, Table } from "react-bootstrap";
 import { fetchMarkets, deleteMarketById } from "components/Service";
 import DeleteEntity from "components/DeleteEntity";
 import { Link } from "react-router-dom";
-import { useQuery, useQueryClient } from "react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 
 const timeConverter = (epochSeconds: number) => {
   const dateFormatter: Intl.DateTimeFormatOptions = {
@@ -23,10 +23,11 @@ const MarketTable = () => {
 
   const queryClient = useQueryClient();
 
-  const handleDeleteMarket = async (id: string) => {
-    await deleteMarketById(id);
-    queryClient.invalidateQueries("markets");
-  };
+  const deleteMarketMutation = useMutation(deleteMarketById, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("markets");
+    },
+  });
 
   return (
     <div>
@@ -63,7 +64,7 @@ const MarketTable = () => {
                 <td className="text-center">
                   <DeleteEntity
                     confirmationQuestion={`Biztosan kitörlöd a következő piacot? ${market.name}`}
-                    handleDelete={handleDeleteMarket}
+                    handleDelete={deleteMarketMutation.mutate}
                     ID={market.id}
                   />
                 </td>
