@@ -34,9 +34,7 @@ const MarketTable = () => {
       <div className="text-center">
         <p className="font-weight-bold">PIACOK</p>
         <Link to="/piac/uj">
-          <Button style={{ marginTop: "20px", marginBottom: "20px" }}>
-            ÚJ PIAC FELVÉTELE
-          </Button>
+          <Button className="my-4">ÚJ PIAC FELVÉTELE</Button>
         </Link>
       </div>
       <Table striped bordered hover>
