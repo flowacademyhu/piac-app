@@ -7,12 +7,13 @@ import {
   addVendor,
   updateVendor,
 } from "../components/Service";
-import FormTextInput from "../components/FormTextInput";
+import FormTextInput from "../components/FormInput";
 import FormTextAreaInput from "../components/FormTextAreaInput";
 import VendorCardPaymentCheckbox from "../components/VendorCardPaymentCheckbox";
 import VendorProductsInput from "../components/VendorProductsInput";
 import VendorDetailsButtons from "../components/VendorDetailsButtons";
 import { Vendor } from "vendor/Vendor";
+import { useForm } from "react-hook-form";
 
 const VendorDetails = () => {
   const id = useParams().id;
@@ -55,39 +56,27 @@ const VendorDetails = () => {
     e.preventDefault();
   };
 
+  const { register } = useForm();
+
   return (
     <Form className="container mb-3" onSubmit={submitForm}>
       <h1 className="my-3">{title}</h1>
-      <FormTextInput
-        label="Árus neve"
-        dataObject={updatedVendor}
-        dataObjectKey="name"
-        setter={setUpdatedVendor}
-        required={true}
-      />
+      <FormTextInput label="Árus neve" required {...register("name")} />
       <FormTextInput
         label="Árus logója"
-        dataObject={updatedVendor}
-        dataObjectKey="profilePic"
-        setter={setUpdatedVendor}
-        required={true}
         type="url"
+        required
+        {...register("profilePic")}
       />
       <FormTextAreaInput
         label="Árus rövid bemutatkozása"
-        dataObject={updatedVendor}
-        dataObjectKey="intro"
-        setter={setUpdatedVendor}
-        rows={2}
-        maxLength={100}
+        {...register("intro")}
       />
       <FormTextAreaInput
         label="Árus hosszú leírása"
-        dataObject={updatedVendor}
-        dataObjectKey="introductionLong"
-        setter={setUpdatedVendor}
-        rows={5}
         maxLength={2500}
+        rows={5}
+        {...register("introductionLong")}
       />
       <VendorCardPaymentCheckbox
         dataObject={updatedVendor}
@@ -99,36 +88,20 @@ const VendorDetails = () => {
       />
       <FormTextInput
         label="Árus telefonszáma"
-        dataObject={updatedVendor}
-        dataObjectKey="phone"
-        setter={setUpdatedVendor}
         type="tel"
+        {...register("phone")}
       />
       <FormTextInput
         label="Árus e-mail címe"
-        dataObject={updatedVendor}
-        dataObjectKey="email"
-        setter={setUpdatedVendor}
         type="email"
+        {...register("email")}
       />
-      <FormTextInput
-        label="Árus facebook linkje"
-        dataObject={updatedVendor}
-        dataObjectKey="facebook"
-        setter={setUpdatedVendor}
-      />
-      <FormTextInput
-        label="Árus instagram linkje"
-        dataObject={updatedVendor}
-        dataObjectKey="instagram"
-        setter={setUpdatedVendor}
-      />
+      <FormTextInput label="Árus facebook linkje" {...register("facebook")} />
+      <FormTextInput label="Árus instagram linkje" {...register("instagram")} />
       <FormTextInput
         label="Árus honlap címe"
-        dataObject={updatedVendor}
-        dataObjectKey="webSite"
-        setter={setUpdatedVendor}
         type="url"
+        {...register("webSite")}
       />
       <VendorDetailsButtons submitButtonLabel={submitButtonLabel} />
       {hasError && (
