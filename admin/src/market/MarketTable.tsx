@@ -5,6 +5,20 @@ import DeleteEntity from "components/DeleteEntity";
 import { Link } from "react-router-dom";
 import Market from "./Market";
 
+const timeConverter = (epochSeconds: number) => {
+  const dateFormatter: Intl.DateTimeFormatOptions = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "numeric",
+  };
+
+  return new Intl.DateTimeFormat("hu-HU", dateFormatter).format(
+    new Date(epochSeconds * 1000)
+  );
+};
+
 const MarketTable = () => {
   const [allMarkets, setAllMarkets] = useState<Market[]>([]);
 
@@ -20,20 +34,6 @@ const MarketTable = () => {
   const handleDeleteMarket = async (id: string) => {
     await deleteMarketById(id);
     getAllMarkets();
-  };
-
-  const timeConverter = (epochSeconds: number) => {
-    const dateFormatter: Intl.DateTimeFormatOptions = {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "numeric",
-    };
-
-    return new Intl.DateTimeFormat("hu-HU", dateFormatter).format(
-      new Date(epochSeconds * 1000)
-    );
   };
 
   return (
