@@ -6,18 +6,18 @@ import VendorLogo from "../icons/navigation/vendor-gray.svg";
 import VendorLogoHighlight from "../icons/navigation/vendor-primary.svg";
 import styled from "styled-components";
 
-const FooterLabel = styled.div`
+interface FooterLabelProps {
+  active: boolean;
+}
+
+const FooterLabel = styled.div<FooterLabelProps>`
   font-family: "Bebas Neue", sans-serif;
   font-size: 18px;
-  color: #ccbeb8;
+  color: ${(props) => (props.active ? "#53b896" : "#ccbeb8")};
   text-decoration: none;
   outline-style: none;
   display: flex;
   justify-content: center;
-`;
-
-const FooterLabelActive = styled(FooterLabel)`
-  color: #53b896;
 `;
 
 const FooterLogo = styled.div`
@@ -43,14 +43,14 @@ interface FooterButtonProps {
 const FooterButton = ({ path, label, logo }: FooterButtonProps) => {
   const location = useLocation();
 
-  const IsActive = location.pathname === path ? FooterLabelActive : FooterLabel;
+  const isActive = location.pathname === path;
 
   return (
     <NavLink to={path}>
       <FooterLogo>
         <img
           src={
-            location.pathname === path
+            isActive
               ? logo === "market"
                 ? MarketLogoHighlight
                 : VendorLogoHighlight
@@ -61,7 +61,9 @@ const FooterButton = ({ path, label, logo }: FooterButtonProps) => {
           alt="Icon"
         />
       </FooterLogo>
-      <IsActive style={{ cursor: "default" }}>{label}</IsActive>
+      <FooterLabel active={isActive} style={{ cursor: "default" }}>
+        {label}
+      </FooterLabel>
     </NavLink>
   );
 };
