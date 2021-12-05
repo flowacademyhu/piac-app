@@ -72,8 +72,6 @@ const MarketListName = styled.h4`
   white-space: normal;
   word-break: break-word;
   text-overflow: ellipsis;
-  -webkit-box-orient: vertical;
-  display: -webkit-box;
   margin-bottom: 0;
 `;
 
