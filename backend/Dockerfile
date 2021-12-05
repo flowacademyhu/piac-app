@@ -1,4 +1,4 @@
-FROM maven:openjdk AS build
+FROM maven:openjdk AS deps
 
 RUN mkdir /home/app
 
@@ -7,6 +7,8 @@ WORKDIR /home/app/
 COPY ./pom.xml /home/app
 
 RUN mvn -B verify clean --fail-never
+
+FROM deps AS build
 
 COPY ./src /home/app/src
 
