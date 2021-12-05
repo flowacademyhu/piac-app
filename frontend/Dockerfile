@@ -1,13 +1,12 @@
-FROM node:14 as build-stage
+FROM node:14 as deps
 WORKDIR /app
 
-COPY tsconfig.json ./
-
 COPY package.json yarn.lock ./
+RUN yarn install
 
-COPY node_modules ./node_modules
+FROM deps as build-stage
 
-RUN yarn
+COPY tsconfig.json ./
 
 COPY public ./public
 COPY src ./src

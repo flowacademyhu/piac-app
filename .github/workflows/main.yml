@@ -20,7 +20,7 @@ jobs:
         shell: bash
         working-directory: frontend
     env:
-      IMAGE_NAME: registry.gitlab.com/6uliver/piac/frontend:${{ github.sha }}
+      IMAGE_NAME: registry.gitlab.com/6uliver/piac/frontend
     steps:
       - name: Checkout sources
         uses: actions/checkout@v2
@@ -56,11 +56,18 @@ jobs:
           username: ${{ secrets.GITLAB_USERNAME }}
           password: ${{ secrets.GITLAB_PASSWORD }}
 
+      - name: Pull or build deps image
+        run: |
+          DEP_HASH=$(sha256sum yarn.lock | cut -d " " -f1)
+          DEPS_IMAGE_TAG=deps-${DEP_HASH}
+          docker pull $IMAGE_NAME:${DEPS_IMAGE_TAG} || docker build --target deps -t $IMAGE_NAME:${DEPS_IMAGE_TAG} .
+          docker push $IMAGE_NAME:${DEPS_IMAGE_TAG}
+
       - name: Build Docker image
-        run: docker build . -t $IMAGE_NAME
+        run: docker build -t $IMAGE_NAME:${{ github.sha }} .
 
       - name: Push Docker image
-        run: docker push $IMAGE_NAME
+        run: docker push $IMAGE_NAME:${{ github.sha }}
 
   build-backend:
     name: Build backend
