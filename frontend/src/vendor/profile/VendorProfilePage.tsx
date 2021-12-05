@@ -1,14 +1,14 @@
-import { useParams } from "react-router-dom";
+import { useParams, Redirect } from "react-router-dom";
 import VendorHeader from "./VendorHeader";
 import { fetchVendorById } from "../../api/Service";
-import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import VendorProfileInfo from "./VendorProfileInfo";
 import VendorProfileMarkets from "./VendorProfileMarkets";
 import { useQuery } from "react-query";
 import { Helmet } from "react-helmet";
+import IdPrameter from "types/IdParameter";
 
 const VendorProfilePage = () => {
-  const vendorId = useParams().id;
+  const vendorId = useParams<IdPrameter>().id;
 
   const { data: vendor, isLoading } = useQuery(["vendor", vendorId], () =>
     fetchVendorById(vendorId)
