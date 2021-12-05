@@ -6,6 +6,7 @@ const VendorCardPaymentCheckbox = ({ dataObject, setter }) => {
       <Form.Check
         type="checkbox"
         label="Bankkártyás fizetés"
+        data-test="card-payment-checkbox"
         checked={dataObject.cardPayment || false}
         onChange={(e) =>
           setter({

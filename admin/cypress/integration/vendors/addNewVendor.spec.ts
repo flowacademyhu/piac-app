@@ -24,7 +24,7 @@ describe("Add new vendor", () => {
       "Sokkal hosszabb szöveggel is bemutatkozik egy másik árus.\nA szövegben lehet újsor is."
     );
 
-    cy.get('[type="checkbox"]').check();
+    cy.get('[data-test="card-payment-checkbox"]').check();
 
     cy.get('input[placeholder="Írd be a termék nevét és nyomj enter-t"]')
       .type("Egyik termék{enter}")
