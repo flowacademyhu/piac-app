@@ -48,9 +48,7 @@ const FooterButton = ({ path, label, icon, iconActive }: FooterButtonProps) => {
       <FooterLogo>
         <img src={isActive ? iconActive : icon} alt="Icon" />
       </FooterLogo>
-      <FooterLabel active={isActive} style={{ cursor: "default" }}>
-        {label}
-      </FooterLabel>
+      <FooterLabel active={isActive}>{label}</FooterLabel>
     </NavLink>
   );
 };
