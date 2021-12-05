@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom/cjs/react-router-dom.min";
+import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import MarketLogo from "../icons/navigation/calendar-gray.svg";
 import MarketLogoHighlight from "../icons/navigation/calendar-primary.svg";
@@ -34,7 +34,17 @@ const NavLink = styled(Link)`
   text-align: center;
 `;
 
-const FooterButton = ({ requestParam, appelation, logo }) => {
+interface FooterButtonProps {
+  requestParam: string;
+  appelation: string;
+  logo: string;
+}
+
+const FooterButton = ({
+  requestParam,
+  appelation,
+  logo,
+}: FooterButtonProps) => {
   const location = useLocation();
 
   const IsActive =
