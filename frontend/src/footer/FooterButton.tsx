@@ -33,11 +33,11 @@ const NavLink = styled(Link)`
 interface FooterButtonProps {
   path: string;
   label: string;
-  logo: string;
-  logoActive: string;
+  icon: string;
+  iconActive: string;
 }
 
-const FooterButton = ({ path, label, logo, logoActive }: FooterButtonProps) => {
+const FooterButton = ({ path, label, icon, iconActive }: FooterButtonProps) => {
   const location = useLocation();
 
   const isActive = location.pathname === path;
@@ -45,7 +45,7 @@ const FooterButton = ({ path, label, logo, logoActive }: FooterButtonProps) => {
   return (
     <NavLink to={path}>
       <FooterLogo>
-        <img src={isActive ? logoActive : logo} alt="Icon" />
+        <img src={isActive ? iconActive : icon} alt="Icon" />
       </FooterLogo>
       <FooterLabel active={isActive} style={{ cursor: "default" }}>
         {label}
