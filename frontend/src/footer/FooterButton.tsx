@@ -1,9 +1,5 @@
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
-import MarketLogo from "../icons/navigation/calendar-gray.svg";
-import MarketLogoHighlight from "../icons/navigation/calendar-primary.svg";
-import VendorLogo from "../icons/navigation/vendor-gray.svg";
-import VendorLogoHighlight from "../icons/navigation/vendor-primary.svg";
 import styled from "styled-components";
 
 interface FooterLabelProps {
@@ -38,9 +34,10 @@ interface FooterButtonProps {
   path: string;
   label: string;
   logo: string;
+  logoActive: string;
 }
 
-const FooterButton = ({ path, label, logo }: FooterButtonProps) => {
+const FooterButton = ({ path, label, logo, logoActive }: FooterButtonProps) => {
   const location = useLocation();
 
   const isActive = location.pathname === path;
@@ -48,18 +45,7 @@ const FooterButton = ({ path, label, logo }: FooterButtonProps) => {
   return (
     <NavLink to={path}>
       <FooterLogo>
-        <img
-          src={
-            isActive
-              ? logo === "market"
-                ? MarketLogoHighlight
-                : VendorLogoHighlight
-              : logo === "market"
-              ? MarketLogo
-              : VendorLogo
-          }
-          alt="Icon"
-        />
+        <img src={isActive ? logoActive : logo} alt="Icon" />
       </FooterLogo>
       <FooterLabel active={isActive} style={{ cursor: "default" }}>
         {label}

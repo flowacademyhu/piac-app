@@ -1,5 +1,9 @@
 import styled from "styled-components";
 import FooterButton from "./FooterButton";
+import marketLogo from "../icons/navigation/calendar-gray.svg";
+import marketLogoHighlight from "../icons/navigation/calendar-primary.svg";
+import vendorLogo from "../icons/navigation/vendor-gray.svg";
+import vendorLogoHighlight from "../icons/navigation/vendor-primary.svg";
 
 const FooterContainer = styled.div`
   text-decoration: none;
@@ -21,8 +25,18 @@ const FooterContainer = styled.div`
 const Footer = () => {
   return (
     <FooterContainer>
-      <FooterButton path="/" label="PIACOK" logo="market" />
-      <FooterButton path="/arusok" label="ÁRUSOK" logo="vendor" />
+      <FooterButton
+        path="/"
+        label="PIACOK"
+        logo={marketLogo}
+        logoActive={marketLogoHighlight}
+      />
+      <FooterButton
+        path="/arusok"
+        label="ÁRUSOK"
+        logo={vendorLogo}
+        logoActive={vendorLogoHighlight}
+      />
     </FooterContainer>
   );
 };
