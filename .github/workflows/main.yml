@@ -21,6 +21,7 @@ jobs:
         working-directory: frontend
     env:
       IMAGE_NAME: registry.gitlab.com/6uliver/piac/frontend
+      DOCKER_BUILDKIT: 1
     steps:
       - name: Checkout sources
         uses: actions/checkout@v2
@@ -64,6 +65,7 @@ jobs:
         working-directory: backend
     env:
       IMAGE_NAME: registry.gitlab.com/6uliver/piac/backend
+      DOCKER_BUILDKIT: 1
     steps:
       - uses: actions/checkout@v2
 
