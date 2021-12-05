@@ -100,6 +100,7 @@ jobs:
         working-directory: admin
     env:
       IMAGE_NAME: registry.gitlab.com/6uliver/piac/admin
+      DOCKER_BUILDKIT: 1
     steps:
       - name: Checkout sources
         uses: actions/checkout@v2
