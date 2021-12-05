@@ -30,8 +30,6 @@ const MarketName = styled.h1`
   white-space: normal;
   word-break: break-word;
   text-overflow: ellipsis;
-  -webkit-box-orient: vertical;
-  display: -webkit-box;
   padding-top: 20px;
   margin-bottom: 0;
 `;
