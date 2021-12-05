@@ -14,6 +14,7 @@ const FooterLabel = styled.div<FooterLabelProps>`
   outline-style: none;
   display: flex;
   justify-content: center;
+  text-transform: uppercase;
 `;
 
 const FooterLogo = styled.div`

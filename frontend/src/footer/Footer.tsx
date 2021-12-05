@@ -27,13 +27,13 @@ const Footer = () => {
     <FooterContainer>
       <FooterButton
         path="/"
-        label="PIACOK"
+        label="Piacok"
         icon={marketIcon}
         iconActive={marketIconHighlight}
       />
       <FooterButton
         path="/arusok"
-        label="ÁRUSOK"
+        label="Árusok"
         icon={vendorIcon}
         iconActive={vendorIconHighlight}
       />
