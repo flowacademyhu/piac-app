@@ -99,24 +99,10 @@ jobs:
         shell: bash
         working-directory: admin
     env:
-      IMAGE_NAME: registry.gitlab.com/6uliver/piac/admin:${{ github.sha }}
+      IMAGE_NAME: registry.gitlab.com/6uliver/piac/admin
     steps:
       - name: Checkout sources
         uses: actions/checkout@v2
-
-      - name: Cache node modules
-        uses: actions/cache@v2
-        env:
-          cache-name: cache-node-modules
-        with:
-          path: admin/node_modules
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('admin/yarn.lock') }}
-
-      - name: Install dependencies
-        run: yarn
-
-      - name: Run Prettier
-        run: npx prettier --check .
 
       - name: Login to GitLab
         uses: docker/login-action@v1
@@ -125,11 +111,19 @@ jobs:
           username: ${{ secrets.GITLAB_USERNAME }}
           password: ${{ secrets.GITLAB_PASSWORD }}
 
+      - name: Pull or build deps image
+        run: |
+          DEP_HASH=$(sha256sum yarn.lock | cut -d " " -f1)
+          DEPS_IMAGE_TAG=deps-${DEP_HASH}
+          docker pull $IMAGE_NAME:${DEPS_IMAGE_TAG} || echo "deps image not found"
+          docker build --target deps --cache-from=$IMAGE_NAME:${DEPS_IMAGE_TAG} -t $IMAGE_NAME:${DEPS_IMAGE_TAG} --build-arg BUILDKIT_INLINE_CACHE=1 .
+          docker push $IMAGE_NAME:${DEPS_IMAGE_TAG}
+
       - name: Build Docker image
-        run: docker build . -t $IMAGE_NAME
+        run: docker build -t $IMAGE_NAME:${{ github.sha }} .
 
       - name: Push Docker image
-        run: docker push $IMAGE_NAME
+        run: docker push $IMAGE_NAME:${{ github.sha }}
 
   test-frontend:
     name: Run site tests
