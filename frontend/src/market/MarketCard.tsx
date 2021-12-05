@@ -1,4 +1,4 @@
-import MarketInfoList from "./MarketInfoList";
+import MarketCardInfo from "./MarketCardInfo";
 import styled from "styled-components";
 
 const MarketCardContainer = styled.div`
@@ -35,7 +35,7 @@ const MarketCard = ({
 }: MarketCardProps) => {
   return (
     <MarketCardContainer data-test="market-card">
-      <MarketInfoList
+      <MarketCardInfo
         picture={profilePic}
         name={marketName}
         location={marketLocation}

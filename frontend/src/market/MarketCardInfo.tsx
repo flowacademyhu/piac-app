@@ -87,7 +87,7 @@ const VendorNumber = styled.div`
   overflow-wrap: break-word;
   padding: 10px 0px 0px 10px;
 `;
-interface MarketInfoListProps {
+interface MarketCardInfoProps {
   picture?: string;
   name: string;
   location: string;
@@ -96,14 +96,14 @@ interface MarketInfoListProps {
   vendorsAmount: number;
 }
 
-const MarketInfoList = ({
+const MarketCardInfo = ({
   picture,
   name,
   location,
   openingDate,
   closingDate,
   vendorsAmount,
-}: MarketInfoListProps) => {
+}: MarketCardInfoProps) => {
   return (
     <>
       <DateContainer>
@@ -134,4 +134,4 @@ const MarketInfoList = ({
   );
 };
 
-export default MarketInfoList;
+export default MarketCardInfo;
