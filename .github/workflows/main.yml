@@ -85,8 +85,7 @@ jobs:
         run: |
           DEP_HASH=$(sha256sum pom.xml | cut -d " " -f1)
           DEPS_IMAGE_TAG=deps-${DEP_HASH}
-          docker pull $IMAGE_NAME:${DEPS_IMAGE_TAG}
-          docker build --target deps -t $IMAGE_NAME:${DEPS_IMAGE_TAG} .
+          docker pull $IMAGE_NAME:${DEPS_IMAGE_TAG} || docker build --target deps -t $IMAGE_NAME:${DEPS_IMAGE_TAG} .
           docker push $IMAGE_NAME:${DEPS_IMAGE_TAG}
 
       - name: Build Docker image
