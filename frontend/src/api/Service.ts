@@ -1,5 +1,6 @@
 import axios from "axios";
 import Market from "market/Market";
+import { Vendor } from "vendor/Vendor";
 
 const api = axios.create({
   baseURL: "/v1/api",
@@ -49,7 +50,7 @@ export const fetchMarketById = async (id: string) => {
 
 export const fetchVendorById = async (id: string) => {
   try {
-    const { data } = await api.get(`/vendor/${id}`);
+    const { data } = await api.get<Vendor>(`/vendor/${id}`);
     return data;
   } catch (error) {
     console.warn("Failed to load vendor");
