@@ -21,8 +21,8 @@ const FooterContainer = styled.div`
 const Footer = () => {
   return (
     <FooterContainer>
-      <FooterButton requestParam="/" appelation="PIACOK" logo="market" />
-      <FooterButton requestParam="/arusok" appelation="ÁRUSOK" logo="vendor" />
+      <FooterButton path="/" label="PIACOK" logo="market" />
+      <FooterButton path="/arusok" label="ÁRUSOK" logo="vendor" />
     </FooterContainer>
   );
 };

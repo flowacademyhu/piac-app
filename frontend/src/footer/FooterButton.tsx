@@ -35,27 +35,22 @@ const NavLink = styled(Link)`
 `;
 
 interface FooterButtonProps {
-  requestParam: string;
-  appelation: string;
+  path: string;
+  label: string;
   logo: string;
 }
 
-const FooterButton = ({
-  requestParam,
-  appelation,
-  logo,
-}: FooterButtonProps) => {
+const FooterButton = ({ path, label, logo }: FooterButtonProps) => {
   const location = useLocation();
 
-  const IsActive =
-    location.pathname === requestParam ? FooterLabelActive : FooterLabel;
+  const IsActive = location.pathname === path ? FooterLabelActive : FooterLabel;
 
   return (
-    <NavLink to={requestParam}>
+    <NavLink to={path}>
       <FooterLogo>
         <img
           src={
-            location.pathname === requestParam
+            location.pathname === path
               ? logo === "market"
                 ? MarketLogoHighlight
                 : VendorLogoHighlight
@@ -66,7 +61,7 @@ const FooterButton = ({
           alt="Icon"
         />
       </FooterLogo>
-      <IsActive style={{ cursor: "default" }}>{appelation}</IsActive>
+      <IsActive style={{ cursor: "default" }}>{label}</IsActive>
     </NavLink>
   );
 };
