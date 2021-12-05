@@ -10,31 +10,42 @@ describe("Add new vendor", () => {
   it("should add new vendor", () => {
     cy.contains("ÚJ ÁRUS FELVÉTELE").click();
 
-    cy.get('input[placeholder="Árus neve..."]').type("Cypress példa");
+    cy.get('input[placeholder="Árus neve..."]').type("Másik árus");
 
     cy.get('input[placeholder="Árus logója..."]').type(
-      "https://bit.ly/3I7Xlyv"
+      "https://felpenzzel.hu/images/masik-arus.png"
     );
 
-    cy.get('textarea[placeholder="Árus rövid bemutatkozása..."]').type("A");
+    cy.get('textarea[placeholder="Árus rövid bemutatkozása..."]').type(
+      "Bemutatkozik egy másik árus"
+    );
 
-    cy.get('textarea[placeholder="Árus hosszú leírása..."]').type("B");
+    cy.get('textarea[placeholder="Árus hosszú leírása..."]').type(
+      "Sokkal hosszabb szöveggel is bemutatkozik egy másik árus.\nA szövegben lehet újsor is."
+    );
 
     cy.get('[type="checkbox"]').check();
 
     cy.get('input[placeholder="Írd be a termék nevét és nyomj enter-t"]')
-      .type("C{enter}")
-      .type("D{enter}");
+      .type("Egyik termék{enter}")
+      .type("Másik termék{enter}")
+      .type("Harmadik{enter}");
 
-    cy.get('input[placeholder="Árus telefonszáma..."]').type("06701234567");
+    cy.get('input[placeholder="Árus telefonszáma..."]').type("+36701234567");
 
-    cy.get('input[placeholder="Árus e-mail címe..."]').type("e@gmail.com");
+    cy.get('input[placeholder="Árus e-mail címe..."]').type(
+      "masik.arus@gmail.com"
+    );
 
-    cy.get('input[placeholder="Árus facebook linkje..."]').type("F");
+    cy.get('input[placeholder="Árus facebook linkje..."]').type("masikarus.fb");
 
-    cy.get('input[placeholder="Árus instagram linkje..."]').type("G");
+    cy.get('input[placeholder="Árus instagram linkje..."]').type(
+      "masikarus.insta"
+    );
 
-    cy.get('input[placeholder="Árus honlap címe..."]').type("http://www.h.com");
+    cy.get('input[placeholder="Árus honlap címe..."]').type(
+      "https://www.masikarus.com"
+    );
 
     const newVendors: Vendor[] = [];
 
@@ -45,17 +56,25 @@ describe("Add new vendor", () => {
     });
 
     cy.intercept("POST", "/v1/api/admin/vendor", (req) => {
-      expect(req.body.name).to.equal("Cypress példa");
-      expect(req.body.profilePic).to.equal("https://bit.ly/3I7Xlyv");
-      expect(req.body.intro).to.equal("A");
-      expect(req.body.introductionLong).to.equal("B");
-      expect(req.body.products).to.deep.equal(["C", "D"]);
+      expect(req.body.name).to.equal("Másik árus");
+      expect(req.body.profilePic).to.equal(
+        "https://felpenzzel.hu/images/masik-arus.png"
+      );
+      expect(req.body.intro).to.equal("Bemutatkozik egy másik árus");
+      expect(req.body.introductionLong).to.equal(
+        "Sokkal hosszabb szöveggel is bemutatkozik egy másik árus.\nA szövegben lehet újsor is."
+      );
+      expect(req.body.products).to.deep.equal([
+        "Egyik termék",
+        "Másik termék",
+        "Harmadik",
+      ]);
       expect(req.body.cardPayment).to.equal(true);
-      expect(req.body.email).to.equal("e@gmail.com");
-      expect(req.body.facebook).to.equal("F");
-      expect(req.body.instagram).to.equal("G");
-      expect(req.body.phone).to.equal("06701234567");
-      expect(req.body.webSite).to.equal("http://www.h.com");
+      expect(req.body.email).to.equal("masik.arus@gmail.com");
+      expect(req.body.facebook).to.equal("masikarus.fb");
+      expect(req.body.instagram).to.equal("masikarus.insta");
+      expect(req.body.phone).to.equal("+36701234567");
+      expect(req.body.webSite).to.equal("https://www.masikarus.com");
       const newVendor = { id: 1, ...req.body };
       newVendors.push(newVendor);
       req.reply(newVendor);
@@ -65,6 +84,6 @@ describe("Add new vendor", () => {
 
     cy.contains("ÚJ ÁRUS FELVÉTELE");
 
-    cy.contains("Cypress példa");
+    cy.contains("Másik árus");
   });
 });
