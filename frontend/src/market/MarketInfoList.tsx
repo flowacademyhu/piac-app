@@ -40,12 +40,12 @@ const DateThirdRow = styled.div`
   text-transform: uppercase;
 `;
 
-const MarketListHours = styled.div`
+const Hours = styled.div`
   font-size: 12px;
   padding-top: 10px;
 `;
 
-const MarketListLogo = styled.div`
+const Logo = styled.div`
   height: 30px;
   width: 30px;
   border-radius: 50%;
@@ -57,14 +57,14 @@ const MarketListLogo = styled.div`
   background-size: contain;
 `;
 
-const MarketListNameAndLocation = styled.div`
+const NameAndLocation = styled.div`
   grid-row: 1;
   grid-column: 2;
   padding-left: 10px;
   line-height: 2;
 `;
 
-const MarketListName = styled.h4`
+const Name = styled.h4`
   font-size: 16px;
   font-weight: bold;
   overflow: hidden;
@@ -75,12 +75,12 @@ const MarketListName = styled.h4`
   margin-bottom: 0;
 `;
 
-const MarketListLocation = styled.div`
+const Location = styled.div`
   font-size: 12px;
   overflow-wrap: break-word;
 `;
 
-const MarketListVendorNumber = styled.div`
+const VendorNumber = styled.div`
   grid-row: 2;
   grid-column: 2;
   font-size: 12px;
@@ -111,10 +111,8 @@ const MarketInfoList = ({
         <DateSecondRow>{getDayDigits(openingDate)}</DateSecondRow>
         <DateThirdRow>{getWeekday(openingDate)}</DateThirdRow>
       </DateContainer>
-      <MarketListHours>
-        {getTimeRange(openingDate, closingDate)}
-      </MarketListHours>
-      <MarketListLogo
+      <Hours>{getTimeRange(openingDate, closingDate)}</Hours>
+      <Logo
         style={
           picture
             ? {
@@ -125,13 +123,13 @@ const MarketInfoList = ({
               }
         }
       />
-      <MarketListNameAndLocation>
-        <MarketListName>{name}</MarketListName>
-        <MarketListLocation>{location}</MarketListLocation>
-      </MarketListNameAndLocation>
-      <MarketListVendorNumber>
+      <NameAndLocation>
+        <Name>{name}</Name>
+        <Location>{location}</Location>
+      </NameAndLocation>
+      <VendorNumber>
         {vendorsAmount === 0 ? "Szervezés alatt..." : `${vendorsAmount} árus`}
-      </MarketListVendorNumber>
+      </VendorNumber>
     </>
   );
 };
