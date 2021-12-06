@@ -14,7 +14,7 @@ import java.util.Set;
 public interface MarketRepository extends JpaRepository<Market, Long> {
     Optional<Market> findByName(String name);
 
-    @Query("SELECT markets FROM Market markets WHERE markets.closingDate > unix_timestamp(date_format(addtime(now(),'01:00:00'),'%Y-%m-%d'))+86400")
+    @Query("SELECT markets FROM Market markets WHERE markets.closingDate > UNIX_TIMESTAMP(CONVERT_TZ(DATE_FORMAT(CONVERT_TZ(UTC_TIMESTAMP(), 'UTC', 'Europe/Budapest'), '%Y-%m-%d'), 'Europe/Budapest', 'UTC'))")
     List<Market> findAllUpcomingMarkets();
 
     @Query("SELECT markets FROM Market markets WHERE markets.id IN :marketId")
