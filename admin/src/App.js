@@ -6,27 +6,32 @@ import VendorDetails from "./pages/VendorDetails";
 import LoginPage from "./pages/LoginPage";
 import TokenExchange from "./pages/TokenExchange";
 import { getToken } from "./components/AuthService";
+import { QueryClient, QueryClientProvider } from "react-query";
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <Router>
-      {getToken() ? (
-        <>
-          <Menu />
+    <QueryClientProvider client={queryClient}>
+      <Router>
+        {getToken() ? (
+          <>
+            <Menu />
+            <Routes>
+              <Route index path="/piac" element={<MarketTablePage />} />
+              <Route path="/arus" element={<VendorTablePage />} />
+              <Route path="/arus/uj" element={<VendorDetails />} />
+              <Route path="/arus/szerkeszt" element={<VendorDetails />} />
+            </Routes>
+          </>
+        ) : (
           <Routes>
-            <Route index path="/piac" element={<MarketTablePage />} />
-            <Route path="/arus" element={<VendorTablePage />} />
-            <Route path="/arus/uj" element={<VendorDetails />} />
-            <Route path="/arus/szerkeszt" element={<VendorDetails />} />
+            <Route path="/token/:token" element={<TokenExchange />} />
+            <Route path="/" element={<LoginPage />} />
           </Routes>
-        </>
-      ) : (
-        <Routes>
-          <Route path="/token/:token" element={<TokenExchange />} />
-          <Route path="/" element={<LoginPage />} />
-        </Routes>
-      )}
-    </Router>
+        )}
+      </Router>
+    </QueryClientProvider>
   );
 }
 
