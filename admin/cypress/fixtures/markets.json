@@ -6,8 +6,7 @@
     "place": "Szeged Pláza",
     "openingDate": 1630742400,
     "closingDate": 1630767600,
-    "numberOfVendors": 2,
-    "vendors": null
+    "numberOfVendors": 2
   },
   {
     "id": 2,
@@ -16,7 +15,6 @@
     "place": "Szeged Pláza",
     "openingDate": 1633323600,
     "closingDate": 1633345200,
-    "numberOfVendors": 0,
-    "vendors": null
+    "numberOfVendors": 0
   }
 ]
