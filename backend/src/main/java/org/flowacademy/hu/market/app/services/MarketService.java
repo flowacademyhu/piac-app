@@ -1,6 +1,6 @@
 package org.flowacademy.hu.market.app.services;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.flowacademy.hu.market.app.entities.Vendor;
 import org.flowacademy.hu.market.app.jwtandsecurity.JwtUserDetailsService;
 import org.flowacademy.hu.market.app.model.MarketDTO;
@@ -15,6 +15,7 @@ import org.flowacademy.hu.market.app.repositories.VendorRepository;
 import org.flowacademy.hu.market.app.utilities.ProfilePics;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.beans.factory.annotation.Value;
 
 
 import javax.annotation.PostConstruct;
@@ -24,12 +25,15 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class MarketService {
 
     private final MarketRepository marketRepository;
     private final VendorRepository vendorRepository;
     private final VendorService vendorService;
+
+    @Value("${populateWithDemoData}")
+    private boolean populateWithDemoData;
 
     public MarketDTO addMarket(MarketDTO marketDTO) throws ParseException {
         marketRepository.save(marketDTOToEntity(marketDTO));
@@ -114,6 +118,9 @@ public class MarketService {
     @PostConstruct
     @Transactional
     public void demoData() {
+        if(!this.populateWithDemoData) {
+            return;
+        }
         try {
             if(allMarkets().size() == 0) {
                 MarketDTO marketDTO1 = new MarketDTO();

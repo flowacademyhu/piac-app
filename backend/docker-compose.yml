@@ -6,6 +6,7 @@ services:
     restart: always
     environment:
       MYSQL_URL: jdbc:mysql://db:3306/piac-dev
+      populateWithDemoData: "true"
       my.sendgrid.apikey: $SENDGRID_API_KEY
       sendgrid.from-email: $SENDGRID_FROM_EMAIL
     ports:

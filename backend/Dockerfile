@@ -12,7 +12,7 @@ FROM deps AS build
 
 COPY ./src /home/app/src
 
-RUN mvn clean package -DskipTests
+RUN mvn -B clean package -DskipTests
 
 FROM openjdk
 COPY --from=build /home/app/target/*.jar /usr/local/lib/spring-boot-skeleton.jar

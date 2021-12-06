@@ -64,11 +64,28 @@ jobs:
       run:
         shell: bash
         working-directory: backend
+    services:
+      db:
+        image: bitnami/mysql:8.0
+        ports: ["3306:3306"]
+        env:
+          MYSQL_ROOT_PASSWORD: example
+          MYSQL_DATABASE: piac-test
+          MYSQL_AUTHENTICATION_PLUGIN: mysql_native_password
+        options: >-
+          --health-cmd="mysqladmin ping && mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root --password=example mysql" 
+          --health-interval=10s 
+          --health-timeout=5s 
+          --health-retries=3
     env:
       IMAGE_NAME: registry.gitlab.com/6uliver/piac/backend
+      MYSQL_URL: jdbc:mysql://localhost:3306/piac-test
       DOCKER_BUILDKIT: 1
     steps:
       - uses: actions/checkout@v2
+
+      - name: Run tests
+        run: mvn -B test
 
       - name: Login to GitLab
         uses: docker/login-action@v1
