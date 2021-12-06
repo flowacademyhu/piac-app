@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
-import "./login.css";
+import "../components/login.css";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
