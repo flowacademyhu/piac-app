@@ -27,13 +27,9 @@ const MarketName = styled.h1`
   font-weight: bold;
   overflow: hidden;
   width: 100%;
-  max-height: 60px;
   white-space: normal;
   word-break: break-word;
   text-overflow: ellipsis;
-  -webkit-box-orient: vertical;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
   padding-top: 20px;
   margin-bottom: 0;
 `;

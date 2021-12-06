@@ -40,12 +40,12 @@ const DateThirdRow = styled.div`
   text-transform: uppercase;
 `;
 
-const MarketListHours = styled.div`
+const Hours = styled.div`
   font-size: 12px;
   padding-top: 10px;
 `;
 
-const MarketListLogo = styled.div`
+const Logo = styled.div`
   height: 30px;
   width: 30px;
   border-radius: 50%;
@@ -57,41 +57,37 @@ const MarketListLogo = styled.div`
   background-size: contain;
 `;
 
-const MarketListNameAndLocation = styled.div`
+const NameAndLocation = styled.div`
   grid-row: 1;
   grid-column: 2;
   padding-left: 10px;
   line-height: 2;
 `;
 
-const MarketListName = styled.h4`
+const Name = styled.h4`
   font-size: 16px;
   font-weight: bold;
   overflow: hidden;
   width: 100%;
-  max-height: 60px;
   white-space: normal;
   word-break: break-word;
   text-overflow: ellipsis;
-  -webkit-box-orient: vertical;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
   margin-bottom: 0;
 `;
 
-const MarketListLocation = styled.div`
+const Location = styled.div`
   font-size: 12px;
   overflow-wrap: break-word;
 `;
 
-const MarketListVendorNumber = styled.div`
+const VendorNumber = styled.div`
   grid-row: 2;
   grid-column: 2;
   font-size: 12px;
   overflow-wrap: break-word;
   padding: 10px 0px 0px 10px;
 `;
-interface MarketInfoListProps {
+interface MarketCardInfoProps {
   picture?: string;
   name: string;
   location: string;
@@ -100,14 +96,14 @@ interface MarketInfoListProps {
   vendorsAmount: number;
 }
 
-const MarketInfoList = ({
+const MarketCardInfo = ({
   picture,
   name,
   location,
   openingDate,
   closingDate,
   vendorsAmount,
-}: MarketInfoListProps) => {
+}: MarketCardInfoProps) => {
   return (
     <>
       <DateContainer>
@@ -115,10 +111,8 @@ const MarketInfoList = ({
         <DateSecondRow>{getDayDigits(openingDate)}</DateSecondRow>
         <DateThirdRow>{getWeekday(openingDate)}</DateThirdRow>
       </DateContainer>
-      <MarketListHours>
-        {getTimeRange(openingDate, closingDate)}
-      </MarketListHours>
-      <MarketListLogo
+      <Hours>{getTimeRange(openingDate, closingDate)}</Hours>
+      <Logo
         style={
           picture
             ? {
@@ -129,15 +123,15 @@ const MarketInfoList = ({
               }
         }
       />
-      <MarketListNameAndLocation>
-        <MarketListName>{name}</MarketListName>
-        <MarketListLocation>{location}</MarketListLocation>
-      </MarketListNameAndLocation>
-      <MarketListVendorNumber>
+      <NameAndLocation>
+        <Name>{name}</Name>
+        <Location>{location}</Location>
+      </NameAndLocation>
+      <VendorNumber>
         {vendorsAmount === 0 ? "Szervezés alatt..." : `${vendorsAmount} árus`}
-      </MarketListVendorNumber>
+      </VendorNumber>
     </>
   );
 };
 
-export default MarketInfoList;
+export default MarketCardInfo;

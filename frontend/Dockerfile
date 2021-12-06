@@ -1,18 +1,26 @@
-FROM node:14 as build-stage
+FROM node:14 as deps
 WORKDIR /app
 
-COPY tsconfig.json ./
-
 COPY package.json yarn.lock ./
+RUN yarn install
 
-COPY node_modules ./node_modules
+FROM deps as build-stage
 
-RUN yarn
+ENV CI=true
+
+COPY tsconfig.json ./
 
 COPY public ./public
 COPY src ./src
 
+RUN npx prettier --check .
+
+RUN yarn test
+
 RUN yarn build
+
+FROM scratch as test-output
+COPY --from=build-stage /app/junit.xml /junit.xml
 
 FROM nginx
 COPY nginx/default.conf /etc/nginx/conf.d

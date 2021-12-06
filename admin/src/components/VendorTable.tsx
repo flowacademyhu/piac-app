@@ -41,7 +41,7 @@ const VendorTable = () => {
           </tr>
         </thead>
         <tbody>
-          {allVendors.map((vendor) => {
+          {allVendors?.map((vendor) => {
             return (
               <tr key={vendor.id}>
                 <td>{vendor.name}</td>

@@ -26,14 +26,14 @@ public class VendorService {
     private final VendorRepository vendorRepository;
 
     public DetailVendorDTO addVendor(VendorDTO vendorDTO) throws Exception {
-        Market market = marketRepository.findById(vendorDTO.getMarketId()).orElseThrow(NoSuchMarketException::new);
+        Set<Market> markets = marketRepository.findMarketsById(vendorDTO.getMarketIds());
         Set<String> allProducts = new HashSet<>(vendorDTO.getProducts());
         Vendor vendor = Vendor.builder()
                 .intro(vendorDTO.getIntro())
                 .name(vendorDTO.getName())
                 .profilePic(vendorDTO.getProfilePic())
                 .cardPayment(vendorDTO.getCardPayment())
-                .markets(new HashSet<>())
+                .markets(markets)
                 .products(allProducts)
                 .profilePic(vendorDTO.getProfilePic())
                 .email(vendorDTO.getEmail())
@@ -43,7 +43,6 @@ public class VendorService {
                 .phone(vendorDTO.getPhone())
                 .introductionLong(vendorDTO.getIntroductionLong())
                 .build();
-        vendor.getMarkets().add(market);
         vendorRepository.save(vendor);
         return vendorToResponse(vendor);
     }
@@ -89,10 +88,8 @@ public class VendorService {
     }
 
     public DetailVendorDTO updateVendor(Long id, VendorDTO vendorDTO) throws Exception {
-        Market market = marketRepository.findById(vendorDTO.getMarketId()).orElseThrow(NoSuchMarketException::new);
+        Set<Market> markets = marketRepository.findMarketsById(vendorDTO.getMarketIds());
         Vendor vendor = vendorRepository.findById(id).orElseThrow(NoSuchVendorException::new);
-        Set<Market> markets = new HashSet();
-        markets.add(market);
         vendor.setPhone(vendorDTO.getPhone())
                 .setWebSite(vendorDTO.getWebSite())
                 .setInstagram(vendorDTO.getInstagram())

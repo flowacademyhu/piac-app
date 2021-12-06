@@ -38,9 +38,6 @@ const VendorName = styled.h4`
   white-space: normal;
   word-break: break-word;
   text-overflow: ellipsis;
-  -webkit-box-orient: vertical;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
   margin-bottom: 0;
 `;
 
@@ -52,9 +49,6 @@ const VendorDescription = styled.div`
   white-space: normal;
   word-break: break-word;
   text-overflow: ellipsis;
-  -webkit-box-orient: vertical;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
 `;
 
 const VendorCard = ({ vendor, vendorDesc, imageLogo }) => {

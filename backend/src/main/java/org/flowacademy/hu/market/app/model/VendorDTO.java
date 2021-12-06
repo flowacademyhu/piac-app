@@ -22,7 +22,7 @@ public class VendorDTO {
     @NotNull
     private boolean cardPayment;
     @NotNull
-    private Long marketId;
+    private Set<Long> marketIds;
 
 
    private Set<String> products = new HashSet<>();
@@ -84,12 +84,12 @@ public class VendorDTO {
         return this;
     }
 
-   public Long getMarketId() {
-        return marketId;
+   public Set<Long> getMarketIds() {
+        return marketIds;
     }
 
-    public VendorDTO setMarketId(Long marketId) {
-        this.marketId = marketId;
+    public VendorDTO setMarketIds(Set<Long> marketIds) {
+        this.marketIds = marketIds;
         return this;
     }
 
