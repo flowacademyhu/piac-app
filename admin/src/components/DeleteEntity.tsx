@@ -1,6 +1,5 @@
 import { Button, Modal } from "react-bootstrap";
 import { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 interface DeleteEntityProps {
   confirmationQuestion: string;

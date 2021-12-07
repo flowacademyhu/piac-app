@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Button, Table } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { fetchMarkets, deleteMarketById } from "components/Service";
 import DeleteEntity from "components/DeleteEntity";
 import { Link } from "react-router-dom";
