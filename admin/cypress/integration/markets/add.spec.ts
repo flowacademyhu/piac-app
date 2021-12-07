@@ -26,6 +26,7 @@ describe("Add new market", () => {
       expect(req.body.place).to.equal("Mars tér");
       expect(req.body.openingDate).to.equal(1636013400);
       expect(req.body.closingDate).to.equal(1670258100);
+      expect(req.headers.authorization).to.include("Bearer eyJhb");
 
       const newMarket = { id: 1, ...req.body };
       newMarkets.push(newMarket);
