@@ -5,10 +5,11 @@ import "@pathofdev/react-tag-input/build/index.css";
 import { addMarket, updateMarket } from "../components/Service";
 import MarketDetailsButtons from "./MarketDetailsButtons";
 import Time from "components/form/Time";
-import { Market, MarketInput } from "./Market";
+import { Market, MarketInput, MarketWithId } from "./Market";
 import { useForm } from "react-hook-form";
 import Textarea from "components/form/Textarea";
 import Input from "components/form/Input";
+import { useMutation } from "react-query";
 
 const MarketDetails = () => {
   const id = useParams().id;
@@ -20,16 +21,27 @@ const MarketDetails = () => {
   const title = id ? "Piac módosítása" : "Új piac hozzáadása";
   const submitButtonLabel = id ? "Módosítás" : "Hozzáadás";
 
+  const updateMarketMutation = useMutation(
+    (market: MarketWithId) => updateMarket(market, market.id),
+    {
+      onError: () => {
+        setHasError(true);
+      },
+    }
+  );
+
+  const addMarketMutation = useMutation(addMarket, {
+    onSuccess: () => navigate("/piac"),
+  });
+
   const submitForm = (market: MarketInput) => {
-    try {
-      if (id) {
-        updateMarket(market, id);
-      } else {
-        addMarket(market);
-        navigate("/piac");
-      }
-    } catch (e) {
-      setHasError(true);
+    if (id) {
+      updateMarketMutation.mutate({
+        ...market,
+        id,
+      });
+    } else {
+      addMarketMutation.mutate(market);
     }
   };
 
