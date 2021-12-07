@@ -11,7 +11,7 @@ import FormTextInput from "../components/FormTextInput";
 import FormTextAreaInput from "../components/FormTextAreaInput";
 import MarketDetailsButtons from "../components/MarketDetailsButtons";
 import TimeInput from "../components/TimeInput";
-import { MarketInput } from "market/Market";
+import { MarketInput } from "./Market";
 
 const MarketDetails = () => {
   const id = useParams().id;

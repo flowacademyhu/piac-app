@@ -6,7 +6,7 @@ import VendorDetails from "./pages/VendorDetails";
 import LoginPage from "./pages/LoginPage";
 import TokenExchange from "./pages/TokenExchange";
 import { getToken } from "./components/AuthService";
-import MarketDetails from "./pages/MarketDetails";
+import MarketDetails from "./market/MarketDetails";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 const queryClient = new QueryClient();
