@@ -1,5 +1,4 @@
 import { Form } from "react-bootstrap";
-import "@pathofdev/react-tag-input/build/index.css";
 import MarketDetailsButtons from "./MarketDetailsButtons";
 import Time from "components/form/Time";
 import { MarketInput, MarketWithId } from "./Market";

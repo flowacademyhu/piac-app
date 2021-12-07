@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Form } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router-dom";
-import "@pathofdev/react-tag-input/build/index.css";
 import {
   fetchVendorById,
   addVendor,
