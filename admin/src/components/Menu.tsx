@@ -21,7 +21,7 @@ const NavBar = () => {
           Üdvözöljük : {getUsername()}
         </div>
         <Button
-          variant="Light"
+          variant="light"
           onClick={() => {
             logOut();
             navigate("/");
