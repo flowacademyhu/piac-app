@@ -9,6 +9,16 @@ const tokenConfig = {
   },
 };
 
+const api = axios.create({ baseURL: "/v1/api" });
+
+api.interceptors.request.use(function (config) {
+  config.headers = {
+    ...config.headers,
+    Authorization: `Bearer ${getToken()}`,
+  };
+  return config;
+});
+
 const VendorAdminAPI = "/v1/api/admin/vendor";
 const MarketAPI = "/v1/api/market";
 const adminMarketAPI = "/v1/api/admin/market";
@@ -36,16 +46,12 @@ export const fetchMarketById = async (id: string) => {
 };
 
 export const updateMarket = async (market: MarketInput, id: string) => {
-  const { data } = await axios.put(
-    adminMarketAPI + "/" + id,
-    market,
-    tokenConfig
-  );
+  const { data } = await api.put(`/admin/market/${id}`, market);
   return data;
 };
 
 export const addMarket = async (market: MarketInput) => {
-  const { data } = await axios.post(adminMarketAPI, market, tokenConfig);
+  const { data } = await api.post("/admin/market", market);
   return data;
 };
 
