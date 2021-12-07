@@ -15,6 +15,7 @@ const TimeInput = ({
       <Form.Label>{label}</Form.Label>
       <Form.Control
         type={type}
+        data-test={`${controlId}-input`}
         placeholder={placeholder}
         value={dataObject[dataObjectKey] || ""}
         required={required}
