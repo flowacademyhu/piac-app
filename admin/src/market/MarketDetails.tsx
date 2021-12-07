@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router-dom";
 import "@pathofdev/react-tag-input/build/index.css";
@@ -16,14 +16,6 @@ const MarketDetails = () => {
 
   const { control, register, handleSubmit } = useForm<Market>();
 
-  const [success, setSuccess] = useState(false);
-
-  useEffect(() => {
-    if (success) {
-      navigate("/piac");
-    }
-  }, [success, navigate]);
-
   const [hasError, setHasError] = useState(false);
   const title = id ? "Piac módosítása" : "Új piac hozzáadása";
   const submitButtonLabel = id ? "Módosítás" : "Hozzáadás";
@@ -34,7 +26,7 @@ const MarketDetails = () => {
         updateMarket(market, id);
       } else {
         addMarket(market);
-        setSuccess(true);
+        navigate("/piac");
       }
     } catch (e) {
       setHasError(true);
