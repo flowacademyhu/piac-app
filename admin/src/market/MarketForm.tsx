@@ -10,6 +10,7 @@ interface MarketFormProps {
   title: string;
   submitLabel: string;
   hasError: boolean;
+  errorMessage: string;
   onSubmit: (value: MarketInput) => void;
 }
 
@@ -17,6 +18,7 @@ const MarketForm = ({
   title,
   submitLabel,
   hasError,
+  errorMessage,
   onSubmit,
 }: MarketFormProps) => {
   const { control, register, handleSubmit } = useForm<MarketWithId>();
@@ -41,9 +43,7 @@ const MarketForm = ({
       <Time control={control} label="Piac zárása" name="closingDate" />
 
       <MarketDetailsButtons submitButtonLabel={submitLabel} />
-      {hasError && (
-        <p className="text-danger mt-3">Hiba történt a beküldés során!</p>
-      )}
+      {hasError && <p className="text-danger mt-3">{errorMessage}</p>}
     </Form>
   );
 };

@@ -20,6 +20,7 @@ const NewMarket = () => {
       title="Új piac hozzáadása"
       submitLabel="Hozzáadás"
       hasError={addMarketMutation.isError}
+      errorMessage="Nem sikerült a piacot hozzáadni!"
       onSubmit={submitForm}
     />
   );
