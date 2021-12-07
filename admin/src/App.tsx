@@ -19,11 +19,15 @@ function App() {
           <>
             <Menu />
             <Routes>
-              <Route path="/piac" element={<MarketTablePage />} />
-              <Route path="/piac/uj" element={<MarketDetails />} />
-              <Route path="/arus" element={<VendorTablePage />} />
-              <Route path="/arus/uj" element={<VendorDetails />} />
-              <Route path="/arus/szerkeszt" element={<VendorDetails />} />
+              <Route path="/piac">
+                <Route index element={<MarketTablePage />} />
+                <Route path="uj" element={<MarketDetails />} />
+              </Route>
+              <Route path="/arus">
+                <Route index element={<VendorTablePage />} />
+                <Route path="uj" element={<VendorDetails />} />
+                <Route path="szerkeszt" element={<VendorDetails />} />
+              </Route>
             </Routes>
           </>
         ) : (
