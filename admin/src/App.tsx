@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import MarketTablePage from "./market/MarketTablePage";
 import VendorTablePage from "./pages/VendorTablePage";
 import Menu from "./components/Menu";
@@ -28,6 +33,7 @@ function App() {
                 <Route path="uj" element={<VendorDetails />} />
                 <Route path="szerkeszt" element={<VendorDetails />} />
               </Route>
+              <Route path="/" element={<Navigate to="/piac" replace />}></Route>
             </Routes>
           </>
         ) : (
