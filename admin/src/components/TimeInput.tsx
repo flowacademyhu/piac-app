@@ -1,4 +1,5 @@
 import { Form } from "react-bootstrap";
+import { DateTime } from "luxon";
 
 interface TimeInputProps {
   label: string;
@@ -9,17 +10,15 @@ interface TimeInputProps {
   placeholder?: string;
 }
 
-function getTimestampFromDate(dateString: string) {
-  return new Date(dateString).getTime() / 1000;
+function getTimestampFromDate(dateString: string): number {
+  return DateTime.fromISO(dateString, { zone: "Europe/Budapest" }).toSeconds();
 }
 
-function getDateFromTimestamp(timestamp: any) {
-  const time = new Date(timestamp * 1000);
-  const offset = time.getTimezoneOffset() * 60;
+function getDateFromTimestamp(timestamp?: number): string {
   return timestamp
-    ? new Date((timestamp - offset) * 1000)
-        .toISOString()
-        .substr(0, "YYYY-MM-DDTHH:mm:ss".length)
+    ? DateTime.fromSeconds(timestamp, { zone: "Europe/Budapest" })
+        .toISO()
+        .substring(0, "YYYY-MM-DDThh:mm".length)
     : "";
 }
 
@@ -38,7 +37,7 @@ const TimeInput = ({
         type={"datetime-local"}
         data-test={`${dataObjectKey}-input`}
         placeholder={placeholder}
-        value={getDateFromTimestamp(dataObject[dataObjectKey] || "")}
+        value={getDateFromTimestamp(dataObject[dataObjectKey])}
         required={required}
         onChange={(e) =>
           setter({
