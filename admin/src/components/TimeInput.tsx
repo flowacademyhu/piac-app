@@ -6,9 +6,7 @@ interface TimeInputProps {
   dataObjectKey: string;
   setter: (dataObject: any) => void;
   required?: boolean;
-  type?: string;
   placeholder?: string;
-  controlId?: string;
 }
 
 const TimeInput = ({
@@ -17,16 +15,14 @@ const TimeInput = ({
   dataObjectKey,
   setter,
   required = false,
-  type = "datetime-local",
   placeholder = label + "...",
-  controlId = dataObjectKey,
 }: TimeInputProps) => {
   return (
-    <Form.Group className="mb-3" controlId={controlId}>
+    <Form.Group className="mb-3" controlId={dataObjectKey}>
       <Form.Label>{label}</Form.Label>
       <Form.Control
-        type={type}
-        data-test={`${controlId}-input`}
+        type={"datetime-local"}
+        data-test={`${dataObjectKey}-input`}
         placeholder={placeholder}
         value={dataObject[dataObjectKey] || ""}
         required={required}
