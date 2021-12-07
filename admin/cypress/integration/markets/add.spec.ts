@@ -17,7 +17,7 @@ describe("Add new market", () => {
     cy.visit("/piac");
   });
 
-  it("should add new market", () => {
+  it.skip("should add new market", () => {
     cy.intercept("POST", "/v1/api/admin/market", (req) => {
       expect(req.body.name).to.equal("Másik piac");
       expect(req.body.profilePic).to.equal(
