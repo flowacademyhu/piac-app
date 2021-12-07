@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import MarketTablePage from "./pages/MarketTablePage";
+import MarketTablePage from "./market/MarketTablePage";
 import VendorTablePage from "./pages/VendorTablePage";
 import Menu from "./components/Menu";
 import VendorDetails from "./pages/VendorDetails";
