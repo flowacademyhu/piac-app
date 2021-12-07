@@ -4,7 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import "@pathofdev/react-tag-input/build/index.css";
 import {
   fetchMarketById,
-  addVendor,
+  addMarket,
   updateMarket,
 } from "../components/Service";
 import FormTextInput from "../components/FormTextInput";
@@ -44,7 +44,12 @@ const MarketDetails = () => {
     if (id) {
       updateMarket(updatedMarket, id, setSuccess, setHasError);
     } else {
-      addVendor(updatedMarket, setSuccess, setHasError);
+      try {
+        addMarket(updatedMarket);
+        setSuccess(true);
+      } catch (e) {
+        setHasError(true);
+      }
     }
     e.preventDefault();
   };

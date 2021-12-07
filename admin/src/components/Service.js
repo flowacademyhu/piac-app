@@ -48,6 +48,11 @@ export const updateMarket = async (market, id, setSuccess, setHasError) => {
   }
 };
 
+export const addMarket = async (market) => {
+  const { data } = await axios.post(adminMarketAPI, market, tokenConfig);
+  return data;
+};
+
 const VendorAPI = "/v1/api/vendor";
 
 export const fetchVendors = async () => {
