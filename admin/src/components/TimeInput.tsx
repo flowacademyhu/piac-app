@@ -9,6 +9,20 @@ interface TimeInputProps {
   placeholder?: string;
 }
 
+function getTimestampFromDate(dateString: string) {
+  return new Date(dateString).getTime() / 1000;
+}
+
+function getDateFromTimestamp(timestamp: any) {
+  const time = new Date(timestamp * 1000);
+  const offset = time.getTimezoneOffset() * 60;
+  return timestamp
+    ? new Date((timestamp - offset) * 1000)
+        .toISOString()
+        .substr(0, "YYYY-MM-DDTHH:mm:ss".length)
+    : "";
+}
+
 const TimeInput = ({
   label,
   dataObject,
@@ -24,10 +38,13 @@ const TimeInput = ({
         type={"datetime-local"}
         data-test={`${dataObjectKey}-input`}
         placeholder={placeholder}
-        value={dataObject[dataObjectKey] || ""}
+        value={getDateFromTimestamp(dataObject[dataObjectKey] || "")}
         required={required}
         onChange={(e) =>
-          setter({ ...dataObject, [dataObjectKey]: e.target.value })
+          setter({
+            ...dataObject,
+            [dataObjectKey]: getTimestampFromDate(e.target.value),
+          })
         }
       />
     </Form.Group>
