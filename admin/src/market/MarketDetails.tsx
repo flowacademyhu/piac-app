@@ -2,33 +2,21 @@ import React, { useState, useEffect } from "react";
 import { Form } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router-dom";
 import "@pathofdev/react-tag-input/build/index.css";
-import {
-  fetchMarketById,
-  addMarket,
-  updateMarket,
-} from "../components/Service";
-import FormTextInput from "../components/FormTextInput";
-import FormTextAreaInput from "../components/FormTextAreaInput";
+import { addMarket, updateMarket } from "../components/Service";
 import MarketDetailsButtons from "./MarketDetailsButtons";
-import TimeInput from "../components/TimeInput";
-import { MarketInput } from "./Market";
+import Time from "components/form/Time";
+import { Market, MarketInput } from "./Market";
+import { useForm } from "react-hook-form";
+import Textarea from "components/form/Textarea";
+import Input from "components/form/Input";
 
 const MarketDetails = () => {
   const id = useParams().id;
   const navigate = useNavigate();
 
+  const { control, register, handleSubmit } = useForm<Market>();
+
   const [success, setSuccess] = useState(false);
-
-  const fetchMarket = async (id: string) => {
-    const response = await fetchMarketById(id);
-    setUpdatedMarket(response);
-  };
-
-  useEffect(() => {
-    if (id) {
-      fetchMarket(id);
-    }
-  }, [id]);
 
   useEffect(() => {
     if (success) {
@@ -36,69 +24,41 @@ const MarketDetails = () => {
     }
   }, [success, navigate]);
 
-  const [updatedMarket, setUpdatedMarket] = useState<MarketInput>({
-    name: "",
-    profilePic: "",
-    place: "",
-    openingDate: 0,
-    closingDate: 0,
-  });
   const [hasError, setHasError] = useState(false);
   const title = id ? "Piac módosítása" : "Új piac hozzáadása";
   const submitButtonLabel = id ? "Módosítás" : "Hozzáadás";
 
-  const submitForm = (e: React.FormEvent<HTMLFormElement>) => {
+  const submitForm = (market: MarketInput) => {
     try {
       if (id) {
-        updateMarket(updatedMarket, id);
+        updateMarket(market, id);
       } else {
-        addMarket(updatedMarket);
+        addMarket(market);
         setSuccess(true);
       }
     } catch (e) {
       setHasError(true);
     }
-    e.preventDefault();
   };
 
   return (
-    <Form className="container mb-3" onSubmit={submitForm}>
+    <Form className="container mb-3" onSubmit={handleSubmit(submitForm)}>
       <h1 className="my-3">{title}</h1>
-      <FormTextInput
-        label="Piac neve"
-        dataObject={updatedMarket}
-        dataObjectKey="name"
-        setter={setUpdatedMarket}
-        required={true}
-      />
-      <FormTextInput
+      <Input label="Piac neve" required={true} {...register("name")} />
+      <Input
         label="Piac logója"
-        dataObject={updatedMarket}
-        dataObjectKey="profilePic"
-        setter={setUpdatedMarket}
         required={true}
         type="url"
+        {...register("profilePic")}
       />
-      <FormTextAreaInput
+      <Textarea
         label="Piac helyszíne"
-        dataObject={updatedMarket}
-        dataObjectKey="place"
-        setter={setUpdatedMarket}
         rows={2}
         maxLength={100}
+        {...register("place")}
       />
-      <TimeInput
-        label="Piac kezdete"
-        dataObject={updatedMarket}
-        dataObjectKey="openingDate"
-        setter={setUpdatedMarket}
-      />
-      <TimeInput
-        label="Piac zárása"
-        dataObject={updatedMarket}
-        dataObjectKey="closingDate"
-        setter={setUpdatedMarket}
-      />
+      <Time control={control} label="Piac kezdete" name="openingDate" />
+      <Time control={control} label="Piac zárása" name="closingDate" />
 
       <MarketDetailsButtons submitButtonLabel={submitButtonLabel} />
       {hasError && (
