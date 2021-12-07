@@ -10,13 +10,15 @@ interface TimeInputProps {
   placeholder?: string;
 }
 
+const TIMEZONE = "Europe/Budapest";
+
 function getTimestampFromDate(dateString: string): number {
-  return DateTime.fromISO(dateString, { zone: "Europe/Budapest" }).toSeconds();
+  return DateTime.fromISO(dateString, { zone: TIMEZONE }).toSeconds();
 }
 
 function getDateFromTimestamp(timestamp?: number): string {
   return timestamp
-    ? DateTime.fromSeconds(timestamp, { zone: "Europe/Budapest" })
+    ? DateTime.fromSeconds(timestamp, { zone: TIMEZONE })
         .toISO()
         .substring(0, "YYYY-MM-DDThh:mm".length)
     : "";
