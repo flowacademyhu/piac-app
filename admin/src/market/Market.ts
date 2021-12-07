@@ -7,7 +7,7 @@ export interface MarketInput {
 }
 
 export interface MarketWithId extends MarketInput {
-  id: number;
+  id: string;
 }
 
 export interface Market extends MarketWithId {

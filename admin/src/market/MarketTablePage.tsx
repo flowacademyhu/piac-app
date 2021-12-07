@@ -1,5 +1,5 @@
 import { Col, Container, Row } from "react-bootstrap";
-import MarketTable from "../components/MarketTable";
+import MarketTable from "./MarketTable";
 
 const MarketTablePage = () => {
   return (
