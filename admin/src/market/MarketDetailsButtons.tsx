@@ -1,7 +1,13 @@
 import { Button, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const MarketDetailsButtons = ({ submitButtonLabel }) => {
+interface MarketDetailsButtonsProps {
+  submitButtonLabel: string;
+}
+
+const MarketDetailsButtons = ({
+  submitButtonLabel,
+}: MarketDetailsButtonsProps) => {
   return (
     <Row>
       <Col>

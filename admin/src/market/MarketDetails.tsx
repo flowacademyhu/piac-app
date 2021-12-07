@@ -9,7 +9,7 @@ import {
 } from "../components/Service";
 import FormTextInput from "../components/FormTextInput";
 import FormTextAreaInput from "../components/FormTextAreaInput";
-import MarketDetailsButtons from "../components/MarketDetailsButtons";
+import MarketDetailsButtons from "./MarketDetailsButtons";
 import TimeInput from "../components/TimeInput";
 import { MarketInput } from "./Market";
 
