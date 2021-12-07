@@ -1,4 +1,6 @@
 import axios from "axios";
+import { MarketInput } from "market/Market";
+import Vendor from "vendor/Vendor";
 import { getToken } from "./AuthService";
 
 const tokenConfig = {
@@ -22,7 +24,7 @@ export const fetchMarkets = async () => {
   }
 };
 
-export const fetchMarketById = async (id) => {
+export const fetchMarketById = async (id: string) => {
   const url = adminMarketAPI + "/" + id;
   try {
     const response = await axios.get(url);
@@ -33,7 +35,12 @@ export const fetchMarketById = async (id) => {
   }
 };
 
-export const updateMarket = async (market, id, setSuccess, setHasError) => {
+export const updateMarket = async (
+  market: MarketInput,
+  id: string,
+  setSuccess: (result: boolean) => void,
+  setHasError: (result: boolean) => void
+) => {
   try {
     const response = await axios.put(
       adminMarketAPI + "/" + id,
@@ -48,7 +55,7 @@ export const updateMarket = async (market, id, setSuccess, setHasError) => {
   }
 };
 
-export const addMarket = async (market) => {
+export const addMarket = async (market: MarketInput) => {
   const { data } = await axios.post(adminMarketAPI, market, tokenConfig);
   return data;
 };
@@ -66,7 +73,7 @@ export const fetchVendors = async () => {
   }
 };
 
-export const deleteMarketById = async (id) => {
+export const deleteMarketById = async (id: string) => {
   const url = adminMarketAPI + "/" + id;
   try {
     const response = await axios.delete(url, tokenConfig);
@@ -79,7 +86,7 @@ export const deleteMarketById = async (id) => {
 
 const adminVendorAPI = "/v1/api/admin/vendor";
 
-export const deleteVendorById = async (id) => {
+export const deleteVendorById = async (id: string) => {
   const url = adminVendorAPI + "/" + id;
   try {
     const response = await axios.delete(url, tokenConfig);
@@ -90,7 +97,7 @@ export const deleteVendorById = async (id) => {
   }
 };
 
-export const fetchVendorById = async (id) => {
+export const fetchVendorById = async (id: string) => {
   const url = VendorAPI + "/" + id;
   try {
     const response = await axios.get(url);
@@ -101,7 +108,11 @@ export const fetchVendorById = async (id) => {
   }
 };
 
-export const addVendor = async (vendor, setSuccess, setHasError) => {
+export const addVendor = async (
+  vendor: Vendor,
+  setSuccess: (result: boolean) => void,
+  setHasError: (result: boolean) => void
+) => {
   try {
     const response = await axios.post(VendorAdminAPI, vendor, tokenConfig);
     if (response.status === 200) {
@@ -112,7 +123,12 @@ export const addVendor = async (vendor, setSuccess, setHasError) => {
   }
 };
 
-export const updateVendor = async (vendor, id, setSuccess, setHasError) => {
+export const updateVendor = async (
+  vendor: Vendor,
+  id: string,
+  setSuccess: (result: boolean) => void,
+  setHasError: (result: boolean) => void
+) => {
   try {
     const response = await axios.put(
       VendorAdminAPI + "/" + id,

@@ -11,6 +11,7 @@ import FormTextInput from "../components/FormTextInput";
 import FormTextAreaInput from "../components/FormTextAreaInput";
 import MarketDetailsButtons from "../components/MarketDetailsButtons";
 import TimeInput from "../components/TimeInput";
+import { MarketInput } from "market/Market";
 
 const MarketDetails = () => {
   const id = useParams().id;
@@ -35,7 +36,13 @@ const MarketDetails = () => {
     }
   }, [success, navigate]);
 
-  const [updatedMarket, setUpdatedMarket] = useState({});
+  const [updatedMarket, setUpdatedMarket] = useState<MarketInput>({
+    name: "",
+    profilePic: "",
+    place: "",
+    openingDate: 0,
+    closingDate: 0,
+  });
   const [hasError, setHasError] = useState(false);
   const title = id ? "Piac módosítása" : "Új piac hozzáadása";
   const submitButtonLabel = id ? "Módosítás" : "Hozzáadás";

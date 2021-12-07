@@ -36,7 +36,7 @@ const VendorDetails = () => {
     }
   }, [success, navigate]);
 
-  const [updatedVendor, setUpdatedVendor] = useState({});
+  const [updatedVendor, setUpdatedVendor] = useState<any>({});
   const [hasError, setHasError] = useState(false);
   const title = id ? "Árus módosítása" : "Új árus hozzáadása";
   const submitButtonLabel = id ? "Módosítás" : "Hozzáadás";
