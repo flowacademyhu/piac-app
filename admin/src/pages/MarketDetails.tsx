@@ -25,7 +25,7 @@ const MarketDetails = () => {
 
   useEffect(() => {
     if (id) {
-      fetchMarketById(id);
+      fetchMarket(id);
     }
   }, [id]);
 
