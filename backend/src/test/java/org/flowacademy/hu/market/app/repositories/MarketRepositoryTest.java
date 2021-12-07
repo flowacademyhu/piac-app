@@ -3,6 +3,7 @@ package org.flowacademy.hu.market.app.repositories;
 import java.util.TimeZone;
 import org.flowacademy.hu.market.app.repositories.MarketRepository;
 import org.flowacademy.hu.market.app.entities.Market;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -36,6 +37,11 @@ class MarketRepositoryTest {
     var localMidnight = utcMidnight - timeZoneOffset;
     var now = (System.currentTimeMillis() / 1000);
     return localMidnight - now;
+  }
+
+  @BeforeEach
+  void setUp() {
+    marketRepository.deleteAll();
   }
 
   @Test
