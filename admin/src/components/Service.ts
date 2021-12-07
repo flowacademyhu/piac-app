@@ -35,24 +35,13 @@ export const fetchMarketById = async (id: string) => {
   }
 };
 
-export const updateMarket = async (
-  market: MarketInput,
-  id: string,
-  setSuccess: (result: boolean) => void,
-  setHasError: (result: boolean) => void
-) => {
-  try {
-    const response = await axios.put(
-      adminMarketAPI + "/" + id,
-      market,
-      tokenConfig
-    );
-    if (response.status === 200) {
-      setSuccess(true);
-    }
-  } catch (error) {
-    setHasError(true);
-  }
+export const updateMarket = async (market: MarketInput, id: string) => {
+  const { data } = await axios.put(
+    adminMarketAPI + "/" + id,
+    market,
+    tokenConfig
+  );
+  return data;
 };
 
 export const addMarket = async (market: MarketInput) => {
