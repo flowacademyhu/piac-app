@@ -2,28 +2,22 @@ import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 import "../components/login.css";
+import { useMutation } from "react-query";
+
+async function login(email: string) {
+  const response = await axios.post("/v1/api/login", { emailAddress: email });
+  return response.data;
+}
 
 const LoginPage = () => {
-  const [email, setEmail] = useState("");
-  const [success, setSuccess] = useState(false);
+  const [email, setEmail] = useState<string>("");
 
-  async function getMail(email: string) {
-    try {
-      const response = await axios.post("/v1/api/login", {
-        emailAddress: email,
-      });
-      if (response.status === 200) {
-        setSuccess(true);
-      }
-    } catch (error) {
-      console.error("Hiba történt a kérés során!");
-    }
-  }
+  const mutation = useMutation(login);
 
   return (
     <Form
       onSubmit={(e) => {
-        getMail(email);
+        mutation.mutate(email);
         e.preventDefault();
       }}
     >
@@ -40,7 +34,7 @@ const LoginPage = () => {
           Küldés
         </Button>
       </div>
-      {success && (
+      {mutation.isSuccess && (
         <div style={{ textAlign: "center", paddingTop: "50px" }}>
           E-mail küldése megtörtént! A csatolt linkre kattintva bejelentkezhet!
         </div>
