@@ -25,4 +25,10 @@ describe("Login", () => {
       "E-mail küldése megtörtént! A csatolt linkre kattintva bejelentkezhet!"
     );
   });
+
+  it.skip("should logout when the token is expired", () => {
+    // set expired token
+
+    cy.url().should("eq", Cypress.config().baseUrl + "login");
+  });
 });
