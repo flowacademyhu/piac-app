@@ -58,7 +58,7 @@ const MarketTable = () => {
           </tr>
         </thead>
         <tbody>
-          {allMarkets.map((market) => {
+          {allMarkets?.map((market) => {
             return (
               <tr key={market.id}>
                 <td>{market.name}</td>
