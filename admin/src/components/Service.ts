@@ -20,13 +20,11 @@ api.interceptors.request.use(function (config) {
 });
 
 const VendorAdminAPI = "/v1/api/admin/vendor";
-const MarketAPI = "/v1/api/market";
 const adminMarketAPI = "/v1/api/admin/market";
 
 export const fetchMarkets = async () => {
-  const url = MarketAPI;
   try {
-    const response = await axios.get(url);
+    const response = await api.get("/market");
     const data = response.data;
     return data;
   } catch (error) {
