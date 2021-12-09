@@ -1,7 +1,7 @@
 import axios from "axios";
 import { MarketInput } from "market/Market";
 import Vendor from "vendor/Vendor";
-import { getToken } from "./AuthService";
+import { getToken, logOut } from "./AuthService";
 
 const tokenConfig = {
   headers: {
@@ -18,6 +18,19 @@ api.interceptors.request.use(function (config) {
   };
   return config;
 });
+
+api.interceptors.response.use(
+  function (response) {
+    return response;
+  },
+  function (error) {
+    if (error.response.status == 401) {
+      logOut();
+      window.location.reload();
+    }
+    return Promise.reject(error);
+  }
+);
 
 const VendorAdminAPI = "/v1/api/admin/vendor";
 const adminMarketAPI = "/v1/api/admin/market";
