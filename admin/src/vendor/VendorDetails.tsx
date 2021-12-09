@@ -1,16 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Form } from "react-bootstrap";
 import { useParams, useNavigate } from "react-router-dom";
-import {
-  fetchVendorById,
-  addVendor,
-  updateVendor,
-} from "../components/Service";
-import FormTextInput from "../components/FormTextInput";
-import FormTextAreaInput from "../components/FormTextAreaInput";
-import VendorCardPaymentCheckbox from "../components/VendorCardPaymentCheckbox";
-import VendorProductsInput from "../components/VendorProductsInput";
-import VendorDetailsButtons from "../components/VendorDetailsButtons";
+import { fetchVendorById, addVendor, updateVendor } from "components/Service";
+import FormTextInput from "components/FormTextInput";
+import FormTextAreaInput from "components/FormTextAreaInput";
+import VendorCardPaymentCheckbox from "./VendorCardPaymentCheckbox";
+import VendorProductsInput from "./VendorProductsInput";
+import VendorDetailsButtons from "./VendorDetailsButtons";
 
 const VendorDetails = () => {
   const id = useParams().id;

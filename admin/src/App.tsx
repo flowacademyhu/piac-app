@@ -5,9 +5,9 @@ import {
   Navigate,
 } from "react-router-dom";
 import MarketTablePage from "./market/MarketTablePage";
-import VendorTablePage from "./pages/VendorTablePage";
+import VendorTablePage from "./vendor/VendorTablePage";
 import Menu from "./components/Menu";
-import VendorDetails from "./pages/VendorDetails";
+import VendorDetails from "./vendor/VendorDetails";
 import LoginPage from "./pages/LoginPage";
 import TokenExchange from "./pages/TokenExchange";
 import { getToken } from "./components/AuthService";

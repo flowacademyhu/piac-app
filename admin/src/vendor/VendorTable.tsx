@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Button, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { fetchVendors, deleteVendorById } from "./Service";
-import DeleteEntity from "./DeleteEntity";
-import Vendor from "../vendor/Vendor";
+import { fetchVendors, deleteVendorById } from "components/Service";
+import DeleteEntity from "components/DeleteEntity";
+import Vendor from "./Vendor";
 
 const VendorTable = () => {
   const [allVendors, setAllVendors] = useState<Vendor[]>([]);

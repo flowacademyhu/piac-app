@@ -1,5 +1,5 @@
 import { Col, Container, Row } from "react-bootstrap";
-import VendorTable from "../components/VendorTable";
+import VendorTable from "./VendorTable";
 
 const VendotTablePage = () => {
   return (
