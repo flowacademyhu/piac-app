@@ -45,6 +45,9 @@ export const fetchMarkets = async () => {
 };
 
 export const fetchMarketById = async (id: string) => {
+  if (!id) {
+    return {};
+  }
   try {
     const { data } = await api.get(`/market/${id}`);
     return data;

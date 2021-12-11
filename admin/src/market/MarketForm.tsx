@@ -12,6 +12,7 @@ interface MarketFormProps {
   hasError: boolean;
   errorMessage: string;
   onSubmit: (value: MarketInput) => void;
+  defaultValues?: MarketInput;
 }
 
 const MarketForm = ({
@@ -20,8 +21,11 @@ const MarketForm = ({
   hasError,
   errorMessage,
   onSubmit,
+  defaultValues,
 }: MarketFormProps) => {
-  const { control, register, handleSubmit } = useForm<MarketWithId>();
+  const { control, register, handleSubmit } = useForm<MarketWithId>({
+    defaultValues,
+  });
 
   return (
     <Form className="container mb-3" onSubmit={handleSubmit(onSubmit)}>
