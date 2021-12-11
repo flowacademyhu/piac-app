@@ -1,0 +1,9 @@
+{
+  "id": 1,
+  "profilePic": "https://example.com/bodon.png",
+  "name": "Bödön Piac",
+  "place": "Szeged Pláza",
+  "openingDate": 1630742400,
+  "closingDate": 1630767600,
+  "numberOfVendors": 2
+}
