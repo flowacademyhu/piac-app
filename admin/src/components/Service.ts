@@ -37,8 +37,7 @@ const adminMarketAPI = "/v1/api/admin/market";
 
 export const fetchMarkets = async () => {
   try {
-    const response = await api.get("/market");
-    const data = response.data;
+    const { data } = await api.get("/market");
     return data;
   } catch (error) {
     console.warn("Failed to load markets");
@@ -46,10 +45,8 @@ export const fetchMarkets = async () => {
 };
 
 export const fetchMarketById = async (id: string) => {
-  const url = adminMarketAPI + "/" + id;
   try {
-    const response = await axios.get(url);
-    const data = response.data;
+    const { data } = await api.get(`/market/${id}`);
     return data;
   } catch (error) {
     console.warn("Failed to load market");
