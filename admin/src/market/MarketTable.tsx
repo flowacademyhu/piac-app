@@ -66,7 +66,9 @@ const MarketTable = () => {
                 <td>{timeConverter(market.openingDate)}</td>
                 <td>{timeConverter(market.closingDate)}</td>
                 <td className="text-center">
-                  <Button>Szerkeszt</Button>
+                  <Link to={`/piac/szerkeszt/${market.id}`}>
+                    <Button>Szerkeszt</Button>
+                  </Link>
                 </td>
                 <td className="text-center">
                   <DeleteEntity
