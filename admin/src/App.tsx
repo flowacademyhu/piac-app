@@ -29,6 +29,10 @@ function App() {
                 <Route index element={<MarketTablePage />} />
                 <Route path="uj" element={<NewMarket />} />
                 <Route path="szerkeszt/:id" element={<EditMarket />} />
+                <Route
+                  path="*"
+                  element={<Navigate to="/piac" replace />}
+                ></Route>
               </Route>
               <Route path="/arus">
                 <Route index element={<VendorTablePage />} />
