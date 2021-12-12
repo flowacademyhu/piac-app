@@ -9,8 +9,6 @@ on:
       - "**"
   workflow_dispatch:
 
-concurrency: ci-${{ github.event_name	}}-${{ github.ref }}
-
 jobs:
   build-frontend:
     runs-on: ubuntu-latest
@@ -261,6 +259,7 @@ jobs:
           path: admin/cypress/screenshots
 
   deploy-staging:
+    concurrency: deploy-stage-${{ github.event_name	}}-${{ github.ref }}
     name: Deploy to staging
     runs-on: ubuntu-latest
     environment: stage
@@ -279,6 +278,7 @@ jobs:
             ./deploy.sh stage ${{ github.sha }}
 
   deploy-live:
+    concurrency: deploy-live-${{ github.event_name }}-${{ github.ref }}
     name: Deploy to live
     runs-on: ubuntu-latest
     environment: live
