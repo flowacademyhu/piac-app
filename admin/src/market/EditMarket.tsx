@@ -1,6 +1,6 @@
 import { fetchMarketById, updateMarket } from "components/Service";
 import { useMutation, useQuery } from "react-query";
-import { useNavigate, useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { MarketInput } from "./Market";
 import MarketForm from "./MarketForm";
 
@@ -26,7 +26,11 @@ const EditMarket = () => {
 
   const submitForm = (market: MarketInput) => editMarketMutation.mutate(market);
 
-  if (id && isLoading) {
+  if (!id) {
+    return <Navigate to="/piac" replace />;
+  }
+
+  if (isLoading) {
     return <>Betöltés...</>;
   }
 
