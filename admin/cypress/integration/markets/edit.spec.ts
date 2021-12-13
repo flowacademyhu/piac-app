@@ -9,11 +9,23 @@ describe("Edit market", () => {
   it("should fill form with data of market", () => {
     cy.contains("Szerkeszt").click();
     cy.get("h1").contains("Piac módosítása");
-    cy.get("#name").should("have.value", "Bödön Piac");
-    cy.get("#profilePic").should("have.value", "https://example.com/bodon.png");
-    cy.get("#place").should("have.value", "Szeged Pláza");
-    cy.get("#openingDate").should("have.value", "2021-09-04T10:00");
-    cy.get("#closingDate").should("have.value", "2021-09-04T17:00");
+    cy.get("input[data-test=name-input]").should("have.value", "Bödön Piac");
+    cy.get("input[data-test=profilePic-input]").should(
+      "have.value",
+      "https://example.com/bodon.png"
+    );
+    cy.get("textarea[data-test=place-input]").should(
+      "have.value",
+      "Szeged Pláza"
+    );
+    cy.get("input[data-test=openingDate-input]").should(
+      "have.value",
+      "2021-09-04T10:00"
+    );
+    cy.get("input[data-test=closingDate-input]").should(
+      "have.value",
+      "2021-09-04T17:00"
+    );
     cy.get("button").contains("Módosítás");
     cy.get("button").contains("Mégsem");
   });

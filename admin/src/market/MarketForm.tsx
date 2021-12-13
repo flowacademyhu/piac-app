@@ -30,17 +30,24 @@ const MarketForm = ({
   return (
     <Form className="container mb-3" onSubmit={handleSubmit(onSubmit)}>
       <h1 className="my-3">{title}</h1>
-      <Input label="Piac neve" required={true} {...register("name")} />
+      <Input
+        label="Piac neve"
+        required={true}
+        data-test="name-input"
+        {...register("name")}
+      />
       <Input
         label="Piac logója"
         required={true}
         type="url"
+        data-test="profilePic-input"
         {...register("profilePic")}
       />
       <Textarea
         label="Piac helyszíne"
         rows={2}
         maxLength={100}
+        data-test="place-input"
         {...register("place")}
       />
       <Time control={control} label="Piac kezdete" name="openingDate" />
