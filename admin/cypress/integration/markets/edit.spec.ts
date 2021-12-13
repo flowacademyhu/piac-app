@@ -6,7 +6,7 @@ describe("Edit market", () => {
     cy.visit("./piac");
   });
 
-  it("should fill form with data of market", () => {
+  it("should modify the market", () => {
     cy.contains("Szerkeszt").click();
     cy.get("h1").contains("Piac módosítása");
     cy.get("input[data-test=name-input]")
