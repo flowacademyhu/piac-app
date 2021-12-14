@@ -34,7 +34,7 @@ describe("Edit market", () => {
       expect(req.body.openingDate).to.equal(1639816200);
       expect(req.body.closingDate).to.equal(1639845000);
       expect(req.headers.authorization).to.include("Bearer eyJhb");
-      newMarket = { id: 1, ...req.body };
+      newMarket = { id: "1", ...req.body };
       req.reply(newMarket);
     }).as("putMarketRequest");
 
