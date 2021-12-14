@@ -1,23 +1,12 @@
 import { Market } from "market/Market";
 
 describe("Edit market", () => {
-  let newMarket: Market = {
-    numberOfVendors: 0,
-    id: "",
-    name: "",
-    profilePic: "",
-    place: "",
-    openingDate: 0,
-    closingDate: 0,
-  };
+  let markets: Market[] = [];
 
   beforeEach(() => {
-    cy.fixture("markets.json").then((markets) => {
-      cy.intercept("GET", "/v1/api/market", (req) => {
-        req.reply(
-          newMarket.id ? [{ ...newMarket }, ...markets.slice(1)] : markets
-        );
-      });
+    cy.fixture("markets.json").then((marketsArr) => (markets = marketsArr));
+    cy.intercept("GET", "/v1/api/market", (req) => {
+      req.reply(markets);
     });
 
     cy.intercept("/v1/api/market/1", { fixture: "market-1.json" });
@@ -34,8 +23,11 @@ describe("Edit market", () => {
       expect(req.body.openingDate).to.equal(1639816200);
       expect(req.body.closingDate).to.equal(1639845000);
       expect(req.headers.authorization).to.include("Bearer eyJhb");
-      newMarket = { id: "1", ...req.body };
-      req.reply(newMarket);
+      const editedMarket = { id: "1", ...req.body };
+      markets = markets.map((market) =>
+        market.id === "1" ? editedMarket : market
+      );
+      req.reply(markets);
     }).as("putMarketRequest");
 
     cy.contains("Szerkeszt").click();
