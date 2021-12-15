@@ -26,6 +26,20 @@ describe("Login", () => {
     );
   });
 
+  it("should show error message on failed login attempt", () => {
+    cy.intercept("POST", "/v1/api/login", {
+      statusCode: 500,
+    });
+
+    cy.get("input[placeholder=E-mail]").type("john@example.com");
+
+    cy.contains("Küldés").click();
+
+    cy.contains(
+      "Hiba történt az e-mail kiküldése során. Az e-mail nem került kiküldésre."
+    );
+  });
+
   it.skip("should logout when the token is expired", () => {
     // set expired token
 
