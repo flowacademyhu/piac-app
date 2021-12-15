@@ -35,12 +35,12 @@ const LoginPage = () => {
         </Button>
       </div>
       {mutation.isSuccess && (
-        <div style={{ textAlign: "center", paddingTop: "50px" }}>
+        <div className="text-center text-success pt-3">
           E-mail küldése megtörtént! A csatolt linkre kattintva bejelentkezhet!
         </div>
       )}
       {mutation.isError && (
-        <div style={{ textAlign: "center", paddingTop: "50px" }}>
+        <div className="text-center text-danger pt-3">
           Hiba történt az e-mail kiküldése során. Az e-mail nem került
           kiküldésre.
         </div>
