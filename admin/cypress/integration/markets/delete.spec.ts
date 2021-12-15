@@ -21,7 +21,7 @@ describe("Delete market", () => {
     cy.intercept("DELETE", "/v1/api/admin/market/1", (req) => {
       const url = req.url.split("/");
       const id = url[url.length - 1];
-      markets = markets.filter((market) => market.id != id);
+      markets = markets.filter((market) => market.id !== id);
       req.reply(markets);
     }).as("deleteMarketRequest");
 
