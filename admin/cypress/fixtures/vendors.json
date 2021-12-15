@@ -1,16 +1,16 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "name": "Chilikirály",
     "intro": "Chilizz velünk, Magyarország legjobb chilijeivel..."
   },
   {
-    "id": 2,
+    "id": "2",
     "name": "Just incase",
     "intro": "Minden, amire egy szofisztikált embernek szüksége lehet"
   },
   {
-    "id": 3,
+    "id": "3",
     "name": "Valami bolt",
     "intro": "Valami van"
   }
