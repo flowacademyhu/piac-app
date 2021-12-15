@@ -4,7 +4,9 @@ describe("Edit market", () => {
   let markets: Market[] = [];
 
   beforeEach(() => {
-    cy.fixture("markets.json").then((marketsArr) => (markets = marketsArr));
+    cy.fixture("markets.json").then((marketsFromFixture) => {
+      markets = marketsFromFixture;
+    });
     cy.intercept("GET", "/v1/api/market", (req) => {
       req.reply(markets);
     });
