@@ -19,8 +19,6 @@ describe("Delete market", () => {
 
   it("should delete a market", () => {
     cy.intercept("DELETE", "/v1/api/admin/market/1", (req) => {
-      console.log(req);
-      console.log(req.url);
       const url = req.url.split("/");
       const id = url[url.length - 1];
       markets = markets.filter((market) => market.id != id);
@@ -34,10 +32,12 @@ describe("Delete market", () => {
     cy.get("@rows").eq(1).contains("Böba Piac Karácsony");
     cy.contains("Töröl").click();
     cy.contains("Törlés").click();
-    cy.get("@rows").should("have.length", 1);
 
     cy.wait("@deleteMarketRequest")
       .its("response.statusCode")
       .should("eq", 200);
+
+    cy.get("@rows").should("have.length", 1);
+    cy.contains("Bödön piac").should("not.exist");
   });
 });
