@@ -1,4 +1,4 @@
-export default interface Vendor {
+export interface Vendor {
   id: string;
   name: string;
 }
