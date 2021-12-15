@@ -23,6 +23,7 @@ describe("Delete market", () => {
       const id = url[url.length - 1];
       markets = markets.filter((market) => market.id !== id);
       req.reply(markets);
+      expect(req.headers.authorization).to.include("Bearer eyJhb");
     }).as("deleteMarketRequest");
 
     cy.contains("Piacok");
