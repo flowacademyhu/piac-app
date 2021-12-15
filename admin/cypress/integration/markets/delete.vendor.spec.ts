@@ -22,7 +22,6 @@ describe.only("Delete vendor", () => {
       const url = req.url.split("/");
       const id = url[url.length - 1];
       vendors = vendors.filter((vendor) => vendor.id !== id);
-      console.log(vendors);
       req.reply(vendors);
     }).as("deleteVendorRequest");
 
@@ -30,8 +29,12 @@ describe.only("Delete vendor", () => {
     cy.get("table tbody tr").as("rows");
 
     console.log("Előtte " + vendors.length);
+    console.log("Előtte " + vendors);
 
     cy.get("@rows").should("have.length", 3);
+
+    console.log(vendors.length);
+
     cy.get("@rows").eq(0).contains("Chilikirály");
     cy.get("@rows").eq(1).contains("Just incase");
     cy.get("@rows").eq(2).contains("Valami bolt");
@@ -45,6 +48,7 @@ describe.only("Delete vendor", () => {
     cy.get("@rows").should("have.length", 2);
 
     console.log("Utána " + vendors.length);
+    console.log("Utána " + vendors);
 
     cy.contains("Chilikirály").should("not.exist");
   });
