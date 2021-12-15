@@ -7,12 +7,9 @@ describe.only("Delete vendor", () => {
     cy.fixture("vendors.json").then((vendorsFromFixture) => {
       vendors = vendorsFromFixture;
     });
-    cy.intercept("GET", "/v1/api/vendors", (req) => {
+    cy.intercept("GET", "/v1/api/vendor", (req) => {
       req.reply(vendors);
     });
-
-    cy.intercept("/v1/api/vendor/1", { fixture: "vendor-1.json" });
-
     cy.login("john@example.com");
     cy.visit("./arus");
   });
@@ -23,6 +20,7 @@ describe.only("Delete vendor", () => {
       const id = url[url.length - 1];
       vendors = vendors.filter((vendor) => vendor.id !== id);
       req.reply(vendors);
+      expect(req.headers.authorization).to.include("Bearer eyJhb");
     }).as("deleteVendorRequest");
 
     cy.contains("Árusok");
