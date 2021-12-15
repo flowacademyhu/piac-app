@@ -39,6 +39,12 @@ const LoginPage = () => {
           E-mail küldése megtörtént! A csatolt linkre kattintva bejelentkezhet!
         </div>
       )}
+      {mutation.isError && (
+        <div style={{ textAlign: "center", paddingTop: "50px" }}>
+          Hiba történt az e-mail kiküldése során. Az e-mail nem került
+          kiküldésre.
+        </div>
+      )}
     </Form>
   );
 };
