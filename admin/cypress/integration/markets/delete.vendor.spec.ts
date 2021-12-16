@@ -1,6 +1,6 @@
 import { Vendor } from "vendor/Vendor";
 
-describe.only("Delete vendor", () => {
+describe("Delete vendor", () => {
   let vendors: Vendor[] = [];
 
   beforeEach(() => {
@@ -25,14 +25,7 @@ describe.only("Delete vendor", () => {
 
     cy.contains("Árusok");
     cy.get("table tbody tr").as("rows");
-
-    console.log("Előtte " + vendors.length);
-    console.log("Előtte " + vendors);
-
     cy.get("@rows").should("have.length", 3);
-
-    console.log(vendors.length);
-
     cy.get("@rows").eq(0).contains("Chilikirály");
     cy.get("@rows").eq(1).contains("Just incase");
     cy.get("@rows").eq(2).contains("Valami bolt");
@@ -44,10 +37,6 @@ describe.only("Delete vendor", () => {
       .should("eq", 200);
 
     cy.get("@rows").should("have.length", 2);
-
-    console.log("Utána " + vendors.length);
-    console.log("Utána " + vendors);
-
     cy.contains("Chilikirály").should("not.exist");
   });
 });
