@@ -12,6 +12,7 @@ import com.sendgrid.helpers.mail.objects.Email;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
+import org.flowacademy.hu.market.app.exceptions.EmailSendingFailException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +30,7 @@ public class EmailSendingService {
     @Value("${sendgrid.from-email}")
     private String fromEmail;
 
-    public void sendmail( String emailAddress, String generatedString) throws Exception {
+    public void sendmail(String emailAddress, String generatedString) throws EmailSendingFailException {
         Email from = new Email(fromEmail);
         String subject = "Sending with SendGrid is Fun";
         Email to = new Email(emailAddress);
@@ -42,8 +43,12 @@ public class EmailSendingService {
             request.setEndpoint("mail/send");
             request.setBody(mail.build());
             Response response = sg.api(request);
+            if (response.getStatusCode() != 200) {
+                throw new EmailSendingFailException();
+            }
         } catch (IOException ex) {
             ex.printStackTrace();
+            throw new EmailSendingFailException();
         }
     }
 }
