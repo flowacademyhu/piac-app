@@ -12,11 +12,8 @@ import org.flowacademy.hu.market.app.model.JwtRequestModel;
 import org.flowacademy.hu.market.app.jwtandsecurity.JwtUserDetailsService;
 import org.flowacademy.hu.market.app.jwtandsecurity.TokenManager;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
@@ -30,8 +27,6 @@ public class AuthenticationService {
     private EmailSendingService emailSendingService;
     @Autowired
     private JwtUserDetailsService userDetailsService;
-    @Autowired
-    private AuthenticationManager authenticationManager;
     @Autowired
     private TokenManager tokenManager;
 
