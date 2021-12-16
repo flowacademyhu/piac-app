@@ -37,8 +37,8 @@ public class EmailSendingService {
         Content content = new Content("text/plain", siteUrl + "/token/" + generatedString);
         Mail mail = new Mail(from, subject, to, content);
         SendGrid sg = new SendGrid(sendGridApiKey);
-        Request request = new Request();
         try {
+            Request request = new Request();
             request.setMethod(Method.POST);
             request.setEndpoint("mail/send");
             request.setBody(mail.build());
