@@ -46,6 +46,7 @@ function App() {
           <Routes>
             <Route path="/token/:token" element={<TokenExchange />} />
             <Route path="/" element={<LoginPage />} />
+            <Route path="*" element={<Navigate to="/" replace />}></Route>
           </Routes>
         )}
       </Router>
