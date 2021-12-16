@@ -9,5 +9,6 @@ public enum MessagesConstants {
      JWT_EXPIRED,
      USER_DISABLED,
      INVALID_CREDENTIALS,
-     NO_SUCH_ADMIN
+     NO_SUCH_ADMIN,
+     EMAIL_SENDING_FAIL
 }

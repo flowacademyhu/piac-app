@@ -1,10 +1,7 @@
 package org.flowacademy.hu.market.app.controller;
 
 import io.jsonwebtoken.ExpiredJwtException;
-import org.flowacademy.hu.market.app.exceptions.NoSuchAdminException;
-import org.flowacademy.hu.market.app.exceptions.NoSuchMarketException;
-import org.flowacademy.hu.market.app.exceptions.NoSuchVendorException;
-import org.flowacademy.hu.market.app.exceptions.WrongPasswordException;
+import org.flowacademy.hu.market.app.exceptions.*;
 import org.flowacademy.hu.market.app.model.ErrorModel;
 import org.flowacademy.hu.market.app.utilities.MessagesConstants;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -71,5 +68,11 @@ public class ErrorController {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorModel handleNoSuchAdmin(){
         return new ErrorModel(MessagesConstants.NO_SUCH_ADMIN);
+    }
+
+    @ExceptionHandler({EmailSendingFailException.class})
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ErrorModel handleEmailSendingFail(){
+        return new ErrorModel(MessagesConstants.EMAIL_SENDING_FAIL);
     }
 }
