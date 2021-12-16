@@ -32,9 +32,6 @@ api.interceptors.response.use(
   }
 );
 
-const VendorAdminAPI = "/v1/api/admin/vendor";
-const adminMarketAPI = "/v1/api/admin/market";
-
 export const fetchMarkets = async () => {
   try {
     const { data } = await api.get("/market");
@@ -67,12 +64,9 @@ export const addMarket = async (market: MarketInput) => {
   return data;
 };
 
-const VendorAPI = "/v1/api/vendor";
-
 export const fetchVendors = async () => {
-  const url = VendorAPI;
   try {
-    const response = await axios.get(url);
+    const response = await api.get("/vendor");
     const data = response.data;
     return data;
   } catch (error) {
@@ -81,9 +75,8 @@ export const fetchVendors = async () => {
 };
 
 export const deleteMarketById = async (id: string) => {
-  const url = adminMarketAPI + "/" + id;
   try {
-    const response = await axios.delete(url, tokenConfig);
+    const response = await api.delete(`/admin/market/${id}`, tokenConfig);
     const data = response.data;
     return data;
   } catch (error) {
@@ -91,12 +84,9 @@ export const deleteMarketById = async (id: string) => {
   }
 };
 
-const adminVendorAPI = "/v1/api/admin/vendor";
-
 export const deleteVendorById = async (id: string) => {
-  const url = adminVendorAPI + "/" + id;
   try {
-    const response = await axios.delete(url, tokenConfig);
+    const response = await api.delete(`/admin/vendor/${id}`, tokenConfig);
     const data = response.data;
     return data;
   } catch (error) {
@@ -105,9 +95,8 @@ export const deleteVendorById = async (id: string) => {
 };
 
 export const fetchVendorById = async (id: string) => {
-  const url = VendorAPI + "/" + id;
   try {
-    const response = await axios.get(url);
+    const response = await api.get(`/vendor/${id}`);
     const data = response.data;
     return data;
   } catch (error) {
@@ -121,7 +110,7 @@ export const addVendor = async (
   setHasError: (result: boolean) => void
 ) => {
   try {
-    const response = await axios.post(VendorAdminAPI, vendor, tokenConfig);
+    const response = await api.post("/admin/vendor", vendor, tokenConfig);
     if (response.status === 200) {
       setSuccess(true);
     }
@@ -137,11 +126,7 @@ export const updateVendor = async (
   setHasError: (result: boolean) => void
 ) => {
   try {
-    const response = await axios.put(
-      VendorAdminAPI + "/" + id,
-      vendor,
-      tokenConfig
-    );
+    const response = await api.put(`/admin/vendor/${id}`, vendor, tokenConfig);
     if (response.status === 200) {
       setSuccess(true);
     }
