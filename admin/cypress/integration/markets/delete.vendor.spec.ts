@@ -19,8 +19,8 @@ describe("Delete vendor", () => {
       const url = req.url.split("/");
       const id = url[url.length - 1];
       vendors = vendors.filter((vendor) => vendor.id !== id);
-      req.reply(vendors);
       expect(req.headers.authorization).to.include("Bearer eyJhb");
+      req.reply(vendors);
     }).as("deleteVendorRequest");
 
     cy.contains("Árusok");
