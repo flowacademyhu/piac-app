@@ -28,19 +28,18 @@ public class EmailSendingService {
     private String fromEmail;
 
     private static Email from;
-    private static String subject;
+    private static final String SUBJECT = "Sending with SendGrid is Fun";
     private static SendGrid sg;
 
     public EmailSendingService() {
         from = new Email(fromEmail);
-        subject = "Sending with SendGrid is Fun";
         sg = new SendGrid(sendGridApiKey);
     }
 
     public void sendMail(String emailAddress, String generatedString) throws EmailSendingFailException {
         Email to = new Email(emailAddress);
         Content content = new Content("text/plain", siteUrl + "/token/" + generatedString);
-        Mail mail = new Mail(from, subject, to, content);
+        Mail mail = new Mail(from, SUBJECT, to, content);
         try {
             Request request = new Request();
             request.setMethod(Method.POST);
