@@ -1,4 +1,4 @@
-import { Vendor } from "vendor/Vendor";
+import Vendor from "vendor/Vendor";
 
 describe("Delete vendor", () => {
   let vendors: Vendor[] = [];
@@ -16,10 +16,10 @@ describe("Delete vendor", () => {
 
   it("should delete a vendor", () => {
     cy.intercept("DELETE", "/v1/api/admin/vendor/1", (req) => {
+      expect(req.headers.authorization).to.include("Bearer eyJhb");
       const url = req.url.split("/");
       const id = url[url.length - 1];
       vendors = vendors.filter((vendor) => vendor.id !== id);
-      expect(req.headers.authorization).to.include("Bearer eyJhb");
       req.reply(vendors);
     }).as("deleteVendorRequest");
 
