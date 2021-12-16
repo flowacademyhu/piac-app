@@ -39,7 +39,7 @@ public class AuthenticationService {
           try {
               final UserDetails userDetails = userDetailsService.loadUserByUsername(request.getEmailAddress());
               final String generatedString = RandomString.make(15);
-              emailSendingService.sendmail(request.getEmailAddress(), generatedString);
+              emailSendingService.sendMail(request.getEmailAddress(), generatedString);
               Admin result = userDetailsService.findAdmin(userDetails.getUsername());
               result.setGeneratedString(generatedString);
               userDetailsService.saveAdmin(result);

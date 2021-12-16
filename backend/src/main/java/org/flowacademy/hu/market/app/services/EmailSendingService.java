@@ -29,8 +29,8 @@ public class EmailSendingService {
     private String siteUrl;
     @Value("${sendgrid.from-email}")
     private String fromEmail;
-
-    public void sendmail(String emailAddress, String generatedString) throws EmailSendingFailException {
+    
+    public void sendMail(String emailAddress, String generatedString) throws EmailSendingFailException {
         Email from = new Email(fromEmail);
         String subject = "Sending with SendGrid is Fun";
         Email to = new Email(emailAddress);
