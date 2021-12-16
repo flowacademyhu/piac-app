@@ -1,6 +1,5 @@
 package org.flowacademy.hu.market.app.services;
 
-
 import com.sendgrid.Method;
 import com.sendgrid.Request;
 import com.sendgrid.Response;
@@ -10,7 +9,6 @@ import com.sendgrid.helpers.mail.objects.Content;
 import com.sendgrid.helpers.mail.objects.Email;
 
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 import org.flowacademy.hu.market.app.exceptions.EmailSendingFailException;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,7 +17,6 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 
 @AllArgsConstructor
-@NoArgsConstructor
 @Service
 public class EmailSendingService {
 
@@ -29,14 +26,21 @@ public class EmailSendingService {
     private String siteUrl;
     @Value("${sendgrid.from-email}")
     private String fromEmail;
-    
+
+    private static Email from;
+    private static String subject;
+    private static SendGrid sg;
+
+    public EmailSendingService() {
+        from = new Email(fromEmail);
+        subject = "Sending with SendGrid is Fun";
+        sg = new SendGrid(sendGridApiKey);
+    }
+
     public void sendMail(String emailAddress, String generatedString) throws EmailSendingFailException {
-        Email from = new Email(fromEmail);
-        String subject = "Sending with SendGrid is Fun";
         Email to = new Email(emailAddress);
         Content content = new Content("text/plain", siteUrl + "/token/" + generatedString);
         Mail mail = new Mail(from, subject, to, content);
-        SendGrid sg = new SendGrid(sendGridApiKey);
         try {
             Request request = new Request();
             request.setMethod(Method.POST);
