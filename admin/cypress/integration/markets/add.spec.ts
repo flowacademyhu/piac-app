@@ -72,4 +72,20 @@ describe("Add new market", () => {
 
     cy.contains("Nem sikerült a piacot hozzáadni!");
   });
+
+  it.skip("should show all vendors as checkboxes", () => {
+    cy.contains("ÚJ PIAC FELVÉTELE").click();
+
+    cy.contains("Chilikirály");
+    cy.contains("Just incase");
+    cy.contains("Valami bolt");
+
+    cy.get('[type="checkbox"]').check("1");
+    cy.get('[type="checkbox"]').check("2");
+    cy.get('[type="checkbox"]').check("3");
+
+    cy.get('[value="1"]').should("be.checked");
+    cy.get('[value="2"]').should("be.checked");
+    cy.get('[value="3"]').should("be.checked");
+  });
 });
