@@ -1,33 +1,35 @@
+import { useController, Control, FieldPath } from "react-hook-form";
 import { Form, FormControlProps } from "react-bootstrap";
-import { Control, FieldPath, Controller } from "react-hook-form";
 
-interface CheckboxProps<T>
-  extends Omit<FormControlProps, "onChange" | "onBlur"> {
+interface CheckboxInputProps<T>
+  extends Omit<FormControlProps, "type" | "onChange" | "onBlur" | "size"> {
   label: string;
   control: Control<T>;
   name: FieldPath<T>;
 }
 
-const Checkbox = <T,>({ label, control, name, ...props }: CheckboxProps<T>) => {
+const Checkbox = <T,>({
+  label,
+  control,
+  name,
+  ...props
+}: CheckboxInputProps<T>) => {
+  const { field } = useController({
+    control,
+    name,
+  });
+
   return (
-    <Controller
-      control={control}
-      name={name}
-      render={({ field }) => (
-        <Form.Group className="mb-3" controlId={name}>
-          <Form.Label>{label}</Form.Label>
-          <Form.Control
-            placeholder={`${label}...`}
-            data-test={`${name}-input`}
-            onChange={(e) =>
-              field.onChange((e.target.value))
-            }
-            value={(field.value as string)}
-            {...props}
-          />
-        </Form.Group>
-      )}
-    />
+    <Form.Group className="mb-3" controlId={name}>
+      <Form.Check
+        data-test={`${name}-checkbox`}
+        onChange={(e) => field.onChange(e.target.checked)}
+        type="checkbox"
+        label={label}
+        checked={field.value as boolean}
+        {...props}
+      />
+    </Form.Group>
   );
 };
 
