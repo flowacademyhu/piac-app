@@ -1,7 +1,7 @@
-import Vendor from "vendor/Vendor";
+import { VendorInput } from "vendor/Vendor";
 
 describe("Delete vendor", () => {
-  let vendors: Vendor[] = [];
+  let vendors: VendorInput[] = [];
 
   beforeEach(() => {
     cy.fixture("vendors.json").then((vendorsFromFixture) => {
