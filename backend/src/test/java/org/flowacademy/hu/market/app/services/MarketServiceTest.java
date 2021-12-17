@@ -1,21 +1,37 @@
 package org.flowacademy.hu.market.app.services;
 
+import org.flowacademy.hu.market.app.entities.Market;
 import org.flowacademy.hu.market.app.repositories.MarketRepository;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
+import org.mockito.Mockito;
 
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class MarketServiceTest {
 
-    @Mock
-    MarketRepository marketRepository;
-
-    @InjectMocks
-    MarketService marketService;
+    private final MarketRepository marketRepository = Mockito.mock(MarketRepository.class);
 
     @Test
-    public void deleteMarketById() {
+    void deleteAllMarkets() {
+        Market market = new Market();
+        Market market1 = new Market();
+        Market market2 = new Market();
+        marketRepository.save(market);
+        marketRepository.save(market1);
+        marketRepository.save(market2);
+        marketRepository.deleteAll();
+        Optional optional = marketRepository.findById(market.getId());
+        assertEquals(Optional.empty(), optional);
+    }
 
+    @Test
+    void deleteMarketById() {
+        Market market = new Market();
+        marketRepository.save(market);
+        marketRepository.deleteById(market.getId());
+        Optional optional = marketRepository.findById(market.getId());
+        assertEquals(Optional.empty(), optional);
     }
 }
