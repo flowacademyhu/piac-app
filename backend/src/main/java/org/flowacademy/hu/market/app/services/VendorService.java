@@ -97,9 +97,10 @@ public class VendorService {
                 .setEmail(vendorDTO.getEmail())
                 .setProfilePic(vendorDTO.getProfilePic())
                 .setProducts(vendorDTO.getProducts())
+                .setCardPayment(vendorDTO.getCardPayment())
                 .setName(vendorDTO.getName())
                 .setIntro(vendorDTO.getIntro())
-                .setIntroductionLong(vendor.getIntroductionLong())
+                .setIntroductionLong(vendorDTO.getIntroductionLong())
                 .setId(id)
                 .setMarkets(markets);
         vendorRepository.save(vendor);
