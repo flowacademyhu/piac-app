@@ -57,9 +57,14 @@ const VendorForm = ({
         data-test="introductionLong-input"
         {...register("introductionLong")}
       />
-      <Checkbox control={control} label="Fizetési mód" name="cardPayment" />
+      <Checkbox
+        label="Bankkártyás fizetés"
+        control={control}
+        name="cardPayment"
+      />
       <Input
         label="Árus termékei"
+        placeholder="Írd be a termék nevét és nyomj enter-t"
         data-test="products-input"
         {...register("products")}
       />
