@@ -1,5 +1,14 @@
 {
   "id": "1",
   "name": "Chilikirály",
-  "intro": "Chilizz velünk, Magyarország legjobb chilijeivel..."
+  "profilePic": "https://bit.ly/3I7Xlyva3",
+  "intro": "Chilizz velünk, Magyarország legjobb chilijeivel...",
+  "introductionLong": "Mi áruljuk a legjobb chiliket, ehhez kétség sem fér. Köcsá!",
+  "cardPayment": true,
+  "products": ["chilik", "paprikakrémek", "minden más"],
+  "phone": "+36302345678",
+  "email": "chiliking@flow.hu3",
+  "facebook": "Chiliking",
+  "instagram": "chillchill",
+  "webSite": "http://www.chilizgetes.com"
 }
