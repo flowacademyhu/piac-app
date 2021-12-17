@@ -14,7 +14,7 @@ class MarketServiceTest {
     private final MarketRepository marketRepository = Mockito.mock(MarketRepository.class);
 
     @Test
-    void deleteAllMarkets() {
+    void deleteAllMarkets() throws NullPointerException{
         Market market = new Market();
         Market market1 = new Market();
         Market market2 = new Market();
@@ -27,7 +27,7 @@ class MarketServiceTest {
     }
 
     @Test
-    void deleteMarketById() {
+    void deleteMarketById() throws NullPointerException{
         Market market = new Market();
         marketRepository.save(market);
         marketRepository.deleteById(market.getId());
