@@ -5,6 +5,8 @@ import { Market, MarketInput, MarketWithId } from "./Market";
 import { useForm } from "react-hook-form";
 import Textarea from "components/form/Textarea";
 import Input from "components/form/Input";
+import { useQuery } from "react-query";
+import { fetchVendors } from "components/Service";
 
 interface MarketFormProps {
   title: string;
@@ -28,6 +30,11 @@ const MarketForm = ({
   });
 
   const vendorsOfMarket = defaultValues?.vendors ?? [];
+
+  const { data: allVendors } = useQuery("vendors", () => fetchVendors(), {
+    cacheTime: 0,
+  });
+
   return (
     <Form className="container mb-3" onSubmit={handleSubmit(onSubmit)}>
       <h1 className="my-3">{title}</h1>
