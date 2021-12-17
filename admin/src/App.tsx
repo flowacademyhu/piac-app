@@ -38,6 +38,7 @@ function App() {
                 <Route index element={<VendorTablePage />} />
                 <Route path="uj" element={<VendorDetails />} />
                 <Route path="szerkeszt" element={<VendorDetails />} />
+                <Route path="szerkeszt/:id" element={<VendorDetails />} />
               </Route>
               <Route path="/" element={<Navigate to="/piac" replace />}></Route>
             </Routes>
