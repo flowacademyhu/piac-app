@@ -1,7 +1,7 @@
 import { Form } from "react-bootstrap";
 import MarketDetailsButtons from "./MarketDetailsButtons";
 import Time from "components/form/Time";
-import { MarketInput, MarketWithId } from "./Market";
+import { Market, MarketInput, MarketWithId } from "./Market";
 import { useForm } from "react-hook-form";
 import Textarea from "components/form/Textarea";
 import Input from "components/form/Input";
@@ -12,7 +12,7 @@ interface MarketFormProps {
   hasError: boolean;
   errorMessage: string;
   onSubmit: (value: MarketInput) => void;
-  defaultValues?: MarketInput;
+  defaultValues?: Market;
 }
 
 const MarketForm = ({
