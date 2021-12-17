@@ -27,6 +27,7 @@ const MarketForm = ({
     defaultValues,
   });
 
+  const vendorsOfMarket = defaultValues?.vendors ?? [];
   return (
     <Form className="container mb-3" onSubmit={handleSubmit(onSubmit)}>
       <h1 className="my-3">{title}</h1>
