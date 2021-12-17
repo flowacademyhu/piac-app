@@ -40,6 +40,24 @@ describe("Login", () => {
     );
   });
 
+  it("should redirect user with expired JWT token to login page", () => {
+    cy.intercept("/v1/api/market", { fixture: "markets.json" });
+
+    cy.intercept("DELETE", "/v1/api/admin/market/1", {
+      statusCode: 401,
+    });
+
+    cy.login("john@example.com");
+
+    cy.visit("/piac");
+
+    cy.contains("Töröl").click();
+
+    cy.contains("Törlés").click();
+
+    cy.contains("Küldés");
+  });
+
   it.skip("should logout when the token is expired", () => {
     // set expired token
 
