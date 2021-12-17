@@ -3,12 +3,6 @@ import { MarketInput } from "market/Market";
 import Vendor from "vendor/Vendor";
 import { getToken, logOut } from "./AuthService";
 
-const tokenConfig = {
-  headers: {
-    Authorization: `Bearer ${getToken()}`,
-  },
-};
-
 const api = axios.create({ baseURL: "/v1/api" });
 
 api.interceptors.request.use(function (config) {
@@ -76,7 +70,7 @@ export const fetchVendors = async () => {
 
 export const deleteMarketById = async (id: string) => {
   try {
-    const response = await api.delete(`/admin/market/${id}`, tokenConfig);
+    const response = await api.delete(`/admin/market/${id}`);
     const data = response.data;
     return data;
   } catch (error) {
@@ -86,7 +80,7 @@ export const deleteMarketById = async (id: string) => {
 
 export const deleteVendorById = async (id: string) => {
   try {
-    const response = await api.delete(`/admin/vendor/${id}`, tokenConfig);
+    const response = await api.delete(`/admin/vendor/${id}`);
     const data = response.data;
     return data;
   } catch (error) {
@@ -110,7 +104,7 @@ export const addVendor = async (
   setHasError: (result: boolean) => void
 ) => {
   try {
-    const response = await api.post("/admin/vendor", vendor, tokenConfig);
+    const response = await api.post("/admin/vendor", vendor);
     if (response.status === 200) {
       setSuccess(true);
     }
@@ -126,7 +120,7 @@ export const updateVendor = async (
   setHasError: (result: boolean) => void
 ) => {
   try {
-    const response = await api.put(`/admin/vendor/${id}`, vendor, tokenConfig);
+    const response = await api.put(`/admin/vendor/${id}`, vendor);
     if (response.status === 200) {
       setSuccess(true);
     }
