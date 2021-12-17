@@ -1,6 +1,6 @@
 import axios from "axios";
 import { MarketInput } from "market/Market";
-import Vendor from "vendor/Vendor";
+import { VendorInput } from "vendor/Vendor";
 import { getToken, logOut } from "./AuthService";
 
 const api = axios.create({ baseURL: "/v1/api" });
@@ -98,33 +98,12 @@ export const fetchVendorById = async (id: string) => {
   }
 };
 
-export const addVendor = async (
-  vendor: Vendor,
-  setSuccess: (result: boolean) => void,
-  setHasError: (result: boolean) => void
-) => {
-  try {
-    const response = await api.post("/admin/vendor", vendor);
-    if (response.status === 200) {
-      setSuccess(true);
-    }
-  } catch (error) {
-    setHasError(true);
-  }
+export const addVendor = async (vendor: VendorInput) => {
+  const { data } = await api.post("/admin/vendor", vendor);
+  return data;
 };
 
-export const updateVendor = async (
-  vendor: Vendor,
-  id: string,
-  setSuccess: (result: boolean) => void,
-  setHasError: (result: boolean) => void
-) => {
-  try {
-    const response = await api.put(`/admin/vendor/${id}`, vendor);
-    if (response.status === 200) {
-      setSuccess(true);
-    }
-  } catch (error) {
-    setHasError(true);
-  }
+export const updateVendor = async (vendor: VendorInput, id: string) => {
+  const { data } = await api.put(`/admin/vendor/${id}`, vendor);
+  return data;
 };
