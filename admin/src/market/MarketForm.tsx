@@ -29,11 +29,11 @@ const MarketForm = ({
     defaultValues,
   });
 
-  const vendorsOfMarket = defaultValues?.vendors ?? [];
+  // const vendorsOfMarket = defaultValues?.vendors ?? [];
 
-  const { data: allVendors } = useQuery("vendors", () => fetchVendors(), {
-    cacheTime: 0,
-  });
+  // const { data: allVendors } = useQuery("vendors", () => fetchVendors(), {
+  //   cacheTime: 0,
+  // });
 
   return (
     <Form className="container mb-3" onSubmit={handleSubmit(onSubmit)}>
