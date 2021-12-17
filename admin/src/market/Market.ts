@@ -1,4 +1,4 @@
-import Vendor from "vendor/Vendor";
+import { VendorInput } from "vendor/Vendor";
 
 export interface MarketInput {
   name: string;
@@ -14,5 +14,5 @@ export interface MarketWithId extends MarketInput {
 
 export interface Market extends MarketWithId {
   numberOfVendors: number;
-  vendors: Vendor[];
+  vendors: VendorInput[];
 }
