@@ -7,7 +7,8 @@ import {
 import MarketTablePage from "./market/MarketTablePage";
 import VendorTablePage from "./vendor/VendorTablePage";
 import Menu from "./components/Menu";
-import VendorDetails from "./vendor/VendorDetails";
+import NewVendor from "./vendor/NewVendor";
+import EditVendor from "./vendor/EditVendor";
 import LoginPage from "./pages/LoginPage";
 import TokenExchange from "./pages/TokenExchange";
 import { getToken } from "./components/AuthService";
@@ -36,8 +37,8 @@ function App() {
               </Route>
               <Route path="/arus">
                 <Route index element={<VendorTablePage />} />
-                <Route path="uj" element={<VendorDetails />} />
-                <Route path="szerkeszt/:id" element={<VendorDetails />} />
+                <Route path="uj" element={<NewVendor />} />
+                <Route path="szerkeszt/:id" element={<EditVendor />} />
               </Route>
               <Route path="/" element={<Navigate to="/piac" replace />}></Route>
             </Routes>
