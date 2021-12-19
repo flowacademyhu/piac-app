@@ -80,16 +80,6 @@ class MarketRepositoryTest {
     marketRepository.save(buildMarketWithTime("Today elapsed", -60)); // 1 minutes elapsed
     marketRepository.save(buildMarketWithTime("Tomorrow", 24 * 60 * 60));
 
-    // TODO temporary debug logs because this test is undeterministic, it's failing sometimes
-    var allMarketList = marketRepository.findAll();
-
-    System.out.println("Markets in the DB right now: ");
-
-    for (Market market : allMarketList) {
-      System.out.println(market.getName());
-      System.out.println(market.getClosingDate());
-    }
-
     var marketList = marketRepository.findAllUpcomingMarkets();
 
     assertThat(marketList).hasSize(3);
