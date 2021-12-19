@@ -56,13 +56,14 @@ class MarketServiceTest {
     public void should_add_a_market_to_a_list_and_test_the_list_for_cases() {
         List<Market> marketList = new ArrayList<>();
 
-        marketList.add(new Market().setName("Valami"));
-
         marketList.add(new Market().setName("Árus"));
         marketList.add(new Market().setName("Másik árus"));
         when(marketRepository.findAll()).thenReturn(marketList);
 
+        List<SimpleMarketDTO> sortedMarketList = marketService.allMarkets();
 
-
+        assertEquals(2, sortedMarketList.size());
+        assertEquals("Árus", sortedMarketList.get(0).getName());
+        assertEquals("Másik árus", sortedMarketList.get(1).getName());
     }
 }
