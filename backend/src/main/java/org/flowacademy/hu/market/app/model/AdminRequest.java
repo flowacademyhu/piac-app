@@ -1,13 +1,12 @@
 package org.flowacademy.hu.market.app.model;
 
-
-
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 public class AdminRequest implements Serializable {
 
     private static final long serialVersionUID = 2636936156391265891L;
+
     @NotNull
     private String password;
 

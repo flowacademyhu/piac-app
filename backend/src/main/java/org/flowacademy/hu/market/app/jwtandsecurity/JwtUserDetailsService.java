@@ -44,13 +44,13 @@ public class JwtUserDetailsService implements UserDetailsService {
     }
 
     public Admin getAdminByToken(String token) {
-       return adminRepository.getAdminByGeneratedString(token);
+        return adminRepository.getAdminByGeneratedString(token);
     }
 
     @Override
     public UserDetails loadUserByUsername(String emailAddress) {
         try {
-           Admin admin = findAdmin(emailAddress);
+            Admin admin = findAdmin(emailAddress);
             var authorities = Collections.singletonList(new SimpleGrantedAuthority("ROLE_ADMIN"));
             return new User(admin.getEmail(), password, authorities);
         } catch (NoSuchAdminException e) {

@@ -22,7 +22,7 @@ public class MarketController {
     private final MarketService marketService;
 
     @GetMapping
-    public ResponseEntity<List<SimpleMarketDTO>> allMarkets() throws ParseException{
+    public ResponseEntity<List<SimpleMarketDTO>> allMarkets() throws ParseException {
         return ResponseEntity.ok(marketService.allMarkets());
     }
 
@@ -37,7 +37,8 @@ public class MarketController {
     }
 
     @GetMapping("/{id}/vendors")
-    public ResponseEntity<List<SimpleVendorDTO>> findAllVendorsAtGivenMarket(@PathVariable @RequestBody Long id) throws NoSuchMarketException {
+    public ResponseEntity<List<SimpleVendorDTO>> findAllVendorsAtGivenMarket(@PathVariable @RequestBody Long id)
+            throws NoSuchMarketException {
         return ResponseEntity.ok(marketService.findAllVendorsAtGivenMarket(id));
     }
 }

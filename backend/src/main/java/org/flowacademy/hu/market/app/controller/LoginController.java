@@ -17,11 +17,11 @@ public class LoginController {
 
     @PostMapping("/login")
     public String createToken(@RequestBody JwtRequestModel request) throws Exception {
-       return authenticationService.createToken(request);
+        return authenticationService.createToken(request);
     }
 
     @GetMapping("/token/{token}")
-    public String getToken (@PathVariable @Valid String token) throws Exception {
+    public String getToken(@PathVariable @Valid String token) throws Exception {
         return authenticationService.getJwtToken(token);
     }
 }

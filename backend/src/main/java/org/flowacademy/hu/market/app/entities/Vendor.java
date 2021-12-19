@@ -9,7 +9,6 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-
 @Entity
 @Builder
 @AllArgsConstructor
@@ -36,15 +35,17 @@ public class Vendor {
     private Set<String> products = new HashSet<>();
 
     @ManyToMany(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
-    @JoinTable(name = "vendors_markets",
-            joinColumns = {@JoinColumn(name = "vendor_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "market_id", referencedColumnName = "id")})
+    @JoinTable(name = "vendors_markets", joinColumns = {
+            @JoinColumn(name = "vendor_id", referencedColumnName = "id") }, inverseJoinColumns = {
+                    @JoinColumn(name = "market_id", referencedColumnName = "id") })
     private Set<Market> markets = new HashSet<>();
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
         Vendor vendor = (Vendor) o;
         return Objects.equals(id, vendor.id);
     }

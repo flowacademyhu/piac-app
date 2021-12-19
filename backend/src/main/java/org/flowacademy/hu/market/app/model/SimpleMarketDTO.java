@@ -15,7 +15,8 @@ public class SimpleMarketDTO {
     public SimpleMarketDTO() {
     }
 
-    public SimpleMarketDTO(Long id, String profilePic, String name, String place, Long openingDate, Long closingDate, int numberOfVendors) {
+    public SimpleMarketDTO(Long id, String profilePic, String name, String place, Long openingDate, Long closingDate,
+            int numberOfVendors) {
         this.id = id;
         this.profilePic = profilePic;
         this.name = name;

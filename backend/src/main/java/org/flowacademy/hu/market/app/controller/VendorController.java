@@ -20,33 +20,35 @@ import java.util.List;
 @CrossOrigin
 public class VendorController {
 
-
     private final VendorService vendorService;
     private final MarketService marketService;
 
     @GetMapping
-    public ResponseEntity<List<DetailVendorDTO>> allVendors(){
+    public ResponseEntity<List<DetailVendorDTO>> allVendors() {
         return ResponseEntity.ok(vendorService.allVendors());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<DetailVendorDTO> findVendorById(@PathVariable @RequestBody Long id) throws NoSuchVendorException {
+    public ResponseEntity<DetailVendorDTO> findVendorById(@PathVariable @RequestBody Long id)
+            throws NoSuchVendorException {
         return ResponseEntity.ok(vendorService.findVendorById(id));
     }
 
-
     @PutMapping("/{id}")
-    public ResponseEntity<DetailVendorDTO> updateVendor(@PathVariable @RequestBody Long id, @Validated @RequestBody VendorDTO vendorDTO) throws Exception {
+    public ResponseEntity<DetailVendorDTO> updateVendor(@PathVariable @RequestBody Long id,
+            @Validated @RequestBody VendorDTO vendorDTO) throws Exception {
         return ResponseEntity.ok(vendorService.updateVendor(id, vendorDTO));
     }
 
     @GetMapping("/{id}/markets")
-    public ResponseEntity<List<SimpleMarketDTO>> getAllMarketsByVendorId(@PathVariable @RequestBody Long id) throws NoSuchVendorException{
+    public ResponseEntity<List<SimpleMarketDTO>> getAllMarketsByVendorId(@PathVariable @RequestBody Long id)
+            throws NoSuchVendorException {
         return ResponseEntity.ok(marketService.findAllMarketsByVendorId(id));
     }
 
     @GetMapping("/{id}/upcoming")
-    public ResponseEntity<List<SimpleMarketDTO>> getAllUpcomingMarketsByVendorId(@PathVariable @RequestBody Long id) throws NoSuchVendorException {
+    public ResponseEntity<List<SimpleMarketDTO>> getAllUpcomingMarketsByVendorId(@PathVariable @RequestBody Long id)
+            throws NoSuchVendorException {
         return ResponseEntity.ok(marketService.findAllUpcomingMarketsByVendorId(id));
     }
 

@@ -49,7 +49,7 @@ class VendorServiceTest {
         assertEquals("Rövid bemutatkozás", simpleDTO.getIntro());
         assertEquals("Obi-wan Kenobi", simpleDTO.getName());
         assertEquals("profilpic", simpleDTO.getProfilePic());
-        assertEquals(123456l , simpleDTO.getId());
+        assertEquals(123456l, simpleDTO.getId());
         assertEquals(3, simpleDTO.getProducts().size());
         assertEquals(products, simpleDTO.getProducts());
         assertEquals("Hosszú bemutatkozás", simpleDTO.getIntroductionLong());

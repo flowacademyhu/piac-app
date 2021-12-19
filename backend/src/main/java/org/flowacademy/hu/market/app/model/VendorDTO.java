@@ -17,24 +17,23 @@ public class VendorDTO {
     private String profilePic;
 
     @NotNull
-    @Size(min = 1, max=100)
+    @Size(min = 1, max = 100)
     private String intro;
     @NotNull
     private boolean cardPayment;
     @NotNull
     private Set<Long> marketIds;
 
+    private Set<String> products = new HashSet<>();
+    private String email;
+    private String facebook;
+    private String instagram;
+    private String phone;
+    private String webSite;
 
-   private Set<String> products = new HashSet<>();
-   private String email;
-   private String facebook;
-   private String instagram;
-   private String phone;
-   private String webSite;
-
-   @NotNull
-   @Size(min = 1, max = 2500)
-   private String introductionLong;
+    @NotNull
+    @Size(min = 1, max = 2500)
+    private String introductionLong;
 
     public Set<String> getProducts() {
         return products;
@@ -84,7 +83,7 @@ public class VendorDTO {
         return this;
     }
 
-   public Set<Long> getMarketIds() {
+    public Set<Long> getMarketIds() {
         return marketIds;
     }
 

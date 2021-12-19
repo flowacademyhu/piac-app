@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Value;
 
-
 import javax.annotation.PostConstruct;
 import java.text.ParseException;
 
@@ -39,8 +38,8 @@ public class MarketService {
         return marketDTO;
     }
 
-    public List<SimpleMarketDTO> allMarkets(){
-        return  marketRepository.findAll()
+    public List<SimpleMarketDTO> allMarkets() {
+        return marketRepository.findAll()
                 .stream()
                 .map(this::marketToSimpleDTO)
                 .sorted(Comparator.comparing(SimpleMarketDTO::getOpeningDate))
@@ -96,7 +95,8 @@ public class MarketService {
 
     public MarketDTO marketToDTO(Market market) {
         Set<Vendor> vendorCollection = market.getVendors();
-        if(vendorCollection == null) vendorCollection = new HashSet<>();
+        if (vendorCollection == null)
+            vendorCollection = new HashSet<>();
         return new MarketDTO()
                 .setProfilePic(market.getProfilePic())
                 .setId(market.getId())
@@ -108,20 +108,19 @@ public class MarketService {
                 .setNumberOfVendors(vendorCollection.size());
     }
 
-
     public MarketDTO findMarketByName(String name) throws NoSuchVendorException {
-       Market market = marketRepository.findByName(name).orElseThrow(NoSuchVendorException::new);
+        Market market = marketRepository.findByName(name).orElseThrow(NoSuchVendorException::new);
         return marketToDTO(market);
     }
 
     @PostConstruct
     @Transactional
     public void demoData() {
-        if(!this.populateWithDemoData) {
+        if (!this.populateWithDemoData) {
             return;
         }
         try {
-            if(allMarkets().size() == 0) {
+            if (allMarkets().size() == 0) {
                 MarketDTO marketDTO1 = new MarketDTO();
                 marketDTO1.setProfilePic(ProfilePics.PROFILE_PIC_POT);
                 marketDTO1.setName("Bödön Piac");
@@ -171,13 +170,13 @@ public class MarketService {
                 addMarket(marketDTO6);
             }
 
-            if(vendorService.allVendors().size() == 0) {
+            if (vendorService.allVendors().size() == 0) {
                 VendorDTO vendorDTO1 = new VendorDTO();
                 vendorDTO1.setName("Chilikirály");
                 vendorDTO1.setIntro("Chilizz belünk, Magyarország legjobb chilijeivel...");
                 Set<Long> marketIdsSet1 = Set.of(1L, 2L);
                 vendorDTO1.setMarketIds(marketIdsSet1);
-                Set<String> newSet = Set.of("chilik","paprikakrémek","csípős szószok");
+                Set<String> newSet = Set.of("chilik", "paprikakrémek", "csípős szószok");
                 vendorDTO1.setProducts(newSet);
                 vendorDTO1.setEmail("chiliking@flow.hu");
                 vendorDTO1.setFacebook("Chiliking-Facebook");
@@ -190,7 +189,7 @@ public class MarketService {
                 vendorDTO2.setIntro("Praktikus termékek, környezettudatos ajándékcsomagok....");
                 Set<Long> marketIdsSet2 = Set.of(3L, 4L);
                 vendorDTO1.setMarketIds(marketIdsSet2);
-                Set<String> newSet2 = Set.of("lebomló zacskók","papírdobozok","kézműves szappanok");
+                Set<String> newSet2 = Set.of("lebomló zacskók", "papírdobozok", "kézműves szappanok");
                 vendorDTO2.setProducts(newSet2);
                 vendorDTO2.setEmail("csakugy@flow.hu");
                 vendorDTO2.setFacebook("JustInCase-Facebook");
@@ -200,8 +199,8 @@ public class MarketService {
                 vendorDTO2.setInstagram("justInCase.insta");
                 vendorService.addVendor(vendorDTO2);
             }
-        } catch(Exception e) {
-          e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }

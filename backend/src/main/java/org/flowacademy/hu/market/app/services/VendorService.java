@@ -69,8 +69,7 @@ public class VendorService {
                 .setProfilePic(vendor.getProfilePic())
                 .setId(vendor.getId())
                 .setProducts(vendor.getProducts())
-                .setIntroductionLong(vendor.getIntroductionLong())
-                ;
+                .setIntroductionLong(vendor.getIntroductionLong());
     }
 
     public List<DetailVendorDTO> allVendors() {
@@ -113,5 +112,3 @@ public class VendorService {
         vendorRepository.deleteById(id);
     }
 }
-
-

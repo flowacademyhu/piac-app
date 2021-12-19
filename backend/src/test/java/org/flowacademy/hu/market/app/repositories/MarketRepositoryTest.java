@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import static org.assertj.core.api.Assertions.*;
 
 @DataJpaTest
-@AutoConfigureTestDatabase(replace=Replace.NONE)
+@AutoConfigureTestDatabase(replace = Replace.NONE)
 @Transactional
 class MarketRepositoryTest {
 
@@ -49,14 +49,14 @@ class MarketRepositoryTest {
   }
 
   @Test
-  void canSaveAndGetMarket(){
+  void canSaveAndGetMarket() {
     Market newMarket = new Market();
     newMarket.setName("Bödön Piac");
     newMarket.setOpeningDate(1630742400L);
     newMarket.setClosingDate(1630767600L);
     newMarket.setProfilePic("https://example.com/images/bodon.png");
     newMarket.setPlace("Valamilyen pláza");
-    
+
     var savedMarket = marketRepository.save(newMarket);
 
     var marketList = marketRepository.findAll();
@@ -74,10 +74,12 @@ class MarketRepositoryTest {
   void getUpcomingMarkets() {
     // yesterday
     marketRepository.save(buildMarketWithTime("Yesterday", -24 * 60 * 60));
-    marketRepository.save(buildMarketWithTime("Before midnight in Budapest timezone", getMidnightOffset() - 60)); // 1 minute before midnight
+    marketRepository
+        .save(buildMarketWithTime("1 minute before midnight in Budapest timezone", getMidnightOffset() - 60));
     // today
-    marketRepository.save(buildMarketWithTime("After midnight in Budapest timezone", getMidnightOffset() + 60)); // 1 minute after midnight
-    marketRepository.save(buildMarketWithTime("Today elapsed", -60)); // 1 minutes elapsed
+    marketRepository
+        .save(buildMarketWithTime("1 minute after midnight in Budapest timezone", getMidnightOffset() + 60));
+    marketRepository.save(buildMarketWithTime("Today, 1 minute before now", -60));
     marketRepository.save(buildMarketWithTime("Tomorrow", 24 * 60 * 60));
 
     var marketList = marketRepository.findAllUpcomingMarkets();

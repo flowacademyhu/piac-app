@@ -21,14 +21,12 @@ public class DetailVendorDTO {
     private String webSite;
     private String introductionLong;
 
-
     public DetailVendorDTO(String name, String intro, String profilePic, boolean cardPayment) {
         this.name = name;
         this.intro = intro;
         this.profilePic = profilePic;
         this.cardPayment = cardPayment;
     }
-
 
     public DetailVendorDTO() {
     }

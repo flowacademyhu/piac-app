@@ -22,8 +22,8 @@ public class Market {
     @ManyToMany(mappedBy = "markets", fetch = FetchType.EAGER)
     private Set<Vendor> vendors = new HashSet<>();
 
-
-    public Market(Long id, String profilePic, String name, Long openingDate, Long closingDate, String place, Set<Vendor> vendors) {
+    public Market(Long id, String profilePic, String name, Long openingDate, Long closingDate, String place,
+            Set<Vendor> vendors) {
         this.id = id;
         this.profilePic = profilePic;
         this.name = name;

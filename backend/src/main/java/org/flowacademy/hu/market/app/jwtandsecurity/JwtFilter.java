@@ -20,9 +20,10 @@ public class JwtFilter extends OncePerRequestFilter {
     private JwtUserDetailsService userDetailsService;
     @Autowired
     private TokenManager tokenManager;
+
     @Override
     protected void doFilterInternal(HttpServletRequest request,
-                                    HttpServletResponse response, FilterChain filterChain)
+            HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
 
         String tokenHeader = request.getHeader("Authorization");
@@ -36,19 +37,17 @@ public class JwtFilter extends OncePerRequestFilter {
                 System.out.println("Unable to get JWT Token");
             } catch (ExpiredJwtException e) {
                 System.out.println("JWT Token has expired");
-            } catch(Exception e){
+            } catch (Exception e) {
                 System.out.println("Exception: " + e);
             }
         }
         if (null != username && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = userDetailsService.loadUserByUsername(username);
             if (tokenManager.validateJwtToken(token, userDetails)) {
-                UsernamePasswordAuthenticationToken
-                        authenticationToken = new UsernamePasswordAuthenticationToken(
+                UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
                         userDetails, null,
                         userDetails.getAuthorities());
-                authenticationToken.setDetails(new
-                        WebAuthenticationDetailsSource().buildDetails(request));
+                authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(authenticationToken);
             }
         }

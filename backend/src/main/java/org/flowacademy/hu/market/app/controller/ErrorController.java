@@ -16,63 +16,63 @@ import java.sql.SQLIntegrityConstraintViolationException;
 @RestControllerAdvice
 public class ErrorController {
 
-    @ExceptionHandler({NoSuchMarketException.class})
+    @ExceptionHandler({ NoSuchMarketException.class })
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ErrorModel handleNoSuchMarket(){
-        return  new ErrorModel(MessagesConstants.NOT_FOUND_MARKET_MESSAGE);
+    public ErrorModel handleNoSuchMarket() {
+        return new ErrorModel(MessagesConstants.NOT_FOUND_MARKET_MESSAGE);
     }
 
-    @ExceptionHandler({NoSuchVendorException.class})
+    @ExceptionHandler({ NoSuchVendorException.class })
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ErrorModel handleNoSuchVendor(){
+    public ErrorModel handleNoSuchVendor() {
         return new ErrorModel(MessagesConstants.NOT_FOUND_VENDOR_MESSAGE);
     }
 
-    @ExceptionHandler({EmptyResultDataAccessException.class})
+    @ExceptionHandler({ EmptyResultDataAccessException.class })
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ErrorModel handleEmptyResult(){
+    public ErrorModel handleEmptyResult() {
         return new ErrorModel(MessagesConstants.NOT_ABLE_TO_DELETE_MESSAGE);
     }
 
-    @ExceptionHandler({SQLIntegrityConstraintViolationException.class})
+    @ExceptionHandler({ SQLIntegrityConstraintViolationException.class })
     @ResponseStatus(HttpStatus.CONFLICT)
-    public ErrorModel handleIntegrityConstraint(){
-        return  new ErrorModel(MessagesConstants.VENDOR_NAME_EXISTS_MESSAGE);
+    public ErrorModel handleIntegrityConstraint() {
+        return new ErrorModel(MessagesConstants.VENDOR_NAME_EXISTS_MESSAGE);
     }
 
-    @ExceptionHandler({WrongPasswordException.class})
+    @ExceptionHandler({ WrongPasswordException.class })
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ErrorModel handleWrongPassword(){
+    public ErrorModel handleWrongPassword() {
         return new ErrorModel(MessagesConstants.WRONG_PASSWORD);
     }
 
-    @ExceptionHandler({ExpiredJwtException.class})
+    @ExceptionHandler({ ExpiredJwtException.class })
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ErrorModel handleExpiredJwt(){
+    public ErrorModel handleExpiredJwt() {
         return new ErrorModel(MessagesConstants.JWT_EXPIRED);
     }
 
-    @ExceptionHandler({DisabledException.class})
+    @ExceptionHandler({ DisabledException.class })
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ErrorModel handleUserDisabled(){
+    public ErrorModel handleUserDisabled() {
         return new ErrorModel(MessagesConstants.USER_DISABLED);
     }
 
-    @ExceptionHandler({BadCredentialsException.class})
+    @ExceptionHandler({ BadCredentialsException.class })
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ErrorModel handleBadCredentials(){
+    public ErrorModel handleBadCredentials() {
         return new ErrorModel(MessagesConstants.INVALID_CREDENTIALS);
     }
 
-    @ExceptionHandler({NoSuchAdminException.class})
+    @ExceptionHandler({ NoSuchAdminException.class })
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ErrorModel handleNoSuchAdmin(){
+    public ErrorModel handleNoSuchAdmin() {
         return new ErrorModel(MessagesConstants.NO_SUCH_ADMIN);
     }
 
-    @ExceptionHandler({EmailSendingFailException.class})
+    @ExceptionHandler({ EmailSendingFailException.class })
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public ErrorModel handleEmailSendingFail(){
+    public ErrorModel handleEmailSendingFail() {
         return new ErrorModel(MessagesConstants.EMAIL_SENDING_FAIL);
     }
 }

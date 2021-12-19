@@ -21,7 +21,7 @@ import java.io.IOException;
 public class EmailSendingService {
 
     @Value("${my.sendgrid.apikey}")
-    private  String sendGridApiKey;
+    private String sendGridApiKey;
     @Value("${site.url}")
     private String siteUrl;
     @Value("${sendgrid.from-email}")

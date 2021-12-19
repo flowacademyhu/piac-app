@@ -22,17 +22,18 @@ public class AdminVendorController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<DetailVendorDTO> updateVendor(@PathVariable @RequestBody Long id, @RequestBody VendorDTO vendorDTO) throws Exception {
+    public ResponseEntity<DetailVendorDTO> updateVendor(@PathVariable @RequestBody Long id,
+            @RequestBody VendorDTO vendorDTO) throws Exception {
         return ResponseEntity.ok(vendorService.updateVendor(id, vendorDTO));
     }
 
     @DeleteMapping
-    public void deleteAllVendors(){
+    public void deleteAllVendors() {
         vendorService.deleteAllVendors();
     }
 
     @DeleteMapping("/{id}")
-    public void deleteVendorById(@PathVariable @RequestBody Long id){
+    public void deleteVendorById(@PathVariable @RequestBody Long id) {
         vendorService.deleteVendorById(id);
     }
 }

@@ -22,21 +22,21 @@ public class AdminMarketController {
     public ResponseEntity<MarketDTO> addMarket(@RequestBody MarketDTO marketDTO) throws ParseException {
         return ResponseEntity.ok(marketService.addMarket(marketDTO));
     }
+
     @DeleteMapping
-    public void deleteAllMarkets(){
+    public void deleteAllMarkets() {
         marketService.deleteAllMarkets();
     }
 
     @DeleteMapping("/{id}")
-    public void deleteMarketById(@PathVariable Long id){
+    public void deleteMarketById(@PathVariable Long id) {
         marketService.deleteMarketById(id);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<MarketDTO> updateMarket(@PathVariable @RequestBody Long id, @RequestBody MarketDTO marketDTO) throws NoSuchMarketException {
+    public ResponseEntity<MarketDTO> updateMarket(@PathVariable @RequestBody Long id, @RequestBody MarketDTO marketDTO)
+            throws NoSuchMarketException {
         return ResponseEntity.ok(marketService.updateMarketById(id, marketDTO));
     }
-
-
 
 }
