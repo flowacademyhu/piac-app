@@ -6,12 +6,14 @@ import org.flowacademy.hu.market.app.model.VendorDTO;
 import org.flowacademy.hu.market.app.services.VendorService;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/v1/api/admin/vendor")
 @AllArgsConstructor
 @CrossOrigin
+@PreAuthorize("hasRole('ROLE_ADMIN')")
 public class AdminVendorController {
 
     private final VendorService vendorService;
