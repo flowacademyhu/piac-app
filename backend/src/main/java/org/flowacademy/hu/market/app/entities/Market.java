@@ -40,48 +40,54 @@ public class Market {
         return id;
     }
 
-    public void setId(Long id) {
+    public Market setId(Long id) {
         this.id = id;
+        return this;
     }
 
     public String getProfilePic() {
         return profilePic;
     }
 
-    public void setProfilePic(String profilePic) {
+    public Market setProfilePic(String profilePic) {
         this.profilePic = profilePic;
+        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public Market setName(String name) {
         this.name = name;
+        return this;
     }
 
     public Long getOpeningDate() {
         return openingDate;
     }
 
-    public void setOpeningDate(Long date) {
+    public Market setOpeningDate(Long date) {
         this.openingDate = date;
+        return this;
     }
 
     public Long getClosingDate() {
         return closingDate;
     }
 
-    public void setClosingDate(Long closingDate) {
+    public Market setClosingDate(Long closingDate) {
         this.closingDate = closingDate;
+        return this;
     }
 
     public String getPlace() {
         return place;
     }
 
-    public void setPlace(String place) {
+    public Market setPlace(String place) {
         this.place = place;
+        return this;
     }
 
     public Set<Vendor> getVendors() {
