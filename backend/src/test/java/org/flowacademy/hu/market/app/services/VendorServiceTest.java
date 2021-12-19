@@ -26,14 +26,14 @@ class VendorServiceTest {
     VendorService vendorService;
 
     @Test
-    public void should_delete_vendor_by_id_with_deleteById_method() {
+    public void shouldDeleteVendorByIdWithDeleteByIdMethod() {
         vendorService.deleteVendorById(5261l);
 
         Mockito.verify(vendorRepository).deleteById(5261l);
     }
 
     @Test
-    public void should_add_a_vendor_and_check_their_informations_are_correct() {
+    public void shouldAddAVendorAndCheckTheirInformationsAreCorrect() {
         Vendor vendor = new Vendor()
                 .setIntro("Rövid bemutatkozás")
                 .setName("Obi-wan Kenobi")
@@ -56,7 +56,7 @@ class VendorServiceTest {
     }
 
     @Test
-    public void should_add_a_vendor_to_a_list_and_test_the_list_for_cases() {
+    public void shouldAddAVendorToAListAndTestTheListForCases() {
         List<Vendor> vendorList = new ArrayList<>();
         vendorList.add(new Vendor().setName("Sajt"));
         vendorList.add(new Vendor().setName("Alma"));

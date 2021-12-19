@@ -1,7 +1,6 @@
 package org.flowacademy.hu.market.app.services;
 
 import org.flowacademy.hu.market.app.entities.Market;
-import org.flowacademy.hu.market.app.model.MarketDTO;
 import org.flowacademy.hu.market.app.model.SimpleMarketDTO;
 import org.flowacademy.hu.market.app.repositories.MarketRepository;
 import org.junit.jupiter.api.Test;
@@ -28,14 +27,14 @@ class MarketServiceTest {
     MarketService marketService;
 
     @Test
-    public void deleteMarketById() {
+    public void shouldDeleteMarketByIdWithDeleteByIdMethod() {
         marketService.deleteMarketById(1234l);
 
         Mockito.verify(marketRepository).deleteById(1234l);
     }
 
     @Test
-    public void marketToDTO() {
+    public void shouldAddAMarketAndCheckTheirInformationsAreCorrect() {
         Market market = new Market()
                 .setId(12345l)
                 .setProfilePic("profilePic")
