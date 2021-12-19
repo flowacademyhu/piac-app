@@ -35,7 +35,6 @@ public class VendorService {
                 .cardPayment(vendorDTO.getCardPayment())
                 .markets(markets)
                 .products(allProducts)
-                .profilePic(vendorDTO.getProfilePic())
                 .email(vendorDTO.getEmail())
                 .facebook(vendorDTO.getFacebook())
                 .instagram(vendorDTO.getInstagram())
