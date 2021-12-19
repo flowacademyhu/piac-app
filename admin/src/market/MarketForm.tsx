@@ -5,9 +5,9 @@ import { Market, MarketInput, MarketWithId } from "./Market";
 import { useForm } from "react-hook-form";
 import Textarea from "components/form/Textarea";
 import Input from "components/form/Input";
-// import { useQuery } from "react-query";
-// import { fetchVendors } from "components/Service";
-
+import { useQuery } from "react-query";
+import { fetchVendors } from "components/Service";
+import Checkbox from "components/form/Checkbox";
 interface MarketFormProps {
   title: string;
   submitLabel: string;
@@ -29,11 +29,11 @@ const MarketForm = ({
     defaultValues,
   });
 
-  // const vendorsOfMarket = defaultValues?.vendors ?? [];
+  const vendorsOfMarket = defaultValues?.vendors ?? [];
 
-  // const { data: allVendors } = useQuery("vendors", () => fetchVendors(), {
-  //   cacheTime: 0,
-  // });
+  const { data: allVendors } = useQuery("vendors", () => fetchVendors(), {
+    cacheTime: 0,
+  });
 
   return (
     <Form className="container mb-3" onSubmit={handleSubmit(onSubmit)}>
@@ -60,7 +60,16 @@ const MarketForm = ({
       />
       <Time control={control} label="Piac kezdete" name="openingDate" />
       <Time control={control} label="Piac zárása" name="closingDate" />
-
+      {allVendors &&
+        allVendors.map((vendor: any) => (
+          <Checkbox
+            key={vendor.id}
+            label={vendor.name}
+            control={control}
+            name={vendor.name}
+            defaultChecked={vendorsOfMarket.some((v) => v.id === vendor.id)}
+          />
+        ))}
       <MarketDetailsButtons submitButtonLabel={submitLabel} />
       {hasError && <p className="text-danger mt-3">{errorMessage}</p>}
     </Form>
