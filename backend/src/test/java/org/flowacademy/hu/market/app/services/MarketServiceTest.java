@@ -1,6 +1,7 @@
 package org.flowacademy.hu.market.app.services;
 
 import org.flowacademy.hu.market.app.entities.Market;
+import org.flowacademy.hu.market.app.model.MarketDTO;
 import org.flowacademy.hu.market.app.model.SimpleMarketDTO;
 import org.flowacademy.hu.market.app.repositories.MarketRepository;
 import org.junit.jupiter.api.Test;
@@ -9,6 +10,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,11 +55,11 @@ class MarketServiceTest {
     }
 
     @Test
-    public void should_add_a_market_to_a_list_and_test_the_list_for_cases() {
+    public void shouldAddAMarketToAListAndTestTheListForCases() {
         List<Market> marketList = new ArrayList<>();
 
-        marketList.add(new Market().setName("Árus"));
-        marketList.add(new Market().setName("Másik árus"));
+        marketList.add(new Market().setName("Árus").setOpeningDate(123l));
+        marketList.add(new Market().setName("Másik árus").setOpeningDate(456l));
         when(marketRepository.findAll()).thenReturn(marketList);
 
         List<SimpleMarketDTO> sortedMarketList = marketService.allMarkets();
