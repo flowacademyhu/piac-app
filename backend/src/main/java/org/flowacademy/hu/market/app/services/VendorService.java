@@ -3,7 +3,6 @@ package org.flowacademy.hu.market.app.services;
 import lombok.AllArgsConstructor;
 import org.flowacademy.hu.market.app.entities.Market;
 import org.flowacademy.hu.market.app.entities.Vendor;
-import org.flowacademy.hu.market.app.exceptions.NoSuchMarketException;
 import org.flowacademy.hu.market.app.exceptions.NoSuchVendorException;
 import org.flowacademy.hu.market.app.model.DetailVendorDTO;
 import org.flowacademy.hu.market.app.model.SimpleVendorDTO;

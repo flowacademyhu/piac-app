@@ -1,7 +1,6 @@
 package org.flowacademy.hu.market.app.repositories;
 
 import java.util.TimeZone;
-import org.flowacademy.hu.market.app.repositories.MarketRepository;
 import org.flowacademy.hu.market.app.entities.Market;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

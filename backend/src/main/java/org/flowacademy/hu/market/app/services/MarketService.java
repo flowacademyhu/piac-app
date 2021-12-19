@@ -2,7 +2,6 @@ package org.flowacademy.hu.market.app.services;
 
 import lombok.RequiredArgsConstructor;
 import org.flowacademy.hu.market.app.entities.Vendor;
-import org.flowacademy.hu.market.app.jwtandsecurity.JwtUserDetailsService;
 import org.flowacademy.hu.market.app.model.MarketDTO;
 import org.flowacademy.hu.market.app.entities.Market;
 import org.flowacademy.hu.market.app.exceptions.NoSuchMarketException;
