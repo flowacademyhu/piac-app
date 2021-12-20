@@ -22,6 +22,19 @@ const NewVendor = () => {
       hasError={addVendorMutation.isError}
       errorMessage="Nem sikerült az árust hozzáadni!"
       onSubmit={submitForm}
+      defaultValues={{
+        name: "",
+        profilePic: "",
+        intro: "",
+        introductionLong: "",
+        cardPayment: false,
+        products: [],
+        phone: "",
+        email: "",
+        facebook: "",
+        instagram: "",
+        webSite: "",
+      }}
     />
   );
 };
