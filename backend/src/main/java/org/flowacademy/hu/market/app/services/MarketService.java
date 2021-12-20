@@ -66,7 +66,8 @@ public class MarketService {
     }
 
     public MarketDTO updateMarketById(Long id, MarketDTO marketDTO) throws NoSuchMarketException {
-        Market market = marketRepository.findById(id).orElseThrow(NoSuchMarketException::new).builder()
+        marketRepository.findById(id).orElseThrow(NoSuchMarketException::new);
+        Market market = Market.builder()
                 .profilePic(marketDTO.getProfilePic())
                 .openingDate(marketDTO.getOpeningDate())
                 .closingDate(marketDTO.getClosingDate())
