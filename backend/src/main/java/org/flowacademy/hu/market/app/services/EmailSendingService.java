@@ -34,11 +34,22 @@ public class EmailSendingService {
         sg = new SendGrid(sendGridApiKey);
     }
 
-    public void sendMail(String emailAddress, String generatedString) throws EmailSendingFailException {
+    public void sendMail(String to, String generatedString) throws EmailSendingFailException {
+        logger.info("Sending email to " + to);
+
+        Mail mail = generateEmail(to, generatedString);
+        sendMailWithSendGrid(mail);
+
+        logger.info("Email sent successfully to " + to);
+    }
+
+    private Mail generateEmail(String emailAddress, String generatedString) {
         Email to = new Email(emailAddress);
         Content content = new Content("text/plain", siteUrl + "/token/" + generatedString);
-        Mail mail = new Mail(from, SUBJECT, to, content);
-        logger.info("Sending email to " + emailAddress);
+        return new Mail(from, SUBJECT, to, content);
+    }
+
+    private void sendMailWithSendGrid(Mail mail) throws EmailSendingFailException {
         try {
             Request request = new Request();
             request.setMethod(Method.POST);
@@ -48,8 +59,6 @@ public class EmailSendingService {
             if (!isResponseSucceeded(response)) {
                 logger.error("Failed to send email, received the following status code: " + response.getStatusCode());
                 throw new EmailSendingFailException();
-            } else {
-                logger.info("Email sent successfully to " + emailAddress);
             }
         } catch (IOException ex) {
             logger.error("Failed to send email: ", ex);
