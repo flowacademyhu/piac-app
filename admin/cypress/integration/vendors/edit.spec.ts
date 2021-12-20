@@ -29,12 +29,11 @@ describe("Edit vendor", () => {
       );
 
       expect(req.body.cardPayment).to.equal(false);
-      // TODO uncomment and implement
-      // expect(req.body.products).to.deep.equal([
-      //   "termék 1",
-      //   "termék 2",
-      //   "termék 3",
-      // ]);
+      expect(req.body.products).to.deep.equal([
+        "paprikakrémek",
+        "minden más",
+        "termék 1",
+      ]);
       expect(req.body.phone).to.equal("+369876543");
       expect(req.body.email).to.equal("modositottEmail@gmail.com");
       expect(req.body.facebook).to.equal("modositottFacebook");
@@ -77,13 +76,21 @@ describe("Edit vendor", () => {
     cy.get('[data-test="cardPayment-checkbox"]')
       .should("have.checked")
       .uncheck();
-    cy.get('input[placeholder="Írd be a termék nevét és nyomj enter-t"]');
-    // TODO uncomment and implement
-    // .should("have.value", ["chilik", "paprikakrémek", "minden más"])
-    // .clear()
-    // .type("termék 1{enter}")
-    // .type("termék 2{enter}")
-    // .type("termék 3{enter}");
+    cy.get('input[placeholder="Írd be a termék nevét és nyomj enter-t"]')
+      .parent()
+      .contains("chilik")
+      .parent()
+      .find(".react-tag-input__tag__remove")
+      .click();
+    cy.get('input[placeholder="Írd be a termék nevét és nyomj enter-t"]')
+      .parent()
+      .contains("paprikakrémek");
+    cy.get('input[placeholder="Írd be a termék nevét és nyomj enter-t"]')
+      .parent()
+      .contains("minden más");
+    cy.get('input[placeholder="Írd be a termék nevét és nyomj enter-t"]').type(
+      "termék 1{enter}"
+    );
     cy.get('input[placeholder="Árus telefonszáma..."]')
       .should("have.value", "+36302345678")
       .clear()

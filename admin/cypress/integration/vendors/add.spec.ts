@@ -64,12 +64,11 @@ describe("Add new vendor", () => {
       expect(req.body.introductionLong).to.equal(
         "Sokkal hosszabb szöveggel is bemutatkozik egy másik árus.\nA szövegben lehet újsor is."
       );
-      // TODO uncomment and implement
-      // expect(req.body.products).to.deep.equal([
-      //   "Egyik termék",
-      //   "Másik termék",
-      //   "Harmadik",
-      // ]);
+      expect(req.body.products).to.deep.equal([
+        "Egyik termék",
+        "Másik termék",
+        "Harmadik",
+      ]);
       expect(req.body.cardPayment).to.equal(true);
       expect(req.body.email).to.equal("masik.arus@gmail.com");
       expect(req.body.facebook).to.equal("masikarus.fb");
