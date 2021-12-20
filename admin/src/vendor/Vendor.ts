@@ -1,11 +1,10 @@
 export interface VendorInput {
-  id: string;
   name: string;
   profilePic: string;
   intro: string;
   introductionLong: string;
   cardPayment: boolean;
-  products: Array<string>;
+  products: string[];
   phone: string;
   email: string;
   facebook: string;
