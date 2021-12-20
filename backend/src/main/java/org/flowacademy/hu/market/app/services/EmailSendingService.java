@@ -8,30 +8,24 @@ import com.sendgrid.helpers.mail.Mail;
 import com.sendgrid.helpers.mail.objects.Content;
 import com.sendgrid.helpers.mail.objects.Email;
 
-import lombok.AllArgsConstructor;
-
 import org.flowacademy.hu.market.app.exceptions.EmailSendingFailException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 
-@AllArgsConstructor
 @Service
 public class EmailSendingService {
 
-    @Value("${my.sendgrid.apikey}")
-    private String sendGridApiKey;
     @Value("${site.url}")
     private String siteUrl;
-    @Value("${sendgrid.from-email}")
-    private String fromEmail;
 
     private static Email from;
     private static final String SUBJECT = "Sending with SendGrid is Fun";
     private static SendGrid sg;
 
-    public EmailSendingService() {
+    public EmailSendingService(@Value("${my.sendgrid.apikey}") String sendGridApiKey,
+            @Value("${sendgrid.from-email}") String fromEmail) {
         from = new Email(fromEmail);
         sg = new SendGrid(sendGridApiKey);
     }
