@@ -17,6 +17,7 @@ import org.flowacademy.hu.market.app.entities.Admin;
 import org.flowacademy.hu.market.app.exceptions.EmailSendingFailException;
 import org.flowacademy.hu.market.app.exceptions.NoSuchAdminException;
 import org.flowacademy.hu.market.app.jwtandsecurity.JwtUserDetailsService;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
@@ -28,7 +29,6 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 @ExtendWith(MockitoExtension.class)
 @SpringBootTest
@@ -49,11 +49,12 @@ class AuthenticationServiceTest {
     @Captor
     ArgumentCaptor<Admin> adminCaptor;
 
-    @Test
-    public void shouldSaveTokenAndSendMail() throws EmailSendingFailException, NoSuchAdminException {
+    @BeforeEach
+    public void setUp() throws NoSuchAdminException {
         List<Admin> admins = new ArrayList<>();
         admins.add(new Admin().setEmail("admin@example.com"));
         when(userDetailsService.findAllAdmins()).thenReturn(admins);
+
         UserDetails userDetails = User.builder()
                 .username("admin@example.com")
                 .password("password")
@@ -61,7 +62,10 @@ class AuthenticationServiceTest {
                 .build();
         when(userDetailsService.loadUserByUsername("admin@example.com")).thenReturn(userDetails);
         when(userDetailsService.findAdmin("admin@example.com")).thenReturn(new Admin().setEmail("admin@example.com"));
+    }
 
+    @Test
+    public void shouldSaveTokenAndSendMail() throws EmailSendingFailException, NoSuchAdminException {
         String result = authenticationService.createToken("admin@example.com");
 
         assertEquals("Your code has been sent to your email: admin@example.com", result);
@@ -82,16 +86,6 @@ class AuthenticationServiceTest {
 
     @Test
     public void shouldThrowMailFailureException() throws EmailSendingFailException, NoSuchAdminException {
-        List<Admin> admins = new ArrayList<>();
-        admins.add(new Admin().setEmail("admin@example.com"));
-        when(userDetailsService.findAllAdmins()).thenReturn(admins);
-        UserDetails userDetails = User.builder()
-                .username("admin@example.com")
-                .password("password")
-                .authorities(Collections.singletonList(new SimpleGrantedAuthority("ROLE_ADMIN")))
-                .build();
-        when(userDetailsService.loadUserByUsername("admin@example.com")).thenReturn(userDetails);
-        when(userDetailsService.findAdmin("admin@example.com")).thenReturn(new Admin().setEmail("admin@example.com"));
         doThrow(new EmailSendingFailException()).when(emailSendingService).sendMail(any(), any());
 
         assertThrows(EmailSendingFailException.class, () -> {
@@ -100,12 +94,7 @@ class AuthenticationServiceTest {
     }
 
     @Test
-    public void shouldThrowNoSuchAdminException()
-            throws EmailSendingFailException, NoSuchAdminException {
-        List<Admin> admins = new ArrayList<>();
-        admins.add(new Admin().setEmail("admin@example.com"));
-        when(userDetailsService.findAllAdmins()).thenReturn(admins);
-
+    public void shouldThrowNoSuchAdminException() throws NoSuchAdminException {
         doThrow(new NoSuchAdminException()).when(userDetailsService).findAdmin(
                 "non-existing-admin@example.com");
 
