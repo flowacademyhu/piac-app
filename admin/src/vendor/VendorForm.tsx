@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import Textarea from "components/form/Textarea";
 import Input from "components/form/Input";
 import Checkbox from "components/form/Checkbox";
+import TagInput from "components/form/TagInput";
 
 interface VendorFormProps {
   title: string;
@@ -62,11 +63,11 @@ const VendorForm = ({
         control={control}
         name="cardPayment"
       />
-      <Input
+      <TagInput
         label="Árus termékei"
         placeholder="Írd be a termék nevét és nyomj enter-t"
-        data-test="products-input"
-        {...register("products")}
+        control={control}
+        name="products"
       />
       <Input
         label="Árus telefonszáma"
