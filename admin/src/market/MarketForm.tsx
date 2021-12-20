@@ -1,5 +1,4 @@
 import { Form } from "react-bootstrap";
-import MarketDetailsButtons from "./MarketDetailsButtons";
 import Time from "components/form/Time";
 import { Market, MarketInput, MarketWithId } from "./Market";
 import { useForm } from "react-hook-form";
@@ -8,6 +7,7 @@ import Input from "components/form/Input";
 import { useQuery } from "react-query";
 import { fetchVendors } from "components/Service";
 import Checkbox from "components/form/Checkbox";
+import DetailsButtons from "components/DetailsButtons";
 interface MarketFormProps {
   title: string;
   submitLabel: string;
@@ -70,7 +70,7 @@ const MarketForm = ({
             defaultChecked={vendorsOfMarket.some((v) => v.id === vendor.id)}
           />
         ))}
-      <MarketDetailsButtons submitButtonLabel={submitLabel} />
+      <DetailsButtons submitButtonLabel={submitLabel} to="/piac" />
       {hasError && <p className="text-danger mt-3">{errorMessage}</p>}
     </Form>
   );

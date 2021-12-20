@@ -1,5 +1,5 @@
 import { Form } from "react-bootstrap";
-import VendorDetailsButtons from "./VendorDetailsButtons";
+import DetailsButtons from "components/DetailsButtons";
 import { VendorInput, VendorWithId } from "./Vendor";
 import { useForm } from "react-hook-form";
 import Textarea from "components/form/Textarea";
@@ -97,7 +97,7 @@ const VendorForm = ({
         data-test="webSite-input"
         {...register("webSite")}
       />
-      <VendorDetailsButtons submitButtonLabel={submitLabel} />
+      <DetailsButtons submitButtonLabel={submitLabel} to="/arus" />
       {hasError && <p className="text-danger mt-3">{errorMessage}</p>}
     </Form>
   );

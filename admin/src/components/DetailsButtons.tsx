@@ -1,20 +1,19 @@
 import { Button, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-interface MarketDetailsButtonsProps {
+interface DetailsButtonsProps {
   submitButtonLabel: string;
+  to: string;
 }
 
-const MarketDetailsButtons = ({
-  submitButtonLabel,
-}: MarketDetailsButtonsProps) => {
+const DetailsButtons = ({ submitButtonLabel, to }: DetailsButtonsProps) => {
   return (
     <Row>
       <Col>
         <Button variant="primary" type="submit" className="mr-3">
           {submitButtonLabel}
         </Button>
-        <Link to="/piac">
+        <Link to={to}>
           <Button variant="warning">Mégsem</Button>
         </Link>
       </Col>
@@ -22,4 +21,4 @@ const MarketDetailsButtons = ({
   );
 };
 
-export default MarketDetailsButtons;
+export default DetailsButtons;
