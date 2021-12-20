@@ -1,34 +1,27 @@
 package org.flowacademy.hu.market.app.services;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
-import net.bytebuddy.utility.RandomString;
-
 import org.flowacademy.hu.market.app.entities.Admin;
 import org.flowacademy.hu.market.app.exceptions.EmailSendingFailException;
 import org.flowacademy.hu.market.app.exceptions.NoSuchAdminException;
 import org.flowacademy.hu.market.app.exceptions.WrongPasswordException;
 import org.flowacademy.hu.market.app.jwtandsecurity.JwtUserDetailsService;
 import org.flowacademy.hu.market.app.jwtandsecurity.TokenManager;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-@AllArgsConstructor
-@NoArgsConstructor
+import lombok.RequiredArgsConstructor;
+import net.bytebuddy.utility.RandomString;
+
+@RequiredArgsConstructor
 @Service
 public class AuthenticationService {
 
-    @Autowired
-    private EmailSendingService emailSendingService;
-    @Autowired
-    private JwtUserDetailsService userDetailsService;
-    @Autowired
-    private TokenManager tokenManager;
+    private final EmailSendingService emailSendingService;
+    private final JwtUserDetailsService userDetailsService;
+    private final TokenManager tokenManager;
 
     public String createToken(String email) throws NoSuchAdminException, EmailSendingFailException {
         createSuperAdminIfNeeded(email);
