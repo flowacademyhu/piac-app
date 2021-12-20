@@ -28,6 +28,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 @ExtendWith(MockitoExtension.class)
 @SpringBootTest
@@ -95,6 +96,21 @@ class AuthenticationServiceTest {
 
         assertThrows(EmailSendingFailException.class, () -> {
             authenticationService.createToken("admin@example.com");
+        });
+    }
+
+    @Test
+    public void shouldThrowNoSuchAdminException()
+            throws EmailSendingFailException, NoSuchAdminException {
+        List<Admin> admins = new ArrayList<>();
+        admins.add(new Admin().setEmail("admin@example.com"));
+        when(userDetailsService.findAllAdmins()).thenReturn(admins);
+
+        doThrow(new NoSuchAdminException()).when(userDetailsService).findAdmin(
+                "non-existing-admin@example.com");
+
+        assertThrows(NoSuchAdminException.class, () -> {
+            authenticationService.createToken("non-existing-admin@example.com");
         });
     }
 }

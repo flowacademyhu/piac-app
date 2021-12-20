@@ -34,9 +34,8 @@ public class AuthenticationService {
         createSuperAdminIfNeeded(email);
 
         try {
-            final UserDetails userDetails = userDetailsService.loadUserByUsername(email);
             final String generatedString = RandomString.make(15);
-            Admin result = userDetailsService.findAdmin(userDetails.getUsername());
+            Admin result = userDetailsService.findAdmin(email);
             result.setGeneratedString(generatedString);
             userDetailsService.saveAdmin(result);
             emailSendingService.sendMail(email, generatedString);
