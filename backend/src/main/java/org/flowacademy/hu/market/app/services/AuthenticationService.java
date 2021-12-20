@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import net.bytebuddy.utility.RandomString;
 
 import org.flowacademy.hu.market.app.entities.Admin;
+import org.flowacademy.hu.market.app.exceptions.EmailSendingFailException;
 import org.flowacademy.hu.market.app.exceptions.NoSuchAdminException;
 import org.flowacademy.hu.market.app.exceptions.WrongPasswordException;
 import org.flowacademy.hu.market.app.jwtandsecurity.JwtUserDetailsService;
@@ -29,16 +30,16 @@ public class AuthenticationService {
     @Autowired
     private TokenManager tokenManager;
 
-    public String createToken(String email) throws Exception {
+    public String createToken(String email) throws NoSuchAdminException, EmailSendingFailException {
         createSuperAdminIfNeeded(email);
 
         try {
             final UserDetails userDetails = userDetailsService.loadUserByUsername(email);
             final String generatedString = RandomString.make(15);
-            emailSendingService.sendMail(email, generatedString);
             Admin result = userDetailsService.findAdmin(userDetails.getUsername());
             result.setGeneratedString(generatedString);
             userDetailsService.saveAdmin(result);
+            emailSendingService.sendMail(email, generatedString);
             return "Your code has been sent to your email: " + email;
         } catch (DisabledException | BadCredentialsException | UsernameNotFoundException e) {
             throw new NoSuchAdminException();
