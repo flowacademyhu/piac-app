@@ -34,10 +34,8 @@ public class AuthenticationService {
         createSuperAdminIfNeeded(email);
 
         try {
-            final String generatedString = RandomString.make(15);
-            Admin result = userDetailsService.findAdmin(email);
-            result.setGeneratedString(generatedString);
-            userDetailsService.saveAdmin(result);
+            final String generatedString = generateToken();
+            saveTokenForAdmin(email, generatedString);
             emailSendingService.sendMail(email, generatedString);
             return "Your code has been sent to your email: " + email;
         } catch (DisabledException | BadCredentialsException | UsernameNotFoundException e) {
@@ -62,5 +60,15 @@ public class AuthenticationService {
             superAdmin.setEmail(email);
             userDetailsService.saveAdmin(superAdmin);
         }
+    }
+
+    private void saveTokenForAdmin(String email, String token) throws NoSuchAdminException {
+        Admin result = userDetailsService.findAdmin(email);
+        result.setGeneratedString(token);
+        userDetailsService.saveAdmin(result);
+    }
+
+    private String generateToken() {
+        return RandomString.make(15);
     }
 }
