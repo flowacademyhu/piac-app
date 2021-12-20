@@ -8,7 +8,6 @@ import net.bytebuddy.utility.RandomString;
 import org.flowacademy.hu.market.app.entities.Admin;
 import org.flowacademy.hu.market.app.exceptions.NoSuchAdminException;
 import org.flowacademy.hu.market.app.exceptions.WrongPasswordException;
-import org.flowacademy.hu.market.app.model.JwtRequestModel;
 import org.flowacademy.hu.market.app.jwtandsecurity.JwtUserDetailsService;
 import org.flowacademy.hu.market.app.jwtandsecurity.TokenManager;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,20 +29,20 @@ public class AuthenticationService {
     @Autowired
     private TokenManager tokenManager;
 
-    public String createToken(JwtRequestModel request) throws Exception {
+    public String createToken(String email) throws Exception {
         if (userDetailsService.findAllAdmins().size() == 0) {
             Admin superAdmin = new Admin();
-            superAdmin.setEmail(request.getEmailAddress());
+            superAdmin.setEmail(email);
             userDetailsService.saveAdmin(superAdmin);
         }
         try {
-            final UserDetails userDetails = userDetailsService.loadUserByUsername(request.getEmailAddress());
+            final UserDetails userDetails = userDetailsService.loadUserByUsername(email);
             final String generatedString = RandomString.make(15);
-            emailSendingService.sendMail(request.getEmailAddress(), generatedString);
+            emailSendingService.sendMail(email, generatedString);
             Admin result = userDetailsService.findAdmin(userDetails.getUsername());
             result.setGeneratedString(generatedString);
             userDetailsService.saveAdmin(result);
-            return "Your code has been sent to your email: " + request.getEmailAddress();
+            return "Your code has been sent to your email: " + email;
         } catch (DisabledException | BadCredentialsException | UsernameNotFoundException e) {
             throw new NoSuchAdminException();
         }

@@ -17,7 +17,7 @@ public class LoginController {
 
     @PostMapping("/login")
     public String createToken(@RequestBody JwtRequestModel request) throws Exception {
-        return authenticationService.createToken(request);
+        return authenticationService.createToken(request.getEmailAddress());
     }
 
     @GetMapping("/token/{token}")
