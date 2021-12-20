@@ -1,6 +1,6 @@
 import axios from "axios";
 import { MarketInput } from "market/Market";
-import { VendorInput } from "vendor/Vendor";
+import { VendorInput, VendorWithId } from "vendor/Vendor";
 import { getToken, logOut } from "./AuthService";
 
 const api = axios.create({ baseURL: "/v1/api" });
@@ -59,13 +59,8 @@ export const addMarket = async (market: MarketInput) => {
 };
 
 export const fetchVendors = async () => {
-  try {
-    const response = await api.get("/vendor");
-    const data = response.data;
-    return data;
-  } catch (error) {
-    console.warn("Failed to load vendors");
-  }
+  const { data } = await api.get<VendorWithId[]>("/vendor");
+  return data;
 };
 
 export const deleteMarketById = async (id: string) => {

@@ -3,10 +3,10 @@ import { Button, Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { fetchVendors, deleteVendorById } from "components/Service";
 import DeleteEntity from "components/DeleteEntity";
-import { VendorInput } from "./Vendor";
+import { VendorWithId } from "./Vendor";
 
 const VendorTable = () => {
-  const [allVendors, setAllVendors] = useState<VendorInput[]>([]);
+  const [allVendors, setAllVendors] = useState<VendorWithId[]>([]);
 
   const getAllVendors = async () => {
     const result = await fetchVendors();
