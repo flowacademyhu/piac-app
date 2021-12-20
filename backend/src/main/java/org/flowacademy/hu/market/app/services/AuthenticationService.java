@@ -30,11 +30,8 @@ public class AuthenticationService {
     private TokenManager tokenManager;
 
     public String createToken(String email) throws Exception {
-        if (userDetailsService.findAllAdmins().size() == 0) {
-            Admin superAdmin = new Admin();
-            superAdmin.setEmail(email);
-            userDetailsService.saveAdmin(superAdmin);
-        }
+        createSuperAdminIfNeeded(email);
+
         try {
             final UserDetails userDetails = userDetailsService.loadUserByUsername(email);
             final String generatedString = RandomString.make(15);
@@ -57,5 +54,13 @@ public class AuthenticationService {
         userDetailsService.saveAdmin(admin);
         final UserDetails userDetails = userDetailsService.loadUserByUsername(admin.getEmail());
         return tokenManager.generateJwtToken(userDetails);
+    }
+
+    private void createSuperAdminIfNeeded(String email) {
+        if (userDetailsService.findAllAdmins().size() == 0) {
+            Admin superAdmin = new Admin();
+            superAdmin.setEmail(email);
+            userDetailsService.saveAdmin(superAdmin);
+        }
     }
 }
