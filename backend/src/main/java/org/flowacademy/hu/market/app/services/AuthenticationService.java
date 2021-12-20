@@ -23,6 +23,8 @@ public class AuthenticationService {
     private final JwtUserDetailsService userDetailsService;
     private final TokenManager tokenManager;
 
+    private RandomString tokenGenerator = new RandomString(15);
+
     public String createToken(String email) throws NoSuchAdminException, EmailSendingFailException {
         createSuperAdminIfNeeded(email);
 
@@ -62,6 +64,6 @@ public class AuthenticationService {
     }
 
     private String generateToken() {
-        return RandomString.make(15);
+        return tokenGenerator.nextString();
     }
 }
