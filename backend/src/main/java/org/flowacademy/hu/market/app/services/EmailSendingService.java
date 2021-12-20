@@ -40,12 +40,17 @@ public class EmailSendingService {
             request.setEndpoint("mail/send");
             request.setBody(mail.build());
             Response response = sg.api(request);
-            if (response.getStatusCode() != 200) {
+            if (!isResponseSucceeded(response)) {
                 throw new EmailSendingFailException();
             }
         } catch (IOException ex) {
             ex.printStackTrace();
             throw new EmailSendingFailException();
         }
+    }
+
+    private static boolean isResponseSucceeded(Response response) {
+        int statusCode = response.getStatusCode();
+        return 200 <= statusCode && statusCode < 300;
     }
 }
