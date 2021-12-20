@@ -6,10 +6,7 @@ import org.flowacademy.hu.market.app.exceptions.NoSuchAdminException;
 import org.flowacademy.hu.market.app.exceptions.WrongPasswordException;
 import org.flowacademy.hu.market.app.jwtandsecurity.JwtUserDetailsService;
 import org.flowacademy.hu.market.app.jwtandsecurity.TokenManager;
-import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
@@ -28,14 +25,13 @@ public class AuthenticationService {
     public String createToken(String email) throws NoSuchAdminException, EmailSendingFailException {
         createSuperAdminIfNeeded(email);
 
-        try {
-            final String generatedString = generateToken();
-            saveTokenForAdmin(email, generatedString);
-            emailSendingService.sendMail(email, generatedString);
-            return "Your code has been sent to your email: " + email;
-        } catch (DisabledException | BadCredentialsException | UsernameNotFoundException e) {
-            throw new NoSuchAdminException();
-        }
+        final String generatedString = generateToken();
+
+        saveTokenForAdmin(email, generatedString);
+
+        emailSendingService.sendMail(email, generatedString);
+
+        return "Your code has been sent to your email: " + email;
     }
 
     public String getJwtToken(String token) throws WrongPasswordException {
