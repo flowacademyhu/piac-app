@@ -23,7 +23,7 @@ interface TimeProps<T>
   name: FieldPath<T>;
 }
 
-const TimeInput = <T,>({ label, control, name, ...props }: TimeProps<T>) => {
+const Time = <T,>({ label, control, name, ...props }: TimeProps<T>) => {
   return (
     <Controller
       control={control}
@@ -47,4 +47,4 @@ const TimeInput = <T,>({ label, control, name, ...props }: TimeProps<T>) => {
   );
 };
 
-export default TimeInput;
+export default Time;
