@@ -98,8 +98,8 @@ public class TokenManagerTest {
     }
 
     @Test
-    void generateJwtTokenReturnsCorrectToken() {
-        String token = tokenManager.generateJwtToken("admin@example.com");
+    void generateTokenReturnsCorrectToken() {
+        String token = tokenManager.generateToken("admin@example.com");
 
         var jwt = Jwts.parser().setSigningKey("secret".getBytes()).parseClaimsJws(token);
         Claims claims = jwt.getBody();

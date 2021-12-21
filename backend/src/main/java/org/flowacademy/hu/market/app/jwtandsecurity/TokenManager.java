@@ -23,7 +23,7 @@ public class TokenManager implements Serializable {
         this.jwtSecret = jwtSecret;
     }
 
-    public String generateJwtToken(String subject) {
+    public String generateToken(String subject) {
         Map<String, Object> claims = new HashMap<>();
         return Jwts.builder().setClaims(claims).setSubject(subject)
                 .setIssuedAt(new Date(System.currentTimeMillis()))

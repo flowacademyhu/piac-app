@@ -42,7 +42,7 @@ public class AuthenticationService {
         admin.setGeneratedString(null);
         userDetailsService.saveAdmin(admin);
         final UserDetails userDetails = userDetailsService.loadUserByUsername(admin.getEmail());
-        return tokenManager.generateJwtToken(userDetails.getUsername());
+        return tokenManager.generateToken(userDetails.getUsername());
     }
 
     private void createSuperAdminIfNeeded(String email) {
