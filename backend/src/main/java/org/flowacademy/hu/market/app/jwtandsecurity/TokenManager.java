@@ -31,7 +31,7 @@ public class TokenManager implements Serializable {
                 .signWith(SignatureAlgorithm.HS512, getSecret()).compact();
     }
 
-    public Boolean validateJwtToken(String token, String subject) {
+    public Boolean validateToken(String token, String subject) {
         try {
             String username = getUsernameFromToken(token);
             Claims claims = Jwts.parser().setSigningKey(getSecret()).parseClaimsJws(token).getBody();

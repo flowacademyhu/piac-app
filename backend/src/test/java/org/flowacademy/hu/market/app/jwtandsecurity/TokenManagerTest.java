@@ -38,35 +38,35 @@ public class TokenManagerTest {
     void validateCorrectToken() {
         String token = jwtBuilder.compact();
 
-        assertTrue(tokenManager.validateJwtToken(token, "admin@example.com"));
+        assertTrue(tokenManager.validateToken(token, "admin@example.com"));
     }
 
     @Test
     void validateMalformedToken() {
         String token = "itsamess";
 
-        assertFalse(tokenManager.validateJwtToken(token, "admin@example.com"));
+        assertFalse(tokenManager.validateToken(token, "admin@example.com"));
     }
 
     @Test
     void validateTokenWithWrongSubject() {
         String token = jwtBuilder.setSubject("user@example.com").compact();
 
-        assertFalse(tokenManager.validateJwtToken(token, "admin@example.com"));
+        assertFalse(tokenManager.validateToken(token, "admin@example.com"));
     }
 
     @Test
     void validateExpiredToken() {
         String token = jwtBuilder.setExpiration(pastDate).compact();
 
-        assertFalse(tokenManager.validateJwtToken(token, "admin@example.com"));
+        assertFalse(tokenManager.validateToken(token, "admin@example.com"));
     }
 
     @Test
     void validateTokenWithoutExpiration() {
         String token = jwtBuilder.setExpiration(null).compact();
 
-        assertFalse(tokenManager.validateJwtToken(token, "admin@example.com"));
+        assertFalse(tokenManager.validateToken(token, "admin@example.com"));
     }
 
     @Test
@@ -76,7 +76,7 @@ public class TokenManagerTest {
                 .setExpiration(futureDate)
                 .compact();
 
-        assertFalse(tokenManager.validateJwtToken(token, "admin@example.com"));
+        assertFalse(tokenManager.validateToken(token, "admin@example.com"));
     }
 
     @Test
@@ -85,7 +85,7 @@ public class TokenManagerTest {
                 .signWith(SignatureAlgorithm.HS512, "otherSecret".getBytes())
                 .compact();
 
-        assertFalse(tokenManager.validateJwtToken(token, "admin@example.com"));
+        assertFalse(tokenManager.validateToken(token, "admin@example.com"));
     }
 
     @Test
@@ -94,7 +94,7 @@ public class TokenManagerTest {
                 .signWith(SignatureAlgorithm.HS512, "secret1".getBytes())
                 .compact();
 
-        assertFalse(tokenManager.validateJwtToken(token, "admin@example.com"));
+        assertFalse(tokenManager.validateToken(token, "admin@example.com"));
     }
 
     @Test
