@@ -33,10 +33,13 @@ public class TokenManager implements Serializable {
 
     public Boolean validateToken(String token, String subject) {
         try {
-            String username = getUsernameFromToken(token);
-            Claims claims = Jwts.parser().setSigningKey(getSecret()).parseClaimsJws(token).getBody();
+            Claims claims = Jwts.parser()
+                    .setSigningKey(getSecret())
+                    .requireSubject(subject)
+                    .parseClaimsJws(token)
+                    .getBody();
             Boolean isTokenExpired = claims.getExpiration().before(new Date());
-            return (username.equals(subject) && !isTokenExpired);
+            return !isTokenExpired;
         } catch (Exception e) {
             return false;
         }
