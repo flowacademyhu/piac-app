@@ -38,7 +38,7 @@ public class TokenManager implements Serializable {
                     .requireSubject(subject)
                     .parseClaimsJws(token)
                     .getBody();
-            Boolean isTokenExpired = claims.getExpiration().before(new Date());
+            boolean isTokenExpired = claims.getExpiration().before(new Date());
             return !isTokenExpired;
         } catch (Exception e) {
             return false;
