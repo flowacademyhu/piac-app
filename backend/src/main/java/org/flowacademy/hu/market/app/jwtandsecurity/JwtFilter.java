@@ -1,6 +1,7 @@
 package org.flowacademy.hu.market.app.jwtandsecurity;
 
 import java.io.IOException;
+
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +19,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-import io.jsonwebtoken.ExpiredJwtException;
 
 import lombok.RequiredArgsConstructor;
 
@@ -33,32 +33,49 @@ public class JwtFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request,
             HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
+        try {
+            authenticateUserWithBearerToken(request);
+            filterChain.doFilter(request, response);
+        } catch (Exception e) {
+            System.out.println("Could not get user from JWT Token");
+            ErrorModel error = new ErrorModel(MessagesConstants.INVALID_CREDENTIALS);
 
-        String tokenHeader = request.getHeader("Authorization");
-        String username = null;
-        String token = null;
-        if (tokenHeader != null && tokenHeader.startsWith("Bearer ")) {
-            token = tokenHeader.substring(7);
-            try {
-                username = tokenManager.getUsernameFromToken(token);
-            } catch (IllegalArgumentException e) {
-                System.out.println("Unable to get JWT Token");
-            } catch (ExpiredJwtException e) {
-                System.out.println("JWT Token has expired");
-            } catch (Exception e) {
-                System.out.println("Exception: " + e);
-            }
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.writeValue(response.getWriter(), error);
         }
-        if (null != username && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-            if (tokenManager.validateToken(token, userDetails.getUsername())) {
-                UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
-                        userDetails, null,
-                        userDetails.getAuthorities());
-                authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-                SecurityContextHolder.getContext().setAuthentication(authenticationToken);
-            }
+    }
+
+    private void authenticateUserWithBearerToken(HttpServletRequest request) {
+        String bearerToken = request.getHeader("Authorization");
+
+        if (bearerToken == null) {
+            return;
         }
-        filterChain.doFilter(request, response);
+
+        if (!bearerToken.startsWith("Bearer ")) {
+            return;
+        }
+
+        if (SecurityContextHolder.getContext().getAuthentication() != null) {
+            return;
+        }
+
+        String token = bearerToken.substring(7);
+
+        String username = tokenManager.getUsernameFromToken(token);
+
+        if (username == null) {
+            throw new BadCredentialsException("Invalid token");
+        }
+
+        UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+
+        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
+                userDetails, null,
+                userDetails.getAuthorities());
+
+        authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+        SecurityContextHolder.getContext().setAuthentication(authenticationToken);
     }
 }

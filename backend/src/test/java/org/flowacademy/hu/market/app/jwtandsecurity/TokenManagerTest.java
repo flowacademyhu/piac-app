@@ -1,7 +1,7 @@
 package org.flowacademy.hu.market.app.jwtandsecurity;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Date;
@@ -35,66 +35,59 @@ public class TokenManagerTest {
     }
 
     @Test
-    void validateCorrectToken() {
+    void getUsernameFromTokenCorrectToken() {
         String token = jwtBuilder.compact();
 
-        assertTrue(tokenManager.validateToken(token, "admin@example.com"));
+        assertEquals("admin@example.com", tokenManager.getUsernameFromToken(token));
     }
 
     @Test
-    void validateMalformedToken() {
+    void getUsernameFromTokenMalformedToken() {
         String token = "itsamess";
 
-        assertFalse(tokenManager.validateToken(token, "admin@example.com"));
+        assertNull(tokenManager.getUsernameFromToken(token));
     }
 
     @Test
-    void validateTokenWithWrongSubject() {
-        String token = jwtBuilder.setSubject("user@example.com").compact();
-
-        assertFalse(tokenManager.validateToken(token, "admin@example.com"));
-    }
-
-    @Test
-    void validateExpiredToken() {
+    void getUsernameFromTokenExpiredToken() {
         String token = jwtBuilder.setExpiration(pastDate).compact();
 
-        assertFalse(tokenManager.validateToken(token, "admin@example.com"));
+        assertNull(tokenManager.getUsernameFromToken(token));
     }
 
     @Test
-    void validateTokenWithoutExpiration() {
+    void getUsernameFromTokenWithoutExpiration() {
         String token = jwtBuilder.setExpiration(null).compact();
 
-        assertFalse(tokenManager.validateToken(token, "admin@example.com"));
+        assertNull(tokenManager.getUsernameFromToken(token));
     }
 
     @Test
-    void validateTokenWithoutSignature() {
+    void getUsernameFromTokenWithoutSignature() {
         String token = Jwts.builder()
                 .setSubject("admin@example.com")
                 .setExpiration(futureDate)
                 .compact();
 
-        assertFalse(tokenManager.validateToken(token, "admin@example.com"));
+        assertNull(tokenManager.getUsernameFromToken(token));
     }
 
     @Test
-    void validateTokenWithOtherSignature() {
+    void getUsernameFromTokenWithOtherSignature() {
         String token = jwtBuilder
                 .signWith(SignatureAlgorithm.HS512, "otherSecret".getBytes())
                 .compact();
 
-        assertFalse(tokenManager.validateToken(token, "admin@example.com"));
+        assertNull(tokenManager.getUsernameFromToken(token));
     }
 
     @Test
-    void validateTokenWithOtherSignature2() {
+    void getUsernameFromTokenWithOtherSignature2() {
         String token = jwtBuilder
                 .signWith(SignatureAlgorithm.HS512, "secret1".getBytes())
                 .compact();
 
-        assertFalse(tokenManager.validateToken(token, "admin@example.com"));
+        assertNull(tokenManager.getUsernameFromToken(token));
     }
 
     @Test

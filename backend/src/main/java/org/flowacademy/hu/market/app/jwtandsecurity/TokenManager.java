@@ -31,23 +31,20 @@ public class TokenManager implements Serializable {
                 .signWith(SignatureAlgorithm.HS512, getSecret()).compact();
     }
 
-    public Boolean validateToken(String token, String subject) {
+    public String getUsernameFromToken(String token) {
         try {
-            Claims claims = Jwts.parser()
+            final Claims claims = Jwts.parser()
                     .setSigningKey(getSecret())
-                    .requireSubject(subject)
                     .parseClaimsJws(token)
                     .getBody();
             boolean hasExpiration = claims.getExpiration() != null;
-            return hasExpiration;
+            if (!hasExpiration) {
+                return null;
+            }
+            return claims.getSubject();
         } catch (Exception e) {
-            return false;
+            return null;
         }
-    }
-
-    public String getUsernameFromToken(String token) {
-        final Claims claims = Jwts.parser().setSigningKey(getSecret()).parseClaimsJws(token).getBody();
-        return claims.getSubject();
     }
 
     private byte[] getSecret() {
