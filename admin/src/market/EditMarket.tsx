@@ -9,11 +9,7 @@ const EditMarket = () => {
 
   const id = useParams().id ?? "";
 
-  const {
-    data: market,
-    isLoading,
-    isError,
-  } = useQuery("market", () => fetchMarketById(id), {
+  const marketQuery = useQuery("market", () => fetchMarketById(id), {
     cacheTime: 0,
   });
 
@@ -30,13 +26,17 @@ const EditMarket = () => {
     return <Navigate to="/piac" replace />;
   }
 
-  if (isLoading) {
+  const { isLoading, isIdle, isError } = marketQuery;
+
+  if (isLoading || isIdle) {
     return <>Betöltés...</>;
   }
 
   if (isError) {
     return <>Hiba történt a piac betöltése során!</>;
   }
+
+  const market = marketQuery.data;
 
   return (
     <MarketForm
