@@ -38,6 +38,11 @@ const EditMarket = () => {
 
   const market = marketQuery.data;
 
+  const defaultValues: MarketInput = {
+    ...market,
+    vendors: market.vendors.map((vendor) => vendor.id),
+  };
+
   return (
     <MarketForm
       title="Piac módosítása"
@@ -45,7 +50,7 @@ const EditMarket = () => {
       hasError={editMarketMutation.isError}
       errorMessage="Nem sikerült a piacot módosítani!"
       onSubmit={submitForm}
-      defaultValues={market}
+      defaultValues={defaultValues}
     />
   );
 };

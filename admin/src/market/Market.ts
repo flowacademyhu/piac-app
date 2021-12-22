@@ -1,6 +1,10 @@
 import { VendorWithId } from "vendor/Vendor";
 
-export interface MarketInput {
+export interface MarketInput extends MarketBase {
+  vendors: string[];
+}
+
+export interface MarketBase {
   name: string;
   profilePic: string;
   place: string;
@@ -8,7 +12,7 @@ export interface MarketInput {
   closingDate: number;
 }
 
-export interface MarketWithId extends MarketInput {
+export interface MarketWithId extends MarketBase {
   id: string;
 }
 

@@ -14,7 +14,7 @@ interface MarketFormProps {
   hasError: boolean;
   errorMessage: string;
   onSubmit: (value: MarketInput) => void;
-  defaultValues?: Market;
+  defaultValues?: MarketInput;
 }
 
 const MarketForm = ({
@@ -25,7 +25,7 @@ const MarketForm = ({
   onSubmit,
   defaultValues,
 }: MarketFormProps) => {
-  const { control, register, handleSubmit } = useForm<MarketWithId>({
+  const { control, register, handleSubmit } = useForm<MarketInput>({
     defaultValues,
   });
 
@@ -67,7 +67,9 @@ const MarketForm = ({
             label={vendor.name}
             control={control}
             name={vendor.name}
-            defaultChecked={vendorsOfMarket.some((v) => v.id === vendor.id)}
+            defaultChecked={vendorsOfMarket.some(
+              (vendorId) => vendorId === vendor.id
+            )}
           />
         ))}
       <DetailsButtons submitButtonLabel={submitLabel} to="/piac" />
