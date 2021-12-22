@@ -98,15 +98,16 @@ public class MarketService {
         Set<Vendor> vendorCollection = market.getVendors();
         if (vendorCollection == null)
             vendorCollection = new HashSet<>();
-        return new MarketDTO()
-                .setProfilePic(market.getProfilePic())
-                .setId(market.getId())
-                .setVendors(vendorCollection.stream().map(vendorService::vendorToSimpleDTO).collect(Collectors.toSet()))
-                .setOpeningDate(market.getOpeningDate())
-                .setClosingDate(market.getClosingDate())
-                .setName(market.getName())
-                .setPlace(market.getPlace())
-                .setNumberOfVendors(vendorCollection.size());
+        return MarketDTO.builder()
+                .profilePic(market.getProfilePic())
+                .id(market.getId())
+                .vendors(vendorCollection.stream().map(vendorService::vendorToSimpleDTO).collect(Collectors.toSet()))
+                .openingDate(market.getOpeningDate())
+                .closingDate(market.getClosingDate())
+                .name(market.getName())
+                .place(market.getPlace())
+                .numberOfVendors(vendorCollection.size())
+                .build();
     }
 
     public MarketDTO findMarketByName(String name) throws NoSuchVendorException {
@@ -122,52 +123,56 @@ public class MarketService {
         }
         try {
             if (allMarkets().size() == 0) {
-                MarketDTO marketDTO1 = new MarketDTO();
-                marketDTO1.setProfilePic(ProfilePics.PROFILE_PIC_POT);
-                marketDTO1.setName("Bödön Piac");
-                marketDTO1.setOpeningDate(1630742400L);
-                marketDTO1.setClosingDate(1630767600L);
-                marketDTO1.setPlace("Szeged Pláza");
+                MarketInputDTO marketDTO1 = MarketInputDTO
+                        .builder()
+                        .profilePic(ProfilePics.PROFILE_PIC_POT)
+                        .name("Bödön Piac")
+                        .openingDate(1630742400L)
+                        .closingDate(1630767600L)
+                        .place("Szeged Pláza")
+                        .build();
                 addMarket(marketDTO1);
 
-                MarketDTO marketDTO2 = new MarketDTO();
-                marketDTO2.setProfilePic(ProfilePics.PROFILE_PIC_FOX);
-                marketDTO2.setName("Böba Piac Karácsony");
-                marketDTO2.setOpeningDate(1633323600L);
-                marketDTO2.setClosingDate(1633345200L);
-                marketDTO2.setPlace("Szeged Pláza");
+                MarketInputDTO marketDTO2 = MarketInputDTO
+                        .builder()
+                        .profilePic(ProfilePics.PROFILE_PIC_FOX)
+                        .name("Böba Piac Karácsony")
+                        .openingDate(1633323600L)
+                        .closingDate(1633345200L)
+                        .place("Szeged Pláza")
+                        .build();
                 addMarket(marketDTO2);
 
-                MarketDTO marketDTO3 = new MarketDTO();
-                marketDTO3.setProfilePic(ProfilePics.PROFILE_PIC_POT);
-                marketDTO3.setName("Bödön Piac2");
-                marketDTO3.setOpeningDate(1636016400L);
-                marketDTO3.setClosingDate(1636052400L);
-                marketDTO3.setPlace("Szeged Pláza");
+                MarketInputDTO marketDTO3 = MarketInputDTO.builder()
+                        .profilePic(ProfilePics.PROFILE_PIC_POT)
+                        .name("Bödön Piac2")
+                        .openingDate(1636016400L)
+                        .closingDate(1636052400L)
+                        .place("Szeged Pláza").build();
                 addMarket(marketDTO3);
 
-                MarketDTO marketDTO4 = new MarketDTO();
-                marketDTO4.setProfilePic(ProfilePics.PROFILE_PIC_FOX);
-                marketDTO4.setName("Böba Piac Extra");
-                marketDTO4.setOpeningDate(1641279600L);
-                marketDTO4.setClosingDate(1641301200L);
-                marketDTO4.setPlace("Szeged Pláza");
+                MarketInputDTO marketDTO4 = MarketInputDTO.builder()
+                        .profilePic(ProfilePics.PROFILE_PIC_FOX)
+                        .name("Böba Piac Extra")
+                        .openingDate(1641279600L)
+                        .closingDate(1641301200L)
+                        .place("Szeged Pláza").build();
                 addMarket(marketDTO4);
 
-                MarketDTO marketDTO5 = new MarketDTO();
-                marketDTO5.setProfilePic(ProfilePics.PROFILE_PIC_POT);
-                marketDTO5.setName("Bödön Piac Platinum");
-                marketDTO5.setOpeningDate(1643961600L);
-                marketDTO5.setClosingDate(1643994000L);
-                marketDTO5.setPlace("Szeged Pláza");
+                MarketInputDTO marketDTO5 = MarketInputDTO.builder()
+                        .profilePic(ProfilePics.PROFILE_PIC_POT)
+                        .name("Bödön Piac Platinum")
+                        .openingDate(1643961600L)
+                        .closingDate(1643994000L)
+                        .place("Szeged Pláza").build();
                 addMarket(marketDTO5);
 
-                MarketDTO marketDTO6 = new MarketDTO();
-                marketDTO6.setProfilePic(ProfilePics.PROFILE_PIC_FOX);
-                marketDTO6.setName("Bödön Piac Awesome Edition");
-                marketDTO6.setOpeningDate(1646380800L);
-                marketDTO6.setClosingDate(1646424000L);
-                marketDTO6.setPlace("Szeged Pláza");
+                MarketInputDTO marketDTO6 = MarketInputDTO.builder()
+                        .profilePic(ProfilePics.PROFILE_PIC_FOX)
+                        .name("Bödön Piac Awesome Edition")
+                        .openingDate(1646380800L)
+                        .closingDate(1646424000L)
+                        .place("Szeged Pláza").build();
                 addMarket(marketDTO6);
             }
 
