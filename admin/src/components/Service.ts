@@ -1,5 +1,5 @@
 import axios from "axios";
-import { MarketInput } from "market/Market";
+import { Market, MarketInput } from "market/Market";
 import { VendorInput, VendorWithId } from "vendor/Vendor";
 import { getToken, logOut } from "./AuthService";
 
@@ -39,13 +39,8 @@ export const fetchMarketById = async (id: string) => {
   if (!id) {
     throw new Error("Market id is required");
   }
-
-  try {
-    const { data } = await api.get(`/market/${id}`);
-    return data;
-  } catch (error) {
-    console.warn("Failed to load market");
-  }
+  const { data } = await api.get<Market>(`/market/${id}`);
+  return data;
 };
 
 export const updateMarket = async (market: MarketInput, id: string) => {
