@@ -8,6 +8,7 @@ import { useQuery } from "react-query";
 import { fetchVendors } from "components/Service";
 import Checkbox from "components/form/Checkbox";
 import DetailsButtons from "components/DetailsButtons";
+import CheckboxList from "components/form/CheckboxList";
 interface MarketFormProps {
   title: string;
   submitLabel: string;
@@ -60,6 +61,8 @@ const MarketForm = ({
       />
       <Time control={control} label="Piac kezdete" name="openingDate" />
       <Time control={control} label="Piac zárása" name="closingDate" />
+      <CheckboxList control={control} label="Árusok" name="vendors" />
+
       {allVendors &&
         allVendors.map((vendor: any) => (
           <Checkbox
