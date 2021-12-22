@@ -1,6 +1,6 @@
 import { Form } from "react-bootstrap";
 import Time from "components/form/Time";
-import { Market, MarketInput, MarketWithId } from "./Market";
+import { MarketInput } from "./Market";
 import { useForm } from "react-hook-form";
 import Textarea from "components/form/Textarea";
 import Input from "components/form/Input";
