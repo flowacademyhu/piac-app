@@ -1,7 +1,7 @@
-import { VendorInput } from "vendor/Vendor";
+import { VendorWithId } from "vendor/Vendor";
 
 describe("Edit vendor", () => {
-  let vendors: VendorInput[] = [];
+  let vendors: VendorWithId<number>[] = [];
 
   beforeEach(() => {
     cy.fixture("vendors.json").then((vendorsFixture) => {
@@ -40,9 +40,9 @@ describe("Edit vendor", () => {
       expect(req.body.instagram).to.equal("modositottInstagram");
       expect(req.body.webSite).to.equal("http://www.modositottweblap.com");
       expect(req.headers.authorization).to.include("Bearer eyJhb");
-      const editedVendor = { id: "1", ...req.body };
+      const editedVendor = { id: 1, ...req.body };
       vendors = vendors.map((vendor) =>
-        vendor.id === "1" ? editedVendor : vendor
+        vendor.id === 1 ? editedVendor : vendor
       );
       req.reply(vendors);
     }).as("putVendorRequest");

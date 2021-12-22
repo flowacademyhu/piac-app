@@ -1,7 +1,7 @@
 import { Market } from "market/Market";
 
 describe("Delete market", () => {
-  let markets: Market[] = [];
+  let markets: Market<number>[] = [];
 
   beforeEach(() => {
     cy.fixture("markets.json").then((marketsFromFixture) => {
@@ -18,7 +18,7 @@ describe("Delete market", () => {
   it("should delete a market", () => {
     cy.intercept("DELETE", "/v1/api/admin/market/1", (req) => {
       const url = req.url.split("/");
-      const id = url[url.length - 1];
+      const id = parseInt(url[url.length - 1], 10);
       markets = markets.filter((market) => market.id !== id);
       req.reply(markets);
       expect(req.headers.authorization).to.include("Bearer eyJhb");

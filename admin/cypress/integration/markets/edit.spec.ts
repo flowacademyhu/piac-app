@@ -1,7 +1,7 @@
 import { Market } from "market/Market";
 
 describe("Edit market", () => {
-  let markets: Market[] = [];
+  let markets: Market<number>[] = [];
 
   beforeEach(() => {
     cy.fixture("markets.json").then((marketsFromFixture) => {
@@ -27,7 +27,7 @@ describe("Edit market", () => {
       expect(req.headers.authorization).to.include("Bearer eyJhb");
       const editedMarket = { id: "1", ...req.body };
       markets = markets.map((market) =>
-        market.id === "1" ? editedMarket : market
+        market.id === 1 ? editedMarket : market
       );
       req.reply(markets);
     }).as("putMarketRequest");

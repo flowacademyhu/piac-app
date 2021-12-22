@@ -1,7 +1,7 @@
-import { VendorInput } from "vendor/Vendor";
+import { VendorWithId } from "vendor/Vendor";
 
 describe("Delete vendor", () => {
-  let vendors: VendorInput[] = [];
+  let vendors: VendorWithId<number>[] = [];
 
   beforeEach(() => {
     cy.fixture("vendors.json").then((vendorsFromFixture) => {
@@ -18,7 +18,7 @@ describe("Delete vendor", () => {
     cy.intercept("DELETE", "/v1/api/admin/vendor/1", (req) => {
       expect(req.headers.authorization).to.include("Bearer eyJhb");
       const url = req.url.split("/");
-      const id = url[url.length - 1];
+      const id = parseInt(url[url.length - 1], 10);
       vendors = vendors.filter((vendor) => vendor.id !== id);
       req.reply(vendors);
     }).as("deleteVendorRequest");

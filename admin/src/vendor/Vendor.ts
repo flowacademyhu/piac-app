@@ -12,6 +12,6 @@ export interface VendorInput {
   webSite: string;
 }
 
-export interface VendorWithId extends VendorInput {
-  id: string;
+export interface VendorWithId<T = string> extends VendorInput {
+  id: T;
 }

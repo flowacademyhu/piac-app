@@ -1,6 +1,6 @@
 [
   {
-    "id": "1",
+    "id": 1,
     "profilePic": "https://example.com/bodon.png",
     "name": "Bödön Piac",
     "place": "Szeged Pláza",
@@ -9,7 +9,7 @@
     "numberOfVendors": 2
   },
   {
-    "id": "2",
+    "id": 2,
     "profilePic": "https://example.com/boba.png",
     "name": "Böba Piac Karácsony",
     "place": "Szeged Pláza",

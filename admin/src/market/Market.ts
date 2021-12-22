@@ -12,11 +12,11 @@ export interface MarketBase {
   closingDate: number;
 }
 
-export interface MarketWithId extends MarketBase {
-  id: string;
+export interface MarketWithId<T = string> extends MarketBase {
+  id: T;
 }
 
-export interface Market extends MarketWithId {
+export interface Market<T = string> extends MarketWithId<T> {
   numberOfVendors: number;
   vendors: VendorWithId[];
 }
