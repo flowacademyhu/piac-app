@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 
 import org.flowacademy.hu.market.app.exceptions.NoSuchMarketException;
 import org.flowacademy.hu.market.app.model.MarketDTO;
+import org.flowacademy.hu.market.app.model.MarketInputDTO;
 import org.flowacademy.hu.market.app.services.MarketService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -21,7 +22,7 @@ public class AdminMarketController {
     private final MarketService marketService;
 
     @PostMapping
-    public ResponseEntity<MarketDTO> addMarket(@RequestBody MarketDTO marketDTO) throws ParseException {
+    public ResponseEntity<MarketDTO> addMarket(@RequestBody MarketInputDTO marketDTO) throws ParseException {
         return ResponseEntity.ok(marketService.addMarket(marketDTO));
     }
 
@@ -36,8 +37,9 @@ public class AdminMarketController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<MarketDTO> updateMarket(@PathVariable @RequestBody Long id, @RequestBody MarketDTO marketDTO)
-            throws NoSuchMarketException {
+    public ResponseEntity<MarketDTO> updateMarket(@PathVariable @RequestBody Long id,
+            @RequestBody MarketInputDTO marketDTO)
+            throws NoSuchMarketException, ParseException {
         return ResponseEntity.ok(marketService.updateMarketById(id, marketDTO));
     }
 

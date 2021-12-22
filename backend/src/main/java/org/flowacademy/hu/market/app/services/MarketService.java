@@ -3,6 +3,7 @@ package org.flowacademy.hu.market.app.services;
 import lombok.RequiredArgsConstructor;
 import org.flowacademy.hu.market.app.entities.Vendor;
 import org.flowacademy.hu.market.app.model.MarketDTO;
+import org.flowacademy.hu.market.app.model.MarketInputDTO;
 import org.flowacademy.hu.market.app.entities.Market;
 import org.flowacademy.hu.market.app.exceptions.NoSuchMarketException;
 import org.flowacademy.hu.market.app.exceptions.NoSuchVendorException;
@@ -33,9 +34,9 @@ public class MarketService {
     @Value("${populateWithDemoData}")
     private boolean populateWithDemoData;
 
-    public MarketDTO addMarket(MarketDTO marketDTO) throws ParseException {
-        marketRepository.save(marketDTOToEntity(marketDTO));
-        return marketDTO;
+    public MarketDTO addMarket(MarketInputDTO marketDTO) throws ParseException {
+        Market savedMarket = marketRepository.save(marketInputDTOToEntity(marketDTO));
+        return marketToDTO(savedMarket);
     }
 
     public List<SimpleMarketDTO> allMarkets() {
@@ -65,18 +66,16 @@ public class MarketService {
         marketRepository.deleteById(id);
     }
 
-    public MarketDTO updateMarketById(Long id, MarketDTO marketDTO) throws NoSuchMarketException {
+    public MarketDTO updateMarketById(Long id, MarketInputDTO marketDTO) throws NoSuchMarketException, ParseException {
         marketRepository.findById(id).orElseThrow(NoSuchMarketException::new);
-        Market market = Market.builder()
-                .profilePic(marketDTO.getProfilePic())
-                .openingDate(marketDTO.getOpeningDate())
-                .closingDate(marketDTO.getClosingDate())
-                .place(marketDTO.getPlace())
-                .id(id)
-                .name(marketDTO.getName())
-                .build();
-        marketRepository.save(market);
-        return marketToDTO(market);
+
+        marketDTO.setId(id);
+
+        Market market = marketInputDTOToEntity(marketDTO);
+
+        Market savedMarket = marketRepository.save(market);
+
+        return marketToDTO(savedMarket);
     }
 
     public List<SimpleVendorDTO> findAllVendorsAtGivenMarket(Long id) throws NoSuchMarketException {
@@ -91,6 +90,19 @@ public class MarketService {
                 .closingDate(marketDTO.getClosingDate())
                 .name(marketDTO.getName())
                 .place(marketDTO.getPlace())
+                .build();
+    }
+
+    public Market marketInputDTOToEntity(MarketInputDTO marketDTO) throws ParseException {
+        List<Vendor> vendors = vendorRepository.findAllById(marketDTO.getVendors());
+        return Market.builder()
+                .id(marketDTO.getId())
+                .profilePic(marketDTO.getProfilePic())
+                .openingDate(marketDTO.getOpeningDate())
+                .closingDate(marketDTO.getClosingDate())
+                .name(marketDTO.getName())
+                .place(marketDTO.getPlace())
+                .vendors(new HashSet<>(vendors))
                 .build();
     }
 
