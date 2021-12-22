@@ -13,8 +13,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -126,6 +125,40 @@ class VendorServiceTest {
         assertEquals("maspeldainstagram", savedVendor.getInstagram());
         assertEquals("06707654321", savedVendor.getPhone());
         assertEquals("https://www.maspeldaoldal.hu", savedVendor.getWebSite());
+    }
 
+    @Test
+    public void shouldAddVendor() throws Exception {
+        VendorDTO vendorDTO = new VendorDTO()
+                .setName("Példa")
+                .setProfilePic("shorturl.at/bkKW4")
+                .setIntro("Bemutatkozok röviden.")
+                .setCardPayment(false)
+                .setIntroductionLong("Bemutatkozok hosszan, mert bőbeszédű vagyok.")
+                .setMarketIds(new HashSet<>(Arrays.asList(123L, 456L, 789L)))
+                .setProducts(new HashSet<>(Arrays.asList("termék 1", "termék 2", "termék 3")))
+                .setEmail("peldaemail@gmail.com")
+                .setFacebook("peldafacebook")
+                .setInstagram("peldainstagram")
+                .setPhone("06701234567")
+                .setWebSite("https://www.peldaoldal.hu");
+
+        vendorService.addVendor(vendorDTO);
+
+        verify(vendorRepository).save(vendorCaptor.capture());
+
+        Vendor savedVendor = vendorCaptor.getValue();
+
+        assertEquals("Példa", savedVendor.getName());
+        assertEquals("shorturl.at/bkKW4", savedVendor.getProfilePic());
+        assertEquals("Bemutatkozok röviden.", savedVendor.getIntro());
+        assertFalse(savedVendor.getCardPayment());
+        assertEquals("Bemutatkozok hosszan, mert bőbeszédű vagyok.", savedVendor.getIntroductionLong());
+        assertEquals(new HashSet<>(Arrays.asList("termék 1", "termék 2", "termék 3")), savedVendor.getProducts());
+        assertEquals("peldaemail@gmail.com", savedVendor.getEmail());
+        assertEquals("peldafacebook", savedVendor.getFacebook());
+        assertEquals("peldainstagram", savedVendor.getInstagram());
+        assertEquals("06701234567", savedVendor.getPhone());
+        assertEquals("https://www.peldaoldal.hu", savedVendor.getWebSite());
     }
 }
