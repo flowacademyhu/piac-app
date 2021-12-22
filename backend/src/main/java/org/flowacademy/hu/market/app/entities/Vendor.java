@@ -32,12 +32,14 @@ public class Vendor {
     private String introductionLong;
 
     @ElementCollection(targetClass = String.class)
+    @Builder.Default
     private Set<String> products = new HashSet<>();
 
     @ManyToMany(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
     @JoinTable(name = "vendors_markets", joinColumns = {
             @JoinColumn(name = "vendor_id", referencedColumnName = "id") }, inverseJoinColumns = {
                     @JoinColumn(name = "market_id", referencedColumnName = "id") })
+    @Builder.Default
     private Set<Market> markets = new HashSet<>();
 
     @Override

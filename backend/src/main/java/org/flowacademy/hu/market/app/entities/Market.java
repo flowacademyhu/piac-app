@@ -20,6 +20,7 @@ public class Market {
     private String place;
 
     @ManyToMany(mappedBy = "markets", fetch = FetchType.EAGER)
+    @Builder.Default
     private Set<Vendor> vendors = new HashSet<>();
 
     public Market(Long id, String profilePic, String name, Long openingDate, Long closingDate, String place,
