@@ -19,7 +19,10 @@ public class Market {
     private Long closingDate;
     private String place;
 
-    @ManyToMany(mappedBy = "markets", fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "vendors_markets", joinColumns = {
+            @JoinColumn(name = "market_id", referencedColumnName = "id") }, inverseJoinColumns = {
+                    @JoinColumn(name = "vendor_id", referencedColumnName = "id") })
     @Builder.Default
     private Set<Vendor> vendors = new HashSet<>();
 
