@@ -15,7 +15,7 @@ interface MarketFormProps {
   hasError: boolean;
   errorMessage: string;
   onSubmit: (value: MarketInput) => void;
-  defaultValues?: MarketInput;
+  defaultValues: MarketInput;
 }
 
 const MarketForm = ({

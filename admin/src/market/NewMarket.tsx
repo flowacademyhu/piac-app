@@ -22,6 +22,14 @@ const NewMarket = () => {
       hasError={addMarketMutation.isError}
       errorMessage="Nem sikerült a piacot hozzáadni!"
       onSubmit={submitForm}
+      defaultValues={{
+        vendors: [],
+        name: "",
+        profilePic: "",
+        place: "",
+        openingDate: 0,
+        closingDate: 0,
+      }}
     />
   );
 };
