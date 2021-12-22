@@ -1,7 +1,6 @@
 import React from "react";
 import { Form, FormControlProps } from "react-bootstrap";
 import { Control, FieldPath, useController } from "react-hook-form";
-import Checkbox from "./Checkbox";
 
 interface CheckboxItem {
   id: string;
