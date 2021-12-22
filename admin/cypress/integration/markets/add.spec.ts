@@ -1,4 +1,4 @@
-import { Market, MarketWithId } from "market/Market";
+import { MarketWithId } from "market/Market";
 
 describe("Add new market", () => {
   let newMarkets: MarketWithId<number>[] = [];
