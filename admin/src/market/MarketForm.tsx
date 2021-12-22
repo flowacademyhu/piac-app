@@ -30,11 +30,21 @@ const MarketForm = ({
     defaultValues,
   });
 
-  const vendorsOfMarket = defaultValues?.vendors ?? [];
-
-  const { data: allVendors } = useQuery("vendors", () => fetchVendors(), {
+  const allVendorsQuery = useQuery("vendors", () => fetchVendors(), {
     cacheTime: 0,
   });
+
+  const { isLoading, isIdle, isError } = allVendorsQuery;
+
+  if (isLoading || isIdle) {
+    return <>Betöltés...</>;
+  }
+
+  if (isError) {
+    return <>Hiba történt a piac betöltése során!</>;
+  }
+
+  const allVendors = allVendorsQuery.data;
 
   return (
     <Form className="container mb-3" onSubmit={handleSubmit(onSubmit)}>
