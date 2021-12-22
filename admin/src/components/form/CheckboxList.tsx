@@ -28,30 +28,33 @@ const CheckboxList = <T,>({
 
   return (
     <Form.Group className="mb-3" controlId={name}>
-      {items &&
-        items.map((item: CheckboxItem) => (
-          <Form.Check
-            key={item.id}
-            data-test={`${name}-checkbox`}
-            onChange={(e) => {
-              const previousValues = field.value as string[];
-              const values = new Set(previousValues);
+      <Form.Label>{label}</Form.Label>
+      <div className="border rounded p-3">
+        {items &&
+          items.map((item: CheckboxItem) => (
+            <Form.Check
+              key={item.id}
+              data-test={`${name}-checkbox`}
+              onChange={(e) => {
+                const previousValues = field.value as string[];
+                const values = new Set(previousValues);
 
-              if (e.target.checked) {
-                values.add(item.id);
-              } else {
-                values.delete(item.id);
-              }
+                if (e.target.checked) {
+                  values.add(item.id);
+                } else {
+                  values.delete(item.id);
+                }
 
-              field.onChange(Array.from(values));
-            }}
-            type="checkbox"
-            label={item.name}
-            checked={(field.value as string[]).some(
-              (vendorId: string) => vendorId === item.id
-            )}
-          />
-        ))}
+                field.onChange(Array.from(values));
+              }}
+              type="checkbox"
+              label={item.name}
+              checked={(field.value as string[]).some(
+                (vendorId: string) => vendorId === item.id
+              )}
+            />
+          ))}
+      </div>
     </Form.Group>
   );
 };
