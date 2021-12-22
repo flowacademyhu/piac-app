@@ -6,7 +6,6 @@ import Textarea from "components/form/Textarea";
 import Input from "components/form/Input";
 import { useQuery } from "react-query";
 import { fetchVendors } from "components/Service";
-import Checkbox from "components/form/Checkbox";
 import DetailsButtons from "components/DetailsButtons";
 import CheckboxList from "components/form/CheckboxList";
 interface MarketFormProps {
@@ -71,20 +70,13 @@ const MarketForm = ({
       />
       <Time control={control} label="Piac kezdete" name="openingDate" />
       <Time control={control} label="Piac zárása" name="closingDate" />
-      <CheckboxList control={control} label="Árusok" name="vendors" />
+      <CheckboxList
+        control={control}
+        label="Árusok"
+        name="vendors"
+        items={allVendors}
+      />
 
-      {allVendors &&
-        allVendors.map((vendor: any) => (
-          <Checkbox
-            key={vendor.id}
-            label={vendor.name}
-            control={control}
-            name={vendor.name}
-            defaultChecked={vendorsOfMarket.some(
-              (vendorId) => vendorId === vendor.id
-            )}
-          />
-        ))}
       <DetailsButtons submitButtonLabel={submitLabel} to="/piac" />
       {hasError && <p className="text-danger mt-3">{errorMessage}</p>}
     </Form>
