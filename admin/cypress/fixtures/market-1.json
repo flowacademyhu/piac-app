@@ -5,5 +5,6 @@
   "place": "Szeged Pláza",
   "openingDate": 1630742400,
   "closingDate": 1630767600,
-  "numberOfVendors": 2
+  "numberOfVendors": 2,
+  "vendors": []
 }
