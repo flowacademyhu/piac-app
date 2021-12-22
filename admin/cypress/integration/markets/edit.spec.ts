@@ -24,6 +24,7 @@ describe("Edit market", () => {
       expect(req.body.place).to.equal("Szálka Halászcsárda és Rendezvényház");
       expect(req.body.openingDate).to.equal(1639816200);
       expect(req.body.closingDate).to.equal(1639845000);
+      expect(req.body.vendors).to.deep.equal([1, 4]);
       expect(req.headers.authorization).to.include("Bearer eyJhb");
       const editedMarket = { id: "1", ...req.body };
       markets = markets.map((market) =>
@@ -54,6 +55,16 @@ describe("Edit market", () => {
       .should("have.value", "2021-09-04T17:00")
       .clear()
       .type("2021-12-18T17:30");
+
+    cy.get("input[data-test=vendors-1-checkbox]").should("have.checked");
+    cy.get("input[data-test=vendors-2-checkbox]")
+      .should("have.checked")
+      .uncheck();
+    cy.get("input[data-test=vendors-3-checkbox]").should("have.not.checked");
+    cy.get("input[data-test=vendors-4-checkbox]")
+      .should("have.not.checked")
+      .check();
+
     cy.get("button").contains("Mégsem");
     cy.get("button").contains("Módosítás").click();
 

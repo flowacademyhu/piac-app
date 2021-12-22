@@ -11,10 +11,11 @@ describe("Vendor list", () => {
 
     cy.get("table tbody tr").as("rows");
 
-    cy.get("@rows").should("have.length", 3);
+    cy.get("@rows").should("have.length", 4);
 
     cy.get("@rows").eq(0).contains("Chilikirály");
     cy.get("@rows").eq(1).contains("Just incase");
     cy.get("@rows").eq(2).contains("Valami bolt");
+    cy.get("@rows").eq(3).contains("Másik bolt");
   });
 });

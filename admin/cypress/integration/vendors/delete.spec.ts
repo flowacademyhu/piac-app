@@ -25,10 +25,11 @@ describe("Delete vendor", () => {
 
     cy.contains("Árusok");
     cy.get("table tbody tr").as("rows");
-    cy.get("@rows").should("have.length", 3);
+    cy.get("@rows").should("have.length", 4);
     cy.get("@rows").eq(0).contains("Chilikirály");
     cy.get("@rows").eq(1).contains("Just incase");
     cy.get("@rows").eq(2).contains("Valami bolt");
+    cy.get("@rows").eq(3).contains("Másik bolt");
     cy.contains("Töröl").click();
     cy.contains("Törlés").click();
 
@@ -36,7 +37,7 @@ describe("Delete vendor", () => {
       .its("response.statusCode")
       .should("eq", 200);
 
-    cy.get("@rows").should("have.length", 2);
+    cy.get("@rows").should("have.length", 3);
     cy.contains("Chilikirály").should("not.exist");
   });
 });

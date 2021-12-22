@@ -34,7 +34,7 @@ const CheckboxList = <T,>({
           items.map((item: CheckboxItem) => (
             <Form.Check
               key={item.id}
-              data-test={`${name}-checkbox`}
+              data-test={`${name}-${item.id}-checkbox`}
               onChange={(e) => {
                 const previousValues = field.value as string[];
                 const values = new Set(previousValues);

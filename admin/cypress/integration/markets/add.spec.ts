@@ -26,6 +26,7 @@ describe("Add new market", () => {
       expect(req.body.place).to.equal("Mars tér");
       expect(req.body.openingDate).to.equal(1636013400);
       expect(req.body.closingDate).to.equal(1670258100);
+      expect(req.body.vendors).to.deep.equal([2, 4]);
       expect(req.headers.authorization).to.include("Bearer eyJhb");
 
       const newMarket: MarketWithId<number> = { id: 1, ...req.body };
@@ -42,6 +43,19 @@ describe("Add new market", () => {
     cy.get('textarea[placeholder="Piac helyszíne..."]').type("Mars tér");
     cy.get("input[data-test=openingDate-input]").type("2021-11-04T09:10");
     cy.get("input[data-test=closingDate-input]").type("2022-12-05T17:35");
+
+    cy.get("form").contains("Árusok").parent().as("arusok-checkbox-list");
+    cy.get("@arusok-checkbox-list").contains("Chilikirály");
+    cy.get("@arusok-checkbox-list").contains("Just incase");
+    cy.get("@arusok-checkbox-list").contains("Valami bolt");
+    cy.get("@arusok-checkbox-list").contains("Másik bolt");
+
+    cy.get("@arusok-checkbox-list")
+      .find("input[data-test=vendors-2-checkbox]")
+      .check();
+    cy.get("@arusok-checkbox-list")
+      .find("input[data-test=vendors-4-checkbox]")
+      .check();
 
     cy.contains("Hozzáadás").click();
 
@@ -71,21 +85,5 @@ describe("Add new market", () => {
     cy.contains("Hozzáadás").click();
 
     cy.contains("Nem sikerült a piacot hozzáadni!");
-  });
-
-  it.skip("should show all vendors as checkboxes", () => {
-    cy.contains("ÚJ PIAC FELVÉTELE").click();
-
-    cy.contains("Chilikirály");
-    cy.contains("Just incase");
-    cy.contains("Valami bolt");
-
-    cy.get('[type="checkbox"]').check("1");
-    cy.get('[type="checkbox"]').check("2");
-    cy.get('[type="checkbox"]').check("3");
-
-    cy.get('[value="1"]').should("be.checked");
-    cy.get('[value="2"]').should("be.checked");
-    cy.get('[value="3"]').should("be.checked");
   });
 });
