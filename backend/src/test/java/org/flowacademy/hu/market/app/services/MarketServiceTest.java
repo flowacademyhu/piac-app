@@ -10,7 +10,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,13 +34,14 @@ class MarketServiceTest {
 
     @Test
     public void shouldAddAMarketAndCheckTheirInformationsAreCorrect() {
-        Market market = new Market()
-                .setId(12345l)
-                .setProfilePic("profilePic")
-                .setName("Vásár")
-                .setOpeningDate(123l)
-                .setClosingDate(345l)
-                .setPlace("Szeged");
+        Market market = Market.builder()
+                .id(12345l)
+                .profilePic("profilePic")
+                .name("Vásár")
+                .openingDate(123l)
+                .closingDate(345l)
+                .place("Szeged")
+                .build();
 
         SimpleMarketDTO simpleDTO = marketService.marketToSimpleDTO(market);
 
@@ -57,8 +57,16 @@ class MarketServiceTest {
     public void shouldAddAMarketToAListAndTestTheListForCases() {
         List<Market> marketList = new ArrayList<>();
 
-        marketList.add(new Market().setName("Árus").setOpeningDate(123l));
-        marketList.add(new Market().setName("Másik árus").setOpeningDate(456l));
+        marketList.add(Market
+                .builder()
+                .name("Árus")
+                .openingDate(123l)
+                .build());
+        marketList.add(Market
+                .builder()
+                .name("Másik árus")
+                .openingDate(456l)
+                .build());
         when(marketRepository.findAll()).thenReturn(marketList);
 
         List<SimpleMarketDTO> sortedMarketList = marketService.allMarkets();
